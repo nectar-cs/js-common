@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {colored} from "@nectar/mosaic";
+import {colored} from "../../styles/constants";
 
 function size(size){
   if(size === 'm+') return "30px";

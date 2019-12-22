@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Layout} from "@nectar/mosaic";
+import Layout from "../../styles/layout-styles";
 
 const Container = styled(Layout.ContentContainer)`
   position: relative;

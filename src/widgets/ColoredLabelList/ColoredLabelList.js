@@ -1,8 +1,8 @@
 //@flow
 import React from 'react'
-import {Text} from "@nectar/mosaic";
+import Text from '../../styles/text-styles';
 
-export default function ColoredLabelList(props: Props) {
+export function ColoredLabelList(props: Props) {
   const { labelType, labels } = props;
   const isWhiteList = labelType === 'whitelist';
   const emo = isWhiteList ? 'contentBackgroundColor' : 'primaryColor';

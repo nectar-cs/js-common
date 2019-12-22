@@ -59,11 +59,9 @@ const CenteredSpinner = styled(ModSpinner)`
   transform: translateX(-50%) translateY(-50%);
 `;
 
-const Loader = {
+export const Loader = {
   ModSpinner,
   CenteredSpinner,
   LoadingSpinner,
   TopRightSpinner
 };
-
-export default Loader;

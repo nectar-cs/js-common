@@ -6,9 +6,16 @@ import Text from './styles/text-styles'
 import Tables from './styles/table-styles'
 import {AddNew} from './widgets/AddNew/AddNew'
 import {LeftHeader} from './widgets/LeftHeader/LeftHeader'
-
+import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineSubtitle'
+import {Loader} from './styles/loader-styles'
+import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
+import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
+import {Micon} from './widgets/Micon/Micon'
+import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
+import CenterCard from './widgets/CenterCard/CenterCard'
 
 export {
+  Loader,
   Button,
   theme,
   MosaicBaseStyle,
@@ -16,5 +23,11 @@ export {
   Layout,
   Tables,
   AddNew,
-  LeftHeader
+  LeftHeader,
+  TextOverLineSubtitle,
+  ColoredLabelList,
+  EasyListItem,
+  Micon,
+  CenterAnnouncement,
+  CenterCard
 }

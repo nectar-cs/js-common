@@ -1,7 +1,8 @@
+//@flow
 import React from 'react';
 import S from './Styles';
 
-export default function TextOverLineSubtitle(props: Props) {
+export function TextOverLineSubtitle(props: Props) {
   const toggleThere = props.toggleOpen != null;
   const toggleOrient = props.toggleOpen ? 'up' : 'down';
   const toggleOrientName = `keyboard_arrow_${toggleOrient}`;
