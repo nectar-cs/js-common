@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { S } from './AddNewStyles';
 
-export default function AddNew(props) {
+export function AddNew(props) {
   return (
     <S.Layout onClick={props.action}>
       <S.Icon className="material-icons">add_circle_outline</S.Icon>
