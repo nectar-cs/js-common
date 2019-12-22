@@ -1,22 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import Button from './styles/button-styles'
+import {theme} from './styles/constants'
+import {MosaicBaseStyle} from './styles/global-styles'
+import Layout from './styles/layout-styles'
+import Text from './styles/text-styles'
+import Tables from './styles/table-styles'
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+export {
+  Button,
+  theme,
+  MosaicBaseStyle,
+  Text,
+  Layout,
+  Tables,
 }
