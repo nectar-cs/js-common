@@ -1,6 +1,6 @@
 //@flow
 import React from 'react'
-import {Loader} from "@nectar/mosaic"
+import {Loader} from '../../styles/loader-styles'
 
 export default function CenterLoader(props: Props){
   return(

@@ -1,5 +1,5 @@
 import Button from './styles/button-styles'
-import {theme} from './styles/constants'
+import {theme, colored, colorContrast} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -13,15 +13,27 @@ import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
 import {Micon} from './widgets/Micon/Micon'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import CenterCard from './widgets/CenterCard/CenterCard'
+import In from './styles/input-styles'
+import ModestLink from './widgets/ModestLink/ModestLink'
+import Img from './styles/img-styles'
+import ModalButton from './widgets/Buttons/ModalButton'
+import CenterLoader from './widgets/CenterLoader/CenterLoader'
+import Tabs from './widgets/Tabs/Tabs'
+import LabelTags from './widgets/LabelTags/LabelTags'
+import TagPool from './widgets/TagPool/TagPool'
+import Checklist from './widgets/Checklist/Checklist'
 
 export {
   Loader,
   Button,
+  In,
   theme,
   MosaicBaseStyle,
   Text,
   Layout,
   Tables,
+  colored,
+  colorContrast,
   AddNew,
   LeftHeader,
   TextOverLineSubtitle,
@@ -29,5 +41,13 @@ export {
   EasyListItem,
   Micon,
   CenterAnnouncement,
-  CenterCard
+  CenterCard,
+  ModestLink,
+  Img,
+  ModalButton,
+  CenterLoader,
+  Tabs,
+  LabelTags,
+  TagPool,
+  Checklist
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Button} from "@nectar/mosaic"
+import Button from "./../../styles/button-styles"
 
 const Main = styled(Button.ConfirmButton)`
   background: ${p => p.theme.colors.primaryColor};

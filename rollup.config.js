@@ -1,7 +1,6 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
@@ -10,25 +9,23 @@ import pkg from './package.json'
 
 export default {
   input: 'src/index.js',
-  external: ['styled-components'],
-  globals: { 'styled-components': 'styled' },
+  external: ['styled-components', 'react-animations', "@material-ui/lab"],
   output: [
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true
+      globals: { 'styled-components': 'styled' },
+      sourceMap: true
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true
+      globals: { 'styled-components': 'styled' },
+      sourceMap: true
     }
   ],
   plugins: [
     external(),
-    postcss({
-      modules: true
-    }),
     url(),
     svgr(),
     babel({
