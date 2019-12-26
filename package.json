@@ -1,10 +1,10 @@
 {
-  "name": "@nectar/js-common",
+  "name": "@nectar-cs/js-common",
   "version": "1.0.0",
   "description": "Commons for MOSAIC",
   "author": "nectar-cs",
   "license": "MIT",
-  "repository": "nectar-cs/@nectar/js-common",
+  "repository": "nectar-cs/js-common",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+  import styled from "styled-components";
 import {colored} from "../../styles/constants";
 import {Loader} from '../../styles/loader-styles'
 
