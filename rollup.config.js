@@ -15,13 +15,13 @@ export default {
       file: pkg.main,
       format: 'cjs',
       globals: { 'styled-components': 'styled' },
-      sourceMap: true
+      sourcemap: true
     },
     {
       file: pkg.module,
       format: 'es',
       globals: { 'styled-components': 'styled' },
-      sourceMap: true
+      sourcemap: true
     }
   ],
   plugins: [
