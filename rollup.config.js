@@ -9,18 +9,24 @@ import pkg from './package.json'
 
 export default {
   input: 'src/index.js',
-  external: ['styled-components', 'react-animations', "@material-ui/lab"],
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    'react-animations',
+    "@material-ui/lab"
+  ],
   output: [
     {
       file: pkg.main,
       format: 'cjs',
-      globals: { 'styled-components': 'styled' },
+      globals: { 'react': 'React', 'styled-components': 'styled' },
       sourcemap: true
     },
     {
       file: pkg.module,
       format: 'es',
-      globals: { 'styled-components': 'styled' },
+      globals: { 'react': 'React', 'styled-components': 'styled' },
       sourcemap: true
     }
   ],

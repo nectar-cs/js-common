@@ -1,6 +1,6 @@
 {
-  "name": "@nectar-cs/js-common",
-  "version": "1.0.0",
+  "name": "nectar-cs-js-common",
+  "version": "1.0.1",
   "description": "Commons for MOSAIC",
   "author": "nectar-cs",
   "license": "MIT",

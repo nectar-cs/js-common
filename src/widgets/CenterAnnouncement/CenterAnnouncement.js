@@ -1,14 +1,16 @@
+//@flow
 import React from 'react';
 import S from './CenterAnnouncementStyles'
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function MainContent(props) {
-  const icon = <S.ContainerIcon
-    light={props.light}
-    className='material-icons'>
-    {props.iconName}
-  </S.ContainerIcon>;
+  const icon = (
+    <S.ContainerIcon
+      light={props.light}
+      className='material-icons'>
+      {props.iconName}
+    </S.ContainerIcon>
+  );
 
   const text = <S.ContainerText>{props.text}</S.ContainerText>;
 
@@ -38,24 +40,25 @@ function MainContent(props) {
   }
 }
 
-export default function CenterAnnouncement(props) {
-  if (props.contentType === 'nav-link') {
-    return (
-      <NavLink to={props.action}>
-        <MainContent {...props} />
-      </NavLink>
-    );
-  } else return <MainContent {...props} />;
+export default class CenterAnnouncement extends React.Component<Props> {
+  render(){
+    const props = this.props;
+    if (props.contentType === 'nav-link') {
+      return (
+        <NavLink to={props.action}>
+          <MainContent {...props} />
+        </NavLink>
+      );
+    } else return <MainContent {...props} />;
+  }
+
+  static defaultProps = { contentType: 'action' };
 }
 
-const commonProps = {
-  iconName: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  action: PropTypes.any,
-  light: PropTypes.bool,
-  contentType: PropTypes.oneOf(['action', 'nav-link', 'children']).isRequired,
+type Props = {
+  iconName: string,
+  text: ?string,
+  action: ?any,
+  light: ?boolean,
+  contentType: 'action' | 'nav-link' | 'children'
 };
-
-MainContent.propTypes = commonProps;
-CenterAnnouncement.propTypes = commonProps;
-CenterAnnouncement.defaultProps = { contentType: 'action' };

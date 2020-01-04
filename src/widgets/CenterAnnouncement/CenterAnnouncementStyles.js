@@ -1,14 +1,6 @@
 import styled from 'styled-components'
 
-const containerSize = "370px";
 const iconSize = "110px";
-
-const Container = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-`;
 
 const Link = styled.a`
   background: transparent;
@@ -26,7 +18,10 @@ const ContainerText = styled.p`
 `;
 
 const ClickableContainer = styled.div`
-  composes: container;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
   text-align: center;
   &:hover{
     cursor: pointer;
@@ -57,7 +52,6 @@ const ContainerIcon = styled.i`
 `;
 
 const S = {
-  Container,
   ContainerIcon,
   ContainerText,
   ContainerTextTitle,

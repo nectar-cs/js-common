@@ -1,30 +1,30 @@
 import React from 'react';
 import S from './LeftHeaderStyles'
-import PropTypes from 'prop-types'
 
-export const ICON = "icon";
-
-export class LeftHeader extends React.Component {
+export class LeftHeader extends React.Component<Props> {
 
   render(){
+    const { title, subtitle } = this.props;
     return(
       <S.Container>
         { this.renderGraphic() }
         <S.TextBox>
-          <S.Title>{this.props.title}</S.Title>
-          <S.SubTitle>{this.props.subtitle}</S.SubTitle>
+          <S.Title>{title}</S.Title>
+          <S.SubTitle>{subtitle}</S.SubTitle>
         </S.TextBox>
       </S.Container>
     )
   }
 
   renderGraphic() {
-    if(this.props.graphicType === 'icon')
-      return this.renderMaterialIcon();
-    else if(this.props.graphicType === 'image')
-      return this.renderImage();
-    else if(this.props.graphicType === 'stub')
-      return this.renderStub();
+    const { graphicType } = this.props;
+    const { icon, image, stub } = LeftHeader.gTypes;
+    switch (graphicType) {
+      case icon: return this.renderMaterialIcon();
+      case image: return this.renderImage();
+      case stub: return this.renderStub();
+      default: return this.renderStub();
+    }
   }
 
   renderMaterialIcon(){
@@ -44,14 +44,20 @@ export class LeftHeader extends React.Component {
     return <S.ImageStub/>;
   }
 
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.any.isRequired,
-    graphicType: PropTypes.string,
-    graphicName: PropTypes.string.isRequired,
-  };
+  static gTypes = {
+    icon: "icon",
+    image: "image",
+    stub: "stub"
+  }
 
   static defaultProps = {
-    graphicType: 'image'
+    graphicType: LeftHeader.gTypes.icon
   };
 }
+
+type Props = {
+  title: string,
+  graphicName: string,
+  subtitle: any,
+  graphicType: 'icon' | 'image' | 'stub'
+};
