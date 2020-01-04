@@ -51,7 +51,7 @@ export class LeftHeader extends React.Component<Props> {
   }
 
   static defaultProps = {
-    graphicType: LeftHeader.gTypes.icon
+    graphicType: LeftHeader.gTypes.image
   };
 }
 
