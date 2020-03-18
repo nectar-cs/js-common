@@ -5,7 +5,7 @@ import {
   LeftHeader,
   CenterCard,
   CenterAnnouncement
-} from '@nectar/js-common'
+} from 'nectar-cs-js-common'
 
 export default function Basics() {
   return (
