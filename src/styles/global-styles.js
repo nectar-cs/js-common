@@ -22,7 +22,7 @@ export const MosaicBaseStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, p, a, input, button, li{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: ${colors.primaryColor};
     margin: 0;
     padding: 0;

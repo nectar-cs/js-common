@@ -26,7 +26,7 @@ const ContrastInput = styled.input`
 const LineInput = styled.input`
   width: 100%;
   border-color: ${p => p.theme.colors.primaryColor};
-  border-width: 0 0 1px 0;
+  border-width: 0 0 5px 0;
   padding-left: 0;
   border-radius: 0;
   margin: 0;
@@ -36,6 +36,9 @@ const LineInput = styled.input`
   }
   &::placeholder{
    color: ${p => p.theme.colors.primaryFontLess}
+  }
+  :focus{
+    border-width: 0 0 1px 0;
   }
 `;
 

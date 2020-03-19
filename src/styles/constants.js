@@ -8,6 +8,7 @@ export const theme = {
     contrastFont: "#FFFFFF",
     contrastLessFont: "#acb2c1",
     secondaryColor: "#455D7A",
+    excited: "#fc395b",
     contentBackgroundColor: "#e1e3e8",
     itemBackgroundColor: "white",
     lineColor: "#455D7A",
@@ -17,7 +18,7 @@ export const theme = {
     warn: "tomato",
     warn2: "orange",
     warnSoft: "#F6AE2D",
-    disabled: "#cecece"
+    disabled: "#cecece",
   },
 
   dims: {

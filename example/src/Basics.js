@@ -7,6 +7,7 @@ import {
   Layout,
   LeftHeader, Micon,
   TextOverLineSubtitle,
+  In,
   Button,
   ModalButton
 } from 'nectar-cs-js-common'
@@ -46,6 +47,15 @@ export default function Basics(){
         <Button.ConfirmButton>Button.ConfirmButton</Button.ConfirmButton>
       </Layout.LeftPanel>
       <Layout.RightPanel>
+        <Text.P2>Full width input</Text.P2>
+        <In.InputLine>
+          <In.LineInput name={'hey'} placeholder={'Placeholder'}/>
+        </In.InputLine>
+        <Text.P2 top={3}>Label and input</Text.P2>
+        <In.InputLine>
+          <In.LineLabel>Hey</In.LineLabel>
+          <In.LineInput/>
+        </In.InputLine>
         <ModalButton
           callback={_ => alert("Bang")}
           title='ModalButton'
