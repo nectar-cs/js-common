@@ -47,12 +47,14 @@ export const theme = {
   },
 };
 
-export function colored(name){
+export function colored(name, backup){
   if(name){
     if(theme.colors[name]) return theme.colors[name];
     const color = theme.ali(name);
     return theme.colors[color];
-  } else return theme.colors.primaryColor;
+  }
+  else if(backup) return backup;
+  else return theme.colors.primaryColor;
 }
 
 export function colorContrast(name){

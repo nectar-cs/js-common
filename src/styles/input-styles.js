@@ -10,25 +10,16 @@ const InputLine = styled.div`
   justify-content: space-between;
 `;
 
-const ContrastInput = styled.input`
-  width: 95%;
-  border-color: ${p => p.theme.colors.contrastColor};
-  border-width: 0 0 1px 0;
-  padding-left: 0;
-  border-radius: 0;
-  color: ${p => p.theme.colors.contrastFont};
-  &::placeholder{
-    opacity: 1.0;
-    color: ${p => p.theme.colors.contrastLessFont}
-  }
-`;
+const inputBorderWidth = "1px";
+
 
 const LineInput = styled.input`
   width: 100%;
   border-color: ${p => p.theme.colors.primaryColor};
-  border-width: 0 0 5px 0;
+  border-width: 0 0 ${inputBorderWidth} 0;
   padding-left: 0;
   border-radius: 0;
+  box-sizing: content-box;
   margin: 0;
   color: ${p => p.theme.colors.primaryFont};
   &:not(:nth-child(1)) {
@@ -37,8 +28,24 @@ const LineInput = styled.input`
   &::placeholder{
    color: ${p => p.theme.colors.primaryFontLess}
   }
-  :focus{
-    border-width: 0 0 1px 0;
+  &:focus{
+    padding-bottom: 6px;
+    border-width: 0 0 calc(${inputBorderWidth} + 1px) 0;  
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+`;
+
+const ContrastInput = styled(LineInput)` 
+  border-color: ${p => p.theme.colors.contrastColor};
+  color: ${p => p.theme.colors.contrastFont};
+  &::placeholder{
+    opacity: 1.0;
+    color: ${p => p.theme.colors.contrastLessFont}
   }
 `;
 

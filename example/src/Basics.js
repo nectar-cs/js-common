@@ -49,13 +49,22 @@ export default function Basics(){
       <Layout.RightPanel>
         <Text.P2>Full width input</Text.P2>
         <In.InputLine>
-          <In.LineInput name={'hey'} placeholder={'Placeholder'}/>
+          <In.LineInput name={'hey'} placeholder='Placeholders'/>
         </In.InputLine>
         <Text.P2 top={3}>Label and input</Text.P2>
         <In.InputLine>
-          <In.LineLabel>Hey</In.LineLabel>
-          <In.LineInput/>
+          <In.LineLabel>Email</In.LineLabel>
+          <In.LineInput
+            name='Email'
+            type='email'
+            placeholder='Email'
+          />
         </In.InputLine>
+
+        <Layout.Panel top={3} emotion='primaryColor'>
+          <In.ContrastInput placeholder='Password'/>
+        </Layout.Panel>
+
         <ModalButton
           callback={_ => alert("Bang")}
           title='ModalButton'

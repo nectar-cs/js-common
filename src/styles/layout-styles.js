@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {colored} from "./constants";
 
 const halfPanelOffset = "14px";
 
@@ -6,6 +7,14 @@ const Dims = {
   containerPaddingVert: "12px",
   containerPaddingHor: "16px",
 };
+
+const Div = styled.div`
+  margin-top: ${p => `${(p.top || 0) * 12}px`};
+  margin-right: ${p => `${(p.right || 0) * 12}px`};
+  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
+  margin-left: ${p => `${(p.left || 0) * 12}px`};
+  background: ${p => colored(p.emotion, "transparent") || 'default'};
+`;
 
 const ThemePage = styled.div`
   background: ${p => p.theme.colors.primaryColor};
@@ -22,7 +31,12 @@ const ModalLayout = styled.div`
   height: 700px;
 `;
 
-const ContentContainer = styled.div`
+const Panel = styled(Div)`
+  padding: 12px;
+  border-radius: 4px;     
+`;
+
+const ContentContainer = styled(Div)`
   position: absolute;
   padding: ${Dims.containerPaddingVert} ${Dims.containerPaddingHor};
   box-sizing: border-box;
@@ -83,13 +97,6 @@ const SlimCodeViewer = styled(BigCodeViewer)`
   padding: 11px 12px;
 `;
 
-const Div = styled.div`
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-`;
-
 const Layout = {
   Div,
   ContentContainer,
@@ -103,6 +110,7 @@ const Layout = {
   Dims,
   halfPanelOffset,
   ThemePage,
-  FullScreen
+  FullScreen,
+  Panel
 };
 export default Layout;
