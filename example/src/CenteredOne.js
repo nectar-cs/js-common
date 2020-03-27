@@ -18,7 +18,7 @@ export default function Basics() {
           graphicType='icon'
         />
         <CenterCard>
-          <Text.P center tm={10}>
+          <Text.P center mt={10}>
             Centered Text
           </Text.P>
         </CenterCard>

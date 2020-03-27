@@ -1,57 +1,58 @@
 import {css} from 'styled-components'
 
-function resolveColor(props, colorKey, backupColorKey){
-  let resolvedColor = props.theme.colors[colorKey];
-  return resolvedColor || props.theme.colors[backupColorKey];
-}
-
-export function contrastFontForBkg(bkgColorKey){
-  switch (bkgColorKey) {
-    case colorKeys.primaryColor:
-    case colorKeys.primaryFont:
-      return colorKeys.contrastFont;
-  }
-}
-
 export const colorKeys = {
-  primaryColor: 'primaryColor',
   primaryFont: 'primaryFont',
+  secondaryFont: 'secondaryFont',
+  calm: 'secondaryFont',
+
+  primaryColor: 'primaryColor',
   dumbName: 'primaryColor',
-  primaryFontMuted: 'primaryFontMuted',
+
   primaryFontLess: 'primaryFontLess',
   contrastColor: 'contrastColor',
   contrastFont: 'contrastFont',
   secondaryColor: 'secondaryColor',
+
+  contentBackgroundColor: 'contentBackgroundColor',
+  itemBackgroundColor: 'itemBackgroundColor',
+
+  disabled: 'disabled',
   excited: 'excited',
+  warning: 'warning',
+  success: 'success',
+  pleasant: 'pleasant',
+
+  transparent: 'transparent',
+  none: 'transparent'
 };
 
 export const theme = {
   colors: {
+    [colorKeys.primaryFont]: "#233142",
+    [colorKeys.secondaryFont]: "#5c6070",
+    [colorKeys.contrastFont]: "#FFFFFF",
+
     [colorKeys.primaryColor]: "#233142",
-    [colorKeys.primaryFont]: "#5c6070",
-    [colorKeys.primaryFontMuted]: "#FFFFFF48",
     [colorKeys.primaryFontLess]: "#5c6070",
     [colorKeys.contrastColor]: '#FFFFFF',
-    [colorKeys.contrastFont]: "#FFFFFF",
-    // [colorKeys.contrastLessFont]: "#acb2c1",
+
     [colorKeys.secondaryColor]: "#455D7A",
     [colorKeys.excited]: "#fc395b",
-    contentBackgroundColor: "#eaecef",
-    itemBackgroundColor: "white",
-    lineColor: "#455D7A",
-    pleasant: "#535b77",
-    success: "#326342",
-    fail: "darkred",
-    warn: "tomato",
-    warn2: "orange",
-    warnSoft: "#F6AE2D",
-    disabled: "#cecece",
+
+    [colorKeys.contentBackgroundColor]: "#eaecef",
+    [colorKeys.itemBackgroundColor]: "white",
+
+    [colorKeys.pleasant]: "#535b77",
+    [colorKeys.success]: "#326342",
+    [colorKeys.warning]: "#F6AE2D",
+    [colorKeys.disabled]: "#cecece",
+
+    [colorKeys.transparent]: "transparent",
   },
 
   dims: {
     topBarHeight: "0px",
     sideBarWidth: "220px",
-    tableBorderWidth: "1.5px",
     borderRadius: "4px",
     borderWidth: "1px"
   },
@@ -61,18 +62,30 @@ export const inverseTheme = {
   ...theme,
   colors: {
     ...theme.colors,
-    [colorKeys.primaryColor]: theme.colors.contrastColor,
     [colorKeys.primaryFont]: theme.colors.contrastFont,
+    [colorKeys.secondaryFont]: theme.colors.disabled,
+
+    [colorKeys.primaryColor]: theme.colors.contrastColor,
     [colorKeys.contrastColor]: theme.colors.primaryColor,
     [colorKeys.contrastFont]: theme.colors.primaryFont,
   }
 };
 
+
+
+
+
+
+/*--------------------MIXINS---------------------*/
+
+
 export const commonSizeAttrs = css`
-  margin-top: ${p => `${(p.tm || 0) * 12}px`};
-  margin-right: ${p => `${(p.rm || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bm || 0) * 12}px`};
-  margin-left: ${p => `${(p.lm || 0) * 12}px`};
+  margin-top: ${p => `${(p.mt || 0) * 12}px`};
+  margin-right: ${p => `${(p.mr || 0) * 12}px`};
+  margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
+  margin-left: ${p => `${(p.ml || 0) * 12}px`};
+  border-radius: ${p => p.rounded ? p.theme.dims.borderRadius : 'default'};
+  padding: ${p => p.padded ? "8px" : 'default'};    
 `;
 
 export const commonFontAttrs = css`
@@ -83,6 +96,44 @@ export const commonFontAttrs = css`
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
 `;
+
+
+
+
+
+
+
+
+
+
+/*--------------------UTILS---------------------*/
+
+
+
+export function resolveColorKey(props, colorKey, backupColorKey){
+  if(props.calm) return colorKeys.calm;
+  return colorKey || backupColorKey;
+}
+
+export function resolveColor(props, colorKey, backupColorKey){
+  const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
+  return props.theme.colors[resolvedKey];
+}
+
+function contrastFontKeyForBkg(props, colorKey, backupColorKey){
+  const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);
+  switch (bkgColorKey) {
+    case colorKeys.disabled:
+    case colorKeys.contentBackgroundColor:
+      return colorKeys.primaryFont;
+    default: return colorKeys.contrastFont;
+  }
+}
+
+export function contrastFontForBkg(props, colorKey, backupColorKey){
+  const finalKey = contrastFontKeyForBkg(props, colorKey, backupColorKey);
+  return props.theme.colors[finalKey];
+}
 
 function textVisibility(p){
   return p.invisible ? "hidden" : "visible";
@@ -108,13 +159,4 @@ function textDisplay(p){
   if(p.iblock) return "inline-block";
   else if(p.block) return "block";
   return "default";
-}
-
-export function colored(name, backup){
-  if(name){
-    if(theme.colors[name]) return theme.colors[name];
-    return 'black';
-  }
-  else if(backup) return backup;
-  else return theme.colors.primaryColor;
 }

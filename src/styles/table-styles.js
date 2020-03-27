@@ -1,4 +1,42 @@
-import styled from "styled-components";
+import React from 'react'
+import styled, {css} from "styled-components";
+import {commonSizeAttrs} from "./constants";
+
+const borderWidth = "1.5px";
+
+const _Table = styled(props => (
+  <table {...props}>
+    <tbody>
+    { props.children }
+    </tbody>
+  </table>
+))`
+    width: 100%;
+    border-collapse: collapse;
+    ${commonSizeAttrs};
+    th, td {
+      padding: 11px 4px;
+      text-align: left;
+      &:nth-child(1){
+      }
+      &:last-child{
+        text-align: left;
+      }
+    }
+    
+    tr {
+      border-top: ${borderWidth} solid transparent;
+      border-bottom: ${borderWidth} solid #ddd;
+    }
+    
+    th p {
+      font-weight: 600;
+    }
+    
+    tr:last-child {
+      border-bottom: ${borderWidth} solid transparent;
+    }
+`;
 
 const ModestHeader = styled.tr`
   th{
@@ -8,11 +46,7 @@ const ModestHeader = styled.tr`
   }
 `;
 
-const Table = styled.table`
-  margin-top: ${p => p.raw ? 0 : `${(p.low || 1) * 12}px`};
-`;
-
-const SlimTable = styled(Table)`
+const SlimTable = styled(_Table)`
   tr{
     ${p => p.borderless ? 'border-style: none;' : 'solid'};
     td{
@@ -26,11 +60,12 @@ const SkinnyRow = styled.td`
   padding-bottom: 8px;
 `;
 
-const Tables = {
-    Table,
-    SlimTable,
-    ModestHeader,
-    SkinnyRow
+const Table = {
+  Table: _Table,
+  SlimTable,
+  ModestHeader,
+  SkinnyRow,
+  borderWidth
 };
 
-export default Tables;
+export default Table;

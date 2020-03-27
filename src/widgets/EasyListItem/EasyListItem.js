@@ -11,11 +11,11 @@ export function EasyListItem(props: Props){
     <S.FlavorItem selected={isSelected} onClick={callback}>
       <Layout.TextLine>
         <Micon n={iconName} size='m+'/>
-        <Text.P lm={0.5} tm={0.7} emotion='primaryColor' kind='little-title'>
+        <Text.P lm={0.5} mt={0.7} emotion='primaryColor' kind='little-title'>
           {title}
         </Text.P>
       </Layout.TextLine>
-      <Text.P tm={1}>{subtitle}</Text.P>
+      <Text.P mt={1}>{subtitle}</Text.P>
     </S.FlavorItem>
   )
 }

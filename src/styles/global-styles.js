@@ -102,35 +102,13 @@ export const MosaicBaseStyle = createGlobalStyle`
     background: ${colors.itemBackgroundColor};
   }
 
-
-
-
-
   table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  th, td {
-    padding: 11px 4px;
-    text-align: left;
-  }
-  
-  tr, th {
-    border-top: ${dims.tableBorderWidth} solid transparent;
-    border-bottom: ${dims.tableBorderWidth} solid #ddd;
-  }
-  
-  th p {
-    font-weight: 600;
-  }
-  
-  tr:last-child {
-    border-bottom: ${dims.tableBorderWidth} solid transparent;
-  }
   
   ::-webkit-scrollbar {
     display: none;
   }
-
 `;

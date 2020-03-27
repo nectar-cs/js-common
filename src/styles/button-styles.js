@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {colored} from "./constants";
+import {resolveColor} from "./constants";
 
 function marg(pure){
   return pure ? '17px' : '40px';
@@ -21,7 +21,7 @@ const ConfirmButton = styled.button`
 
 const SmallButton = styled.button`
   color: ${p => p.theme.colors.contrastFont};
-  background: ${p => colored(p.emotion, p)};
+  background: ${p => resolveColor(p, p.emotion)};
   padding: 7px 11px;
   margin-top: ${p => marg(p.pure)};
 `;

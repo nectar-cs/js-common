@@ -1,9 +1,9 @@
 import Button from './styles/button-styles'
-import {theme, colorKeys} from './styles/constants'
+import {theme, colorKeys, inverseTheme} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
-import Tables from './styles/table-styles'
+import Table from './styles/table-styles'
 import {AddNew} from './widgets/AddNew/AddNew'
 import {LeftHeader} from './widgets/LeftHeader/LeftHeader'
 import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineSubtitle'
@@ -21,6 +21,8 @@ import CenterLoader from './widgets/CenterLoader/CenterLoader'
 import Tabs from './widgets/Tabs/Tabs'
 import LabelTags from './widgets/LabelTags/LabelTags'
 import Checklist from './widgets/Checklist/Checklist'
+import TagPool from "./widgets/TagPool/TagPool";
+
 
 export {
   Loader,
@@ -28,10 +30,11 @@ export {
   In,
   colorKeys,
   theme,
+  inverseTheme,
   MosaicBaseStyle,
   Text,
   Layout,
-  Tables,
+  Table,
   AddNew,
   LeftHeader,
   TextOverLineSubtitle,

@@ -1,16 +1,18 @@
 import React from 'react';
 import S from './LeftHeaderStyles'
+import Text from "../../styles/text-styles";
 
 export class LeftHeader extends React.Component<Props> {
 
   render(){
     const { title, subtitle } = this.props;
+
     return(
       <S.Container>
         { this.renderGraphic() }
         <S.TextBox>
-          <S.Title>{title}</S.Title>
-          <S.SubTitle>{subtitle}</S.SubTitle>
+          <Text.H1>{title}</Text.H1>
+          <Text.P mt={0.55}>{subtitle}</Text.P>
         </S.TextBox>
       </S.Container>
     )
@@ -48,7 +50,7 @@ export class LeftHeader extends React.Component<Props> {
     icon: "icon",
     image: "image",
     stub: "stub"
-  }
+  };
 
   static defaultProps = {
     graphicType: LeftHeader.gTypes.image

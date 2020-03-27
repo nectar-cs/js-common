@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colored, commonFontAttrs, commonSizeAttrs, contrastFontForBkg} from "./constants";
+import {colorKeys, commonFontAttrs, commonSizeAttrs, contrastFontForBkg, resolveColor} from "./constants";
 
 const P = styled.p`
   font-size: 13px;
@@ -7,70 +7,39 @@ const P = styled.p`
   ${commonFontAttrs};
 `;
 
-const H5 = styled.h5`
-  ${commonSizeAttrs};
+const H1 = styled(P)`
+  font-size: 20px;
+`;
+
+const H2 = styled(P)`
+  font-size: 18px;
+`;
+
+const H3 = styled(P)`
+  font-size: 16px;
+`;
+
+const H4 = styled(P)`
   font-size: 14px;
 `;
 
 const StatusTag = styled(P)`
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 5px 14px;
   text-align: center;
   display: inline-block;
-  color: ${p => contrastFontForBkg(p.emotion)};
-  background: ${p => colored(p.emotion)};
+  background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
+  color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
 `;
 
-const AA = styled.p`
-  text-decoration: underline;
-  &:hover{
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: ${p => p.theme.colors.contrastFont};  
-  }
-
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-`;
-
-const A = styled.a`
-  text-decoration: none;
-  &:hover{
-    text-decoration: underline;
-    text-decoration-color: ${p => p.theme.colors.contrastFont};  
-  }
-  margin-top: ${p => p.raw ? 0 : `${(p.low || 1) * 12}px`};
-  color: ${p => colored(p.emotion || 'primaryFont')};
-`;
-
-const PA = styled.p`
-  text-decoration: none;
-  text-decoration-color: transparent;
-  &:hover{
-    text-decoration: underline;
-    text-decoration-color: ${p => p.theme.colors.contrastFont};
-    cursor: pointer;  
-  }
-  margin-top: ${p => p.raw ? 0 : `${(p.low || 0) * 12}px`};
-  margin-right: ${p => p.push ? "3px" : '0'}
-  margin-left: ${p => p.pushed ? "3px" : '0'}
-  color: ${p => colored(p.emotion || 'primaryFont')};
-`;
-
-const CleanStatus = styled.p`
+const CleanStatus = styled(P)`
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: ${p => p.color || colored(p.emotion, p)}
 `;
 
-const BoldStatus = styled(CleanStatus)`
+const BoldStatus = styled(P)`
   letter-spacing: 0.2px;
   font-weight: 800;
-  color: ${p => colored(p.emotion, p)};
-  margin-right: ${p => p.push ? "3px" : '0'}
-  margin-left: ${p => p.pushed ? "3px" : '0'}
 `;
 
 const Code = styled.code`
@@ -96,10 +65,10 @@ const BoldRef = styled.p`
 
 const Text = {
   P,
-  A,
-  PA,
-  H5,
-  AA,
+  H1,
+  H2,
+  H3,
+  H4,
   Code,
   BoldStatus,
   CleanStatus,

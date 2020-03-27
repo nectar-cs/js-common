@@ -1,5 +1,5 @@
   import styled from "styled-components";
-import {colored} from "../../styles/constants";
+import {colorKeys, resolveColor} from "../../styles/constants";
 import {Loader} from '../../styles/loader-styles'
 
 
@@ -26,7 +26,7 @@ const Detail = styled.p`
 const Icon = styled.div`
   margin-left: 24px;
   font-size: 21px;
-  color: ${p => colored(p.emotion, p)};
+  color: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
 `;
 
 const Spinner = styled(Loader.ModSpinner)`
@@ -41,6 +41,6 @@ const S = {
   Detail,
   Icon,
   Spinner
-}
+};
 
 export default S;

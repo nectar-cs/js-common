@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import {colored} from "./constants";
+import {colorKeys, resolveColor} from "./constants";
 
 const rotate = keyframes`
   0% {
@@ -9,6 +9,10 @@ const rotate = keyframes`
     transform: rotate(360deg)
   }
 `;
+
+function borderColor(p){
+  return resolveColor(p, p.emotion, colorKeys.primaryColor);
+}
 
 const LoadingSpinner = styled.div`
   display: inline-block;
@@ -21,8 +25,8 @@ const LoadingSpinner = styled.div`
     height: 26px;
     margin: 1px;
     border-radius: 50%;
-    border: 5px solid ${p => colored(p.emotion)};
-    border-color: ${p => colored(p.emotion)} transparent ${p => colored(p.emotion)} transparent;
+    border: 5px solid ${p => borderColor(p)};
+    border-color: ${p => borderColor(p)} transparent ${p => borderColor(p)} transparent;
     animation: ${rotate} 1.6s linear infinite;
   }
 `;

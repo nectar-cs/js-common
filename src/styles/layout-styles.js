@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {colored} from "./constants";
+import {colorKeys, commonSizeAttrs, resolveColor} from "./constants";
 
 const halfPanelOffset = "14px";
 
@@ -8,12 +8,17 @@ const Dims = {
   containerPaddingHor: "16px",
 };
 
+function displayType(p){
+  if(p.flex) return "flex";
+  else if(p.inlineFlex) return "inlineFlex";
+  else return "block";
+}
+
 const Div = styled.div`
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-  background: ${p => colored(p.emotion, "transparent") || 'default'};
+  ${commonSizeAttrs};
+  background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
+  display: ${p => displayType(p)};
+  align-items: ${p => p.align || 'flex-start'};
 `;
 
 const ThemePage = styled.div`

@@ -32,25 +32,11 @@ const TextBox = styled.div`
   margin: 5px 0 0 8px;
 `;
 
-const Title = styled.p`
-  font-size: 19px;
-  margin: 0;
-  text-wrap: none;
-`;
-
-const SubTitle = styled.p`
-  margin: 7px 0 0 0;
-  display: inline-block;
-  width: auto;
-  color: ${p => p.theme.colors.primaryFontLess};
-`;
-
 const Icon = styled.i`
   width: ${headerHeight};
   height: ${headerHeight};
   font-size: ${headerHeight};
   color: ${p => p.theme.colors.primaryColor};
-  background: red;
 `;
 
 const S = {
@@ -58,9 +44,7 @@ const S = {
   Image,
   ImageStub,
   ImageBox,
-  Title,
   TextBox,
-  SubTitle,
   Icon
 };
 
