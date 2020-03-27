@@ -13,8 +13,8 @@ export default function LabelTags({labels}){
     <Text.StatusTag
       key={label}
       emotion='pleasant'
-      top={0.5}
-      right={0.3}
+      tm={0.5}
+      rm={0.3}
     >{label}
     </Text.StatusTag>
   ))

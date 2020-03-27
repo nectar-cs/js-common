@@ -17,17 +17,17 @@ export const MosaicBaseStyle = createGlobalStyle`
     background: ${colors.contentBackgroundColor};
   }
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
   h1, h2, h3, h4, h5, p, a, input, button, li{
     font-family: 'Inter', sans-serif;
     color: ${colors.primaryColor};
     margin: 0;
     padding: 0;
     background: transparent;
-    text-decoration: none;
+    text-decoration: none;       
+  }
+  
+  p, a, input, select, li{ 
+    font-size: 13px; 
   }
   
   a{
@@ -35,12 +35,6 @@ export const MosaicBaseStyle = createGlobalStyle`
     cursor: pointer;
   }
   
-  h2, h3 { font-weight: 400; }
-  p, input, select, li{ font-size: 13px; }
-  input { font-weight: 500; }
-  h3 { margin-bottom: 16px; }
-  h4 { margin-top: 28px; }
-
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
     background: ${colors.primaryColor};
     padding: 12px 3px;
@@ -80,20 +74,9 @@ export const MosaicBaseStyle = createGlobalStyle`
     color: ${colors.primaryColor};
   }
 
-
-
-
-
   input {
-    display: block;
     background: transparent;
-    border-color: ${colors.primaryColor};
-    margin-top: 24px;
-    border-width: 1px;
-    border-radius: 3px;
     padding: 7px 10px;
-    width: 350px;
-    color: ${colors.primaryColor};
   }
   
   input::placeholder {
@@ -112,35 +95,7 @@ export const MosaicBaseStyle = createGlobalStyle`
   }
   
   button {
-    margin-top: 40px;
-    background: tomato;
-    border-width: 0;
-    border-radius: 3px;
-    padding: 8px 0;
-    font-weight: 500;
-  }
-  
-  button:focus {
-    outline-color: white;
-  }
-  
-  button:hover {
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    cursor: auto;
-  }
-  
-  select {
-    background: transparent;
-    border-color: ${colors.primaryFont};
-    margin: 0;
-    border-width: 1.4px;
-    border-radius: 4px;
-    padding: 6px 10px;
-    width: 350px;
-    color: ${colors.primaryFont};
+    
   }
   
   option {
@@ -173,4 +128,9 @@ export const MosaicBaseStyle = createGlobalStyle`
   tr:last-child {
     border-bottom: ${dims.tableBorderWidth} solid transparent;
   }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
 `;

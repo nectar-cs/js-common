@@ -10,7 +10,7 @@ export function ColoredLabelList(props: Props) {
   return labels.map((labelCopy, i) => {
     const leftOffset = i === 0 ? 0 : 0.3;
     return(
-      <Text.StatusTag emotion={emo} key={i} left={leftOffset}>
+      <Text.StatusTag emotion={emo} key={i} lm={leftOffset}>
         {labelCopy}
       </Text.StatusTag>
     )

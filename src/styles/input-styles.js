@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const borderWidth = p => p.theme.dims.borderWidth;
+
 const InputLine = styled.div`
   height: auto;
   display: flex;
@@ -10,15 +12,12 @@ const InputLine = styled.div`
   justify-content: space-between;
 `;
 
-const inputBorderWidth = "1px";
-
-
 const LineInput = styled.input`
   width: 100%;
-  border-color: ${p => p.theme.colors.primaryColor};
-  border-width: 0 0 ${inputBorderWidth} 0;
-  padding-left: 0;
-  border-radius: 0;
+  border-color: ${p => p.theme.colors.primaryFont};
+  border-width: ${p => inputBorderWidth(p)};
+  padding-left: ${p => inputPadding(p)};
+  border-radius: ${p => inputBorderRadius(p)};
   box-sizing: content-box;
   margin: 0;
   color: ${p => p.theme.colors.primaryFont};
@@ -30,7 +29,7 @@ const LineInput = styled.input`
   }
   &:focus{
     padding-bottom: 6px;
-    border-width: 0 0 calc(${inputBorderWidth} + 1px) 0;  
+    border-width: ${p => `0 0 calc(${borderWidth(p)} + 1px) 0`};  
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -39,6 +38,22 @@ const LineInput = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 `;
+
+function inputBorderRadius(p){
+  if(p.flat) return "0px";
+  else return p.theme.dims.borderRadius;
+}
+
+function inputBorderWidth(p){
+  const width = p.theme.dims.borderWidth;
+  if(p.flat) return `0 0 ${width} 0`;
+  else return width;
+}
+
+function inputPadding(p){
+  if(p.flat) return "0";
+  else return "8px";
+}
 
 const ContrastInput = styled(LineInput)` 
   border-color: ${p => p.theme.colors.contrastColor};

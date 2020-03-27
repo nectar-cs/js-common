@@ -1,57 +1,24 @@
 import styled from "styled-components";
-import {colored, colorContrast} from "./constants";
+import {colored, commonFontAttrs, commonSizeAttrs, contrastFontForBkg} from "./constants";
 
-const StatusTag = styled.p`
+const P = styled.p`
+  font-size: 13px;
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+`;
+
+const H5 = styled.h5`
+  ${commonSizeAttrs};
+  font-size: 14px;
+`;
+
+const StatusTag = styled(P)`
   border-radius: 3px;
   padding: 5px 10px;
   text-align: center;
   display: inline-block;
-  color: ${p => colorContrast(p.emotion)};
+  color: ${p => contrastFontForBkg(p.emotion)};
   background: ${p => colored(p.emotion)};
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-`;
-
-const P = styled.p`
-  margin-top: ${p => p.raw ? 0 : `${(p.low || 1) * 12}px`};
-  margin-bottom: ${p => `${(p.suck || 0) * -12}px`};
-  margin-right: ${p => p.push ? "3px" : '0'};
-  margin-left: ${p => p.pushed ? "3px" : '0'};
-  color: ${p => colored(p.emotion || 'primaryFont')};
-  font-weight: ${p => p.weight || 'normal'};
-  text-align: ${p => textAlign(p)};
-`;
-
-const P2 = styled.p`
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-  color: ${p => colored(p.emotion || 'primaryFont')};
-  font-weight: ${p => p.weight || 'normal'};
-  text-align: ${p => textAlign(p)};
-  font-size: ${p => textSize(p)};
-`;
-
-function textAlign(p){
-  if(p.center) return 'center';
-  if(p.right) return 'right';
-  return 'left';
-}
-
-function textSize(p){
-  if(p.kind === 'little-title') return '16px';
-  return 'default';
-}
-
-const H5 = styled.h5`
-  margin-top: ${p => `${(p.top || 0) * 12}px`};
-  margin-right: ${p => `${(p.right || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.bottom || 0) * 12}px`};
-  margin-left: ${p => `${(p.left || 0) * 12}px`};
-  font-size: 14px;
 `;
 
 const AA = styled.p`
@@ -128,7 +95,11 @@ const BoldRef = styled.p`
 `;
 
 const Text = {
-  P, A, PA, H5, AA, P2,
+  P,
+  A,
+  PA,
+  H5,
+  AA,
   Code,
   BoldStatus,
   CleanStatus,

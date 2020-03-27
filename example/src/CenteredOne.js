@@ -18,9 +18,9 @@ export default function Basics() {
           graphicType='icon'
         />
         <CenterCard>
-          <Text.P2 center top={10}>
+          <Text.P center tm={10}>
             Centered Text
-          </Text.P2>
+          </Text.P>
         </CenterCard>
       </Layout.LeftPanel>
       <Layout.RightPanel>

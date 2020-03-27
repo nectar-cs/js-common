@@ -1,5 +1,5 @@
 import Button from './styles/button-styles'
-import {theme, colored, colorContrast} from './styles/constants'
+import {theme, colorKeys} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -20,20 +20,18 @@ import ModalButton from './widgets/Buttons/ModalButton'
 import CenterLoader from './widgets/CenterLoader/CenterLoader'
 import Tabs from './widgets/Tabs/Tabs'
 import LabelTags from './widgets/LabelTags/LabelTags'
-import TagPool from './widgets/TagPool/TagPool'
 import Checklist from './widgets/Checklist/Checklist'
 
 export {
   Loader,
   Button,
   In,
+  colorKeys,
   theme,
   MosaicBaseStyle,
   Text,
   Layout,
   Tables,
-  colored,
-  colorContrast,
   AddNew,
   LeftHeader,
   TextOverLineSubtitle,

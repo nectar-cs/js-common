@@ -11,10 +11,11 @@ const Container = styled.div`
 
 const Image = styled.img`
   object-fit: contain;
-  width: ${headerHeight};
-  height: ${headerHeight};
+  width: calc(${headerHeight} * .84);
+  height: calc(${headerHeight} * .84);
   max-height: ${headerHeight};
   max-width: ${headerHeight};
+  background: transparent;
 `;
 
 const ImageStub = styled(Image)`
@@ -28,10 +29,11 @@ const ImageBox = styled.div`
 
 const TextBox = styled.div`
   height: 100%;
-  margin: 2px 0 0 8px;
+  margin: 5px 0 0 8px;
 `;
 
-const Title = styled.h2`
+const Title = styled.p`
+  font-size: 19px;
   margin: 0;
   text-wrap: none;
 `;
@@ -48,6 +50,7 @@ const Icon = styled.i`
   height: ${headerHeight};
   font-size: ${headerHeight};
   color: ${p => p.theme.colors.primaryColor};
+  background: red;
 `;
 
 const S = {
