@@ -80,6 +80,34 @@ export const inverseTheme = {
 
 /*--------------------MIXINS---------------------*/
 
+function merger(props, defaults){
+  Object.keys(defaults).forEach(key => {
+    if(!props[key])
+      props[key] = defaults[key];
+  });
+  return props;
+}
+
+export function centered(p){
+  if(p.centered){
+    return css`
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    `;
+  }
+}
+
+function centerLow(p) {
+  if(p.centerLow){
+    return css`
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+    `;
+  }
+}
 
 export const commonSizeAttrs = css`
   margin-top: ${p => `${(p.mt || 0) * 12}px`};
@@ -87,8 +115,10 @@ export const commonSizeAttrs = css`
   margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
   margin-left: ${p => `${(p.ml || 0) * 12}px`};
   border-radius: ${p => p.rounded ? p.theme.dims.borderRadius : 'default'};
-  padding: ${p => p.padded ? "8px" : 'default'};
+  padding: ${p => p.padded ? "10px" : 'default'};
   width: ${p => p.width || 'auto'};
+  ${p => centered(p)};
+  ${p => centerLow(p)};
 `;
 
 export const commonFontAttrs = css`
@@ -100,7 +130,16 @@ export const commonFontAttrs = css`
   visibility: ${p => textVisibility(p)};
 `;
 
-
+export function commonFont(defaults){
+  return css`
+    color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
+    font-weight: ${p => textWeight(merger(p, defaults))};
+    text-align: ${p => textAlign(p)};
+    font-size: ${p => textSize(p)};
+    display: ${p => textDisplay(p)};
+    visibility: ${p => textVisibility(p)};
+`;
+}
 
 
 

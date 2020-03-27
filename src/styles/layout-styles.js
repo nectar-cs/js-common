@@ -14,11 +14,18 @@ function displayType(p){
   else return "block";
 }
 
+function positionType(p) {
+  if(p.relative) return "relative";
+  if(p.absolute) return "absolute";
+  return "default";
+}
+
 const Div = styled.div`
   ${commonSizeAttrs};
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
+  position: ${p => positionType(p)};
 `;
 
 const ThemePage = styled.div`

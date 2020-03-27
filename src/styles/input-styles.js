@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {colorKeys, commonFontAttrs, commonSizeAttrs} from "./constants";
+import {commonFontAttrs, commonSizeAttrs} from "./constants";
 import Layout from "./layout-styles";
 
 const borderWidth = p => p.theme.dims.borderWidth;

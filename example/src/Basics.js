@@ -6,9 +6,10 @@ import {
   LeftHeader,
   inverseTheme,
   colorKeys,
-  Table,
+  Table, Button,
 } from 'nectar-cs-js-common'
 import {ThemeProvider} from "styled-components";
+import {Link} from "react-router-dom";
 
 function SimpleTextExpo(){
   return(
@@ -96,7 +97,33 @@ function FormsExpo(){
           <option>Flat Select</option>
         </Input.Select>
       </Input.Line>
+      <Layout.Div mt={1.5} padded rounded emotion={colorKeys.primaryColor}>
+        <ThemeProvider theme={inverseTheme}>
+          <Input.Line mt={0.5}>
+            <Input.Label>Field label</Input.Label>
+            <Input.Input placeholder='Length set to Auto'/>
+          </Input.Line>
+          <Input.Line>
+            <Input.Label>Field label</Input.Label>
+            <Input.Input flat placeholder='Flat Input'/>
+            <Input.Select flat placeholder='Flat Input' ml={3}>
+              <option>Flat Select</option>
+            </Input.Select>
+          </Input.Line>
+        </ThemeProvider>
+      </Layout.Div>
 
+      <Text.H2 mt={4}>Buttons</Text.H2>
+      <Button.Button mt={2}>Raw Button</Button.Button>
+      <Link to='/asdasd'>
+        <Button.Button ml={2}>Linked Button</Button.Button>
+      </Link>
+      <Button.Button funky ml={2} emotion='excited'>Very Rounded</Button.Button>
+      <Button.Button disabled ml={2}>Disabled</Button.Button>
+      <Layout.Div mt={2} relative>
+        <Button.BigButton>Big Button</Button.BigButton>
+      </Layout.Div>
+      <Button.BigButton centerLow>Bottom Button</Button.BigButton>
     </Layout.Div>
   )
 }

@@ -1,62 +1,47 @@
-import styled from 'styled-components'
-import {resolveColor} from "./constants";
+import styled, {css} from 'styled-components'
 
-function marg(pure){
-  return pure ? '17px' : '40px';
+import {
+  centered, colorKeys,
+  commonFontAttrs,
+  commonSizeAttrs,
+  contrastFontForBkg,
+  resolveColor
+} from "./constants";
+
+function borderRadius(p){
+  if(p.funky) return "25px";
+  else return `calc(${p.theme.dims.borderRadius} + 1px)`;
 }
 
-const ConfirmButton = styled.button`
-  padding-left: 20px;
-  padding-right: 20px;
-  background: ${p => p.theme.colors.pleasant};
-  color: ${p => p.theme.colors.contrastFont};
-  cursor: pointer;
+const _Button = styled.button`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+  background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
+  color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
+  border-radius: ${p => borderRadius(p)};
+  padding: 8px 16px;
+  border-width: 0;
+  text-align: center;
+
+  &:focus{
+    outline: transparent;
+  }
+  &:hover {
+    cursor: pointer;
+  }
   &:active{
-    background: ${p => p.theme.colors.primaryColor};
+    background: ${p => resolveColor(p, p.emotion, colorKeys.pleasant)};
   }
-  &:disabled{
-    background: ${p => p.theme.colors.primaryFontLess}
-  }
-`;
-
-const SmallButton = styled.button`
-  color: ${p => p.theme.colors.contrastFont};
-  background: ${p => resolveColor(p, p.emotion)};
-  padding: 7px 11px;
-  margin-top: ${p => marg(p.pure)};
-`;
-
-const SmallClearButton = styled.button`
-  color: ${p => p.theme.colors.primaryFont};
-  background: transparent;
-  padding: 7px 11px;
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: ${p => p.theme.colors.primaryColor}
-  margin-top: ${p => marg(p.pure)};
-  &:hover{
-    background: ${p => p.theme.secondaryColor};
+  &:disabled {
+    background: ${p => p.theme.colors.primaryFontLess};
+    cursor: default;
   }
 `;
 
-const FixedSmallButton = styled(SmallButton)`
-  margin: 0;
-  width: 80px;
-`;
-
-const BigBottomButtons = styled.div`
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 22px;
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const BigButton = styled(SmallButton)`
-  width: 40%;
-  padding: 0;
+const BigButton = styled(_Button)`
+  width: 380px;
   height: 45px;
+  font-size: 14px;
   font-weight: 900;
 `;
 
@@ -76,27 +61,11 @@ const FloatingPlus = styled.button`
   box-shadow: 2px 2px 3px #999;
 `;
 
-const SpicyButton = styled.button`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  background: ${p => p.theme.colors.warn};
-  color: ${p => p.theme.colors.contrastColor};
-  &:disabled{
-    background: ${p => p.theme.colors.disabled};
-  }
-`;
-
 const Button = {
-  FloatingPlus,
-  SmallButton,
-  FixedSmallButton,
-  BigBottomButtons,
+  Button: _Button,
   BigButton,
-  SmallClearButton,
-  SpicyButton,
-  ConfirmButton
+  FloatingPlus,
+
 };
 
 export default Button;

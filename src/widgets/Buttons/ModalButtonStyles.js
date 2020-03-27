@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Button from "./../../styles/button-styles"
 
-const Main = styled(Button.ConfirmButton)`
+const Main = styled(Button.BigButton)`
   background: ${p => p.theme.colors.primaryColor};
   font-weight: bold;
   position: absolute;
