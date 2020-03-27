@@ -11,9 +11,9 @@ const _Table = styled(props => (
     </tbody>
   </table>
 ))`
-    width: 100%;
-    border-collapse: collapse;
     ${commonSizeAttrs};
+    width: ${p => p.width || '100%'};
+    border-collapse: collapse;
     th, td {
       padding: 11px 4px;
       text-align: left;

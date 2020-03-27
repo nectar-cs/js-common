@@ -25,7 +25,7 @@ const H4 = styled(P)`
 
 const StatusTag = styled(P)`
   border-radius: 3px;
-  padding: 5px 14px;
+  padding: 5.5px 14px;
   text-align: center;
   display: inline-block;
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};

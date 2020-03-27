@@ -13,7 +13,7 @@ import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
 import {Micon} from './widgets/Micon/Micon'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import CenterCard from './widgets/CenterCard/CenterCard'
-import In from './styles/input-styles'
+import Input from './styles/input-styles'
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
 import ModalButton from './widgets/Buttons/ModalButton'
@@ -27,7 +27,7 @@ import TagPool from "./widgets/TagPool/TagPool";
 export {
   Loader,
   Button,
-  In,
+  Input,
   colorKeys,
   theme,
   inverseTheme,

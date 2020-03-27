@@ -2,9 +2,11 @@ import React, {Fragment} from 'react'
 import {
   Text,
   Layout,
+  Input,
   LeftHeader,
   inverseTheme,
-  colorKeys, Table,
+  colorKeys,
+  Table,
 } from 'nectar-cs-js-common'
 import {ThemeProvider} from "styled-components";
 
@@ -57,13 +59,11 @@ function TablesExpo(){
           <td><Text.BoldStatus>Bold 2.4</Text.BoldStatus></td>
         </tr>
         <tr>
-          <td>
-            <input type='checkbox'/>
-          </td>
+          <td><input type='checkbox'/></td>
           <td>
             <Layout.Div flex align='center'>
               <Text.P>Cell</Text.P>
-              <Text.StatusTag ml={1}>3.1</Text.StatusTag>
+              <Text.StatusTag emotion={colorKeys.excited} ml={1}>3.1</Text.StatusTag>
             </Layout.Div>
           </td>
           <td><Text.CleanStatus>Clean 2.3</Text.CleanStatus></td>
@@ -76,7 +76,26 @@ function TablesExpo(){
 
 function FormsExpo(){
   return(
-    <Layout.Div mt={1}>
+    <Layout.Div mt={2}>
+      <Text.H2>Unlabelled Inputs</Text.H2>
+      <Input.Input mt={2.5} placeholder='Length set to Auto'/>
+      <Input.Input flat mt={1.5} placeholder='Flat Input'/>
+      <Input.Select mt={2.5}>
+        <option>Hey</option>
+      </Input.Select>
+
+      <Text.H2 mt={4}>Labelled Inputs</Text.H2>
+      <Input.Line>
+        <Input.Label>Field label</Input.Label>
+        <Input.Input placeholder='Length set to Auto'/>
+      </Input.Line>
+      <Input.Line>
+        <Input.Label>Field label</Input.Label>
+        <Input.Input flat placeholder='Flat Input'/>
+        <Input.Select flat placeholder='Flat Input' ml={3}>
+          <option>Flat Select</option>
+        </Input.Select>
+      </Input.Line>
 
     </Layout.Div>
   )
@@ -102,7 +121,7 @@ export default function Basics(){
           graphicType='image'
           graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'
         />
-
+        <FormsExpo/>
       </Layout.RightPanel>
     </Fragment>
   )

@@ -18,6 +18,7 @@ export const colorKeys = {
 
   disabled: 'disabled',
   excited: 'excited',
+  cool: 'cool',
   warning: 'warning',
   success: 'success',
   pleasant: 'pleasant',
@@ -38,6 +39,7 @@ export const theme = {
 
     [colorKeys.secondaryColor]: "#455D7A",
     [colorKeys.excited]: "#fc395b",
+    [colorKeys.cool]: "#009384ff",
 
     [colorKeys.contentBackgroundColor]: "#eaecef",
     [colorKeys.itemBackgroundColor]: "white",
@@ -85,7 +87,8 @@ export const commonSizeAttrs = css`
   margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
   margin-left: ${p => `${(p.ml || 0) * 12}px`};
   border-radius: ${p => p.rounded ? p.theme.dims.borderRadius : 'default'};
-  padding: ${p => p.padded ? "8px" : 'default'};    
+  padding: ${p => p.padded ? "8px" : 'default'};
+  width: ${p => p.width || 'auto'};
 `;
 
 export const commonFontAttrs = css`

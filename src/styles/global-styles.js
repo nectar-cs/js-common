@@ -17,7 +17,7 @@ export const MosaicBaseStyle = createGlobalStyle`
     background: ${colors.contentBackgroundColor};
   }
 
-  h1, h2, h3, h4, h5, p, a, input, button, li{
+  h1, h2, h3, h4, h5, p, a, input, button, li, option {
     font-family: 'Inter', sans-serif;
     color: ${colors.primaryColor};
     margin: 0;
@@ -74,30 +74,6 @@ export const MosaicBaseStyle = createGlobalStyle`
     color: ${colors.primaryColor};
   }
 
-  input {
-    background: transparent;
-    padding: 7px 10px;
-  }
-  
-  input::placeholder {
-    opacity: 0.7;
-    color: ${colors.primaryFontMuted};
-  }
-  
-  input:focus {
-    outline: none;
-  }
-  
-  input[type=checkbox] {
-    padding: 0;
-    margin: 0;
-    width: auto;
-  }
-  
-  button {
-    
-  }
-  
   option {
     background: ${colors.itemBackgroundColor};
   }
