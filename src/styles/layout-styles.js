@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import React from 'react'
+import styled, {css} from 'styled-components'
 import {colorKeys, commonSizeAttrs, resolveColor} from "./constants";
 
 const halfPanelOffset = "14px";
@@ -11,6 +12,7 @@ const Dims = {
 function displayType(p){
   if(p.flex) return "flex";
   else if(p.inlineFlex) return "inlineFlex";
+  else if(p.wrapped) return "inline-block";
   else return "block";
 }
 
@@ -20,12 +22,36 @@ function positionType(p) {
   return "default";
 }
 
+function central(p){
+  if(p.absCentered){
+    return css`
+      position: absolute;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    `
+  }
+}
+
 const Div = styled.div`
   ${commonSizeAttrs};
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   position: ${p => positionType(p)};
+  ${p => central(p)}
+`;
+
+const CenteringDiv = styled(props => (
+  <Div {...props}>
+    {props.children}
+  </Div>
+))`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 `;
 
 const ThemePage = styled.div`
@@ -111,6 +137,7 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 
 const Layout = {
   Div,
+  CenteringDiv,
   ContentContainer,
   SlimCodeViewer,
   LeftPanel,

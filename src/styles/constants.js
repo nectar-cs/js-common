@@ -42,7 +42,7 @@ export const theme = {
     [colorKeys.cool]: "#009384ff",
 
     [colorKeys.contentBackgroundColor]: "#eaecef",
-    [colorKeys.itemBackgroundColor]: "white",
+    [colorKeys.itemBackgroundColor]: "#FFFFFF",
 
     [colorKeys.pleasant]: "#535b77",
     [colorKeys.success]: "#326342",
@@ -70,6 +70,9 @@ export const inverseTheme = {
     [colorKeys.primaryColor]: theme.colors.contrastColor,
     [colorKeys.contrastColor]: theme.colors.primaryColor,
     [colorKeys.contrastFont]: theme.colors.primaryFont,
+
+    [colorKeys.excited]: theme.colors.cool,
+    [colorKeys.cool]: theme.colors.excited,
   }
 };
 

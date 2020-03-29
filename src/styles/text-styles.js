@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from "styled-components";
 import {colorKeys, commonFontAttrs, commonSizeAttrs, contrastFontForBkg, resolveColor} from "./constants";
 
@@ -8,20 +9,35 @@ const P = styled.p`
 `;
 
 const H1 = styled(P)`
-  font-size: 20px;
+  font-size: 19px;
 `;
 
 const H2 = styled(P)`
-  font-size: 18px;
+  font-size: 17px;
 `;
 
 const H3 = styled(P)`
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 const H4 = styled(P)`
   font-size: 14px;
 `;
+
+const CuckIcon = styled.i`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+  font-size: ${p => iconSize(p)};
+  color: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)} !important;
+`;
+
+function Icon({name, ...props}){
+  return(
+    <CuckIcon className='material-icons' {...props}>
+      {name}
+    </CuckIcon>
+  )
+}
 
 const StatusTag = styled(P)`
   border-radius: 3px;
@@ -63,12 +79,18 @@ const BoldRef = styled.p`
   margin-left: ${p => p.pushed ? "3px" : '0'}
 `;
 
+function iconSize(p){
+  const size = p.size;
+  return `${21 * (size || 1)}px`;
+}
+
 const Text = {
   P,
   H1,
   H2,
   H3,
   H4,
+  Icon,
   Code,
   BoldStatus,
   CleanStatus,

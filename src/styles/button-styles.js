@@ -1,7 +1,7 @@
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 
 import {
-  centered, colorKeys,
+  colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
   contrastFontForBkg,
@@ -19,7 +19,7 @@ const _Button = styled.button`
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
   border-radius: ${p => borderRadius(p)};
-  padding: 8px 16px;
+  padding: ${p => `8px ${16 * (p.widden || 1)}px`};
   border-width: 0;
   text-align: center;
 
@@ -39,8 +39,8 @@ const _Button = styled.button`
 `;
 
 const BigButton = styled(_Button)`
-  width: 380px;
-  height: 45px;
+  width: 360px;
+  height: 42px;
   font-size: 14px;
   font-weight: 900;
 `;

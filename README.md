@@ -1,13 +1,13 @@
-# @nectar/js-common
+# nectar-gui
 
-> Commons for MOSAIC
+> React styles for Nectar
 
-[![NPM](https://img.shields.io/npm/v/@nectar/js-common.svg)](https://www.npmjs.com/package/@nectar/js-common) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/nectar-gui.svg)](https://www.npmjs.com/package/nectar-gui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save @nectar/js-common
+npm install --save nectar-gui
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install --save @nectar/js-common
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from '@nectar/js-common'
+import MyComponent from 'nectar-gui'
 
 class Example extends Component {
   render () {

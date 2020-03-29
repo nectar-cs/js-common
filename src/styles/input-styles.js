@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {commonFontAttrs, commonSizeAttrs} from "./constants";
+import {colorKeys, commonFontAttrs, commonSizeAttrs, resolveColor} from "./constants";
 import Layout from "./layout-styles";
 
 const borderWidth = p => p.theme.dims.borderWidth;
@@ -38,7 +38,7 @@ const _Input = styled.input`
   background: transparent;
   border-style: solid;
   width: ${p => p.width || '100%'};
-  border-color: ${p => p.theme.colors.primaryFont};
+  border-color: ${p => resolveColor(p, null, colorKeys.secondaryFont)};
   border-width: ${p => _totalBorderWidth(p)};
   padding: ${inputPadTopBottom} ${inputPadLeftRight};
   border-radius: ${p => inputBorderRadius(p)};

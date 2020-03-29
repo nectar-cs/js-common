@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { MosaicBaseStyle, theme } from 'nectar-cs-js-common'
+import { MosaicBaseStyle, theme } from 'nectar-gui'
 import {ThemeProvider} from 'styled-components'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {Switch} from "react-router";

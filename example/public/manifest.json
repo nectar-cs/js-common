@@ -1,6 +1,6 @@
 {
-  "short_name": "@nectar/js-common",
-  "name": "@nectar/js-common",
+  "short_name": "nectar-gui",
+  "name": "nectar-gui",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

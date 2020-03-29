@@ -6,8 +6,8 @@ import {
   LeftHeader,
   inverseTheme,
   colorKeys,
-  Table, Button,
-} from 'nectar-cs-js-common'
+  Table, Button, Micon,
+} from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -32,6 +32,11 @@ function SimpleTextExpo(){
       <Text.CleanStatus mt={1}>Clean Status</Text.CleanStatus>
       <Text.BoldStatus mt={1}>Bold Status</Text.BoldStatus>
       <Text.H4 mt={1.5}>Header H4</Text.H4>
+      <Layout.Div mt={1} flex align='center'>
+        <Text.Icon name='photo' ml={2}/>
+        <Text.Icon name='photo' ml={1} emotion={colorKeys.cool}/>
+        <Text.Icon size={1.2} name='photo' ml={1} emotion={colorKeys.excited}/>
+      </Layout.Div>
     </Layout.Div>
   )
 }
@@ -67,8 +72,13 @@ function TablesExpo(){
               <Text.StatusTag emotion={colorKeys.excited} ml={1}>3.1</Text.StatusTag>
             </Layout.Div>
           </td>
-          <td><Text.CleanStatus>Clean 2.3</Text.CleanStatus></td>
-          <td><Text.BoldStatus>Bold 2.4</Text.BoldStatus></td>
+          <td><Text.Icon name='photo' ml={2}/></td>
+          <td>
+            <Layout.Div flex align='flex-end' emotion={colorKeys.contentBackgroundColor}>
+              <p>An Icon</p>
+              <Text.Icon name='photo' ml={0.2}/>
+            </Layout.Div>
+          </td>
         </tr>
       </Table.Table>
     </Layout.Div>
@@ -86,17 +96,6 @@ function FormsExpo(){
       </Input.Select>
 
       <Text.H2 mt={4}>Labelled Inputs</Text.H2>
-      <Input.Line>
-        <Input.Label>Field label</Input.Label>
-        <Input.Input placeholder='Length set to Auto'/>
-      </Input.Line>
-      <Input.Line>
-        <Input.Label>Field label</Input.Label>
-        <Input.Input flat placeholder='Flat Input'/>
-        <Input.Select flat placeholder='Flat Input' ml={3}>
-          <option>Flat Select</option>
-        </Input.Select>
-      </Input.Line>
       <Layout.Div mt={1.5} padded rounded emotion={colorKeys.primaryColor}>
         <ThemeProvider theme={inverseTheme}>
           <Input.Line mt={0.5}>
@@ -118,10 +117,16 @@ function FormsExpo(){
       <Link to='/asdasd'>
         <Button.Button ml={2}>Linked Button</Button.Button>
       </Link>
-      <Button.Button funky ml={2} emotion='excited'>Very Rounded</Button.Button>
+      <Button.Button
+        funky
+        ml={2}
+        widden={2}
+        emotion='excited'>
+        Round & Wide
+      </Button.Button>
       <Button.Button disabled ml={2}>Disabled</Button.Button>
       <Layout.Div mt={2} relative>
-        <Button.BigButton>Big Button</Button.BigButton>
+        <Button.BigButton funky>Big Button</Button.BigButton>
       </Layout.Div>
       <Button.BigButton centerLow>Bottom Button</Button.BigButton>
     </Layout.Div>
