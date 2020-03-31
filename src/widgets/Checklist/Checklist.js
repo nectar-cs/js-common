@@ -4,7 +4,7 @@ import S from './ChecklistStyles';
 
 function ChecklistItem(props: CheckItem) {
   let thirdItem;
-  if (props.status === 'working') thirdItem = <S.Spinner size="x-small" />;
+  if (props.status === 'working') thirdItem = <S.Spinner ml={2} size={0.5} />;
   else if (props.status === 'done')
     thirdItem = (
       <S.Icon emotion={'good'} className="material-icons">

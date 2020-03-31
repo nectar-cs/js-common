@@ -126,7 +126,9 @@ function FormsExpo(){
       </Button.Button>
       <Button.Button disabled ml={2}>Disabled</Button.Button>
       <Layout.Div mt={2} relative>
-        <Button.BigButton funky>Big Button</Button.BigButton>
+        <Link to='/layout'>
+          <Button.BigButton funky>Big Button</Button.BigButton>
+        </Link>
       </Layout.Div>
       <Button.BigButton centerLow>Bottom Button</Button.BigButton>
     </Layout.Div>

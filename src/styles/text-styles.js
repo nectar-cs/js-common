@@ -1,11 +1,13 @@
 import React from 'react'
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {colorKeys, commonFontAttrs, commonSizeAttrs, contrastFontForBkg, resolveColor} from "./constants";
 
 const P = styled.p`
   font-size: 13px;
   ${commonSizeAttrs};
   ${commonFontAttrs};
+  ${p => textPosition(p)};
+  line-height: 19px;
 `;
 
 const H1 = styled(P)`
@@ -37,6 +39,12 @@ function Icon({name, ...props}){
       {name}
     </CuckIcon>
   )
+}
+
+function textPosition(p){
+  if(p.absolute){
+    return css`position: absolute`;
+  }
 }
 
 const StatusTag = styled(P)`

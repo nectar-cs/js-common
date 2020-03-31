@@ -29,7 +29,7 @@ const Icon = styled.div`
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
 `;
 
-const Spinner = styled(Loader.ModSpinner)`
+const Spinner = styled(Loader.Spinner)`
   margin-left: 24px;
   transform: translateY(-3px);
 `;

@@ -18,6 +18,7 @@ export const colorKeys = {
 
   disabled: 'disabled',
   excited: 'excited',
+  nectar: 'nectar',
   cool: 'cool',
   warning: 'warning',
   success: 'success',
@@ -39,9 +40,10 @@ export const theme = {
 
     [colorKeys.secondaryColor]: "#455D7A",
     [colorKeys.excited]: "#fc395b",
+    [colorKeys.nectar]: "#fc395b",
     [colorKeys.cool]: "#009384ff",
 
-    [colorKeys.contentBackgroundColor]: "#eaecef",
+    [colorKeys.contentBackgroundColor]: "#f5f7fb",
     [colorKeys.itemBackgroundColor]: "#FFFFFF",
 
     [colorKeys.pleasant]: "#535b77",
@@ -120,6 +122,7 @@ export const commonSizeAttrs = css`
   border-radius: ${p => p.rounded ? p.theme.dims.borderRadius : 'default'};
   padding: ${p => p.padded ? "10px" : 'default'};
   width: ${p => p.width || 'auto'};
+  height: ${p => p.height || 'auto'};
   ${p => centered(p)};
   ${p => centerLow(p)};
 `;
@@ -133,16 +136,6 @@ export const commonFontAttrs = css`
   visibility: ${p => textVisibility(p)};
 `;
 
-export function commonFont(defaults){
-  return css`
-    color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
-    font-weight: ${p => textWeight(merger(p, defaults))};
-    text-align: ${p => textAlign(p)};
-    font-size: ${p => textSize(p)};
-    display: ${p => textDisplay(p)};
-    visibility: ${p => textVisibility(p)};
-`;
-}
 
 
 
@@ -164,6 +157,7 @@ export function resolveColor(props, colorKey, backupColorKey){
   const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
   return props.theme.colors[resolvedKey];
 }
+
 
 function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);

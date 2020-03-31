@@ -19,7 +19,7 @@ export default class App extends Component {
         <MosaicBaseStyle/>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/centered-one' component={CenteredOne}/>
+            <Route exact path='/layout' component={CenteredOne}/>
             <Route exact path='/basics' component={Basics}/>
             <Route path='/' component={Basics}/>
           </Switch>

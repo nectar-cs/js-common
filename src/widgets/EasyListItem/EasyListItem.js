@@ -1,6 +1,5 @@
 import React from 'react'
 import S from './EasyListItemStyles';
-import {Micon} from '../Micon/Micon';
 import Layout from '../../styles/layout-styles'
 import Text from '../../styles/text-styles'
 
@@ -10,7 +9,7 @@ export function EasyListItem(props: Props){
   return(
     <S.FlavorItem selected={isSelected} onClick={callback}>
       <Layout.TextLine>
-        <Micon n={iconName} size='m+'/>
+        <Text.Icon name={iconName} size={1.2}/>
         <Text.P lm={0.5} mt={0.7} emotion='primaryColor' kind='little-title'>
           {title}
         </Text.P>

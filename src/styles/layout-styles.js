@@ -33,13 +33,25 @@ function central(p){
   }
 }
 
+function center(p){
+  if(p.center){
+    return css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    `;
+  }
+}
+
 const Div = styled.div`
   ${commonSizeAttrs};
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   position: ${p => positionType(p)};
-  ${p => central(p)}
+  ${p => central(p)};
+  ${p => center(p)};
 `;
 
 const CenteringDiv = styled(props => (
@@ -50,6 +62,17 @@ const CenteringDiv = styled(props => (
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+`;
+
+const CenteringDivY = styled(props => (
+  <Div {...props}>
+    {props.children}
+  </Div>
+))`
+    display: inline-flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
@@ -138,6 +161,7 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 const Layout = {
   Div,
   CenteringDiv,
+  CenteringDivY,
   ContentContainer,
   SlimCodeViewer,
   LeftPanel,

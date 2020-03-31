@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import {colorKeys, resolveColor} from "./constants";
+import {colorKeys, commonSizeAttrs, resolveColor} from './constants'
 
 const rotate = keyframes`
   0% {
@@ -14,49 +14,30 @@ function borderColor(p){
   return resolveColor(p, p.emotion, colorKeys.primaryColor);
 }
 
-const LoadingSpinner = styled.div`
+const Spinner = styled.div`
+  ${commonSizeAttrs};
   display: inline-block;
-  width: 64px;
-  height: 64px;
   &::after{
     content: " ";
+    ${commonSizeAttrs};
     display: block;
     width: 26px;
     height: 26px;
-    margin: 1px;
     border-radius: 50%;
-    border: 5px solid ${p => borderColor(p)};
+    border: 2px solid ${p => borderColor(p)};
     border-color: ${p => borderColor(p)} transparent ${p => borderColor(p)} transparent;
     animation: ${rotate} 1.6s linear infinite;
   }
 `;
 
-function size(p, def='medium'){
-  if(!p || !p.size) p = def;
-  if(p.size === 'x-small') return "12px";
-  if(p.size === 'small') return "19px";
-  if(p.size === 'medium') return "26px";
-  if(p.size === 'large') return "40px";
-}
-
-const ModSpinner = styled(LoadingSpinner)`
-  width: ${p => size(p)};
-  height: ${p => size(p)};
-  &:after{
-    width: ${p => size(p)};
-    height: ${p => size(p)};
-    border-width: 2px;
-  }    
-`;
-
-const TopRightSpinner = styled(ModSpinner)`
+const TopRightSpinner = styled(Spinner)`
   position: absolute;
   top: 12px;
   right: -14px;
   display: ${p => (p.there || p.there === undefined) ? 'block' : 'none'};
 `;
 
-const CenteredSpinner = styled(ModSpinner)`
+const CenteredSpinner = styled(Spinner)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -64,8 +45,7 @@ const CenteredSpinner = styled(ModSpinner)`
 `;
 
 export const Loader = {
-  ModSpinner,
+  Spinner,
   CenteredSpinner,
-  LoadingSpinner,
   TopRightSpinner
 };

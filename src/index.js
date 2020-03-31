@@ -9,7 +9,6 @@ import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineS
 import {Loader} from './styles/loader-styles'
 import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
 import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
-import {Micon} from './widgets/Micon/Micon'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import CenterCard from './widgets/CenterCard/CenterCard'
 import Input from './styles/input-styles'
@@ -36,7 +35,6 @@ export {
   TextOverLineSubtitle,
   ColoredLabelList,
   EasyListItem,
-  Micon,
   CenterAnnouncement,
   CenterCard,
   ModestLink,
