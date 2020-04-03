@@ -6,7 +6,7 @@ import {
   LeftHeader,
   inverseTheme,
   colorKeys,
-  Table, Button, Micon,
+  Table, Button, FlexHeader,
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 import {Link} from "react-router-dom";
@@ -149,12 +149,23 @@ export default function Basics(){
         <TablesExpo/>
       </Layout.LeftPanel>
       <Layout.RightPanel>
-        <LeftHeader
-          title='Inputs and Buttons Expo'
-          subtitle='This side is for Forms and such'
+        <FlexHeader
           graphicType='image'
-          graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'
-        />
+          graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'>
+          <Fragment>
+            <Text.H1>Inputs and </Text.H1>
+            <Text.Icon name='laptop' size={1} ml={.4} mt={-.1}/>
+          </Fragment>
+          <Fragment>
+            <Text.P>Also demoing</Text.P>
+            <Text.StatusTag
+              vertSwell={.1}
+              ml={.8}
+              emotion={colorKeys.cool}>
+              Swag
+            </Text.StatusTag>
+          </Fragment>
+        </FlexHeader>
         <FormsExpo/>
       </Layout.RightPanel>
     </Fragment>

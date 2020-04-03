@@ -5,6 +5,7 @@ import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
 import Table from './styles/table-styles'
 import {LeftHeader} from './widgets/LeftHeader/LeftHeader'
+import FlexHeader from './widgets/LeftHeader/FlexHeader'
 import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineSubtitle'
 import {Loader} from './styles/loader-styles'
 import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
@@ -38,6 +39,7 @@ export {
   CenterAnnouncement,
   CenterCard,
   ModestLink,
+  FlexHeader,
   Img,
   ModalButton,
   CenterLoader,

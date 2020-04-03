@@ -49,7 +49,7 @@ function textPosition(p){
 
 const StatusTag = styled(P)`
   border-radius: 3px;
-  padding: 5.5px 14px;
+  padding: ${p => padding(p, 5.5, 14)};
   text-align: center;
   display: inline-block;
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
@@ -90,6 +90,12 @@ const BoldRef = styled.p`
 function iconSize(p){
   const size = p.size;
   return `${21 * (size || 1)}px`;
+}
+
+function padding(p, vertDefault, horDefault){
+  const vertSwell = p.vertSwell || p.swell || 1;
+  const horSwell = p.horSwell || p.swell || 1;
+  return `${vertDefault * vertSwell}px ${horDefault * horSwell}px`;
 }
 
 const Text = {

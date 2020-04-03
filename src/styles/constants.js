@@ -57,8 +57,9 @@ export const theme = {
   dims: {
     topBarHeight: "0px",
     sideBarWidth: "220px",
-    borderRadius: "4px",
-    borderWidth: "1px"
+    borderRadius: "6px",
+    borderWidth: "1px",
+    inputBorderWidth: 1.5
   },
 };
 
@@ -163,6 +164,7 @@ function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);
   switch (bkgColorKey) {
     case colorKeys.disabled:
+    case colorKeys.nectar:
     case colorKeys.contentBackgroundColor:
       return colorKeys.primaryFont;
     default: return colorKeys.contrastFont;

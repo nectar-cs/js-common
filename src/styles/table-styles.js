@@ -2,7 +2,7 @@ import React from 'react'
 import styled, {css} from "styled-components";
 import {commonSizeAttrs} from "./constants";
 
-const borderWidth = "1.5px";
+const borderWidth = "1.0px";
 
 const _Table = styled(props => (
   <table {...props}>

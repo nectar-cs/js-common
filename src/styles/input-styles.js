@@ -3,33 +3,16 @@ import styled from "styled-components";
 import {colorKeys, commonFontAttrs, commonSizeAttrs, resolveColor} from "./constants";
 import Layout from "./layout-styles";
 
-const borderWidth = p => p.theme.dims.borderWidth;
-const focusedBorderWidth = p => `2px`;
-const inputPadLeftRight = "10px";
-const inputPadTopBottom = "7px";
+const borderWidth = p => p.theme.dims.inputBorderWidth;
+const borderWidthFocused = p => borderWidth(p) + .5;
+const paddingLr = 10;
+const paddingTb = 7;
 
-function _focusedPaddingTop(p){
-  if(!p.flat) return `calc(${inputPadTopBottom} - calc(${focusedBorderWidth(p)} / 2))`;
-  else return inputPadTopBottom;
-}
-
-function _focusedPaddingBottom(p){
-  return `calc(${inputPadTopBottom} - calc(${focusedBorderWidth(p)} / 2))`;
-}
-
-function _focusedPaddingSides(p){
-  if(!p.flat) return `calc(${inputPadLeftRight} - calc(${focusedBorderWidth(p)} / 2))`;
-  else return inputPadLeftRight;
-}
-
-function _totalFocusedBorderWidth(p){
-  if(!p.flat) return focusedBorderWidth(p);
-  else return `0 0 ${focusedBorderWidth(p)} 0`;
-}
-
-function _totalBorderWidth(p){
-  if(!p.flat) return borderWidth(p);
-  else return `0 0 ${borderWidth(p)} 0`;
+function paddingFocused(p){
+  const difference = (borderWidthFocused(p) - borderWidth(p));
+  const lr = paddingLr - difference;
+  const tb = (paddingTb - difference);
+  return `${tb}px ${lr}px`;
 }
 
 const _Input = styled.input`
@@ -38,9 +21,9 @@ const _Input = styled.input`
   background: transparent;
   border-style: solid;
   width: ${p => p.width || '100%'};
-  border-color: ${p => resolveColor(p, null, colorKeys.secondaryFont)};
-  border-width: ${p => _totalBorderWidth(p)};
-  padding: ${inputPadTopBottom} ${inputPadLeftRight};
+  border-color: ${p => inputBorderColor(p)};
+  border-width: ${p => borderWidth(p)}px;
+  padding: ${paddingTb}px ${paddingLr}px;
   border-radius: ${p => inputBorderRadius(p)};
   box-sizing: border-box;
   color: ${p => p.theme.colors.primaryFont};
@@ -49,18 +32,18 @@ const _Input = styled.input`
   }
   &:focus{
     outline: transparent;
-    padding-top: ${p => _focusedPaddingTop(p)};
-    padding-right: ${p => _focusedPaddingSides(p)};
-    padding-bottom: ${p => _focusedPaddingBottom(p)};
-    padding-left: ${p => _focusedPaddingSides(p)};
-    border-width: ${p => _totalFocusedBorderWidth(p)};
-    border-color: ${p => p.theme.colors.cool};
+    padding: ${p => paddingFocused(p)};
+    border-width: ${p => borderWidthFocused(p)}px;
+    border-color: ${p => inputBorderColor(p, colorKeys.cool)};
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
    transition: background-color 5000s ease-in-out 0s;
+  }
+  &:-webkit-autofill {
+    -webkit-text-fill-color: ${p => p.theme.colors.primaryFont} !important;
   }
 `;
 
@@ -88,6 +71,12 @@ const Select = styled(props => (
 function inputBorderRadius(p){
   if(p.flat) return "0px";
   else return p.theme.dims.borderRadius;
+}
+
+function inputBorderColor(p, def=colorKeys.secondaryFont){
+  const color = resolveColor(p, null, def);
+  if(p.flat) return `transparent transparent ${color} transparent`;
+  else return color;
 }
 
 const Input = {
