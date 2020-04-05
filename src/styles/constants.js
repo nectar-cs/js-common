@@ -137,12 +137,21 @@ export const commonSizeAttrs = css`
 
 export const commonFontAttrs = css`
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
+  background: ${p => resolveColor(p, p.bkgEmotion, null)};
   font-weight: ${p => textWeight(p)};
   text-align: ${p => textAlign(p)};
   font-size: ${p => textSize(p)};
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
 `;
+
+// export bkgEmotion(p){
+//   if(p.bkgEmotion){
+//     return css`
+//       background: ${p => resolveColor(p, p.bkgEmotion)};
+//     `;
+//   }
+// }
 
 export function experiment(props, defaults){
   Object.keys(defaults).forEach(key => {
@@ -175,8 +184,10 @@ export function resolveColorKey(props, colorKey, backupColorKey){
 }
 
 export function resolveColor(props, colorKey, backupColorKey){
-  const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
-  return props.theme.colors[resolvedKey];
+  if(backupColorKey || colorKey){
+    const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
+    return props.theme.colors[resolvedKey];
+  } else return "inherit";
 }
 
 
@@ -185,6 +196,7 @@ function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   switch (bkgColorKey) {
     case colorKeys.disabled:
     case colorKeys.nectar:
+    case colorKeys.contrastColor:
     case colorKeys.contentBackgroundColor:
       return colorKeys.primaryFont;
     default: return colorKeys.contrastFont;

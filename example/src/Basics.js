@@ -136,8 +136,11 @@ function FormsExpo(){
         funky
         ml={2}
         horSwell={2}
-        emotion='excited'>
+        bkgEmotion='excited'>
         Round & Wide
+      </Button.Button>
+      <Button.Button ml={2} bkgEmotion={colorKeys.contentBackgroundColor}>
+        Auto-contrast
       </Button.Button>
       <Button.Button disabled ml={2}>Disabled</Button.Button>
       <Layout.Div mt={2} relative>

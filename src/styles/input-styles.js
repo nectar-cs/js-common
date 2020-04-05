@@ -6,7 +6,7 @@ import Layout from "./layout-styles";
 const borderWidth = p => p.theme.dims.inputBorderWidth;
 const borderWidthFocused = p => borderWidth(p) + .5;
 const paddingLr = 10;
-const paddingTb = 7;
+const paddingTb = 6.4;
 
 function paddingFocused(p){
   const difference = (borderWidthFocused(p) - borderWidth(p));

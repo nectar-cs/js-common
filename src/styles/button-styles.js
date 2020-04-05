@@ -13,8 +13,8 @@ import {
 const _Button = styled.button`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
-  color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
+  background: ${p => resolveColor(p, p.bkgEmotion, colorKeys.primaryColor)};
+  color: ${p => contrastFontForBkg(p, p.bkgEmotion, colorKeys.primaryColor)};
   border-radius: ${p => borderRounding(p, 5, 1)};
   padding: ${p => simplePadding(p, 6, 16)};
   border-width: 0;
