@@ -6,16 +6,16 @@ const dims = theme.dims;
 
 export const MosaicBaseStyle = createGlobalStyle`
 
-  body {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0;
-    margin: 0;
-    background: ${colors.contentBackgroundColor};
-  }
+  // body {
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   padding: 0;
+  //   margin: 0;
+  //   background: ${colors.contentBackgroundColor};
+  // }
 
   h1, h2, h3, h4, h5, p, a, input, button, li, option {
     font-family: 'Inter', sans-serif;

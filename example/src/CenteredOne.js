@@ -23,7 +23,7 @@ function LayoutExpo(){
         </Layout.Div>
 
         <Layout.CenteringDiv>
-          <Layout.Div emotion={colorKeys.cool} mt={1}>
+          <Layout.Div emotion={colorKeys.cool} mt={1} funky>
             <Text.P>Elements with a centered</Text.P>
             <Text.P>parent div</Text.P>
           </Layout.Div>

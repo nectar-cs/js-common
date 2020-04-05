@@ -1,25 +1,22 @@
 import styled from 'styled-components'
 
 import {
+  borderRounding,
   colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
   contrastFontForBkg,
-  resolveColor
-} from "./constants";
-
-function borderRadius(p){
-  if(p.funky) return "25px";
-  else return `calc(${p.theme.dims.borderRadius} + 1px)`;
-}
+  resolveColor,
+  simplePadding
+} from './constants'
 
 const _Button = styled.button`
   ${commonSizeAttrs};
   ${commonFontAttrs};
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
-  border-radius: ${p => borderRadius(p)};
-  padding: ${p => `8px ${16 * (p.widden || 1)}px`};
+  border-radius: ${p => borderRounding(p, 5, 1)};
+  padding: ${p => simplePadding(p, 6, 16)};
   border-width: 0;
   text-align: center;
 

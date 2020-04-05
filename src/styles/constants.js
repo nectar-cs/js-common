@@ -96,11 +96,18 @@ function merger(props, defaults){
 
 export function centered(p){
   if(p.centered){
-    return css`
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-    `;
+    if(p.absolute){
+      return css`
+        left: 50%;
+        transform: translateX(-50%);
+      `;
+    } else {
+      return css`
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      `;
+    }
   }
 }
 
@@ -120,7 +127,7 @@ export const commonSizeAttrs = css`
   margin-right: ${p => `${(p.mr || 0) * 12}px`};
   margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
   margin-left: ${p => `${(p.ml || 0) * 12}px`};
-  border-radius: ${p => p.rounded ? p.theme.dims.borderRadius : 'default'};
+  border-radius: ${p => borderRounding(p, 4, 0)};
   padding: ${p => p.padded ? "10px" : 'default'};
   width: ${p => p.width || 'auto'};
   height: ${p => p.height || 'auto'};
@@ -137,6 +144,13 @@ export const commonFontAttrs = css`
   visibility: ${p => textVisibility(p)};
 `;
 
+export function experiment(props, defaults){
+  Object.keys(defaults).forEach(key => {
+    props[key] = props[key] || defaults[key];
+  });
+
+
+}
 
 
 
@@ -148,6 +162,12 @@ export const commonFontAttrs = css`
 /*--------------------UTILS---------------------*/
 
 
+
+export function simplePadding(p, vertDefault, horDefault){
+  const vertSwell = p.vertSwell || p.swell || 1;
+  const horSwell = p.horSwell || p.swell || 1;
+  return `${vertDefault * vertSwell}px ${horDefault * horSwell}px`;
+}
 
 export function resolveColorKey(props, colorKey, backupColorKey){
   if(props.calm) return colorKeys.calm;
@@ -200,4 +220,13 @@ function textDisplay(p){
   if(p.iblock) return "inline-block";
   else if(p.block) return "block";
   return "default";
+}
+
+export function borderRounding(p, defRad, defFactor){
+  if(!defFactor) {
+    if(p.rounding || p.rounded) defFactor = 1;
+  }
+  const factor = p.rounding  || defFactor;
+  const base = p.funky ? 25 : defRad;
+  return `${factor * base}px`;
 }

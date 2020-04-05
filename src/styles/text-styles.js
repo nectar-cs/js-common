@@ -1,6 +1,14 @@
 import React from 'react'
 import styled, {css} from "styled-components";
-import {colorKeys, commonFontAttrs, commonSizeAttrs, contrastFontForBkg, resolveColor} from "./constants";
+import {
+  borderRounding,
+  colorKeys,
+  commonFontAttrs,
+  commonSizeAttrs,
+  contrastFontForBkg,
+  resolveColor, simplePadding
+} from './constants'
+import { Link } from 'react-router-dom';
 
 const P = styled.p`
   font-size: 13px;
@@ -48,10 +56,10 @@ function textPosition(p){
 }
 
 const StatusTag = styled(P)`
-  border-radius: 3px;
-  padding: ${p => padding(p, 5.5, 14)};
+  padding: ${p => simplePadding(p, 4.5, 14)};
   text-align: center;
   display: inline-block;
+  border-radius: ${p => borderRounding(p, 4, 1)};
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
 `;
@@ -87,15 +95,23 @@ const BoldRef = styled.p`
   margin-left: ${p => p.pushed ? "3px" : '0'}
 `;
 
+const SilentLink = styled(props => (
+  <Link {...props}>
+    { props.children }
+  </Link>
+))`
+  text-decoration: none;
+`;
+
+const HoverLink = styled(SilentLink)`
+  &:hover{
+    text-decoration: underline;
+  }
+`;
+
 function iconSize(p){
   const size = p.size;
   return `${21 * (size || 1)}px`;
-}
-
-function padding(p, vertDefault, horDefault){
-  const vertSwell = p.vertSwell || p.swell || 1;
-  const horSwell = p.horSwell || p.swell || 1;
-  return `${vertDefault * vertSwell}px ${horDefault * horSwell}px`;
 }
 
 const Text = {
@@ -105,6 +121,8 @@ const Text = {
   H3,
   H4,
   Icon,
+  SilentLink,
+  HoverLink,
   Code,
   BoldStatus,
   CleanStatus,

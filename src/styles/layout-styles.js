@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import {colorKeys, commonSizeAttrs, resolveColor} from "./constants";
+import {borderRounding, colorKeys, commonSizeAttrs, resolveColor} from './constants'
 
 const halfPanelOffset = "14px";
 
@@ -11,7 +11,7 @@ const Dims = {
 
 function displayType(p){
   if(p.flex) return "flex";
-  else if(p.inlineFlex) return "inlineFlex";
+  else if(p.iFlex) return "inline-flex";
   else if(p.wrapped) return "inline-block";
   else return "block";
 }
@@ -50,6 +50,7 @@ const Div = styled.div`
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   position: ${p => positionType(p)};
+  border-radius: ${p => borderRounding(p, 4, 0)};
   ${p => central(p)};
   ${p => center(p)};
 `;

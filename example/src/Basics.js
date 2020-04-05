@@ -15,7 +15,18 @@ function SimpleTextExpo(){
   return(
     <Layout.Div mt={3} mb={1}>
       <Text.H1 mb={0.5}>Header H1</Text.H1>
-      <Text.P>Paragraph with primaryFont</Text.P>
+      <Layout.Div flex>
+        <Text.P>Paragraph with primaryFont.</Text.P>
+        <Link to={'heaven'}>
+          <Text.P ml={.5}>Default React Link.</Text.P>
+        </Link>
+        <Text.SilentLink to={'hell'}>
+          <Text.P ml={.5}>Silent Link.</Text.P>
+        </Text.SilentLink>
+        <Text.HoverLink to={'beyond'}>
+          <Text.P ml={.5}>Silent Link</Text.P>
+        </Text.HoverLink>
+      </Layout.Div>
       <Text.P calm mt={1}>Paragraph with secondaryFont</Text.P>
 
       <Text.H2 mt={1.5} mb={1}>Header H2</Text.H2>
@@ -28,9 +39,13 @@ function SimpleTextExpo(){
       </Layout.Div>
 
       <Text.H3 mt={1.5} mb={1.0}>Header H3</Text.H3>
-      <Text.StatusTag>Status Tag</Text.StatusTag>
-      <Text.CleanStatus mt={1}>Clean Status</Text.CleanStatus>
-      <Text.BoldStatus mt={1}>Bold Status</Text.BoldStatus>
+      <Layout.Div flex align='center'>
+        <Text.StatusTag>Status Tag</Text.StatusTag>
+        <Text.StatusTag ml={1} vertSwell={.5}>Unswelled Tag</Text.StatusTag>
+        <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
+        <Text.BoldStatus ml={1}>Bold Status</Text.BoldStatus>
+      </Layout.Div>
+
       <Text.H4 mt={1.5}>Header H4</Text.H4>
       <Layout.Div mt={1} flex align='center'>
         <Text.Icon name='photo' ml={2}/>
@@ -120,7 +135,7 @@ function FormsExpo(){
       <Button.Button
         funky
         ml={2}
-        widden={2}
+        horSwell={2}
         emotion='excited'>
         Round & Wide
       </Button.Button>
@@ -151,7 +166,8 @@ export default function Basics(){
       <Layout.RightPanel>
         <FlexHeader
           graphicType='image'
-          graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'>
+          graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'
+        >
           <Fragment>
             <Text.H1>Inputs and </Text.H1>
             <Text.Icon name='laptop' size={1} ml={.4} mt={-.1}/>
