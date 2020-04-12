@@ -59,7 +59,7 @@ export const theme = {
     sideBarWidth: "220px",
     borderRadius: "6px",
     borderWidth: "1px",
-    inputBorderWidth: 1.5
+    inputBorderWidth: 1.3
   },
 };
 

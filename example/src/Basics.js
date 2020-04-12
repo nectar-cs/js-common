@@ -73,6 +73,17 @@ function TablesExpo(){
           <td><p>Cell 1.3</p></td>
           <td><p>Cell 1.4</p></td>
         </tr>
+
+      </Table.Table>
+
+      <Table.Table innerBorder mt={1.5}>
+        <tr>
+          <th><p>Column one</p></th>
+          <th><p>Column two</p></th>
+          <th><p>Column three</p></th>
+          <th><p>Column four</p></th>
+        </tr>
+
         <tr>
           <td><Text.P>Cell 2.1</Text.P></td>
           <td><Text.StatusTag>Tag 2.2</Text.StatusTag></td>
@@ -95,6 +106,7 @@ function TablesExpo(){
             </Layout.Div>
           </td>
         </tr>
+
       </Table.Table>
     </Layout.Div>
   )
@@ -106,9 +118,12 @@ function FormsExpo(){
       <Text.H2>Unlabelled Inputs</Text.H2>
       <Input.Input mt={2.5} placeholder='Length set to Auto'/>
       <Input.Input flat mt={1.5} placeholder='Flat Input'/>
-      <Input.Select mt={2.5}>
-        <option>Hey</option>
-      </Input.Select>
+      <Input.Select mt={2.5}><option>Hey</option></Input.Select>
+      <Layout.Div flex mt={1.5}>
+        <Input.Radio name='one'/>
+        <Input.Radio name='one' s={{ml: 1}} checked/>
+        <Text.P ml={.3}>With label</Text.P>
+      </Layout.Div>
 
       <Text.H2 mt={4}>Labelled Inputs</Text.H2>
       <Layout.Div mt={1.5} padded rounded emotion={colorKeys.primaryColor}>

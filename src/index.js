@@ -20,6 +20,7 @@ import CenterLoader from './widgets/CenterLoader/CenterLoader'
 import Tabs from './widgets/Tabs/Tabs'
 import LabelTags from './widgets/LabelTags/LabelTags'
 import Checklist from './widgets/Checklist/Checklist'
+import Pill from './widgets/Pill/Pill'
 
 export {
   Loader,
@@ -46,5 +47,6 @@ export {
   Tabs,
   LabelTags,
   Checklist,
+  Pill,
   resolveColor
 }

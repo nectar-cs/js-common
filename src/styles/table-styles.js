@@ -4,6 +4,16 @@ import {commonSizeAttrs} from "./constants";
 
 const borderWidth = "1.0px";
 
+function borderStyle(){
+  return `${borderWidth} solid #ddd`
+}
+
+function innerBorderStyle(p){
+  if(p.innerBorder){
+    return `${borderWidth} solid #ddd`;
+  }
+}
+
 const _Table = styled(props => (
   <table {...props}>
     <tbody>
@@ -21,7 +31,9 @@ const _Table = styled(props => (
       }
       &:last-child{
         text-align: left;
+        border-right: none;
       }
+      border-right: ${p => innerBorderStyle(p)};
     }
     
     tr {

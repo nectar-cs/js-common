@@ -16,7 +16,7 @@ const _Button = styled.button`
   background: ${p => resolveColor(p, p.bkgEmotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.bkgEmotion, colorKeys.primaryColor)};
   border-radius: ${p => borderRounding(p, 5, 1)};
-  padding: ${p => simplePadding(p, 6, 16)};
+  padding: ${p => simplePadding(p, 7.5, 16)};
   border-width: 0;
   text-align: center;
 
@@ -61,8 +61,7 @@ const FloatingPlus = styled.button`
 const Button = {
   Button: _Button,
   BigButton,
-  FloatingPlus,
-
+  FloatingPlus
 };
 
 export default Button;

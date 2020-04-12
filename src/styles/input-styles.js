@@ -15,6 +15,67 @@ function paddingFocused(p){
   return `${tb}px ${lr}px`;
 }
 
+const radioRad = 18;
+const innerRadioRad = 15;
+
+const RadioLabel = styled.label`
+  ${commonSizeAttrs};
+  width: ${radioRad}px;
+  height: ${radioRad}px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+`;
+
+const RadioSpan = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${radioRad}px;
+  width: ${radioRad}px;
+  border-radius: 50%;
+  background: ${p => resolveColor(p, null, colorKeys.primaryColor)};
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: ${innerRadioRad}px;
+    height: ${innerRadioRad}px;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+    background: ${p => resolveColor(p, null, colorKeys.contrastColor)};
+  }
+`;
+
+const RadioStyles = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  &:checked {
+    &~span {
+      background: ${p => resolveColor(p, null, colorKeys.primaryColor)};
+      &:after{
+        width: ${innerRadioRad *  .6}px;
+        height: ${innerRadioRad * .6}px;
+        background: ${p => resolveColor(p, null, colorKeys.contrastColor)};
+      }
+    }
+  }  
+`;
+
+function Radio(props){
+  return(
+    <RadioLabel {...(props['s'] || {})}>&ensp;
+      <RadioStyles type='radio' {...props}/>
+      <RadioSpan/>
+    </RadioLabel>
+  )
+}
+
 const _Input = styled.input`
   ${commonSizeAttrs};
   ${commonFontAttrs};
@@ -83,6 +144,7 @@ const Input = {
   Line,
   Label,
   Input: _Input,
+  Radio: Radio,
   Select
 };
 

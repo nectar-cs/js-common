@@ -6,6 +6,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {Switch} from "react-router";
 import Basics from './Basics'
 import CenteredOne from './CenteredOne'
+import Widgets from './Widgets'
 
 export default class App extends Component {
 
@@ -21,6 +22,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path='/layout' component={CenteredOne}/>
             <Route exact path='/basics' component={Basics}/>
+            <Route exact path='/widgets' component={Widgets}/>
             <Route path='/' component={Basics}/>
           </Switch>
         </BrowserRouter>
