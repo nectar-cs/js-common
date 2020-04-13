@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components'
 import {colorKeys, resolveColor, simplePadding, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
 
-const borderRad = "6px";
-const borderWidth = "2px";
+const borderRad = "5.5px";
+const borderWidth = "1.0px";
 const vertPadding = 3.5;
 
 const Letter = styled.p`
@@ -44,7 +44,7 @@ function childlessPillStyle(p){
 
 const Container = styled.div`
   ${commonSizeAttrs};
-  display: flex;
+  display: inline-flex;
 `;
 
 const S = {

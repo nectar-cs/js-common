@@ -12,13 +12,31 @@ function PillsExpo(){
   return(
     <Layout.Div mt={1}>
       <Text.H3 mb={1}>Pills</Text.H3>
-      <Pill text='PillOne' letters={[{c: 'C', e: 'cool'}, {c:  'R', e: 'primaryColor'}]}/>
+
       <Pill
         text='PillOne'
-        letters={[{c: 'C', e: 'cool'}]}
-        emotion={colorKeys.primaryColor}
+        letters={{e: colorKeys.cool, r: colorKeys.primaryColor}}
       />
-      <Pill text='PillOne' letters={null}/>
+      <Text.P mb={1}>After</Text.P>
+
+      <Layout.Div flex align='center'>
+        <Pill
+          text='PillOne'
+          letters={{e: colorKeys.warning}}
+          emotion={colorKeys.primaryColor}
+        />
+        <Text.P ml={1}>After</Text.P>
+      </Layout.Div>
+
+      <Layout.Div flex mt={1}>
+        <Layout.Div>
+          <Pill text='PillOne' letters={null}/>
+        </Layout.Div>
+        <Layout.Div ml={2}>
+          <Pill text='PillOne' letters={null}/>
+        </Layout.Div>
+
+      </Layout.Div>
     </Layout.Div>
   )
 }

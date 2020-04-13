@@ -144,8 +144,8 @@ function FormsExpo(){
 
       <Text.H2 mt={4}>Buttons</Text.H2>
       <Button.Button mt={2}>Raw Button</Button.Button>
-      <Link to='/asdasd'>
-        <Button.Button ml={2}>Linked Button</Button.Button>
+      <Link to='/widgets'>
+        <Button.Button ml={2}>Widgets Demo</Button.Button>
       </Link>
       <Button.Button
         funky
@@ -160,7 +160,7 @@ function FormsExpo(){
       <Button.Button disabled ml={2}>Disabled</Button.Button>
       <Layout.Div mt={2} relative>
         <Link to='/layout'>
-          <Button.BigButton funky>Big Button</Button.BigButton>
+          <Button.BigButton funky>Layouts Demo</Button.BigButton>
         </Link>
       </Layout.Div>
       <Button.BigButton centerLow>Bottom Button</Button.BigButton>

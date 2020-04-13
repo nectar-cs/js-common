@@ -53,7 +53,18 @@ const Div = styled.div`
   border-radius: ${p => borderRounding(p, 4, 0)};
   ${p => central(p)};
   ${p => center(p)};
+  ${p => hover(p)}
 `;
+
+function hover(p){
+  if(p.hoverPoint){
+    return css`
+      &:hover{
+        cursor: pointer;
+      }
+    `
+  }
+}
 
 const CenteringDiv = styled(props => (
   <Div {...props}>
