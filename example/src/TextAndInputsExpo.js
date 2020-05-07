@@ -6,7 +6,9 @@ import {
   LeftHeader,
   inverseTheme,
   colorKeys,
-  Table, Button, FlexHeader,
+  Table,
+  Button,
+  FlexHeader
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 import {Link} from "react-router-dom";
@@ -168,7 +170,7 @@ function FormsExpo(){
   )
 }
 
-export default function Basics(){
+export default function TextAndInputsExpo(){
   return(
     <Fragment>
       <Layout.LeftPanel>

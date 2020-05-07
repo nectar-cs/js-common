@@ -19,10 +19,10 @@ const Spinner = styled.div`
   display: inline-block;
   &::after{
     content: " ";
-    ${commonSizeAttrs};
-    display: block;
     width: 26px;
     height: 26px;
+    ${commonSizeAttrs};
+    display: block;
     border-radius: 50%;
     border: 2px solid ${p => borderColor(p)};
     border-color: ${p => borderColor(p)} transparent ${p => borderColor(p)} transparent;

@@ -1,7 +1,8 @@
 //@flow
 import React from 'react'
 import S from './PillStyles'
-import {colorKeys} from '../..'
+// noinspection ES6PreferShortImport
+import {colorKeys} from './../../styles/constants'
 
 function Letters({letters}){
   let letterSet;

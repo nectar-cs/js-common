@@ -20,6 +20,7 @@ export const colorKeys = {
   excited: 'excited',
   nectar: 'nectar',
   cool: 'cool',
+  error: "error",
   warning: 'warning',
   success: 'success',
   pleasant: 'pleasant',
@@ -48,6 +49,7 @@ export const theme = {
 
     [colorKeys.pleasant]: "#535b77",
     [colorKeys.success]: "#326342",
+    [colorKeys.error]: "#DB3A34",
     [colorKeys.warning]: "#F6AE2D",
     [colorKeys.disabled]: "#cecece",
 

@@ -42,10 +42,10 @@ function LayoutExpo(){
 
       <Layout.Div padded rounded mt={2} height={'120px'} emotion={colorKeys.primaryColor}>
         <ThemeProvider theme={inverseTheme}>
-          <CenterLoader>
-            <Text.P>Modular!</Text.P>
-            <Text.P>Another example of long</Text.P>
-          </CenterLoader>
+          {/*<CenterLoader>*/}
+          {/*  <Text.P>Modular!</Text.P>*/}
+          {/*  <Text.P>Another example of long</Text.P>*/}
+          {/*</CenterLoader>*/}
         </ThemeProvider>
       </Layout.Div>
     </Fragment>
