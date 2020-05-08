@@ -33,7 +33,7 @@ function SimpleTextExpo(){
 
       <Text.H2 mt={1.5} mb={1}>Header H2</Text.H2>
 
-      <Layout.Div padded rounded emotion={colorKeys.primaryColor}>
+      <Layout.Div padded rounded emotion={colorKeys.primaryColor} blink>
         <ThemeProvider theme={inverseTheme}>
           <Text.P mt={0}>Paragraph with primaryFont</Text.P>
           <Text.P calm mt={1}>Paragraph with secondaryFont</Text.P>
@@ -43,9 +43,10 @@ function SimpleTextExpo(){
       <Text.H3 mt={1.5} mb={1.0}>Header H3</Text.H3>
       <Layout.Div flex align='center'>
         <Text.StatusTag>Status Tag</Text.StatusTag>
-        <Text.StatusTag ml={1} vertSwell={.5}>Unswelled Tag</Text.StatusTag>
+        <Text.StatusTag blink ml={1} vertSwell={.5} emotion='nectar'>
+          Unswelled Tag
+        </Text.StatusTag>
         <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
-        <Text.BoldStatus ml={1}>Bold Status</Text.BoldStatus>
       </Layout.Div>
 
       <Text.H4 mt={1.5}>Header H4</Text.H4>

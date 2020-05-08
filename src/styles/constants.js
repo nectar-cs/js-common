@@ -88,6 +88,25 @@ export const inverseTheme = {
 
 /*--------------------MIXINS---------------------*/
 
+
+function blinking(p){
+  if(p.blink){
+    const fromCol = resolveColor(p, p.blinkFrom, colorKeys.contrastFont);
+    const toCol = resolveColor(p, p.blinkTo, colorKeys.disabled);
+    return css`
+      animation-name: blink-animation;
+      animation-duration: .175s;
+      animation-iteration-count: 2;
+      @keyframes blink-animation {
+        from { background: ${fromCol}; }
+        to { background: ${toCol}; }
+      }
+    `;
+  }
+}
+
+
+
 function merger(props, defaults){
   Object.keys(defaults).forEach(key => {
     if(!props[key])
@@ -135,6 +154,7 @@ export const commonSizeAttrs = css`
   height: ${p => p.height || 'auto'};
   ${p => centered(p)};
   ${p => centerLow(p)};
+  ${p => blinking(p)};
 `;
 
 export const commonFontAttrs = css`
@@ -146,22 +166,6 @@ export const commonFontAttrs = css`
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
 `;
-
-// export bkgEmotion(p){
-//   if(p.bkgEmotion){
-//     return css`
-//       background: ${p => resolveColor(p, p.bkgEmotion)};
-//     `;
-//   }
-// }
-
-export function experiment(props, defaults){
-  Object.keys(defaults).forEach(key => {
-    props[key] = props[key] || defaults[key];
-  });
-
-
-}
 
 
 
@@ -197,7 +201,6 @@ function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);
   switch (bkgColorKey) {
     case colorKeys.disabled:
-    case colorKeys.nectar:
     case colorKeys.contrastColor:
     case colorKeys.contentBackgroundColor:
       return colorKeys.primaryFont;

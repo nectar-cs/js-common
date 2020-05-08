@@ -19,9 +19,9 @@ const Spinner = styled.div`
   display: inline-block;
   &::after{
     content: " ";
-    width: 26px;
-    height: 26px;
     ${commonSizeAttrs};
+    width: ${p => p.width || '26px'};
+    height: ${p => p.height || '26px'};
     display: block;
     border-radius: 50%;
     border: 2px solid ${p => borderColor(p)};
