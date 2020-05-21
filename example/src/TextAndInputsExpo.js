@@ -43,11 +43,16 @@ function SimpleTextExpo(){
       <Text.H3 mt={1.5} mb={1.0}>Header H3</Text.H3>
       <Layout.Div flex align='center'>
         <Text.StatusTag>Status Tag</Text.StatusTag>
-        <Text.StatusTag blink ml={1} vertSwell={.5} emotion='nectar'>
+        <Text.StatusTag blink ml={1} vertSwell={.2} emotion='nectar'>
           Unswelled Tag
         </Text.StatusTag>
         <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
       </Layout.Div>
+      <Layout.Div iFlex mt={1} emotion={'cool'} vertSwell={0.001} horSwell={4}>
+        <Text.P>One</Text.P>
+        <Text.StatusTag>Two</Text.StatusTag>
+      </Layout.Div>
+
 
       <Text.H4 mt={1.5}>Header H4</Text.H4>
       <Layout.Div mt={1} flex align='center'>
@@ -79,7 +84,7 @@ function TablesExpo(){
 
       </Table.Table>
 
-      <Table.Table innerBorder mt={1.5}>
+      <Table.Table innerborder={'asd'} mt={1.5}>
         <tr>
           <th><p>Column one</p></th>
           <th><p>Column two</p></th>
@@ -187,7 +192,7 @@ export default function TextAndInputsExpo(){
       <Layout.RightPanel>
         <FlexHeader
           graphicType='image'
-          graphicName='https://robohash.org/estmodiofficia.png?size=300x300&set=set1'
+          graphicName='https://storage.googleapis.com/nectar-mosaic-public/images/nectar-tomato.png'
         >
           <Fragment>
             <Text.H1>Inputs and </Text.H1>

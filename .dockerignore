@@ -1,3 +1,7 @@
 .git
 .idea
 node_modules
+example
+build
+dist
+cloudbuild.yaml

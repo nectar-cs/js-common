@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const headerHeight = "56px";
+const imageShrink = .82;
 
 const Container = styled.div`
   padding: 0;
@@ -11,10 +12,9 @@ const Container = styled.div`
 
 const Image = styled.img`
   object-fit: contain;
-  width: calc(${headerHeight} * .84);
-  height: calc(${headerHeight} * .84);
-  max-height: ${headerHeight};
-  max-width: ${headerHeight};
+  margin-top: 4px;
+  width: calc(${headerHeight} * ${imageShrink});
+  height: calc(${headerHeight} * ${imageShrink});
   background: transparent;
 `;
 

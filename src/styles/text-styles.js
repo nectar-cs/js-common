@@ -56,10 +56,10 @@ function textPosition(p){
 }
 
 const StatusTag = styled(P)`
-  padding: ${p => simplePadding(p, 4.5, 14)};
+  padding: ${p => simplePadding(p, {swell: 1})};
   text-align: center;
   display: inline-block;
-  border-radius: ${p => borderRounding(p, 4, 1)};
+  border-radius: ${p => borderRounding(p, {rounding: 4})};
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
 `;

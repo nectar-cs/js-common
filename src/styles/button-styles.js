@@ -15,8 +15,8 @@ const _Button = styled.button`
   ${commonFontAttrs};
   background: ${p => resolveColor(p, p.bkgEmotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.bkgEmotion, colorKeys.primaryColor)};
-  border-radius: ${p => borderRounding(p, 5, 1)};
-  padding: ${p => simplePadding(p, 7.5, 16)};
+  border-radius: ${p => borderRounding(p, {rounding: 5})};
+  padding: ${p => simplePadding(p, { vertSwell: 1.5, horSwell: 1.3 })};
   border-width: 0;
   text-align: center;
 

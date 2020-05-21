@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import {borderRounding, colorKeys, commonSizeAttrs, resolveColor} from './constants'
+import {borderRounding, colorKeys, commonSizeAttrs, resolveColor, simplePadding} from './constants'
 
 const halfPanelOffset = "14px";
 
@@ -50,7 +50,7 @@ const Div = styled.div`
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   position: ${p => positionType(p)};
-  border-radius: ${p => borderRounding(p, 4, 0)};
+  border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
   ${p => hover(p)}

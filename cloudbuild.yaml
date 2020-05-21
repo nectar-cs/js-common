@@ -1,0 +1,50 @@
+images: []
+
+steps:
+  - id: "Fetch Secrets"
+    name: "gcr.io/cloud-builders/gcloud"
+    waitFor: []
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'gcloud secrets versions access latest --secret=npm-token > npm-token.txt;
+         cat npm-token.txt
+       '
+
+  - id: "Debug"
+    waitFor:
+      - "Fetch Secrets"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - '
+          cat npm-token.txt
+        '
+
+
+  - id: "Build Publisher"
+    waitFor: []
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - "build"
+      - "."
+      - "-t"
+      - "publisher"
+
+
+  - id: "Publish"
+    waitFor:
+      - "Fetch Secrets"
+      - "Build Publisher"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - '
+         docker run
+         publisher
+         npm config set "//registry.npmjs.org/:_authToken" "711beffb-3185-491e-8462-87143d79c677";
+          npm publish
+        '
+

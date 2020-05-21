@@ -9,7 +9,7 @@ function borderStyle(){
 }
 
 function innerBorderStyle(p){
-  if(p.innerBorder){
+  if(p.innerborder){
     return `${borderWidth} solid #ddd`;
   }
 }

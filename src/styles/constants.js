@@ -95,11 +95,12 @@ function blinking(p){
     const toCol = resolveColor(p, p.blinkTo, colorKeys.disabled);
     return css`
       animation-name: blink-animation;
-      animation-duration: .175s;
+      animation-duration: .15s;
       animation-iteration-count: 2;
+      animation-timing-function: ease-in-out;
       @keyframes blink-animation {
         from { background: ${fromCol}; }
-        to { background: ${toCol}; }
+        to { background: rgba(0, 148, 133, 0.4); }
       }
     `;
   }
@@ -148,8 +149,8 @@ export const commonSizeAttrs = css`
   margin-right: ${p => `${(p.mr || 0) * 12}px`};
   margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
   margin-left: ${p => `${(p.ml || 0) * 12}px`};
-  border-radius: ${p => borderRounding(p, 4, 0)};
-  padding: ${p => p.padded ? "10px" : 'default'};
+  border-radius: ${p => borderRounding(p, {})};
+  padding: ${p => simplePadding(p)};
   width: ${p => p.width || 'auto'};
   height: ${p => p.height || 'auto'};
   ${p => centered(p)};
@@ -178,10 +179,20 @@ export const commonFontAttrs = css`
 
 
 
-export function simplePadding(p, vertDefault, horDefault){
-  const vertSwell = p.vertSwell || p.swell || 1;
-  const horSwell = p.horSwell || p.swell || 1;
-  return `${vertDefault * vertSwell}px ${horDefault * horSwell}px`;
+export function simplePadding(p, defaults){
+  const [vertMultiplier, horMultiplier] = [4.5, 14];
+  const merged = {...p, ...defaults};
+  const vertSwell = merged.vertSwell || merged.swell || (merged.padded ? 1.8 : null);
+  const horSwell = merged.horSwell || merged.swell || (merged.padded ? 1 : null);
+  const vertPadding = vertSwell !== null ? `${vertMultiplier * vertSwell}px` : 'default';
+  const horPadding = horSwell !== null ? `${horMultiplier * horSwell}px` : 'default';
+  return `${vertPadding} ${horPadding}`;
+}
+
+export function borderRounding(p, defaults){
+  const merged = {...p, ...defaults};
+  const swell = (merged.funky ? 25 : null) || merged.rounding;
+  return swell !== null ? `${swell}px` : 'default';
 }
 
 export function resolveColorKey(props, colorKey, backupColorKey){
@@ -237,13 +248,4 @@ function textDisplay(p){
   if(p.iblock) return "inline-block";
   else if(p.block) return "block";
   return "default";
-}
-
-export function borderRounding(p, defRad, defFactor){
-  if(!defFactor) {
-    if(p.rounding || p.rounded) defFactor = 1;
-  }
-  const factor = p.rounding  || defFactor;
-  const base = p.funky ? 25 : defRad;
-  return `${factor * base}px`;
 }
