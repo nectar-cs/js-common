@@ -44,6 +44,16 @@ function center(p){
   }
 }
 
+function sexyShadow(p){
+  if(p.sexyShadow){
+    return css`
+      box-shadow: 0 0.063em 0.313em 0 
+      rgba(0,0,0,.07), 
+      0 0.438em 1.063em 0 rgba(0,0,0,.1);
+    `
+  }
+}
+
 const Div = styled.div`
   ${commonSizeAttrs};
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
@@ -53,7 +63,8 @@ const Div = styled.div`
   border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
-  ${p => hover(p)}
+  ${p => hover(p)};
+  ${p => sexyShadow(p)}
 `;
 
 function hover(p){

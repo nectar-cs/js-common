@@ -21,6 +21,7 @@ import Tabs from './widgets/Tabs/Tabs'
 import LabelTags from './widgets/LabelTags/LabelTags'
 import Checklist from './widgets/Checklist/Checklist'
 import Pill from './widgets/Pill/Pill'
+import Battery from "./widgets/Battery/Battery";
 
 export {
   Loader,
@@ -48,5 +49,6 @@ export {
   LabelTags,
   Checklist,
   Pill,
-  resolveColor
+  resolveColor,
+  Battery
 }

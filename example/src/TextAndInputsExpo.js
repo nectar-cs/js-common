@@ -32,12 +32,19 @@ function SimpleTextExpo(){
       <Text.P calm mt={1}>Paragraph with secondaryFont</Text.P>
 
       <Text.H2 mt={1.5} mb={1}>Header H2</Text.H2>
-
-      <Layout.Div padded rounded emotion={colorKeys.primaryColor} blink>
-        <ThemeProvider theme={inverseTheme}>
+      <Layout.Div flex>
+        <Layout.Div padded rounded emotion={colorKeys.primaryColor} blink width='100%'>
+          <ThemeProvider theme={inverseTheme}>
+            <Text.P mt={0}>Paragraph with primaryFont</Text.P>
+            <Text.P calm mt={1}>Paragraph with secondaryFont</Text.P>
+          </ThemeProvider>
+        </Layout.Div>
+        <Layout.Div width='20px' />
+        <Layout.Div padded rounded width='100%' sexyShadow>
           <Text.P mt={0}>Paragraph with primaryFont</Text.P>
           <Text.P calm mt={1}>Paragraph with secondaryFont</Text.P>
-        </ThemeProvider>
+        </Layout.Div>
+
       </Layout.Div>
 
       <Text.H3 mt={1.5} mb={1.0}>Header H3</Text.H3>
@@ -47,10 +54,6 @@ function SimpleTextExpo(){
           Unswelled Tag
         </Text.StatusTag>
         <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
-      </Layout.Div>
-      <Layout.Div iFlex mt={1} emotion={'cool'} vertSwell={0.001} horSwell={4}>
-        <Text.P>One</Text.P>
-        <Text.StatusTag>Two</Text.StatusTag>
       </Layout.Div>
 
 
@@ -81,7 +84,6 @@ function TablesExpo(){
           <td><p>Cell 1.3</p></td>
           <td><p>Cell 1.4</p></td>
         </tr>
-
       </Table.Table>
 
       <Table.Table innerborder={'asd'} mt={1.5}>
@@ -134,7 +136,7 @@ function FormsExpo(){
       </Layout.Div>
 
       <Text.H2 mt={4}>Labelled Inputs</Text.H2>
-      <Layout.Div mt={1.5} padded rounded emotion={colorKeys.primaryColor}>
+      <Layout.Div mt={1.5} sexyShadow padded rounded emotion={colorKeys.primaryColor}>
         <ThemeProvider theme={inverseTheme}>
           <Input.Line mt={0.5}>
             <Input.Label>Field label</Input.Label>

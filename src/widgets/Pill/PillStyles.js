@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-import {colorKeys, resolveColor, simplePadding, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
+import {colorKeys, resolveColor, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
 
 const borderRad = "4.5px";
 const borderWidth = "1.0px";
@@ -14,7 +14,7 @@ const Letter = styled.p`
   border-color: ${p => resolveColor(p, null, colorKeys.primaryColor)};
   background: ${p => resolveColor(p, p.emotion, colorKeys.cool)};
   color: ${p => resolveColor(p, null, colorKeys.contrastColor)};
-  padding: ${p => simplePadding(p, vertPadding, 0)};
+  padding: ${vertPadding}px 0;
   
   &:last-child{
     border-style: solid solid solid none;
@@ -27,10 +27,10 @@ const Text = styled.p`
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.contrastColor)};
   border-style: solid none solid solid;
   border-radius: ${borderRad} 0 0 ${borderRad};
-  ${p => childlessPillStyle(p)};
   border-width: ${borderWidth};
   border-color: ${p => resolveColor(p, null, colorKeys.primaryColor)};
-  padding: ${p => simplePadding(p, vertPadding, 6)};
+  padding: ${vertPadding}px 6px;
+  ${p => childlessPillStyle(p)};
 `;
 
 function childlessPillStyle(p){

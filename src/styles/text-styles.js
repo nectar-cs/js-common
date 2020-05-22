@@ -5,33 +5,33 @@ import {
   colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
-  contrastFontForBkg,
+  contrastFontForBkg, fontSize,
   resolveColor, simplePadding
 } from './constants'
 import { Link } from 'react-router-dom';
 
 const P = styled.p`
-  font-size: 13px;
   ${commonSizeAttrs};
   ${commonFontAttrs};
+  font-size: ${p => fontSize(p, '13px')};
   ${p => textPosition(p)};
   line-height: 19px;
 `;
 
 const H1 = styled(P)`
-  font-size: 19px;
+  font-size: ${p => fontSize(p, '19px')};
 `;
 
 const H2 = styled(P)`
-  font-size: 17px;
+  font-size: ${p => fontSize(p, '17px')};
 `;
 
 const H3 = styled(P)`
-  font-size: 15px;
+  font-size: ${p => fontSize(p, '15px')};
 `;
 
 const H4 = styled(P)`
-  font-size: 14px;
+  font-size: ${p => fontSize(p, '14px')};
 `;
 
 const CuckIcon = styled.i`
@@ -56,7 +56,7 @@ function textPosition(p){
 }
 
 const StatusTag = styled(P)`
-  padding: ${p => simplePadding(p, {swell: 1})};
+  padding: ${p => simplePadding(p, {horSwell: 1, vertSwell: 1})};
   text-align: center;
   display: inline-block;
   border-radius: ${p => borderRounding(p, {rounding: 4})};

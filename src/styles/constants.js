@@ -163,7 +163,7 @@ export const commonFontAttrs = css`
   background: ${p => resolveColor(p, p.bkgEmotion, null)};
   font-weight: ${p => textWeight(p)};
   text-align: ${p => textAlign(p)};
-  font-size: ${p => textSize(p)};
+  font-size: ${p => fontSize(p)};
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
 `;
@@ -180,8 +180,8 @@ export const commonFontAttrs = css`
 
 
 export function simplePadding(p, defaults){
-  const [vertMultiplier, horMultiplier] = [4.5, 14];
-  const merged = {...p, ...defaults};
+  const [vertMultiplier, horMultiplier] = [5, 14];
+  const merged = {...defaults, ...p};
   const vertSwell = merged.vertSwell || merged.swell || (merged.padded ? 1.8 : null);
   const horSwell = merged.horSwell || merged.swell || (merged.padded ? 1 : null);
   const vertPadding = vertSwell !== null ? `${vertMultiplier * vertSwell}px` : 'default';
@@ -239,9 +239,8 @@ function textAlign(p){
   return 'left';
 }
 
-function textSize(p){
-  if(p.kind === 'little-title') return '16px';
-  return 'default';
+export function fontSize(p, backup){
+  return p.fontSize || backup || '13px';
 }
 
 function textDisplay(p){

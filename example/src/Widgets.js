@@ -5,37 +5,63 @@ import {
   LeftHeader,
   colorKeys,
   FlexHeader,
-  Pill
+  Pill,
+  Battery
 } from 'nectar-gui'
 
 function PillsExpo(){
   return(
     <Layout.Div mt={1}>
-      <Text.H3 mb={1}>Pills</Text.H3>
-
-      <Pill
-        text='PillOne'
-        letters={{e: colorKeys.cool, r: colorKeys.primaryColor}}
-      />
-      <Text.P mb={1}>After</Text.P>
-
-      <Layout.Div flex align='center'>
+      <Text.H2 mb={1}>Pills</Text.H2>
+      <Layout.Div sexyShadow padded>
         <Pill
           text='PillOne'
-          letters={{e: colorKeys.warning}}
-          emotion={colorKeys.primaryColor}
+          letters={{e: colorKeys.cool, r: colorKeys.primaryColor}}
         />
-        <Text.P ml={1}>After</Text.P>
+        <Text.P mb={1}>After</Text.P>
+
+        <Layout.Div flex align='center'>
+          <Pill
+            text='PillOne'
+            letters={{e: colorKeys.warning}}
+            emotion={colorKeys.primaryColor}
+          />
+          <Text.P ml={1}>After</Text.P>
+        </Layout.Div>
+
+        <Layout.Div flex mt={1}>
+          <Layout.Div>
+            <Pill text='PillOne' letters={null}/>
+          </Layout.Div>
+          <Layout.Div ml={2}>
+            <Pill text='PillOne' letters={null}/>
+          </Layout.Div>
+        </Layout.Div>
       </Layout.Div>
+    </Layout.Div>
+  )
+}
 
-      <Layout.Div flex mt={1}>
-        <Layout.Div>
-          <Pill text='PillOne' letters={null}/>
-        </Layout.Div>
-        <Layout.Div ml={2}>
-          <Pill text='PillOne' letters={null}/>
-        </Layout.Div>
+function BatteriesExpo(){
+  return(
+    <Layout.Div mt={3}>
+      <Text.H2>Batteries</Text.H2>
+      <Layout.Div sexyShadow padded mt={.8}>
+        <Layout.Div flex align='flex-end'>
+          <Battery size={1}  fraction={1}/>
+          <Layout.Div width='12px'/>
 
+          <Battery size={1.2} fraction={.8}/>
+          <Layout.Div width='12px' />
+
+          <Battery size={2} fraction={.6}/>
+          <Layout.Div width='12px' />
+
+          <Battery size={4} fraction={.4}/>
+          <Layout.Div width='12px' />
+
+          <Battery size={5} fraction={.2}/>
+        </Layout.Div>
       </Layout.Div>
     </Layout.Div>
   )
@@ -52,6 +78,7 @@ export default function Widgets(){
           graphicType='icon'
         />
         <PillsExpo/>
+        <BatteriesExpo/>
       </Layout.LeftPanel>
       <Layout.RightPanel>
         <FlexHeader
