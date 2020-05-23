@@ -2,30 +2,31 @@ import React from "react";
 import S from './BatteryStyles'
 
 export default function Battery(props: Props){
-  const size = props.size || 1;
-  const pct = (props.fraction || .5) * 100;
   return(
-    <S.Container size={size}>
-      <S.OuterBattery size={size}/>
-      <S.InnerBattery size={size} pct={pct} color={color(props.fraction || .5)}/>
+    <S.Container {...props}>
+      <S.OuterBattery {...props}/>
+      <S.InnerBattery {...props} color={color(props.pct)}/>
     </S.Container>
   )
 }
 
-function color(fraction){
+function color(pct){
+  if(pct == null) return null;
+  const fraction = parseInt(pct) / 100;
   if(fraction <= .2)
     return 'green'
   if(fraction <= .4)
-    return 'blue'
+    return 'dodgerblue'
   if(fraction <= .6)
     return 'gold'
   if(fraction <= .8)
     return 'orange'
   else
-    return 'red'
+    return 'indianred'
 }
 
 type Props = {
   size: number,
-  fraction: number
+  fraction: number,
+  children: [any]
 }

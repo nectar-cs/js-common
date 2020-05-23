@@ -22,10 +22,13 @@ import LabelTags from './widgets/LabelTags/LabelTags'
 import Checklist from './widgets/Checklist/Checklist'
 import Pill from './widgets/Pill/Pill'
 import Battery from "./widgets/Battery/Battery";
+import Gauge, {Donut} from "./widgets/Gauge/Gauge";
 
 export {
   Loader,
   Button,
+  Donut,
+  Gauge,
   Input,
   colorKeys,
   theme,

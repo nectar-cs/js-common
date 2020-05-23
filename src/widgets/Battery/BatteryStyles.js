@@ -4,7 +4,7 @@ import React from "react";
 const widthToHeightRatio = .64;
 
 function height(p){
-  if(p.height) return p.height;
+  if(p.height) return parseInt(p.height);
   return (p.size || 1) * 18;
 }
 
@@ -16,6 +16,8 @@ function borderRad(p){
     return "3.5px";
   if(computedHeight <= 50)
     return "4.8px";
+  if(computedHeight <= 90)
+    return "5.2px";
   else
     return "6.5px";
 }
@@ -44,7 +46,8 @@ const OuterBattery = styled(BatteryPart)`
 
 const InnerBattery = styled(BatteryPart)`
   background: ${p => p.color || 'green'};
-  height: ${p => p.pct}%;
+  height: calc(${p => p.pct}% - 1px);
+  min-height: 2px;
   border-radius: ${p => `0 0 ${borderRad(p)} ${borderRad(p)}`};
 `;
 

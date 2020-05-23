@@ -2,10 +2,12 @@ import React, {Fragment} from 'react'
 import {
   Text,
   Layout,
+  Gauge,
   LeftHeader,
   colorKeys,
   FlexHeader,
   Pill,
+  Donut,
   Battery
 } from 'nectar-gui'
 
@@ -48,20 +50,39 @@ function BatteriesExpo(){
       <Text.H2>Batteries</Text.H2>
       <Layout.Div sexyShadow padded mt={.8}>
         <Layout.Div flex align='flex-end'>
-          <Battery size={1}  fraction={1}/>
+          <Battery size={1}  pct={100}/>
           <Layout.Div width='12px'/>
 
-          <Battery size={1.2} fraction={.8}/>
+          <Battery size={1.2} pct='80'/>
           <Layout.Div width='12px' />
 
-          <Battery size={2} fraction={.6}/>
+          <Battery size={2} pct='60'/>
           <Layout.Div width='12px' />
 
-          <Battery size={4} fraction={.4}/>
+          <Battery size={4} pct='40'/>
           <Layout.Div width='12px' />
 
-          <Battery size={5} fraction={.2}/>
+          <Battery size={5} pct='20'/>
+          <Layout.Div width='12px' />
+
+          <Battery height='70' pct='100'/>
+          <Layout.Div width='12px' />
+          <Battery height='70' pct='0'/>
+
         </Layout.Div>
+      </Layout.Div>
+    </Layout.Div>
+  )
+}
+
+function GaugesExpo(props){
+  return(
+    <Layout.Div mt={2} padded rounded sexyShadow>
+      <Text.H2 mb={2}>Charts</Text.H2>
+      <Layout.Div flex>
+        <Gauge size={75} c2='cadetblue' frac={.8}/>
+        <Gauge size={75} text='700mi' legend='CPU' ml={2} frac={.4}/>
+        <Donut size={68} ml={2} frac={.75}/>
       </Layout.Div>
     </Layout.Div>
   )
@@ -79,6 +100,7 @@ export default function Widgets(){
         />
         <PillsExpo/>
         <BatteriesExpo/>
+        <GaugesExpo/>
       </Layout.LeftPanel>
       <Layout.RightPanel>
         <FlexHeader

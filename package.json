@@ -27,7 +27,8 @@
     "react-dom": "^15.0.0 || ^16.0.0",
     "styled-components": "^4.4.1",
     "react-router-dom": "^5.1.2",
-    "react-animations": "^1.0.0"
+    "react-animations": "^1.0.0",
+    "recharts": "^1.8.5"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",

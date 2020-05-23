@@ -15,7 +15,7 @@ const P = styled.p`
   ${commonFontAttrs};
   font-size: ${p => fontSize(p, '13px')};
   ${p => textPosition(p)};
-  line-height: 19px;
+  line-height: ${p => lineHeight(p, '19px')};
 `;
 
 const H1 = styled(P)`
@@ -112,6 +112,10 @@ const HoverLink = styled(SilentLink)`
 function iconSize(p){
   const size = p.size;
   return `${21 * (size || 1)}px`;
+}
+
+function lineHeight(p, backup){
+  return p.lineHeight || backup;
 }
 
 const Text = {
