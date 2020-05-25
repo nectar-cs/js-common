@@ -10,17 +10,6 @@ steps:
       - 'gcloud secrets versions access latest --secret=npm-token > npm-token.txt
        '
 
-  - id: "Debug"
-    waitFor:
-      - "Fetch Secrets"
-    name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - '
-          echo THE THING $(cat npm-token.txt)
-        '
-
   - id: "Build Publisher"
     waitFor: []
     name: 'gcr.io/cloud-builders/docker'
@@ -42,5 +31,5 @@ steps:
          docker run
          --env NPM_TOKEN=$(cat npm-token.txt)
          publisher
-          npm publish; exit 0
+         npm publish; exit 0
         '
