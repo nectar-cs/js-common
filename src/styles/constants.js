@@ -166,6 +166,7 @@ export const commonFontAttrs = css`
   font-size: ${p => fontSize(p)};
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
+  ${p => noDec(p)};
 `;
 
 
@@ -177,6 +178,14 @@ export const commonFontAttrs = css`
 
 /*--------------------UTILS---------------------*/
 
+
+export function noDec(p, defaults={}){
+  if({...defaults, ...p}['nodec']){
+    return css`
+      text-decoration: none;
+    `;
+  }
+}
 
 
 export function simplePadding(p, defaults){

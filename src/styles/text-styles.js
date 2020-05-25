@@ -5,7 +5,7 @@ import {
   colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
-  contrastFontForBkg, fontSize,
+  contrastFontForBkg, fontSize, noDec,
   resolveColor, simplePadding
 } from './constants'
 import { Link } from 'react-router-dom';
@@ -16,6 +16,12 @@ const P = styled.p`
   font-size: ${p => fontSize(p, '13px')};
   ${p => textPosition(p)};
   line-height: ${p => lineHeight(p, '19px')};
+`;
+
+const A = styled.a`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+  ${p => textPosition(p)};
 `;
 
 const H1 = styled(P)`
@@ -120,6 +126,7 @@ function lineHeight(p, backup){
 
 const Text = {
   P,
+  A,
   H1,
   H2,
   H3,
