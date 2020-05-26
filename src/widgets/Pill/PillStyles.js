@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components'
 import {colorKeys, resolveColor, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
 
-const borderRad = "4.5px";
+const borderRad = "5.5px";
 const borderWidth = "1.0px";
 const vertPadding = 3.5;
 

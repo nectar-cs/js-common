@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import {borderRounding, colorKeys, commonSizeAttrs, resolveColor, simplePadding} from './constants'
+import {borderRounding, colorKeys, commonSizeAttrs, resolveColor} from './constants'
 
 const halfPanelOffset = "14px";
 
@@ -14,12 +14,6 @@ function displayType(p){
   else if(p.iFlex) return "inline-flex";
   else if(p.wrapped) return "inline-block";
   else return "block";
-}
-
-function positionType(p) {
-  if(p.relative) return "relative";
-  if(p.absolute) return "absolute";
-  return "default";
 }
 
 function central(p){
@@ -73,7 +67,6 @@ const Div = styled.div`
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
-  position: ${p => positionType(p)};
   border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
