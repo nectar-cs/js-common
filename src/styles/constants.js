@@ -156,6 +156,7 @@ export const commonSizeAttrs = css`
   ${p => centered(p)};
   ${p => centerLow(p)};
   ${p => blinking(p)};
+  ${p => absolutePositioning(p)};
 `;
 
 export const commonFontAttrs = css`
@@ -179,6 +180,19 @@ export const commonFontAttrs = css`
 /*--------------------UTILS---------------------*/
 
 
+function absolutePositioning(p, defaults){
+  const props = {...defaults, ...p};
+  let total = [];
+  if(props.absolute) total.push(`position: absolute;`);
+  else if(props.relative) total.push(`position: relative;`);
+  ['top', 'right', 'bottom', 'left'].forEach(x => {
+    if(Object.keys(props).includes(x)) {
+      total.push(`${x}: ${coerceDim(props[x])};`);
+    }
+  });
+  return total.join("\n");
+}
+
 export function noDec(p, defaults={}){
   if({...defaults, ...p}['nodec']){
     return css`
@@ -187,6 +201,14 @@ export function noDec(p, defaults={}){
   }
 }
 
+function coerceDim(intOrStr){
+  if(!(typeof intOrStr === 'string'))
+    intOrStr = intOrStr.toString();
+  if(!(intOrStr.includes("%") || intOrStr.includes("px"))){
+    return `${intOrStr}px`;
+  }
+  else return intOrStr;
+}
 
 export function simplePadding(p, defaults){
   const [vertMultiplier, horMultiplier] = [5, 14];

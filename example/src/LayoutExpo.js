@@ -40,13 +40,11 @@ function LayoutExpo(){
         </Layout.Div>
       </Layout.Div >
 
-      <Layout.Div padded rounded mt={2} height={'120px'} emotion={colorKeys.primaryColor}>
-        <ThemeProvider theme={inverseTheme}>
-          {/*<CenterLoader>*/}
-          {/*  <Text.P>Modular!</Text.P>*/}
-          {/*  <Text.P>Another example of long</Text.P>*/}
-          {/*</CenterLoader>*/}
-        </ThemeProvider>
+      <Layout.Div padded rounded mt={2} height='70px' sexyShadow relative>
+        <Text.P absolute left={12} top={12}>Top Left</Text.P>
+        <Text.P absolute right={12} top={12}>Top Right</Text.P>
+        <Text.P absolute right={12} bottom={12}>Bottom Right</Text.P>
+        <Text.P absolute left={12} bottom={12}>Bottom Left</Text.P>
       </Layout.Div>
     </Fragment>
   )
