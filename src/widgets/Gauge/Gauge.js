@@ -2,7 +2,8 @@ import React from 'react'
 import {Pie, PieChart} from "recharts";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
-import {theme} from "../..";
+// noinspection ES6PreferShortImport
+import {theme} from "./../../styles/constants";
 
 const data02 = [
   {
