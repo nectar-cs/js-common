@@ -5,6 +5,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
+    "clsx": "^1.1.0",
     "nectar-gui": "link:..",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",

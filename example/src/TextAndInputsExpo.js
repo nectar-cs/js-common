@@ -133,6 +133,7 @@ function FormsExpo(){
         <Input.Radio name='one'/>
         <Input.Radio name='one' s={{ml: 1}} checked/>
         <Text.P ml={.3}>With label</Text.P>
+        <Input.Checkbox />
       </Layout.Div>
 
       <Text.H2 mt={4}>Labelled Inputs</Text.H2>

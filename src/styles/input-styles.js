@@ -2,6 +2,10 @@ import React from 'react'
 import styled from "styled-components";
 import {colorKeys, commonFontAttrs, commonSizeAttrs, resolveColor} from "./constants";
 import Layout from "./layout-styles";
+import clsx from 'clsx';
+import {checkboxStyles} from "./material-trash";
+import Checkbox from "@material-ui/core/Checkbox";
+
 
 const borderWidth = p => p.theme.dims.inputBorderWidth;
 const borderWidthFocused = p => borderWidth(p) + .5;
@@ -17,6 +21,21 @@ function paddingFocused(p){
 
 const radioRad = 18;
 const innerRadioRad = 15;
+
+function _Checkbox(props){
+  const classes = checkboxStyles();
+  return(
+    <Checkbox
+      className={classes.root}
+      disableRipple
+      color="default"
+      checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+      icon={<span className={classes.icon} />}
+      inputProps={{ 'aria-label': 'decorative checkbox' }}
+      {...props}
+    />
+  )
+}
 
 const RadioLabel = styled.label`
   ${commonSizeAttrs};
@@ -145,7 +164,8 @@ const Input = {
   Label,
   Input: _Input,
   Radio: Radio,
-  Select
+  Select,
+  Checkbox: _Checkbox
 };
 
 export default Input;

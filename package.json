@@ -22,13 +22,15 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "@material-ui/core": "^4.9.8",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
-    "styled-components": "^4.4.1",
-    "react-router-dom": "^5.1.2",
     "react-animations": "^1.0.0",
-    "recharts": "^1.8.5"
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "react-router-dom": "^5.1.2",
+    "recharts": "^1.8.5",
+    "styled-components": "^4.4.1",
+    "clsx": "^1.1.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
