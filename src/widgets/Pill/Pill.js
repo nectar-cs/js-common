@@ -19,7 +19,7 @@ function Letters({letters}){
 
 export default function Pill(props: Props){
   const length = (props.letters || []).length;
-  const emotion = props.emotion || colorKeys.contrastColor;
+  const emotion = props.emotion || colorKeys.calmTextBkg;
 
   return(
     <div>

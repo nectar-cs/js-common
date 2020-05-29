@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components'
 import {colorKeys, resolveColor, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
 
-const borderRad = "5.5px";
-const borderWidth = "1.0px";
+const borderRad = "5.0px";
+const borderWidth = "0.0px";
 const vertPadding = 3.5;
 
 const Letter = styled.p`

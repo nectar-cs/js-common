@@ -6,7 +6,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {Switch} from "react-router";
 import TextAndInputsExpo from './TextAndInputsExpo'
 import CenteredOne from './LayoutExpo'
-import Widgets from './Widgets'
+import WidgetsDemo from './WidgetsDemo'
 
 export default class App extends Component {
 
@@ -22,7 +22,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path='/layout' component={CenteredOne}/>
             <Route exact path='/basics' component={TextAndInputsExpo}/>
-            <Route exact path='/widgets' component={Widgets}/>
+            <Route exact path='/widgets' component={WidgetsDemo}/>
             <Route path='/' component={TextAndInputsExpo}/>
           </Switch>
         </BrowserRouter>

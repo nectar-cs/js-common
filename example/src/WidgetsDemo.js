@@ -24,7 +24,7 @@ function PillsExpo(){
 
         <Layout.Div flex align='center'>
           <Pill
-            text='PillOne'
+            text='Dark Pill'
             letters={{e: colorKeys.warning}}
             emotion={colorKeys.primaryColor}
           />
@@ -33,7 +33,7 @@ function PillsExpo(){
 
         <Layout.Div flex mt={1}>
           <Layout.Div>
-            <Pill text='PillOne' letters={null}/>
+            <Pill text='Dark' letters={null}/>
           </Layout.Div>
           <Layout.Div ml={2}>
             <Pill text='PillOne' letters={null}/>
@@ -88,7 +88,7 @@ function GaugesExpo(props){
   )
 }
 
-export default function Widgets(){
+export default function WidgetsDemo(){
   return(
     <Layout.Div>
       <Layout.LeftPanel>

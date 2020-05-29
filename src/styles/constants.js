@@ -22,11 +22,14 @@ export const colorKeys = {
   cool: 'cool',
   error: "error",
   warning: 'warning',
+  warning2: 'warning2',
   success: 'success',
   pleasant: 'pleasant',
 
   transparent: 'transparent',
-  none: 'transparent'
+  none: 'transparent',
+
+  calmTextBkg: 'calmTextBkg'
 };
 
 export const theme = {
@@ -52,6 +55,9 @@ export const theme = {
     [colorKeys.error]: "#DB3A34",
     [colorKeys.warning]: "#F6AE2D",
     [colorKeys.disabled]: "#cecece",
+    [colorKeys.warning2]: "#f46036",
+    comfy: "#6153cc",
+    [colorKeys.calmTextBkg]: "#f2f7f2",
 
     [colorKeys.transparent]: "transparent",
   },
@@ -108,14 +114,6 @@ function blinking(p){
 
 
 
-function merger(props, defaults){
-  Object.keys(defaults).forEach(key => {
-    if(!props[key])
-      props[key] = defaults[key];
-  });
-  return props;
-}
-
 export function centered(p){
   if(p.centered){
     if(p.absolute){
@@ -157,6 +155,8 @@ export const commonSizeAttrs = css`
   ${p => centerLow(p)};
   ${p => blinking(p)};
   ${p => absolutePositioning(p)};
+  ${p => hover(p)};
+  ${p => sexyShadow(p)};  
 `;
 
 export const commonFontAttrs = css`
@@ -168,6 +168,7 @@ export const commonFontAttrs = css`
   display: ${p => textDisplay(p)};
   visibility: ${p => textVisibility(p)};
   ${p => noDec(p)};
+  ${p => hacker(p)};
 `;
 
 
@@ -179,6 +180,46 @@ export const commonFontAttrs = css`
 
 /*--------------------UTILS---------------------*/
 
+function hacker(p, defaults={}){
+  const merged = {...defaults, ...p};
+  if(merged.hacker){
+    return css`
+      font-family: "Courier 10 Pitch", monospace;
+    `;
+  }
+}
+
+function hover(p){
+  let total = [];
+  if(p.hoverPoint){
+    total.push(`
+      &:hover{
+        cursor: pointer;
+      }
+    `)
+  }
+  if(p.hoverUnderline){
+    total.push(`
+      &:hover{
+        text-decoration: underline;
+      }
+    `)
+  }
+  return total.join("\n");
+}
+
+function sexyShadow(p){
+  if(p.sexyShadow){
+    return css`
+      box-shadow: 0 0.063em 
+      0.313em 0 
+      rgba(0,0,0,.07), 
+      0 0.438em 
+      1.063em 0
+       rgba(0,0,0,.07);
+    `
+  }
+}
 
 function absolutePositioning(p, defaults){
   const props = {...defaults, ...p};
@@ -222,7 +263,9 @@ export function simplePadding(p, defaults){
 
 export function borderRounding(p, defaults){
   const merged = {...p, ...defaults};
-  const swell = (merged.funky ? 25 : null) || merged.rounding;
+  const funky = (merged.funky ? 25 : null);
+  const sofa = (merged.sofa ? 8 : null);
+  const swell = funky || sofa || merged.rounding;
   return swell !== null ? `${swell}px` : 'default';
 }
 
@@ -232,6 +275,9 @@ export function resolveColorKey(props, colorKey, backupColorKey){
 }
 
 export function resolveColor(props, colorKey, backupColorKey){
+  if((colorKey || "").includes("#"))
+    return colorKey;
+
   if(backupColorKey || colorKey){
     const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
     return props.theme.colors[resolvedKey];
@@ -244,6 +290,7 @@ function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   switch (bkgColorKey) {
     case colorKeys.disabled:
     case colorKeys.contrastColor:
+    case colorKeys.calmTextBkg:
     case colorKeys.contentBackgroundColor:
       return colorKeys.primaryFont;
     default: return colorKeys.contrastFont;
