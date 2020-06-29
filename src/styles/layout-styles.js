@@ -48,6 +48,9 @@ function lightBorder(p){
   }
 }
 
+const Page = styled.div`
+  padding: 8px 8px;
+`;
 
 const Div = styled.div`
   ${commonSizeAttrs};
@@ -105,44 +108,6 @@ const Panel = styled(Div)`
   border-radius: 4px;     
 `;
 
-const ContentContainer = styled(Div)`
-  position: absolute;
-  padding: ${Dims.containerPaddingVert} ${Dims.containerPaddingHor};
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  background: ${p => p.theme.colors.contrastColor};
-`;
-
-const LeftPanel = styled(ContentContainer)`
-  position: absolute;
-  width: calc(50% - calc(${halfPanelOffset} * 1.5));
-  left: ${halfPanelOffset};
-  top: ${halfPanelOffset};
-  height: 97%;
-`;
-
-const RightPanel = styled(ContentContainer)`
-  position: absolute;
-  width: calc(50% - calc(${halfPanelOffset} * 1.5));
-  right: ${halfPanelOffset};
-  top: ${halfPanelOffset};
-  height: 97%;
-`;
-
-const FullWidthPanel = styled(ContentContainer)`
-  left: 14px;
-  right: 14px;
-  min-height: 100%;
-`;
-
-const FullScreen = styled(ContentContainer)`
-  position: absolute;
-  left: ${halfPanelOffset};
-  right: ${halfPanelOffset};
-  top: ${halfPanelOffset};
-  height: 97%;
-`;
 
 const TextLine = styled.div`
   margin-top: ${p => `${(p.low) * 12}px`};
@@ -170,18 +135,14 @@ const Layout = {
   Div,
   CenteringDiv,
   CenteringDivY,
-  ContentContainer,
   SlimCodeViewer,
-  LeftPanel,
-  RightPanel,
   TextLine ,
-  FullWidthPanel,
   BigCodeViewer,
   ModalLayout,
   Dims,
   halfPanelOffset,
   ThemePage,
-  FullScreen,
-  Panel
+  Panel,
+  Page
 };
 export default Layout;

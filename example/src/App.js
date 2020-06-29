@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { MosaicBaseStyle, theme } from 'nectar-gui'
 import {ThemeProvider} from 'styled-components'
 import {BrowserRouter, Route} from 'react-router-dom'
@@ -7,6 +6,7 @@ import {Switch} from "react-router";
 import TextAndInputsExpo from './TextAndInputsExpo'
 import CenteredOne from './LayoutExpo'
 import WidgetsDemo from './WidgetsDemo'
+import AppPage from "./AppPage";
 
 export default class App extends Component {
 
@@ -20,6 +20,7 @@ export default class App extends Component {
         <MosaicBaseStyle/>
         <BrowserRouter>
           <Switch>
+            <Route exact path='/page' component={AppPage}/>
             <Route exact path='/layout' component={CenteredOne}/>
             <Route exact path='/basics' component={TextAndInputsExpo}/>
             <Route exact path='/widgets' component={WidgetsDemo}/>

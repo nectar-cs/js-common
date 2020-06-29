@@ -63,7 +63,7 @@ export const theme = {
   },
 
   dims: {
-    topBarHeight: "0px",
+    topBarHeight: "50px",
     sideBarWidth: "220px",
     borderRadius: "6px",
     borderWidth: "1px",
@@ -87,7 +87,13 @@ export const inverseTheme = {
   }
 };
 
-
+export const noTopBarTheme = {
+  ...theme,
+  dims: {
+    ...theme.dims,
+    topBarHeight: 0
+  }
+}
 
 
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Layout from "../../styles/layout-styles";
 
-const Container = styled(Layout.ContentContainer)`
+const Container = styled.div`
   position: relative;
   width: ${p => p.size === 'large' ? '60%' : '340px'} ;
   height: ${p => p.size === 'large' ? 'auto' : '340px'} ;
