@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import {borderRounding, colorKeys, commonSizeAttrs, resolveColor} from './constants'
+import {borderRounding, colorKeys, commonSizeAttrs, resolveColor, simplePadding} from './constants'
 
 const halfPanelOffset = "14px";
 
@@ -23,7 +23,17 @@ function central(p){
       display: inline-block;
       left: 50%;
       transform: translateX(-50%);
-    `
+    `;
+  }
+}
+
+function hipster(p){
+  if(p.hipster){
+    return css`
+      width:  900px;
+      margin-left: auto;
+      margin-right: auto;
+    `;
   }
 }
 
@@ -38,18 +48,20 @@ function center(p){
   }
 }
 
-function lightBorder(p){
-  if(p.lightBorder){
+function lightBorder(p, defaults){
+  const merged = {...(defaults || {}), ...p};
+  if(merged.lightBorder){
     return css`
       border-style: solid;
-      border-width: 1.4px;
-      border-color: #f4f4f4;
-    `
+      border-width: 0.5px;
+      border-color: #d6d6d6;
+    `;
   }
 }
 
 const Page = styled.div`
-  padding: 8px 8px;
+  padding: 14px 18px 0 18px;
+  ${commonSizeAttrs};
 `;
 
 const Div = styled.div`
@@ -60,10 +72,38 @@ const Div = styled.div`
   border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
-  
-  ${p => lightBorder(p)}
+  ${p => lightBorder(p)};
+  ${p => halfRounded(p)};
+  ${p => hipster(p)};
 `;
 
+const Separator = styled.div`
+  ${commonSizeAttrs};
+  width: 94%;
+  height: .5px;
+  margin-left: auto;
+  margin-right: auto;
+  background: ${p => resolveColor(p, p.emotion, colorKeys.cool)};
+`;
+
+const PanelTop = styled(Div)`
+  background: #f7f6f6;
+  padding: ${p => simplePadding(p, {padded: true})};
+  border-radius: ${p => borderRounding(p, {rounding: 6, applier: x => `${x} ${x} 0 0`})};
+  ${p => lightBorder(p, {lightBorder: true})};
+  border-style: solid;
+  border-width: .5px .5px 0 .5px;
+  border-color: #d6d6d6;
+`;
+
+function halfRounded(p){
+  if(p.halfRounded){
+    const applier = x => `0 0 ${x} ${x}`;
+    return css`
+      border-radius: ${p => borderRounding(p, {rounding: 4, applier})};
+    `;
+  }
+}
 
 const CenteringDiv = styled(props => (
   <Div {...props}>
@@ -139,10 +179,12 @@ const Layout = {
   TextLine ,
   BigCodeViewer,
   ModalLayout,
+  PanelTop,
   Dims,
   halfPanelOffset,
   ThemePage,
   Panel,
+  Separator,
   Page
 };
 export default Layout;

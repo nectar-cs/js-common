@@ -227,6 +227,8 @@ function sexyShadow(p){
   }
 }
 
+
+
 function absolutePositioning(p, defaults){
   const props = {...defaults, ...p};
   let total = [];
@@ -268,11 +270,13 @@ export function simplePadding(p, defaults){
 }
 
 export function borderRounding(p, defaults){
+  const defaultApplier = x => x;
   const merged = {...p, ...defaults};
   const funky = (merged.funky ? 25 : null);
   const sofa = (merged.sofa ? 8 : null);
   const swell = funky || sofa || merged.rounding;
-  return swell !== null ? `${swell}px` : 'default';
+  const finalValue = swell !== null ? `${swell}px` : 'default';
+  return (merged.applier || defaultApplier)(finalValue);
 }
 
 export function resolveColorKey(props, colorKey, backupColorKey){

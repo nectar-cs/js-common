@@ -7,7 +7,7 @@ import {checkboxStyles} from "./material-trash";
 import Checkbox from "@material-ui/core/Checkbox";
 
 
-const borderWidth = p => p.theme.dims.inputBorderWidth;
+const borderWidth = p => .5;
 const borderWidthFocused = p => borderWidth(p) + .5;
 const paddingLr = 10;
 const paddingTb = 6.4;
@@ -95,13 +95,41 @@ function Radio(props){
   )
 }
 
+const FlatInput = styled.input`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+  background: #f7f6f6;
+  border-style: none;
+  width: ${p => p.width || '100%'};
+  box-sizing: border-box;
+  padding: 10px 10px;
+  border-radius: ${p => inputBorderRadius(p)};
+  
+  &::placeholder{
+   color: ${p => p.theme.colors.primaryFontLess}
+  }
+  &:focus{
+    outline: transparent;
+    background: #ebebeb;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+   transition: background-color 5000s ease-in-out 0s;
+  }
+  &:-webkit-autofill {
+    -webkit-text-fill-color: ${p => p.theme.colors.primaryFont} !important;
+  }
+`;
+
 const _Input = styled.input`
   ${commonSizeAttrs};
   ${commonFontAttrs};
   background: transparent;
   border-style: solid;
   width: ${p => p.width || '100%'};
-  border-color: ${p => inputBorderColor(p)};
+  border-color: ${p => inputBorderColor(p, "#f7f6f6")};
   border-width: ${p => borderWidth(p)}px;
   padding: ${paddingTb}px ${paddingLr}px;
   border-radius: ${p => inputBorderRadius(p)};
@@ -148,13 +176,20 @@ const Select = styled(props => (
 ))`
 `;
 
+const FlatSelect = styled(props => (
+  <FlatInput as='select' {...props}>
+    { props.children }
+  </FlatInput>
+))`
+`;
+
 function inputBorderRadius(p){
   if(p.flat) return "0px";
   else return p.theme.dims.borderRadius;
 }
 
 function inputBorderColor(p, def=colorKeys.secondaryFont){
-  const color = resolveColor(p, null, def);
+  const color = resolveColor(p, def, def);
   if(p.flat) return `transparent transparent ${color} transparent`;
   else return color;
 }
@@ -165,7 +200,9 @@ const Input = {
   Input: _Input,
   Radio: Radio,
   Select,
-  Checkbox: _Checkbox
+  Checkbox: _Checkbox,
+  FlatInput,
+  FlatSelect
 };
 
 export default Input;
