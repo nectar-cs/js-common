@@ -23,7 +23,7 @@ const Letter = styled.p`
 `;
 
 const Text = styled.p`
-  background: ${p => resolveColor(p, p.emotion, colorKeys.contrastColor)};
+  background: #f7f6f6;
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.contrastColor)};
   border-style: solid none solid solid;
   border-radius: ${borderRad} 0 0 ${borderRad};

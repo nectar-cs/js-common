@@ -21,6 +21,7 @@ const FullPage = styled.div`
 `;
 
 const AppContent = styled.div`
+  position: relative;
   margin-top: ${p => p.theme.dims.topBarHeight};
   margin-left: ${p => p.theme.dims.sideBarWidth};
 `;

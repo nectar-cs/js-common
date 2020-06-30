@@ -30,7 +30,7 @@ function central(p){
 function hipster(p){
   if(p.hipster){
     return css`
-      width:  900px;
+      width:  870px;
       margin-left: auto;
       margin-right: auto;
     `;
@@ -59,9 +59,16 @@ function lightBorder(p, defaults){
   }
 }
 
-const Page = styled.div`
-  padding: 14px 18px 0 18px;
+const PageWithHeader = styled.div`
   ${commonSizeAttrs};
+  padding: 0 18px 0 18px;
+  position: relative;
+`;
+
+const PageWithoutHeader = styled.div`
+  ${commonSizeAttrs};
+  padding: 14px 18px 0 18px;
+  position: relative;
 `;
 
 const Div = styled.div`
@@ -79,7 +86,7 @@ const Div = styled.div`
 
 const Separator = styled.div`
   ${commonSizeAttrs};
-  width: 94%;
+  width: 99%;
   height: .5px;
   margin-left: auto;
   margin-right: auto;
@@ -175,6 +182,7 @@ const Layout = {
   Div,
   CenteringDiv,
   CenteringDivY,
+  PageWithoutHeader,
   SlimCodeViewer,
   TextLine ,
   BigCodeViewer,
@@ -184,7 +192,7 @@ const Layout = {
   halfPanelOffset,
   ThemePage,
   Panel,
+  PageWithHeader,
   Separator,
-  Page
 };
 export default Layout;

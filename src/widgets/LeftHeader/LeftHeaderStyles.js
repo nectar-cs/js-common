@@ -3,9 +3,20 @@ import styled from 'styled-components'
 const headerHeight = "56px";
 const imageShrink = .82;
 
+const OutContainer = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 80px;
+  right: 0;
+  width: 100%;
+  background: white;
+`;
+
 const Container = styled.div`
+  position: absolute;
+  top: 14px;
   padding: 0;
-  margin: 0 0 8px 0;
   display: inline-flex;
   height: ${headerHeight};
 `;
@@ -45,7 +56,8 @@ const S = {
   ImageStub,
   ImageBox,
   TextBox,
-  Icon
+  Icon,
+  OutContainer
 };
 
 export default S;

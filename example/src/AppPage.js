@@ -19,12 +19,13 @@ export default function AppPage(){
       <AppLayout
         sideBar={<MySideBar/>}
         topBar={<TopBar/>}>
-        <Layout.Page>
+        <Layout.PageWithHeader>
           <PageHeader/>
+          <IntroPanel/>
           <IntroPanel/>
           <ThreePanels/>
           <FormsPanel/>
-        </Layout.Page>
+        </Layout.PageWithHeader>
       </AppLayout>
     </ThemeProvider>
   )

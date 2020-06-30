@@ -32,6 +32,7 @@ function _Checkbox(props){
       checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
       icon={<span className={classes.icon} />}
       inputProps={{ 'aria-label': 'decorative checkbox' }}
+      style={{marginTop: '1px'}}
       {...props}
     />
   )

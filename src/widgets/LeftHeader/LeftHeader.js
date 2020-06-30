@@ -8,13 +8,15 @@ export class LeftHeader extends React.Component<Props> {
     const { title, subtitle } = this.props;
 
     return(
-      <S.Container>
-        { this.renderGraphic() }
-        <S.TextBox>
-          <Text.H1>{title}</Text.H1>
-          <Text.P mt={0.55}>{subtitle}</Text.P>
-        </S.TextBox>
-      </S.Container>
+      <S.OutContainer>
+        <S.Container>
+          { this.renderGraphic() }
+          <S.TextBox>
+            <Text.H1>{title}</Text.H1>
+            <Text.P mt={0.55}>{subtitle}</Text.P>
+          </S.TextBox>
+        </S.Container>
+      </S.OutContainer>
     )
   }
 
