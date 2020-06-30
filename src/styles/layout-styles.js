@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled, {css} from 'styled-components'
 import {borderRounding, colorKeys, commonSizeAttrs, resolveColor, simplePadding} from './constants'
 
@@ -59,11 +59,44 @@ function lightBorder(p, defaults){
   }
 }
 
-const PageWithHeader = styled.div`
-  ${commonSizeAttrs};
-  padding: 0 18px 0 18px;
+const totalHeaderHeight = 80;
+
+const FixedHeaderWrapper = styled.div`
   position: relative;
+  top: 0;
+  left: 0;
+  height: ${totalHeaderHeight}px;
+  right: 0;
+  padding: 0 0 0 12px;
+  box-sizing: border-box;
 `;
+
+const UnderHeaderContainer = styled.div`
+  position: absolute;
+  top: ${totalHeaderHeight}px;
+  height: calc(100% - ${totalHeaderHeight}px);
+  max-height: calc(100% - ${totalHeaderHeight}px);
+  overflow: scroll;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 14px;
+  box-sizing: border-box;
+`;
+
+function PageWithHeader({Header, children}){
+  return(
+    <Fragment>
+      <FixedHeaderWrapper>
+        { Header && <Header/> }
+      </FixedHeaderWrapper>
+      <UnderHeaderContainer>
+        { children }
+      </UnderHeaderContainer>
+    </Fragment>
+  )
+}
 
 const PageWithoutHeader = styled.div`
   ${commonSizeAttrs};
@@ -194,5 +227,6 @@ const Layout = {
   Panel,
   PageWithHeader,
   Separator,
+  UnderHeaderContainer
 };
 export default Layout;

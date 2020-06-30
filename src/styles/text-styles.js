@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const P = styled.p`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  font-size: ${p => fontSize(p, '13px')};
+  font-size: ${p => fontSize(p, '12px')};
   ${p => textPosition(p)};
   ${p => noSpill(p)};
   line-height: ${p => lineHeight(p, '19px')};
@@ -38,7 +38,7 @@ const H3 = styled(P)`
 `;
 
 const H4 = styled(P)`
-  font-size: ${p => fontSize(p, '14px')};
+  font-size: ${p => fontSize(p, '13px')};
 `;
 
 const CuckIcon = styled.i`

@@ -4,7 +4,7 @@ import {ThemeProvider} from 'styled-components'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {Switch} from "react-router";
 import TextAndInputsExpo from './TextAndInputsExpo'
-import CenteredOne from './LayoutExpo'
+import LayoutExpo from './LayoutExpo'
 import WidgetsDemo from './WidgetsDemo'
 import AppPage from "./AppPage";
 
@@ -21,7 +21,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/page' component={AppPage}/>
-            <Route exact path='/layout' component={CenteredOne}/>
+            <Route exact path='/layout' component={LayoutExpo}/>
             <Route exact path='/basics' component={TextAndInputsExpo}/>
             <Route exact path='/widgets' component={WidgetsDemo}/>
             <Route path='/' component={TextAndInputsExpo}/>

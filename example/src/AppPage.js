@@ -17,10 +17,9 @@ export default function AppPage(){
   return(
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
-        sideBar={<MySideBar/>}
-        topBar={<TopBar/>}>
-        <Layout.PageWithHeader>
-          <PageHeader/>
+        SideBar={MySideBar}
+        TopBar={TopBar}>
+        <Layout.PageWithHeader Header={PageHeader}>
           <IntroPanel/>
           <IntroPanel/>
           <ThreePanels/>

@@ -4,12 +4,15 @@ import {
   Text,
   Layout,
   LeftHeader,
-  CenterCard,
-  CenterAnnouncement, colorKeys, Loader, CenterLoader
+  AppLayout,
+  SideBar,
+  colorKeys,
+  TopBar,
+  noTopBarTheme
 } from 'nectar-gui'
 import {ThemeProvider} from 'styled-components'
 
-function LayoutExpo(){
+function IDK(){
   const emotion = colorKeys.contentBackgroundColor;
   const main = { relative: true, padded: true, emotion };
 
@@ -50,34 +53,37 @@ function LayoutExpo(){
   )
 }
 
-export default function Basics() {
+export default function LayoutExpo() {
   return (
-    <Fragment>
-      <Layout.LeftPanel>
-        <LeftHeader
-          title='Layout Expo'
-          subtitle='Demo'
-          graphicName='insert_photo'
-          graphicType='icon'
-        />
-        <LayoutExpo/>
-      </Layout.LeftPanel>
-      <Layout.RightPanel>
-        <LeftHeader
-          title='CenteredAnnouncement'
-          subtitle='Demo'
-          graphicName='insert_photo'
-          graphicType='icon'
-        />
-        <CenterCard>
-          <CenterAnnouncement
-            iconName='add'
-            text="Workspaces help organize your apps. Create one."
-            contentType="nav-link"
-            action={'ROUTES.workspaces.new.path'}
-          />
-        </CenterCard>
-      </Layout.RightPanel>
-    </Fragment>
+    <ThemeProvider theme={noTopBarTheme}>
+      <AppLayout
+        SideBar={MySideBar}
+        TopBar={TopBar}>
+        <Layout.PageWithHeader Header={PageHeader}>
+          <Layout.Div height={'100%'} width={'100%'} emotion={'nectar'}>asdsad</Layout.Div>
+        </Layout.PageWithHeader>
+      </AppLayout>
+    </ThemeProvider>
   );
+}
+
+function PageHeader(){
+  return(
+    <LeftHeader
+      graphicName={'dashboard'}
+      title={'GUI Showcase Home'}
+      subtitle={'Starting point for styles and widgets'}
+      graphicType={'icon'}
+    />
+  )
+}
+
+
+function MySideBar(){
+  return(
+    <SideBar
+      title='Fixed Height'
+      subtitle='Nectar GUI Demo'
+    />
+  )
 }

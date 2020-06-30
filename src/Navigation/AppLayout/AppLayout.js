@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import React from 'react';
 
-export default function AppLayout({sideBar, topBar, children}) {
+export default function AppLayout({SideBar, TopBar, children}) {
   return (
     <FullPage>
-      { sideBar }
-      { topBar }
+      <SideBar/>
+      <TopBar/>
       <AppContent>
         { children }
       </AppContent>
@@ -21,7 +21,9 @@ const FullPage = styled.div`
 `;
 
 const AppContent = styled.div`
-  position: relative;
-  margin-top: ${p => p.theme.dims.topBarHeight};
-  margin-left: ${p => p.theme.dims.sideBarWidth};
+  position: absolute;
+  top: ${p => p.theme.dims.topBarHeight};
+  left: ${p => p.theme.dims.sideBarWidth};
+  bottom: 0;
+  right: 0;
 `;

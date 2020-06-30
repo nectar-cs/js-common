@@ -100,6 +100,7 @@ export const noTopBarTheme = {
 
 /*--------------------MIXINS---------------------*/
 
+const corners = ['top', 'right', 'bottom', 'left'];
 
 function blinking(p){
   if(p.blink){
@@ -234,9 +235,15 @@ function absolutePositioning(p, defaults){
   let total = [];
   if(props.absolute) total.push(`position: absolute;`);
   else if(props.relative) total.push(`position: relative;`);
-  ['top', 'right', 'bottom', 'left'].forEach(x => {
-    if(Object.keys(props).includes(x)) {
-      total.push(`${x}: ${coerceDim(props[x])};`);
+  else if (props.trbl){
+    const parts = props.trbl.split(" ");
+    corners.forEach((corner, i) => {
+      total.push(`${corner}: ${coerceDim(parts[i])};`);
+    });
+  }
+  corners.forEach(corner => {
+    if(Object.keys(props).includes(corner)) {
+      total.push(`${corner}: ${coerceDim(props[corner])};`);
     }
   });
   return total.join("\n");
