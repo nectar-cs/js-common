@@ -27,6 +27,5 @@ function color(pct){
 
 type Props = {
   size: number,
-  fraction: number,
-  children: [any]
+  pct: number
 }

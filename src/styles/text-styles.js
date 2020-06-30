@@ -15,6 +15,7 @@ const P = styled.p`
   ${commonFontAttrs};
   font-size: ${p => fontSize(p, '13px')};
   ${p => textPosition(p)};
+  ${p => noSpill(p)};
   line-height: ${p => lineHeight(p, '19px')};
 `;
 
@@ -61,6 +62,16 @@ function textPosition(p){
   }
 }
 
+function noSpill(p){
+  if(p.noSpill){
+    return css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `;
+  }
+}
+
 const StatusTag = styled(P)`
   padding: ${p => simplePadding(p, {horSwell: 1, vertSwell: 1})};
   text-align: center;
@@ -71,7 +82,7 @@ const StatusTag = styled(P)`
 `;
 
 const CleanStatus = styled(P)`
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
   text-transform: uppercase;
 `;
 
