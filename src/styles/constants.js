@@ -297,10 +297,9 @@ export function resolveColor(props, colorKey, backupColorKey){
 
   if(backupColorKey || colorKey){
     const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
-    return props.theme.colors[resolvedKey];
+    return props.theme.colors[resolvedKey] || colorKey || backupColorKey;
   } else return "inherit";
 }
-
 
 function contrastFontKeyForBkg(props, colorKey, backupColorKey){
   const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);
