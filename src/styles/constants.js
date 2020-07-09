@@ -57,6 +57,7 @@ export const theme = {
     [colorKeys.disabled]: "#cecece",
     [colorKeys.warning2]: "#f46036",
     comfy: "#6153cc",
+    panelGrey: "#f7f6f6",
     [colorKeys.calmTextBkg]: "#f2f7f2",
 
     [colorKeys.transparent]: "transparent",
@@ -156,8 +157,7 @@ export const commonSizeAttrs = css`
   margin-left: ${p => `${(p.ml || 0) * 12}px`};
   border-radius: ${p => borderRounding(p, {})};
   padding: ${p => simplePadding(p)};
-  width: ${p => p.width || 'auto'};
-  height: ${p => p.height || 'auto'};
+  ${p => heightAndWidth(p)}
   ${p => centered(p)};
   ${p => centerLow(p)};
   ${p => blinking(p)};
@@ -165,6 +165,19 @@ export const commonSizeAttrs = css`
   ${p => hover(p)};
   ${p => sexyShadow(p)};  
 `;
+
+export function heightAndWidth(p, defaults={}){
+  const merged = {...defaults, ...p};
+  const total = [];
+  if(merged.height)
+    total.push(`height: ${merged.height};`);
+  if(merged.width)
+    total.push(`width: ${merged.width};`);
+  if(total.length > 0)
+    return css`
+      ${total.join("\n")}
+    `;
+}
 
 export const commonFontAttrs = css`
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
@@ -233,8 +246,13 @@ function sexyShadow(p){
 function absolutePositioning(p, defaults){
   const props = {...defaults, ...p};
   let total = [];
-  if(props.absolute) total.push(`position: absolute;`);
-  else if(props.relative) total.push(`position: relative;`);
+
+  if(props.absolute)
+    total.push(`position: absolute;`);
+
+  else if(props.relative)
+    total.push(`position: relative;`);
+
   else if (props.trbl){
     const parts = props.trbl.split(" ");
     corners.forEach((corner, i) => {
@@ -246,7 +264,10 @@ function absolutePositioning(p, defaults){
       total.push(`${corner}: ${coerceDim(props[corner])};`);
     }
   });
-  return total.join("\n");
+  if(total.length > 0)
+    return css`
+      ${total.join("\n")}
+    `
 }
 
 export function noDec(p, defaults={}){

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import styled, {css} from 'styled-components'
-import {borderRounding, colorKeys, commonSizeAttrs, resolveColor, simplePadding} from './constants'
+import {borderRounding, colorKeys, commonSizeAttrs, heightAndWidth, resolveColor, simplePadding} from './constants'
 
 const halfPanelOffset = "14px";
 
@@ -25,8 +25,7 @@ const Div = styled.div`
 
 const Separator = styled.div`
   ${commonSizeAttrs};
-  width: 99%;
-  height: .5px;
+  ${p => heightAndWidth(p, {width: '99%', height: '.5px'})};
   margin-left: auto;
   margin-right: auto;
   background: ${p => resolveColor(p, p.emotion, colorKeys.cool)};
