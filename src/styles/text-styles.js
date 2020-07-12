@@ -19,6 +19,10 @@ const P = styled.p`
   line-height: ${p => lineHeight(p, '19px')};
 `;
 
+const L = styled(P)`
+  font-size: ${p => fontSize(p, '13px')};
+`;
+
 const A = styled.a`
   ${commonSizeAttrs};
   ${commonFontAttrs};
