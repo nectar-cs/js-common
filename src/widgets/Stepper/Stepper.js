@@ -7,10 +7,10 @@ import {theme} from "../..";
 
 function ballColor(index, onStepIndex){
   if(index <= onStepIndex){
-    return theme.colors.comfy;
+    return "#4a8fe7";
   }
   else {
-    return 'grey';
+    return '#d6d6d6';
   }
 }
 
@@ -41,7 +41,9 @@ export default function Stepper(props: Props){
           <BallContainer ref={ref}>
             <Ball color={ballColor(i, props.onStepIndex)}>
               <BallText>
-                { i === props.onStepIndex && '•' }
+                { i < props.onStepIndex &&
+                  <Text.Icon mt={.19} name={'done'} emotion={'contrastFont'} size={.4} bold/>
+                }
               </BallText>
             </Ball>
             <Text.P

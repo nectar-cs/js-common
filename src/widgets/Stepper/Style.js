@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Text from "../../styles/text-styles";
 
-const ballHeight = 13;
+const ballHeight = 14;
 const lineHeight = 1;
 const lineTopOffset = (ballHeight / 2) - (lineHeight / 2);
 

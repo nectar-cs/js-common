@@ -73,6 +73,7 @@ function IntroPanel(){
     { name: 'Load Wiz' },
     { name: 'Telemetry' },
     { name: 'Preflight' },
+    { name: 'Installer' },
   ];
 
   return(
