@@ -2,6 +2,7 @@ import React from "react";
 import {Layout,
   AppLayout,
   LeftHeader,
+  Stepper,
   Input,
   noTopBarTheme,
   SideBar,
@@ -21,7 +22,6 @@ export default function AppPage(){
         TopBar={TopBar}>
         <Layout.PageWithHeader Header={PageHeader}>
           <IntroPanel/>
-          <IntroPanel/>
           <ThreePanels/>
           <FormsPanel/>
         </Layout.PageWithHeader>
@@ -33,10 +33,9 @@ export default function AppPage(){
 function ThreePanels(){
   return(
     <Layout.Div mt={2} hipster flex>
-
       <Layout.Div width='100%'>
         <Layout.PanelTop mt={2} flex align='center'>
-          <Text.H4 ml={.4} mt={.1}>Small Left Panel</Text.H4>
+          <Text.H4 ml={.4} mt={.1}>Small Left</Text.H4>
         </Layout.PanelTop>
         <Layout.Div lightBorder padded halfRounded>
           <Text.Icon name='photo' ml={2}/>
@@ -69,9 +68,12 @@ function ThreePanels(){
 function IntroPanel(){
   return(
     <Layout.Div hipster>
-      <Layout.PanelTop mt={2} flex align='center'>
-        <Text.Icon name='laptop'/>
-        <Text.H4 ml={.4} mt={.1}>Simple Panel</Text.H4>
+      <Layout.PanelTop mt={2}>
+        <Layout.Div  flex align='center'>
+          <Text.Icon name='laptop'/>
+          <Text.H4 ml={.4} mt={.1}>Simple Panel</Text.H4>
+        </Layout.Div>
+        <Stepper/>
       </Layout.PanelTop>
       <Layout.Div lightBorder padded halfRounded>
         <Text.P>Standard text</Text.P>

@@ -26,6 +26,7 @@ import Gauge, {Donut} from "./widgets/Gauge/Gauge";
 import SideBar from "./Navigation/SideBar/SideBar";
 import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
+import Stepper from "./widgets/Stepper/Stepper";
 
 
 export {
@@ -61,5 +62,6 @@ export {
   Checklist,
   Pill,
   resolveColor,
+  Stepper,
   Battery
 }

@@ -7,6 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "clsx": "^1.1.0",
+    "react-use-dimensions": "^1.2.1",
     "nectar-gui": "link:..",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
