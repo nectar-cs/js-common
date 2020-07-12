@@ -52,6 +52,7 @@ const CuckIcon = styled.i`
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)} !important;
 `;
 
+
 function Icon({name, ...props}){
   return(
     <CuckIcon className='material-icons' {...props}>

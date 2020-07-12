@@ -162,7 +162,6 @@ const PageWithoutHeader = styled.div`
   ${commonSizeAttrs};
   padding: 14px 18px 0 18px;
   position: relative;
-  height: 100%;
 `;
 
 

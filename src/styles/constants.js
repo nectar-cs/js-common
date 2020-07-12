@@ -120,7 +120,20 @@ function blinking(p){
   }
 }
 
-
+function rotating(p){
+  if(p.rotating){
+    return(
+      css`
+        -webkit-animation:spin 4s linear infinite;
+        -moz-animation:spin 4s linear infinite;
+        animation:spin 4s linear infinite;
+        @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+        @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+      `
+    )
+  }
+}
 
 export function centered(p){
   if(p.centered){
@@ -163,7 +176,8 @@ export const commonSizeAttrs = css`
   ${p => blinking(p)};
   ${p => absolutePositioning(p)};
   ${p => hover(p)};
-  ${p => sexyShadow(p)};  
+  ${p => sexyShadow(p)};
+  ${p => rotating(p)};  
 `;
 
 export function heightAndWidth(p, defaults={}){
