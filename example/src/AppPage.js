@@ -66,17 +66,28 @@ function ThreePanels(){
 }
 
 function IntroPanel(){
+
+  const steps = [
+    { name: 'Namespace', done: true },
+    { name: 'Permissions' },
+    { name: 'Load Wiz' },
+    { name: 'Telemetry' },
+    { name: 'Preflight' },
+  ];
+
   return(
     <Layout.Div hipster>
       <Layout.PanelTop mt={2}>
-        <Layout.Div  flex align='center'>
+        <Layout.Div flex align='center'>
           <Text.Icon name='laptop'/>
-          <Text.H4 ml={.4} mt={.1}>Simple Panel</Text.H4>
+          <Text.H3 ml={.4} mt={.05}>Simple Panel</Text.H3>
         </Layout.Div>
-        <Stepper/>
+        <Layout.Div width='100%' mt={2.0} ml={0}>
+          <Stepper steps={steps} onStepIndex={2}/>
+        </Layout.Div>
       </Layout.PanelTop>
       <Layout.Div lightBorder padded halfRounded>
-        <Text.P>Standard text</Text.P>
+        <Text.P mt={1}>Standard text</Text.P>
         <Text.P calm mt={1}>{someLorem}</Text.P>
         <Layout.Separator mt={2.5} mb={2.5}/>
         <Text.P>Standard text</Text.P>
