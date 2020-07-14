@@ -20,6 +20,7 @@ const Div = styled.div`
   ${p => lightBorder(p)};
   ${p => halfRounded(p)};
   ${p => hipster(p)};
+  ${p => absHipster(p)};
   ${p => overflowScroll(p)};
 `;
 
@@ -200,6 +201,20 @@ function hipster(p){
     `;
   }
 }
+
+function absHipster(p){
+  if(p.absHipster){
+    return css`
+      position: absolute;
+      left: calc((100% - 870px) / 2);
+      right: calc((100% - 870px) / 2);
+      height: 70%;
+      top: 0;
+    `;
+  }
+}
+
+
 
 function center(p){
   if(p.center){
