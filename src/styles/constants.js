@@ -163,11 +163,19 @@ function centerLow(p) {
   }
 }
 
+function lilDim(value){
+  if(typeof value === 'string')
+    return value;
+  else {
+    return `${parseFloat(value) * 12}px`;
+  }
+}
+
 export const commonSizeAttrs = css`
-  margin-top: ${p => `${(p.mt || 0) * 12}px`};
-  margin-right: ${p => `${(p.mr || 0) * 12}px`};
-  margin-bottom: ${p => `${(p.mb || 0) * 12}px`};
-  margin-left: ${p => `${(p.ml || 0) * 12}px`};
+  margin-top: ${p => lilDim(p.mt)};
+  margin-right: ${p => lilDim(p.mr)};
+  margin-bottom: ${p => lilDim(p.mb)};
+  margin-left: ${p => lilDim(p.ml)};
   border-radius: ${p => borderRounding(p, {})};
   padding: ${p => simplePadding(p)};
   ${p => heightAndWidth(p)}
