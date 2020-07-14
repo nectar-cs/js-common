@@ -16,6 +16,7 @@ const P = styled.p`
   font-size: ${p => fontSize(p, '12px')};
   ${p => textPosition(p)};
   ${p => noSpill(p)};
+  ${p => underlined(p)};
   line-height: ${p => lineHeight(p, '19px')};
 `;
 
@@ -69,6 +70,14 @@ function noSpill(p){
       text-overflow: ellipsis;
       white-space: nowrap;
     `;
+  }
+}
+
+function underlined(p) {
+  if(p.underline || p.underlined){
+    return css`
+      text-decoration: underline;
+    `
   }
 }
 

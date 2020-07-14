@@ -33,9 +33,11 @@ function Decider({i, ref, children}){
 export default function Stepper(props: Props){
   const [ref, stepContainerDims] = useDimensions();
 
+  const offset = stepContainerDims ? stepContainerDims.width / 2 : 0;
+
   return(
     <Outer>
-      <Line offset={stepContainerDims.width / 2}/>
+      <Line offset={offset}/>
       <Inner>
         { props.steps.map((stepDesc, i) => (
           <BallContainer ref={ref}>

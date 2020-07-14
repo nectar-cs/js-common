@@ -14,7 +14,11 @@ export default class Tabs extends React.Component {
     const { selectedInd } = this.state;
     return (
       <Fragment>
-        <S.TabsLayout>{this.props.tabs.map((t, i) => this.renderTab(t, i))}</S.TabsLayout>
+        <S.TabsLayout>
+          {this.props.tabs.map((t, i) =>
+            this.renderTab(t, i))
+          }
+        </S.TabsLayout>
         <S.Separator />
         {this.props.children[selectedInd]}
         <br />

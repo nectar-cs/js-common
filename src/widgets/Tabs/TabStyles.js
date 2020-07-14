@@ -2,7 +2,6 @@ import styled, { keyframes } from 'styled-components';
 import { bounce } from 'react-animations';
 
 const TabsLayout = styled.div`
-  margin-top: 20px;
   max-width: 100%;
   border-style: solid;
   border-width: 0 0 1px 0;
@@ -11,7 +10,7 @@ const TabsLayout = styled.div`
 `;
 
 const Separator = styled.div`
-  height: 30px;
+  height: 00px;
 `;
 
 function animator(props) {
@@ -22,7 +21,7 @@ const Tab = styled.p`
   animation: ${props => animator(props)};
   display: inline-block;
   width: 100px;
-  padding: 10px 14px 10px 14px;
+  padding: 00px 14px 10px 0px;
   border-style: solid;
   border-width: 0 0 3px 0;
   text-align: center;
