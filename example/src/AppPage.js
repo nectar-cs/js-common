@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Layout,
   AppLayout,
   LeftHeader,
@@ -65,6 +65,30 @@ function ThreePanels(){
   )
 }
 
+function PulsarView(){
+  const [pulseEnabled, setPulseEnabled] = useState(true);
+  return(
+    <Layout.Div
+      pulse={pulseEnabled}
+      pulseColor={'red'}
+      mt={1}
+      width='150px'
+      lightBorder
+      padded
+      rounded
+    >
+      <Text.P
+        mt={1.5}
+        mb={1.5}
+        center
+        onClick={_ => setPulseEnabled(!pulseEnabled)}
+        hoverPoint>
+        Toggle
+      </Text.P>
+    </Layout.Div>
+  )
+}
+
 function IntroPanel(){
 
   const steps = [
@@ -88,8 +112,13 @@ function IntroPanel(){
         </Layout.Div>
       </Layout.PanelTop>
       <Layout.Div lightBorder padded halfRounded>
-        <Text.P mt={1}>Standard text</Text.P>
-        <Text.P calm mt={1}>{someLorem}</Text.P>
+        <Layout.Div flex>
+          <Layout.Div>
+            <Text.P mt={1}>Standard text</Text.P>
+            <Text.P calm mt={1}>{someLorem}</Text.P>
+          </Layout.Div>
+          <PulsarView/>
+        </Layout.Div>
         <Layout.Separator mt={2.5} mb={2.5}/>
         <Text.P>Standard text</Text.P>
         <Text.P calm mt={1}>{someLorem}</Text.P>

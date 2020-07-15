@@ -1,4 +1,6 @@
+// noinspection NpmUsedModulesInstalled
 import {css} from 'styled-components'
+import {lilDim, easyColor, coerceDim, hexToRgb} from "./utils";
 
 export const colorKeys = {
   primaryFont: 'primaryFont',
@@ -152,6 +154,14 @@ export function centered(p){
   }
 }
 
+export function noDec(p, defaults={}){
+  if({...defaults, ...p}['nodec']){
+    return css`
+      text-decoration: none;
+    `;
+  }
+}
+
 function centerLow(p) {
   if(p.centerLow){
     return css`
@@ -160,14 +170,6 @@ function centerLow(p) {
       left: 50%;
       transform: translateX(-50%);
     `;
-  }
-}
-
-function lilDim(value){
-  if(typeof value === 'string')
-    return value;
-  else {
-    return `${parseFloat(value) * 12}px`;
   }
 }
 
@@ -185,16 +187,15 @@ export const commonSizeAttrs = css`
   ${p => absolutePositioning(p)};
   ${p => hover(p)};
   ${p => sexyShadow(p)};
-  ${p => rotating(p)};  
+  ${p => rotating(p)};
+  ${p => pulse(p)};  
 `;
 
 export function heightAndWidth(p, defaults={}){
   const merged = {...defaults, ...p};
   const total = [];
-  if(merged.height)
-    total.push(`height: ${merged.height};`);
-  if(merged.width)
-    total.push(`width: ${merged.width};`);
+  if(merged.height) total.push(`height: ${merged.height};`);
+  if(merged.width) total.push(`width: ${merged.width};`);
   if(total.length > 0)
     return css`
       ${total.join("\n")}
@@ -250,6 +251,29 @@ function hover(p){
   return total.join("\n");
 }
 
+function pulse(p){
+  if(p.pulse){
+    const baseColor = easyColor(p, p.pulseColor, colorKeys.primaryColor);
+    console.log("BASE COLOR");
+    console.log(baseColor);
+    const color = hexToRgb(baseColor);
+    console.log("READ");
+    console.log(color);
+    const op = val => `rgba(${color.toString()}, ${val.toString()})`;
+
+    return(
+      css`
+        animation: pulse 2s infinite;
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 ${op(.5)}; }
+          70% { box-shadow: 0 0 0 5px ${op(0)}; }
+          100% { box-shadow: 0 0 0 0 ${op(0)}; }
+        }
+      `
+    );
+  }
+}
+
 function sexyShadow(p){
   if(p.sexyShadow){
     return css`
@@ -262,8 +286,6 @@ function sexyShadow(p){
     `
   }
 }
-
-
 
 function absolutePositioning(p, defaults){
   const props = {...defaults, ...p};
@@ -290,23 +312,6 @@ function absolutePositioning(p, defaults){
     return css`
       ${total.join("\n")}
     `
-}
-
-export function noDec(p, defaults={}){
-  if({...defaults, ...p}['nodec']){
-    return css`
-      text-decoration: none;
-    `;
-  }
-}
-
-function coerceDim(intOrStr){
-  if(!(typeof intOrStr === 'string'))
-    intOrStr = intOrStr.toString();
-  if(!(intOrStr.includes("%") || intOrStr.includes("px"))){
-    return `${intOrStr}px`;
-  }
-  else return intOrStr;
 }
 
 export function simplePadding(p, defaults){
