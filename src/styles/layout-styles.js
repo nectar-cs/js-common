@@ -229,11 +229,12 @@ function center(p){
 
 function lightBorder(p, defaults){
   const merged = {...(defaults || {}), ...p};
-  if(merged.lightBorder){
+  if(merged.lightBorder || merged.lightestBorder){
+    const color = merged.lightestBorder ? "#ebebeb" : "#d6d6d6"
     return css`
       border-style: solid;
       border-width: 0.5px;
-      border-color: #d6d6d6;
+      border-color: ${color};
     `;
   }
 }
