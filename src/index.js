@@ -1,5 +1,5 @@
 import Button from './styles/button-styles'
-import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme} from './styles/constants'
+import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -27,6 +27,7 @@ import SideBar from "./Navigation/SideBar/SideBar";
 import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
+import {easyColor} from "./styles/utils";
 
 
 export {
@@ -63,5 +64,7 @@ export {
   Pill,
   resolveColor,
   Stepper,
-  Battery
+  Battery,
+  sexyShadow,
+  easyColor
 }

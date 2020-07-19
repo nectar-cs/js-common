@@ -254,11 +254,7 @@ function hover(p){
 function pulse(p){
   if(p.pulse){
     const baseColor = easyColor(p, p.pulseColor, colorKeys.primaryColor);
-    console.log("BASE COLOR");
-    console.log(baseColor);
     const color = hexToRgb(baseColor);
-    console.log("READ");
-    console.log(color);
     const op = val => `rgba(${color.toString()}, ${val.toString()})`;
 
     return(
@@ -274,8 +270,8 @@ function pulse(p){
   }
 }
 
-function sexyShadow(p){
-  if(p.sexyShadow){
+export function sexyShadow(p, defaults={}){
+  if({...defaults, ...p}.sexyShadow){
     return css`
       box-shadow: 0 0.063em 
       0.313em 0 
@@ -305,7 +301,7 @@ function absolutePositioning(p, defaults){
   }
   corners.forEach(corner => {
     if(Object.keys(props).includes(corner)) {
-      total.push(`${corner}: ${coerceDim(props[corner])};`);
+      total.push(`${corner}: ${lilDim(props[corner])};`);
     }
   });
   if(total.length > 0)
