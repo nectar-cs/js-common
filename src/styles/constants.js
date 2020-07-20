@@ -194,8 +194,16 @@ export const commonSizeAttrs = css`
 export function heightAndWidth(p, defaults={}){
   const merged = {...defaults, ...p};
   const total = [];
-  if(merged.height) total.push(`height: ${merged.height};`);
-  if(merged.width) total.push(`width: ${merged.width};`);
+  if(merged.wh){
+    let width, height;
+    if(typeof merged.wh === 'string')
+      [width, height] = merged.wh.split(" ");
+    else width = merged.wh;
+    total.push(`width: ${lilDim(width)};`);
+    total.push(`height: ${lilDim(height == null ? width : height)};`);
+  }
+  if(merged.height) total.push(`height: ${lilDim(merged.height)};`);
+  if(merged.width) total.push(`width: ${lilDim(merged.width)};`);
   if(total.length > 0)
     return css`
       ${total.join("\n")}

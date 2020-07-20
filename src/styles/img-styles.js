@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {commonFontAttrs, commonSizeAttrs} from "./constants";
 
 const RoundedForRow = styled.img`
   width: 21px;
@@ -8,5 +9,13 @@ const RoundedForRow = styled.img`
   margin-right: ${p => p.push ? "12px" : '0'}
 `;
 
-const Img = { RoundedForRow };
+const _Img = styled.img`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
+`;
+
+const Img = {
+  RoundedForRow,
+  Img: _Img
+};
 export default Img;
