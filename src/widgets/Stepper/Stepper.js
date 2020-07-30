@@ -1,5 +1,5 @@
 //@flow
-import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
+import React from "react";
 import {Ball, BallContainer, BallText, Inner, Line, Outer} from "./Style";
 import Text from "./../../styles/text-styles";
 import useDimensions from "react-use-dimensions";
@@ -19,22 +19,6 @@ function ballColor(index, onStepIndex){
   }
 }
 
-function Decider({i, ref, children}){
-  if(i === 0){
-    return(
-      <BallContainer ref={ref}>
-        { children }
-      </BallContainer>
-    )
-  } else {
-    return(
-      <BallContainer>
-        { children }
-      </BallContainer>
-    )
-  }
-}
-
 export default function Stepper(props: Props){
   const [ref, stepContainerDims] = useDimensions();
 
@@ -42,7 +26,7 @@ export default function Stepper(props: Props){
 
   return(
     <Outer>
-      <Line offset={offset}/>
+      { !isNaN(offset) && <Line offset={offset}/> }
       <Inner>
         { props.steps.map((stepDesc, i) => (
           <BallContainer ref={ref}>

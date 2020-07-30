@@ -12,21 +12,18 @@ const HorizontalLine = styled.div`
   position: absolute;
   top: 50%;
   width: 100%;
-  height: 1.6px;
-  background: ${p => p.theme.colors.primaryColor};
+  height: 1.0px;
+  background: ${p => p.theme.colors.cool};
 `;
 
 const Title = styled.p`
   position: absolute;
-  top: 50%;
+  top: 47.5%;
   transform: translateY(-50%);
   display: inline-block;
-  padding: 0 17px;
+  padding: 0 13px;
   margin-left: 34px;
   background: ${p => p.theme.colors.itemBackgroundColor};
-  letter-spacing: 1px;
-  font-weight: 800;
-  text-transform: uppercase;
 `;
 
 const Toggle = styled.i`

@@ -28,7 +28,7 @@ import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
 import {easyColor} from "./styles/utils";
-
+import ErrorToast from "./widgets/ErrorToast/ErrorToast";
 
 export {
   Loader,
@@ -66,5 +66,6 @@ export {
   Stepper,
   Battery,
   sexyShadow,
+  ErrorToast,
   easyColor
 }

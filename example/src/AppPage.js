@@ -2,12 +2,14 @@ import React, {useEffect, useState} from "react";
 import {Layout,
   AppLayout,
   LeftHeader,
+  ErrorToast,
   Stepper,
   Input,
   noTopBarTheme,
   SideBar,
   TopBar,
   Text,
+  TextOverLineSubtitle,
   colorKeys
 }
   from "nectar-gui";
@@ -22,7 +24,7 @@ export default function AppPage(){
         TopBar={TopBar}>
         <Layout.PageWithHeader Header={PageHeader}>
           <IntroPanel/>
-          <ThreePanels/>
+          <TwoPanels/>
           <FormsPanel/>
         </Layout.PageWithHeader>
       </AppLayout>
@@ -30,7 +32,7 @@ export default function AppPage(){
   )
 }
 
-function ThreePanels(){
+function TwoPanels(){
   return(
     <Layout.Div mt={2} hipster flex>
       <Layout.Div width='100%'>
@@ -41,6 +43,10 @@ function ThreePanels(){
           <Text.Icon name='photo' ml={2}/>
           <Text.Icon name='photo' ml={1} emotion={colorKeys.cool}/>
           <Text.Icon size={1.2} name='photo' ml={1} emotion={colorKeys.excited}/>
+          <TextOverLineSubtitle
+            text={'Cool Title'}
+          />
+
         </Layout.Div>
       </Layout.Div>
 
@@ -137,6 +143,11 @@ function FormsPanel(){
       <Layout.Div lightBorder padded halfRounded>
         <Input.FlatInput mt={2.5} placeholder='Text input with length auto'/>
         <Input.FlatTextArea mt={2.5} placeholder='Text input with length auto'/>
+        <ErrorToast
+          errors={[
+            'This is an error that happened in the form.',
+            'This is another, because we are prone to error.'
+          ]} />
         <Input.FlatSelect mt={2.5}><option>Hey</option></Input.FlatSelect>
         <Layout.Div flex align='center'>
           <Input.Checkbox />

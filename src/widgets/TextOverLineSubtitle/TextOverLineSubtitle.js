@@ -11,15 +11,20 @@ export function TextOverLineSubtitle(props: Props) {
     <S.HorizontalBoxWrapper>
       <S.HorizontalLine />
       <S.Title>{props.text}</S.Title>
-      <S.Toggle onClick={props.callback} there={toggleThere} className="material-icons">
+      { props.withToggle && <S.Toggle
+        onClick={props.callback}
+        there={toggleThere}
+        className="material-icons">
         {toggleOrientName}
       </S.Toggle>
+      }
     </S.HorizontalBoxWrapper>
   );
 }
 
 type Props = {
   text: string,
-  toggleOpen: ?string,
-  callback: ?(() => *),
+  withToggle?: boolean,
+  toggleOpen?: string,
+  callback?: (() => *),
 };
