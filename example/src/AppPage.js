@@ -135,8 +135,8 @@ function FormsPanel(){
         <Text.H4 ml={.4} mt={.1}>Basic Inputs</Text.H4>
       </Layout.PanelTop>
       <Layout.Div lightBorder padded halfRounded>
-        <Input.Input mt={2.5} placeholder='Text input with length auto'/>
         <Input.FlatInput mt={2.5} placeholder='Text input with length auto'/>
+        <Input.FlatTextArea mt={2.5} placeholder='Text input with length auto'/>
         <Input.FlatSelect mt={2.5}><option>Hey</option></Input.FlatSelect>
         <Layout.Div flex align='center'>
           <Input.Checkbox />

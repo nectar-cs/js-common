@@ -10,7 +10,7 @@ export const MosaicBaseStyle = createGlobalStyle`
     margin: 0;
   }
 
-  h1, h2, h3, h4, h5, p, a, input, button, li, option {
+  h1, h2, h3, h4, h5, p, a, input, button, li, option, textarea {
     font-family: 'Inter', sans-serif;
     color: ${colors.primaryColor};
     margin: 0;

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {colorKeys, commonFontAttrs, commonSizeAttrs, resolveColor} from "./constants";
 import Layout from "./layout-styles";
 import clsx from 'clsx';
@@ -96,7 +96,7 @@ function Radio(props){
   )
 }
 
-const FlatInput = styled.input`
+const FlatCss = css`
   ${commonSizeAttrs};
   ${commonFontAttrs};
   background: #f7f6f6;
@@ -123,6 +123,16 @@ const FlatInput = styled.input`
     -webkit-text-fill-color: ${p => p.theme.colors.primaryFont} !important;
   }
 `;
+
+const FlatInput = styled.input`
+  ${FlatCss}
+`;
+
+const FlatTextArea = styled.textarea`
+  ${FlatCss};
+  min-width: 100%;
+  max-width: 100%;
+`
 
 const _Input = styled.input`
   ${commonSizeAttrs};
@@ -203,7 +213,8 @@ const Input = {
   Select,
   Checkbox: _Checkbox,
   FlatInput,
-  FlatSelect
+  FlatSelect,
+  FlatTextArea
 };
 
 export default Input;
