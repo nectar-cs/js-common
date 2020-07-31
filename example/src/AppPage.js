@@ -66,7 +66,6 @@ function TwoPanels(){
           </Layout.Div>
         </Layout.Div>
       </Layout.Div>
-
     </Layout.Div>
   )
 }

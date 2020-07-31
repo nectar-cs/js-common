@@ -1,8 +1,17 @@
 import React, {Fragment} from 'react'
 import styled, {css} from 'styled-components'
-import {borderRounding, colorKeys, commonSizeAttrs, heightAndWidth, resolveColor, simplePadding} from './constants'
+import {
+  borderRounding,
+  colorKeys,
+  commonSizeAttrs,
+  heightAndWidth,
+  overflowScroll,
+  resolveColor,
+  simplePadding
+} from './constants'
 
 const halfPanelOffset = "14px";
+const totalHeaderHeight = 80;
 
 const Dims = {
   containerPaddingVert: "12px",
@@ -27,6 +36,7 @@ const Div = styled.div`
 const TableFilterBox = styled(Div)`
    position: fixed;
    right: 22px;
+   top: ${totalHeaderHeight + 18}px;
    ${p => heightAndWidth(p, {width: '260px'})};
 `;
 
@@ -41,7 +51,7 @@ const Separator = styled.div`
 const applier = dim => `${dim} ${dim} 0 0`;
 
 const PanelTop = styled(Div)`
-  background: ${p => resolveColor(p, p.emotion, '#f7f6f6')};
+  background: ${p => resolveColor(p, p.emotion, '#fafafa')};
   padding: ${p => simplePadding(p, {padded: true})};
   border-radius: ${p => borderRounding(p, {sofa: true, applier})};
   ${p => lightBorder(p, {lightBorder: true})};
@@ -124,8 +134,6 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 
 
 
-
-const totalHeaderHeight = 80;
 
 const FixedHeaderWrapper = styled.div`
   position: relative;
@@ -242,14 +250,6 @@ function lightBorder(p, defaults={}){
       border-width: 0.5px;
       border-color: ${color};
     `;
-  }
-}
-
-function overflowScroll(p, defaults={}){
-  if({...defaults, ...p}.scroll){
-    return css`
-      overflow: scroll;
-    `
   }
 }
 

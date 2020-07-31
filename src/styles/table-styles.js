@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from "styled-components";
-import {commonSizeAttrs} from "./constants";
+import {commonSizeAttrs, overflowScroll} from "./constants";
 
 const borderWidth = "1.0px";
 
@@ -22,6 +22,7 @@ const _Table = styled(props => (
   </table>
 ))`
     ${commonSizeAttrs};
+    max-height: 100%;
     width: ${p => p.width || '100%'};
     border-collapse: collapse;
     th, td {

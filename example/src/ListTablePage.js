@@ -7,56 +7,64 @@ import {
   Text,
   Table,
   TopBar,
-  noTopBarTheme
-
+  noTopBarTheme,
+  TableWithFilter
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 
-export default function ListTablePage(){
+const faker = require('faker');
+const data = genData();
 
+export default function ListTablePage(){
   return(
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
         SideBar={MySideBar}
         TopBar={TopBar}>
         <Layout.PageWithHeader Header={PageHeader}>
-          <FilterBox/>
-          <MainTable/>
+          <TableWithFilter
+            data={data}
+            ItemRow={DummyRow}
+            ItemHeader={DummyHeader}
+          />
         </Layout.PageWithHeader>
       </AppLayout>
     </ThemeProvider>
   )
 }
 
-function FilterBox(){
+function genData() {
+  return [...Array(40).keys()].map(i => ({
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    status: faker.hacker.noun()
+  }));
+}
+
+function DummyHeader(){
   return(
-    <Layout.TableFilterBox>
-      <Layout.PanelTop sofa>
-        <Text.P>Table Filter Box</Text.P>
-      </Layout.PanelTop>
-      <Layout.Div halfRounded height={'400px'} padded sofa lightBorder>
-        <p>yo</p>
-      </Layout.Div>
-    </Layout.TableFilterBox>
+    <tr>
+      <th><Text.P>Full Name</Text.P></th>
+      <th><Text.P>Email</Text.P></th>
+      <th><Text.P>Status</Text.P></th>
+      <th><Text.P>Email</Text.P></th>
+    </tr>
   )
 }
 
-function MainTable(){
+function DummyRow({item}){
+  const {name, lastName, status, email} = item;
   return(
-    <Layout.Div width={'calc(100% - 330px)'} ml={2}>
-      <Layout.PanelTop>
-        <Text.H3>Main List Table</Text.H3>
-      </Layout.PanelTop>
-      <Layout.Div halfRounded height={'1400px'} padded sofa lightBorder>
-        <Table.Table>
-        </Table.Table>
-      </Layout.Div>
-    </Layout.Div>
+    <tr>
+      <td><Text.P>{name}</Text.P></td>
+      <td><Text.P>{email}</Text.P></td>
+      <td><Text.StatusTag
+        vertSwell={.5}>
+        {status}
+      </Text.StatusTag></td>
+      <td><Text.P>{}</Text.P></td>
+    </tr>
   )
-}
-
-function TableRow({}){
-
 }
 
 function PageHeader(){

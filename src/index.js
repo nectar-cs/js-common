@@ -29,6 +29,7 @@ import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
 import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast/ErrorToast";
+import TableWithFilter from './widgets/TableWithFilter/TableWithFilter'
 
 export {
   Loader,
@@ -49,6 +50,7 @@ export {
   Table,
   LeftHeader,
   TextOverLineSubtitle,
+  TableWithFilter,
   ColoredLabelList,
   EasyListItem,
   CenterAnnouncement,

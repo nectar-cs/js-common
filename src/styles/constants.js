@@ -191,25 +191,6 @@ export const commonSizeAttrs = css`
   ${p => pulse(p)};  
 `;
 
-export function heightAndWidth(p, defaults={}){
-  const merged = {...defaults, ...p};
-  const total = [];
-  if(merged.wh){
-    let width, height;
-    if(typeof merged.wh === 'string')
-      [width, height] = merged.wh.split(" ");
-    else width = merged.wh;
-    total.push(`width: ${lilDim(width)};`);
-    total.push(`height: ${lilDim(height == null ? width : height)};`);
-  }
-  if(merged.height) total.push(`height: ${lilDim(merged.height)};`);
-  if(merged.width) total.push(`width: ${lilDim(merged.width)};`);
-  if(total.length > 0)
-    return css`
-      ${total.join("\n")}
-    `;
-}
-
 export const commonFontAttrs = css`
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
   background: ${p => resolveColor(p, p.bkgEmotion, null)};
@@ -230,6 +211,25 @@ export const commonFontAttrs = css`
 
 
 /*--------------------UTILS---------------------*/
+
+export function heightAndWidth(p, defaults={}){
+  const merged = {...defaults, ...p};
+  const total = [];
+  if(merged.wh){
+    let width, height;
+    if(typeof merged.wh === 'string')
+      [width, height] = merged.wh.split(" ");
+    else width = merged.wh;
+    total.push(`width: ${lilDim(width)};`);
+    total.push(`height: ${lilDim(height == null ? width : height)};`);
+  }
+  if(merged.height) total.push(`height: ${lilDim(merged.height)};`);
+  if(merged.width) total.push(`width: ${lilDim(merged.width)};`);
+  if(total.length > 0)
+    return css`
+      ${total.join("\n")}
+    `;
+}
 
 function hacker(p, defaults={}){
   const merged = {...defaults, ...p};
@@ -372,6 +372,14 @@ export function contrastFontForBkg(props, colorKey, backupColorKey){
 
 function textVisibility(p){
   return p.invisible ? "hidden" : "visible";
+}
+
+export function overflowScroll(p, defaults={}){
+  if({...defaults, ...p}.scroll){
+    return css`
+      overflow: scroll;
+    `
+  }
 }
 
 function textWeight(p){
