@@ -178,7 +178,7 @@ export const commonSizeAttrs = css`
   margin-right: ${p => lilDim(p.mr)};
   margin-bottom: ${p => lilDim(p.mb)};
   margin-left: ${p => lilDim(p.ml)};
-  border-radius: ${p => borderRounding(p, {})};
+  border-radius: ${p => borderRounding(p)};
   padding: ${p => simplePadding(p)};
   ${p => heightAndWidth(p)}
   ${p => centered(p)};
@@ -318,7 +318,7 @@ function absolutePositioning(p, defaults){
     `
 }
 
-export function simplePadding(p, defaults){
+export function simplePadding(p, defaults={}){
   const [vertMultiplier, horMultiplier] = [5, 14];
   const merged = {...defaults, ...p};
   const vertSwell = merged.vertSwell || merged.swell || (merged.padded ? 1.8 : null);
@@ -328,11 +328,11 @@ export function simplePadding(p, defaults){
   return `${vertPadding} ${horPadding}`;
 }
 
-export function borderRounding(p, defaults){
+export function borderRounding(p, defaults={}){
   const defaultApplier = x => x;
-  const merged = {...p, ...defaults};
-  const funky = (merged.funky ? 25 : null);
-  const sofa = (merged.sofa ? 8 : null);
+  const merged = {...defaults, ...p};
+  const funky = merged.funky ? 25 : null;
+  const sofa = merged.sofa ? 8 : null;
   const swell = funky || sofa || merged.rounding;
   const finalValue = swell !== null ? `${swell}px` : 'default';
   return (merged.applier || defaultApplier)(finalValue);

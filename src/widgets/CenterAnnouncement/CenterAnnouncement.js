@@ -57,8 +57,8 @@ export default class CenterAnnouncement extends React.Component<Props> {
 
 type Props = {
   iconName: string,
-  text: ?string,
-  action: ?any,
-  light: ?boolean,
+  text?: string,
+  action?: any,
+  light?: boolean,
   contentType: 'action' | 'nav-link' | 'children'
 };

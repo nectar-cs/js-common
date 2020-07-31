@@ -24,6 +24,12 @@ const Div = styled.div`
   ${p => overflowScroll(p)};
 `;
 
+const TableFilterBox = styled(Div)`
+   position: fixed;
+   right: 22px;
+   ${p => heightAndWidth(p, {width: '260px'})};
+`;
+
 const Separator = styled.div`
   ${commonSizeAttrs};
   ${p => heightAndWidth(p, {width: '99%', height: '.5px'})};
@@ -37,7 +43,7 @@ const applier = dim => `${dim} ${dim} 0 0`;
 const PanelTop = styled(Div)`
   background: ${p => resolveColor(p, p.emotion, '#f7f6f6')};
   padding: ${p => simplePadding(p, {padded: true})};
-  border-radius: ${p => borderRounding(p, {rounding: 6, applier})};
+  border-radius: ${p => borderRounding(p, {sofa: true, applier})};
   ${p => lightBorder(p, {lightBorder: true})};
   border-style: solid;
   border-width: .5px .5px 0 .5px;
@@ -174,15 +180,15 @@ const PageWithoutHeader = styled.div`
 
 
 
-function displayType(p){
-  if(p.flex) return "flex";
+function displayType(p, defaults={}){
+  if({...defaults, ...p}.flex) return "flex";
   else if(p.iFlex) return "inline-flex";
   else if(p.wrapped) return "inline-block";
   else return "block";
 }
 
-function central(p){
-  if(p.absCentered){
+function central(p, defaults={}){
+  if({...defaults, ...p}.absCentered){
     return css`
       position: absolute;
       display: inline-block;
@@ -192,8 +198,8 @@ function central(p){
   }
 }
 
-function hipster(p){
-  if(p.hipster){
+function hipster(p, defaults={}){
+  if({...defaults, ...p}.hipster){
     return css`
       width:  870px;
       margin-left: auto;
@@ -202,8 +208,8 @@ function hipster(p){
   }
 }
 
-function absHipster(p){
-  if(p.absHipster){
+function absHipster(p, defaults={}){
+  if({...defaults, ...p}.absHipster){
     return css`
       position: absolute;
       left: calc((100% - 870px) / 2);
@@ -227,8 +233,8 @@ function center(p){
   }
 }
 
-function lightBorder(p, defaults){
-  const merged = {...(defaults || {}), ...p};
+function lightBorder(p, defaults={}){
+  const merged = {...defaults, ...p};
   if(merged.lightBorder || merged.lightestBorder){
     const color = merged.lightestBorder ? "#ebebeb" : "#d6d6d6"
     return css`
@@ -239,16 +245,16 @@ function lightBorder(p, defaults){
   }
 }
 
-function overflowScroll(p){
-  if(p.scroll){
+function overflowScroll(p, defaults={}){
+  if({...defaults, ...p}.scroll){
     return css`
       overflow: scroll;
     `
   }
 }
 
-function halfRounded(p){
-  if(p.halfRounded){
+function halfRounded(p, defaults={}){
+  if({...defaults, ...p}.halfRounded){
     const applier = x => `0 0 ${x} ${x}`;
     return css`
       border-radius: ${p => borderRounding(p, {rounding: 4, applier})};
@@ -281,6 +287,7 @@ const Layout = {
   Panel,
   PageWithHeader,
   Separator,
-  UnderHeaderContainer
+  UnderHeaderContainer,
+  TableFilterBox
 };
 export default Layout;
