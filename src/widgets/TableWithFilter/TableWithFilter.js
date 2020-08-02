@@ -27,12 +27,9 @@ function FilterBox(){
 
 function MainTable({data, ItemRow, ItemHeader}){
   return(
-    <Layout.Div width={'calc(100% - 330px)'} ml={2} height={'100%'}>
-      <Layout.PanelTop height={'62px'}>
-        <Text.H3>Applications Index</Text.H3>
-      </Layout.PanelTop>
-      <Layout.Div halfRounded padded sofa lightBorder height='83%' scroll >
-        <Table.Table mt={-4.37}>
+    <Layout.Div width={'calc(100% - 330px)'} ml={2}>
+      <Layout.Div padded sofa lightBorder>
+        <Table.Table mt={0}>
           <ItemHeader/>
           { data.map((item, i) => (
             <ItemRow
