@@ -138,7 +138,7 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 const FixedHeaderWrapper = styled.div`
   position: relative;
   top: 0;
-  left: 0;
+  left: 20px;
   height: ${totalHeaderHeight}px;
   right: 0;
   padding: 0 0 0 12px;

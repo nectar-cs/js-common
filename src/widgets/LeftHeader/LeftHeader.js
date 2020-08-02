@@ -12,7 +12,7 @@ export class LeftHeader extends React.Component<Props> {
         { this.renderGraphic() }
         <S.TextBox>
           <Text.H1>{title}</Text.H1>
-          <Text.P mt={0.55}>{subtitle}</Text.P>
+          <Text.P mt={0.55} calm>{subtitle}</Text.P>
         </S.TextBox>
       </S.Container>
     )
