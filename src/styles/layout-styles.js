@@ -37,7 +37,7 @@ const TableFilterBox = styled(Div)`
    position: fixed;
    right: 22px;
    top: ${totalHeaderHeight + 18}px;
-   ${p => heightAndWidth(p, {width: '260px'})};
+   ${p => heightAndWidth(p, {width: '290px'})};
 `;
 
 const Separator = styled.div`

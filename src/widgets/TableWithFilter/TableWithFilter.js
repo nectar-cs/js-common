@@ -3,7 +3,7 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
 import Table from "../../styles/table-styles";
-
+import SortableHeaderCell from "../SortableHeaderCell";
 
 function FilterBox(){
   return(
@@ -25,12 +25,23 @@ function FilterBox(){
   )
 }
 
-function MainTable({data, ItemRow, ItemHeader}){
+function MainTable(props: Props){
+  const { data, ItemRow, headerData } = props;
+  const { sorterChangedCallback, currentSorter } = props;
+
   return(
-    <Layout.Div width={'calc(100% - 330px)'} ml={2}>
+    <Layout.Div width={'calc(100% - 340px)'} ml={2}>
       <Layout.Div padded sofa lightBorder>
         <Table.Table mt={0}>
-          <ItemHeader/>
+          { headerData.map(headerInfo => (
+            <SortableHeaderCell
+              key={headerInfo.name}
+              id={headerInfo.sortKey}
+              name={headerInfo.name}
+              currentSorter={currentSorter}
+              callback={sorterChangedCallback}
+            />
+          )) }
           { data.map((item, i) => (
             <ItemRow
               item={item}
@@ -46,11 +57,7 @@ function MainTable({data, ItemRow, ItemHeader}){
 export default function TableWithFilter(props: Props){
   return(
     <Layout.Div height={'100%'}>
-      <MainTable
-        data={props.data}
-        ItemHeader={props.ItemHeader}
-        ItemRow={props.ItemRow}
-      />
+      <MainTable {...props}/>
       <FilterBox/>
     </Layout.Div>
   )
@@ -59,6 +66,12 @@ export default function TableWithFilter(props: Props){
 type Props = {
   data: Array<any>,
   ItemRow: any,
-  ItemHeader: any,
+  headerData: Array<HeaderData>,
+  sorterChangedCallback: void => void,
+  currentSorter: any
 }
 
+type HeaderData = {
+  sortKey?: string,
+  name: string
+}
