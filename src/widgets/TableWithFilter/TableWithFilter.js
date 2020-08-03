@@ -3,7 +3,7 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
 import Table from "../../styles/table-styles";
-import SortableHeaderCell from "../SortableHeaderCell";
+import SortableHeaderCell from "./SortableHeaderCell";
 
 function FilterBox(){
   return(
@@ -33,15 +33,17 @@ function MainTable(props: Props){
     <Layout.Div width={'calc(100% - 340px)'} ml={2}>
       <Layout.Div padded sofa lightBorder>
         <Table.Table mt={0}>
-          { headerData.map(headerInfo => (
-            <SortableHeaderCell
-              key={headerInfo.name}
-              id={headerInfo.sortKey}
-              name={headerInfo.name}
-              currentSorter={currentSorter}
-              callback={sorterChangedCallback}
-            />
-          )) }
+          <tr>
+            { headerData.map(headerInfo => (
+              <SortableHeaderCell
+                key={headerInfo.name}
+                id={headerInfo.sortKey}
+                name={headerInfo.name}
+                currentSorter={currentSorter}
+                callback={sorterChangedCallback}
+              />
+            )) }
+          </tr>
           { data.map((item, i) => (
             <ItemRow
               item={item}

@@ -9,7 +9,7 @@ import {Layout,
   SideBar,
   TopBar,
   Text,
-  TextOverLineSubtitle,
+  TagPool,
   colorKeys
 }
   from "nectar-gui";
@@ -43,10 +43,6 @@ function TwoPanels(){
           <Text.Icon name='photo' ml={2}/>
           <Text.Icon name='photo' ml={1} emotion={colorKeys.cool}/>
           <Text.Icon size={1.2} name='photo' ml={1} emotion={colorKeys.excited}/>
-          <TextOverLineSubtitle
-            text={'Cool Title'}
-          />
-
         </Layout.Div>
       </Layout.Div>
 
@@ -63,6 +59,11 @@ function TwoPanels(){
               Unswelled Tag
             </Text.StatusTag>
             <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
+            <TagPool
+              callback={() => null}
+              optionsHash={{}}
+              defaultsArray={['asd']}
+            />
           </Layout.Div>
         </Layout.Div>
       </Layout.Div>

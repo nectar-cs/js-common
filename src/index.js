@@ -30,6 +30,7 @@ import Stepper from "./widgets/Stepper/Stepper";
 import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast/ErrorToast";
 import TableWithFilter from './widgets/TableWithFilter/TableWithFilter'
+import TagPool from "./widgets/TagPool/TagPool";
 
 export {
   Loader,
@@ -51,6 +52,7 @@ export {
   LeftHeader,
   TextOverLineSubtitle,
   TableWithFilter,
+  TagPool,
   ColoredLabelList,
   EasyListItem,
   CenterAnnouncement,

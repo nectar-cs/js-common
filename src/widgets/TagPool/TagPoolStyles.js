@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {Micon} from "./../../widgets/Micon/Micon";
+import Text from "./../../styles/text-styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -78,7 +78,7 @@ export const Listbox = styled('ul')`
 export const Tag = styled(({ label, onDelete, ...props }) => (
   <div {...props}>
     <p>{label}</p>
-    <Micon onClick={onDelete} n='close' size='xs' lm={0.4}/>
+    <Text.Icon onClick={onDelete} name='close' size={.4} lm={0.4}/>
   </div>
 ))`
   display: flex;

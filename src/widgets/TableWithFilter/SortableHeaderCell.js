@@ -1,12 +1,13 @@
 import React from "react";
-import {Layout, Text} from "nectar-gui";
+import Text from "../../styles/text-styles";
+import Layout from "../../styles/layout-styles";
 
 export default function SortableHeaderCell(props: Props){
   const { id, name, callback, currentSorter } = props;
   const isCrt = !!id && id === currentSorter.attr;
 
   return(
-    <td>
+    <th>
       <Layout.Div
         flex
         align='center'
@@ -25,7 +26,7 @@ export default function SortableHeaderCell(props: Props){
           ml={.2}
         />
       </Layout.Div>
-    </td>
+    </th>
   )
 }
 
