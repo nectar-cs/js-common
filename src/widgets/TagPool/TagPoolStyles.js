@@ -6,36 +6,44 @@ export const Container = styled.div`
   width: 100%;
   border-width: 0 0 1px 0;
   border-style: solid;
-  &:not(:nth-child(1)) {
-    margin-left: 18px;
-  }
+  padding: 0;
+  margin: 0;
+  outline: none;
 `;
 
 export const InputWrapper = styled('div')`
-  width: 100%;
-  border-color: ${p => p.theme.colors.primaryColor};
+  background: #f7f6f6;
+  border-style: none;
+  width: ${p => p.width || '100%'};
+  box-sizing: border-box;
+  padding: 10px 10px;
+  border-radius: ${p => p.theme.dims.borderRadius};
   display: inline-flex;
   flex-wrap: wrap;
+  outline: none;
+  box-shadow: none;
 
-  & input {
+  input {
     padding: 0;
-    margin-top: 0;
-    line-height: 26px;
+    margin: 0;
+    box-shadow: none;
     flex-grow: 1;
-    border: 0;
-    outline: 0;
+    border: none;
+    border-radius: ${p => p.theme.dims.borderRadius};
+    outline: none;
+    background: transparent;
   }
 `;
 
-export const Listbox = styled('ul')`
+export const ListBox = styled('ul')`
   margin: 2px 0 0;
   padding: 0;
   position: absolute;
   list-style: none;
-  background-color: #fff;
   overflow: auto;
   max-height: 250px;
   z-index: 1;
+  outline: none;
 
   & li {
     padding: 5px 12px;
@@ -78,7 +86,14 @@ export const Listbox = styled('ul')`
 export const Tag = styled(({ label, onDelete, ...props }) => (
   <div {...props}>
     <p>{label}</p>
-    <Text.Icon onClick={onDelete} name='close' size={.4} lm={0.4}/>
+    <Text.Icon
+      onClick={onDelete}
+      calm
+      name='close'
+      size={.5}
+      ml={0.4}
+      mt={.12}
+    />
   </div>
 ))`
   display: flex;
@@ -94,6 +109,10 @@ export const Tag = styled(({ label, onDelete, ...props }) => (
   outline: 0;
   overflow: hidden;
 
+  &:hover{
+    cursor: default;
+  }
+  
   &:focus {
     border-color: #40a9ff;
     background-color: #e6f7ff;

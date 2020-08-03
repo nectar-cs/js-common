@@ -4,22 +4,23 @@ import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
 import Table from "../../styles/table-styles";
 import SortableHeaderCell from "./SortableHeaderCell";
+import TagPoolFilter from "./TagPoolFilter";
 
-function FilterBox(){
+function FilterBox({filterData}){
   return(
     <Layout.TableFilterBox>
       <Layout.PanelTop sofa>
         <Text.H3>Filters</Text.H3>
       </Layout.PanelTop>
       <Layout.Div halfRounded height={'400px'} padded sofa lightBorder>
-        <Layout.Div mt={1.5}>
-          <Text.P calm>Name</Text.P>
-          <Input.FlatInput mt={.4}/>
-        </Layout.Div>
-        <Layout.Div mt={1.5}>
-          <Text.P calm>Chart Version</Text.P>
-          <Input.FlatInput mt={.4}/>
-        </Layout.Div>
+        { (filterData || []).map(filter => (
+          <Layout.Div mt={1.5}>
+            <Text.P calm mb={.8}>{filter.name}</Text.P>
+            { filter.type === 'tags' && <TagPoolFilter
+              choices={filter.data}
+            /> }
+          </Layout.Div>
+        )) }
       </Layout.Div>
     </Layout.TableFilterBox>
   )
@@ -60,7 +61,7 @@ export default function TableWithFilter(props: Props){
   return(
     <Layout.Div height={'100%'}>
       <MainTable {...props}/>
-      <FilterBox/>
+      <FilterBox filterData={props.filterData}/>
     </Layout.Div>
   )
 }
@@ -69,8 +70,15 @@ type Props = {
   data: Array<any>,
   ItemRow: any,
   headerData: Array<HeaderData>,
+  filterData: Array<FilterData>,
   sorterChangedCallback: void => void,
   currentSorter: any
+}
+
+type FilterData = {
+  type: string,
+  name: string,
+  data: any
 }
 
 type HeaderData = {

@@ -22,7 +22,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/page' component={AppPage}/>
-            <Route exact path='/list-table-page' component={ListTablePage}/>
+            <Route exact path='/list-table' component={ListTablePage}/>
             <Route exact path='/layout' component={LayoutExpo}/>
             <Route exact path='/basics' component={TextAndInputsExpo}/>
             <Route exact path='/widgets' component={WidgetsDemo}/>

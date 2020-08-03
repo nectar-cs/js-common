@@ -59,12 +59,18 @@ function TwoPanels(){
               Unswelled Tag
             </Text.StatusTag>
             <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
-            <TagPool
-              callback={() => null}
-              optionsHash={{}}
-              defaultsArray={['asd']}
-            />
           </Layout.Div>
+          <TagPool
+            callback={() => null}
+            optionsHash={{
+              a: 'Tag Aye',
+              b: 'Tag Bee',
+              x: 'Tag One',
+              y: "Tag Two",
+              z: "Tag Three"
+            }}
+            defaultsArray={['a', 'b', 'x', 'y', 'z']}
+          />
         </Layout.Div>
       </Layout.Div>
     </Layout.Div>

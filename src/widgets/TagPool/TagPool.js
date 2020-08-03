@@ -1,6 +1,6 @@
 //@flow
 import {useAutocomplete} from "@material-ui/lab";
-import {Container, InputWrapper, Listbox, Tag} from "./TagPoolStyles";
+import {Container, InputWrapper, ListBox, Tag} from "./TagPoolStyles";
 import React, {Fragment} from "react";
 
 export default function TagPool(props: Props){
@@ -35,13 +35,13 @@ export default function TagPool(props: Props){
         </InputWrapper>
       </Fragment>
       {groupedOptions.length > 0 ? (
-        <Listbox {...getListboxProps()}>
+        <ListBox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
               <span>{humanizer(option)}</span>
             </li>
           ))}
-        </Listbox>
+        </ListBox>
       ) : null}
     </Container>
   )

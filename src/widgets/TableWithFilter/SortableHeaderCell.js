@@ -4,7 +4,8 @@ import Layout from "../../styles/layout-styles";
 
 export default function SortableHeaderCell(props: Props){
   const { id, name, callback, currentSorter } = props;
-  const isCrt = !!id && id === currentSorter.attr;
+  const { attr: sorterAttr, dir: sorterDir } = currentSorter || {};
+  const isCrt = !!id && id === sorterAttr;
 
   return(
     <th>
@@ -20,7 +21,7 @@ export default function SortableHeaderCell(props: Props){
         </Text.P>
         <Text.Icon
           emotion={isCrt ? 'primaryColor' : 'transparent'}
-          name={currentSorter.dir === 'asc' ? 'north' : 'south'}
+          name={sorterDir === 'asc' ? 'north' : 'south'}
           size={.68}
           mt={-.15}
           ml={.2}

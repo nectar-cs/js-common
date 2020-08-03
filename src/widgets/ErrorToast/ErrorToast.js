@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
-import {colorKeys} from "../..";
+import {colorKeys} from "./../../styles/constants";
 
 function severityEmotion(severity){
   if(severity === 'error')

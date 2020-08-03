@@ -5,7 +5,6 @@ import {
   AppLayout,
   SideBar,
   Text,
-  Table,
   TopBar,
   noTopBarTheme,
   TableWithFilter
@@ -25,7 +24,8 @@ export default function ListTablePage(){
           <TableWithFilter
             data={data}
             ItemRow={DummyRow}
-            ItemHeader={DummyHeader}
+            headerData={headerData}
+            filterData={filterData}
           />
         </Layout.PageWithHeader>
       </AppLayout>
@@ -34,26 +34,26 @@ export default function ListTablePage(){
 }
 
 function genData() {
-  return [...Array(40).keys()].map(i => ({
+  return [...Array(40).keys()].map(_ => ({
     name: faker.name.findName(),
     email: faker.internet.email(),
     status: faker.hacker.noun()
   }));
 }
 
-function DummyHeader(){
-  return(
-    <tr>
-      <th><Text.P>Full Name</Text.P></th>
-      <th><Text.P>Email</Text.P></th>
-      <th><Text.P>Status</Text.P></th>
-      <th><Text.P>Email</Text.P></th>
-    </tr>
-  )
-}
+const filterData = [
+  { type: 'tags', name: 'Full Name', data: { fuck: 'you' } }
+]
+
+const headerData = [
+  { name: 'Full Name' },
+  { name: 'Email' },
+  { name: 'Status' },
+  { name: 'Address' }
+]
 
 function DummyRow({item}){
-  const {name, lastName, status, email} = item;
+  const {name, status, email} = item;
   return(
     <tr>
       <td><Text.P>{name}</Text.P></td>
