@@ -3,6 +3,7 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
 import Table from "../../styles/table-styles";
+import Button from "../../styles/button-styles";
 import SortableHeaderCell from "./SortableHeaderCell";
 import TagPoolFilter from "./TagPoolFilter";
 
@@ -12,12 +13,20 @@ function FilterBox({filterData}){
       <Layout.PanelTop sofa>
         <Text.H3>Filters</Text.H3>
       </Layout.PanelTop>
-      <Layout.Div halfRounded height={'400px'} padded sofa lightBorder>
+      <Layout.Div
+        halfRounded
+        scroll
+        style={{minHeight: '400px', maxHeight: '80%', paddingBottom: '40px'}}
+        padded
+        sofa
+        lightBorder>
         { (filterData || []).map(filter => (
           <Layout.Div mt={1.5}>
-            <Text.P calm mb={.8}>{filter.name}</Text.P>
+            <Text.P calm mb={.6}>{filter.name}</Text.P>
             { filter.type === 'tags' && <TagPoolFilter
               choices={filter.data}
+            /> }
+            { filter.type === 'string' && <Input.FlatInput
             /> }
           </Layout.Div>
         )) }

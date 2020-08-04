@@ -2,23 +2,25 @@ import React from 'react'
 import styled from "styled-components";
 import Text from "./../../styles/text-styles";
 
+const tagHeight = 24;
+
 export const Container = styled.div`
   width: 100%;
   border-width: 0 0 1px 0;
   border-style: solid;
-  padding: 0;
   margin: 0;
   outline: none;
 `;
 
-export const InputWrapper = styled('div')`
+export const InputWrapper = styled.div`
   background: #f7f6f6;
   border-style: none;
   width: ${p => p.width || '100%'};
   box-sizing: border-box;
-  padding: 10px 10px;
+  min-height: ${tagHeight + 10}px;
   border-radius: ${p => p.theme.dims.borderRadius};
   display: inline-flex;
+  align-items: center;
   flex-wrap: wrap;
   outline: none;
   box-shadow: none;
@@ -35,7 +37,7 @@ export const InputWrapper = styled('div')`
   }
 `;
 
-export const ListBox = styled('ul')`
+export const ListBox = styled.ul`
   margin: 2px 0 0;
   padding: 0;
   position: absolute;
@@ -98,7 +100,7 @@ export const Tag = styled(({ label, onDelete, ...props }) => (
 ))`
   display: flex;
   align-items: center;
-  height: 24px;
+  height: ${tagHeight}px;
   margin: 2px;
   line-height: 22px;
   background-color: #fafafa;
@@ -106,7 +108,7 @@ export const Tag = styled(({ label, onDelete, ...props }) => (
   border-radius: 2px;
   box-sizing: content-box;
   padding: 0 4px 0 10px;
-  outline: 0;
+  outline: none;
   overflow: hidden;
 
   &:hover{

@@ -33,17 +33,31 @@ export default function ListTablePage(){
   )
 }
 
+function randEl(array){
+  return array[Math.floor((Math.random()*array.length))];
+}
+
 function genData() {
   return [...Array(40).keys()].map(_ => ({
     name: faker.name.findName(),
     email: faker.internet.email(),
-    status: faker.hacker.noun()
+    status: randEl(Object.values(statuses()))
   }));
 }
 
 const filterData = [
-  { type: 'tags', name: 'Full Name', data: { fuck: 'you' } }
+  { type: 'string', name: "Full Name" },
+  { type: 'tags', name: 'Status', data: statuses() },
 ]
+
+function statuses(){
+  return {
+    positive: 'Positive',
+    negative: 'Negative',
+    neutral: 'Neutral',
+    pending: 'Pending'
+  }
+}
 
 const headerData = [
   { name: 'Full Name' },
