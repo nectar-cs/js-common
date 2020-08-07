@@ -29,7 +29,7 @@ export default function Stepper(props: Props){
       { !isNaN(offset) && <Line offset={offset}/> }
       <Inner>
         { props.steps.map((stepDesc, i) => (
-          <BallContainer ref={ref}>
+          <BallContainer ref={ref} onClick={_ => props.setStep(i)}>
             <Ball color={ballColor(i, props.onStepIndex)}>
               <BallText>
                 { i < props.onStepIndex &&
@@ -58,5 +58,6 @@ export default function Stepper(props: Props){
 
 type Props = {
   steps: [any],
-  onStepIndex: number
+  onStepIndex: number,
+  setStep?: number => void
 };
