@@ -88,6 +88,8 @@ function underlined(p) {
 
 const StatusTag = styled(P)`
   padding: ${p => simplePadding(p, {horSwell: 1, vertSwell: 1})};
+  padding-top: 3px;
+  padding-bottom: 1px;
   text-align: center;
   display: inline-block;
   border-radius: ${p => borderRounding(p, {rounding: 4})};
