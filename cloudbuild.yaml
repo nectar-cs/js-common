@@ -30,6 +30,5 @@ steps:
       - '
          docker run
          --env NPM_TOKEN=$(cat npm-token.txt)
-         publisher
-         npm publish; exit 0
+         publisher; exit 0
         '
