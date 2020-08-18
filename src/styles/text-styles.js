@@ -9,6 +9,7 @@ import {
   resolveColor, simplePadding
 } from './constants'
 import { Link } from 'react-router-dom';
+import {easyColor} from "./utils";
 
 const P = styled.p`
   ${commonSizeAttrs};
@@ -97,6 +98,15 @@ const StatusTag = styled(P)`
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
 `;
 
+const BorderedStatusTag = styled(StatusTag)`
+  padding: 2.5px 8px 0.5px 8px;
+  border-width: 1px;
+  background: ${p => easyColor(p, p.bkgEmotion, 'transparent')};
+  border-color: ${p => easyColor(p, 'calmTextBkg', 'calmTextBkg')};
+  border-style: solid;
+  color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
+`;
+
 const CleanStatus = styled(P)`
   letter-spacing: 0.2px;
   text-transform: uppercase;
@@ -166,6 +176,7 @@ const Text = {
   CleanStatus,
   StatusTag,
   BoldRef,
+  BorderedStatusTag,
   ContrastCode
 };
 
