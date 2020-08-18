@@ -3,4 +3,5 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY . .
 RUN yarn
+RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > /root/.npmrc
 RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > /app/.npmrc
