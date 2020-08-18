@@ -1,8 +1,9 @@
+//@flow
 import React from 'react';
 import S from './LeftHeaderStyles'
 import Text from "../../styles/text-styles";
 
-export class LeftHeader extends React.Component<Props> {
+export class LeftHeader extends React.Component {
 
   render(){
     const { title, subtitle } = this.props;

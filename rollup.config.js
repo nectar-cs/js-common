@@ -1,39 +1,53 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
-import svgr from '@svgr/rollup'
+import { terser } from 'rollup-plugin-terser'
+import size from 'rollup-plugin-size'
+import externalDeps from 'rollup-plugin-peer-deps-external'
+import replace from '@rollup/plugin-replace'
+import babel from "@rollup/plugin-babel";
 
-import pkg from './package.json'
 
-export default {
-  input: 'src/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      // sourcemap: true,
+const external = ['react', 'styled-components']
+
+const globals = {
+  react: "React",
+  'styled-components': 'styled'
+  // classnames: "classNames"
+};
+
+export default  [
+  {
+    input: 'src/index.js',
+    output: {
+      name: 'NectarGUI',
+      file: 'dist/nectar-gui.development.js',
+      format: 'umd',
+      sourcemap: true,
+      globals,
     },
-    {
-      file: pkg.module,
-      format: 'es',
-      // sourcemap: true,
-    }
-  ],
-  plugins: [
-    external(),
-    postcss({
-      modules: true
-    }),
-    url(),
-    svgr(),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
-    }),
-    resolve(),
-    commonjs()
-  ]
-}
+    external,
+    plugins: [
+      replace({ 'process.env.NODE_ENV': `"development"`, delimiters: ['', ''] }),
+      babel(),
+      externalDeps(),
+    ],
+  },
+  {
+    input: 'src/index.js',
+    output: {
+      name: 'NectarGUI',
+      file: 'dist/nectar-gui.production.min.js',
+      format: 'umd',
+      sourcemap: true,
+      globals,
+    },
+    external,
+    plugins: [
+      replace({ 'process.env.NODE_ENV': `"production"`, delimiters: ['', ''] }),
+      babel(),
+      externalDeps(),
+      terser(),
+      size({
+        writeFile: false,
+      }),
+    ],
+  },
+]
