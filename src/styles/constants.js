@@ -188,7 +188,8 @@ export const commonSizeAttrs = css`
   ${p => hover(p)};
   ${p => sexyShadow(p)};
   ${p => rotating(p)};
-  ${p => pulse(p)};  
+  ${p => pulse(p)};
+  ${p => floating(p)};    
 `;
 
 export const commonFontAttrs = css`
@@ -229,6 +230,15 @@ export function heightAndWidth(p, defaults={}){
     return css`
       ${total.join("\n")}
     `;
+}
+
+function floating(p, defaults={}){
+  const merged = {...defaults, ...p};
+  if(merged.flt){
+    return css`
+      float: ${merged.flt};
+    `;
+  }
 }
 
 function hacker(p, defaults={}){
