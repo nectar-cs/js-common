@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {commonFontAttrs, commonSizeAttrs, fontSize} from "../../styles/constants";
 
 const HorizontalBoxWrapper = styled.div`
   position: relative;
@@ -17,6 +18,8 @@ const HorizontalLine = styled.div`
 `;
 
 const Title = styled.p`
+  ${commonSizeAttrs};
+  ${commonFontAttrs};
   position: absolute;
   top: 47.5%;
   transform: translateY(-50%);

@@ -6,8 +6,7 @@ import {
   SideBar,
   Text,
   TopBar,
-  noTopBarTheme,
-  TableWithFilter
+  noTopBarTheme
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 
@@ -21,12 +20,6 @@ export default function ListTablePage(){
         SideBar={MySideBar}
         TopBar={TopBar}>
         <Layout.PageWithHeader Header={PageHeader}>
-          <TableWithFilter
-            data={data}
-            ItemRow={DummyRow}
-            headerData={headerData}
-            filterData={filterData}
-          />
         </Layout.PageWithHeader>
       </AppLayout>
     </ThemeProvider>

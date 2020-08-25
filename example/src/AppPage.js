@@ -6,6 +6,7 @@ import {Layout,
   Stepper,
   Input,
   noTopBarTheme,
+  TextOverLineSubtitle,
   SideBar,
   TopBar,
   Text,
@@ -155,6 +156,7 @@ function FormsPanel(){
             'This is another, because we are prone to error.'
           ]} />
         <Input.FlatSelect mt={2.5}><option>Hey</option></Input.FlatSelect>
+        <TextOverLineSubtitle text={'Text Over Line'} fontSize='14px' mt={.12} />
         <Layout.Div flex align='center'>
           <Input.Checkbox />
           <Text.P>Checkbox</Text.P>
