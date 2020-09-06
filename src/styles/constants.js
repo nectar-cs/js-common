@@ -48,6 +48,7 @@ export const theme = {
     [colorKeys.excited]: "#fc395b",
     [colorKeys.nectar]: "#fc395b",
     [colorKeys.cool]: "#009384ff",
+    'cool2': "#038074",
 
     [colorKeys.contentBackgroundColor]: "#f5f7fb",
     [colorKeys.itemBackgroundColor]: "#FFFFFF",
@@ -60,6 +61,9 @@ export const theme = {
     [colorKeys.warning2]: "#f46036",
     comfy: "#6153cc",
     panelGrey: "#f7f6f6",
+    grey2: "#fafafa",
+    grey3: "#DCDCDC",
+    grey4: "#e7e1e1",
     [colorKeys.calmTextBkg]: "#f2f7f2",
 
     [colorKeys.transparent]: "transparent",

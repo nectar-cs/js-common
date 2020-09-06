@@ -4,6 +4,7 @@ import {Layout,
   LeftHeader,
   ErrorToast,
   Stepper,
+  Button,
   Input,
   noTopBarTheme,
   TextOverLineSubtitle,
@@ -51,16 +52,9 @@ function TwoPanels(){
 
       <Layout.Div width='100%'>
         <Layout.PanelTop mt={2} flex align='center'>
-          <Text.H4 ml={.4} mt={.1}>Small Right Panel</Text.H4>
+          <Text.H4 ml={.4} mt={.1}>Small Right</Text.H4>
         </Layout.PanelTop>
         <Layout.Div lightBorder padded halfRounded>
-          <Layout.Div flex align='center'>
-            <Text.StatusTag>Status Tag</Text.StatusTag>
-            <Text.StatusTag blink ml={1} vertSwell={.2} emotion='nectar'>
-              Unswelled Tag
-            </Text.StatusTag>
-            <Text.CleanStatus ml={1}>Clean Status</Text.CleanStatus>
-          </Layout.Div>
           <TagPool
             callback={() => null}
             optionsHash={{
@@ -79,7 +73,7 @@ function TwoPanels(){
 }
 
 function PulsarView(){
-  const [pulseEnabled, setPulseEnabled] = useState(true);
+  const [pulseEnabled, setPulseEnabled] = useState(false);
   return(
     <Layout.Div
       pulse={pulseEnabled}
@@ -96,7 +90,7 @@ function PulsarView(){
         center
         onClick={_ => setPulseEnabled(!pulseEnabled)}
         hoverPoint>
-        Toggle
+        Click me!
       </Text.P>
     </Layout.Div>
   )
@@ -124,7 +118,7 @@ function IntroPanel(){
           <Stepper steps={steps} onStepIndex={2}/>
         </Layout.Div>
       </Layout.PanelTop>
-      <Layout.Div lightBorder padded halfRounded>
+      <Layout.PanelBot>
         <Layout.Div flex>
           <Layout.Div>
             <Text.P mt={1}>Standard text</Text.P>
@@ -133,9 +127,28 @@ function IntroPanel(){
           <PulsarView/>
         </Layout.Div>
         <Layout.Separator mt={2.5} mb={2.5}/>
-        <Text.P>Standard text</Text.P>
-        <Text.P calm mt={1}>{someLorem}</Text.P>
-      </Layout.Div>
+        <Layout.Div flex>
+          <Text.StatusTag>Status Tag</Text.StatusTag>
+          <Text.StatusTag blink ml={1} emotion='cool'>Blinker</Text.StatusTag>
+          <Text.BorderedStatusTag ml={1}>Bordered</Text.BorderedStatusTag>
+        </Layout.Div>
+        <Layout.Div mt={1.2} flex align='center'>
+          <Button.Button>Normal Btn</Button.Button>
+          <Button.Button ml={1} bkgEmotion='cool'>Normal Btn</Button.Button>
+          <Button.ClearButton ml={1}>
+            <Layout.Div flex align='center'>
+              <Text.Icon name='laptop' size={.7} mr={.5} calm/>
+              Clear
+            </Layout.Div>
+          </Button.ClearButton>
+          <Button.ClearButton ml={1} borderEmotion='nectar' emotion='nectar'>
+            Clear
+          </Button.ClearButton>
+          <Button.ClearButton ml={1} disabled>
+            Clear Disabled
+          </Button.ClearButton>
+        </Layout.Div>
+      </Layout.PanelBot>
     </Layout.Div>
   )
 }

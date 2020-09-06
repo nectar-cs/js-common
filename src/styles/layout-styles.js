@@ -33,6 +33,12 @@ const Div = styled.div`
   ${p => overflowScroll(p)};
 `;
 
+const PanelBot = styled(Div)`
+  ${p => lightBorder(p, {lightBorder: true})};
+  ${p => halfRounded(p, {halfRounded: true, rounding: { sofa: true }})};
+  padding: ${p => simplePadding(p, {padded: true})};
+`;
+
 const TableFilterBox = styled(Div)`
    position: fixed;
    right: 22px;
@@ -254,10 +260,13 @@ function lightBorder(p, defaults={}){
 }
 
 function halfRounded(p, defaults={}){
-  if({...defaults, ...p}.halfRounded){
+  const merged = {...defaults, ...p};
+  if(merged.halfRounded){
+    const roundingDefaults = { rounding: 4 };
+    const roundingProps = { ...roundingDefaults, ...merged.rounding }
     const applier = x => `0 0 ${x} ${x}`;
     return css`
-      border-radius: ${p => borderRounding(p, {rounding: 4, applier})};
+      border-radius: ${p => borderRounding(p, {...roundingProps, applier})};
     `;
   }
 }
@@ -288,6 +297,7 @@ const Layout = {
   PageWithHeader,
   Separator,
   UnderHeaderContainer,
-  TableFilterBox
+  TableFilterBox,
+  PanelBot
 };
 export default Layout;

@@ -21,18 +21,21 @@ function ballColor(index, onStepIndex){
 
 export default function Stepper(props: Props){
   const [ref, stepContainerDims] = useDimensions();
-
   const offset = stepContainerDims ? stepContainerDims.width / 2 : 0;
+  const { steps, setStep, onStepIndex } = props;
 
   return(
     <Outer>
       { !isNaN(offset) && <Line offset={offset}/> }
       <Inner>
-        { props.steps.map((stepDesc, i) => (
-          <BallContainer ref={ref} onClick={_ => props.setStep(i)}>
-            <Ball color={ballColor(i, props.onStepIndex)}>
+        { steps.map((stepDesc, i) => (
+          <BallContainer
+            key={i}
+            ref={ref}
+            onClick={_ => setStep && setStep(i)}>
+            <Ball color={ballColor(i, onStepIndex)}>
               <BallText>
-                { i < props.onStepIndex &&
+                { i < onStepIndex &&
                   <Text.Icon
                     mt={.19}
                     name={'done'}
@@ -45,7 +48,7 @@ export default function Stepper(props: Props){
             </Ball>
             <Text.P
               calm
-              bold={i === props.onStepIndex}
+              bold={i === onStepIndex}
               mt={.76}>
               {stepDesc.name}
             </Text.P>

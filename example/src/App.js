@@ -12,21 +12,17 @@ import ListTablePage from "./ListTablePage";
 export default class App extends Component {
 
   render () {
-    const GCP_BASE = 'https://storage.googleapis.com/';
-    const IMG_BASE = GCP_BASE + 'nectar-mosaic-public/images';
-    const nectar = `${IMG_BASE}/nectar_mark_light.png`;
-
     return (
       <ThemeProvider theme={theme}>
         <MosaicBaseStyle/>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/page' component={AppPage}/>
-            <Route exact path='/list-table' component={ListTablePage}/>
-            <Route exact path='/layout' component={LayoutExpo}/>
-            <Route exact path='/basics' component={TextAndInputsExpo}/>
-            <Route exact path='/widgets' component={WidgetsDemo}/>
-            <Route path='/' component={TextAndInputsExpo}/>
+            <Route path='/page' component={AppPage}/>
+            <Route path='/list-table' component={ListTablePage}/>
+            <Route path='/layout' component={LayoutExpo}/>
+            <Route path='/basics' component={TextAndInputsExpo}/>
+            <Route path='/widgets' component={WidgetsDemo}/>
+            <Route exact path='/' component={AppPage}/>
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

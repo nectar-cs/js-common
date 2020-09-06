@@ -2,22 +2,22 @@ import styled from 'styled-components'
 
 import {
   borderRounding,
-  colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
   contrastFontForBkg,
-  resolveColor,
   simplePadding
 } from './constants'
+import {easyColor, shadeColor} from "./utils";
 
 const _Button = styled.button`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  background: ${p => resolveColor(p, p.bkgEmotion, colorKeys.primaryColor)};
-  color: ${p => contrastFontForBkg(p, p.bkgEmotion, colorKeys.primaryColor)};
+  background: ${p => easyColor(p, p.bkgEmotion, 'primaryColor')};
+  color: ${p => contrastFontForBkg(p, p.bkgEmotion, 'primaryColor')};
   border-radius: ${p => borderRounding(p, {rounding: 5})};
-  padding: ${p => simplePadding(p, { vertSwell: 1.5, horSwell: 1.3 })};
+  padding: ${p => simplePadding(p, { vertSwell: 1.3, horSwell: 1.3 })};
   border-width: 0;
+  border-style: solid;
   text-align: center;
 
   &:focus{
@@ -25,13 +25,32 @@ const _Button = styled.button`
   }
   &:hover {
     cursor: pointer;
+    background: ${p => shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), 10)};
   }
   &:active{
-    background: ${p => resolveColor(p, p.emotion, colorKeys.pleasant)};
+    background: ${p => easyColor(p, p.emotion, 'pleasant')};
   }
   &:disabled {
-    background: ${p => p.theme.colors.primaryFontLess};
+    background: ${p => 'grey'};
     cursor: default;
+  }
+`;
+
+const ClearButton = styled(_Button)`
+  border-width: 1px;
+  background: ${p => easyColor(p, p.bkgEmotion, 'grey2')};
+  color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
+  border-radius: ${p => borderRounding(p, {rounding: 5})};
+  border-color: ${p => easyColor(p, p.borderEmotion, 'grey3')};
+  
+  &:hover {
+    background: ${p => easyColor(p, p.bkgEmotion, 'grey3')};
+  }
+  
+  &:disabled {
+    background: ${p => easyColor(p, p.bkgEmotion, 'grey4')};
+    cursor: default;
+    border-width: 0;
   }
 `;
 
@@ -61,6 +80,7 @@ const FloatingPlus = styled.button`
 const Button = {
   Button: _Button,
   BigButton,
+  ClearButton,
   FloatingPlus
 };
 
