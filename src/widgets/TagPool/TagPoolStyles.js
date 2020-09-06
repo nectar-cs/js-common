@@ -6,7 +6,7 @@ const tagHeight = 24;
 
 export const Container = styled.div`
   width: 100%;
-  border-width: 0 0 1px 0;
+  border-width: 0 0 0 0;
   border-style: solid;
   margin: 0;
   outline: none;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const InputWrapper = styled.div`
   background: #f7f6f6;
-  border-style: none;
+  border: none;
   width: ${p => p.width || '100%'};
   box-sizing: border-box;
   min-height: ${tagHeight + 10}px;
