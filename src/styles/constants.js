@@ -61,6 +61,7 @@ export const theme = {
     [colorKeys.warning2]: "#f46036",
     comfy: "#6153cc",
     panelGrey: "#f7f6f6",
+    panelGrey2: '#fafafa',
     grey2: "#fafafa",
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",

@@ -10,6 +10,8 @@ import {
   simplePadding
 } from './constants'
 
+import {easyColor} from "./utils";
+
 const halfPanelOffset = "14px";
 const totalHeaderHeight = 80;
 
@@ -57,7 +59,7 @@ const Separator = styled.div`
 const applier = dim => `${dim} ${dim} 0 0`;
 
 const PanelTop = styled(Div)`
-  background: ${p => resolveColor(p, p.emotion, '#fafafa')};
+  background: ${p => easyColor(p, p.emotion, 'panelGrey2')};
   padding: ${p => simplePadding(p, {padded: true})};
   border-radius: ${p => borderRounding(p, {sofa: true, applier})};
   ${p => lightBorder(p, {lightBorder: true})};
