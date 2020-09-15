@@ -217,7 +217,8 @@ function central(p, defaults={}){
 function hipster(p, defaults={}){
   if({...defaults, ...p}.hipster){
     return css`
-      width:  870px;
+      width: auto;
+      max-width:  870px;
       margin-left: auto;
       margin-right: auto;
     `;
