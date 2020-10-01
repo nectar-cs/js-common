@@ -20,7 +20,12 @@ export const MosaicBaseStyle = createGlobalStyle`
   }
   
   p, a, input, select, li{ 
-    font-size: 13px; 
+    font-size: 13px;
+  }
+
+  p, a { 
+    font-size: 12px;
+    line-height: 19px;
   }
   
   a{
