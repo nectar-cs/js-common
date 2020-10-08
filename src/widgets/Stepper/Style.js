@@ -33,7 +33,7 @@ export const BallContainer = styled.div`
 export const Ball = styled.div`
   width: ${ballHeight}px;
   height: ${ballHeight}px;
-  z-index: 100;
+  z-index: 1;
   background: ${p => p.color};
   border-radius: 50%;
   box-sizing: border-box;
