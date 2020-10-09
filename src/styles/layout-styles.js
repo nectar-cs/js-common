@@ -148,8 +148,7 @@ const FixedHeaderWrapper = styled.div`
   top: 0;
   height: ${totalHeaderHeight}px;
   right: 0;
-  padding: 0 0 0 32px;
-  box-sizing: border-box;
+  padding: 0 0 0 52px;
 `;
 
 const UnderHeaderContainer = styled.div`
