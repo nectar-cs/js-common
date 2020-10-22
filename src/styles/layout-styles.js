@@ -251,7 +251,8 @@ function center(p){
 function lightBorder(p, defaults={}){
   const merged = {...defaults, ...p};
   if(merged.lightBorder || merged.lightestBorder){
-    const color = merged.lightestBorder ? "#ebebeb" : "#d6d6d6"
+    const lightest = !!merged.lightestBorder;
+    const color = p.theme.colors[lightest ? 'lightestGrey' : 'lightGrey'];
     return css`
       border-style: solid;
       border-width: 0.5px;

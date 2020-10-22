@@ -62,6 +62,8 @@ export const theme = {
     comfy: "#6153cc",
     panelGrey: "#f7f6f6",
     panelGrey2: '#fafafa',
+    lightestGrey: "#ebebeb",
+    lightGrey: "#d6d6d6",
     grey2: "#fafafa",
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",
