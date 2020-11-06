@@ -3,10 +3,10 @@ import React from 'react';
 import S from './Styles';
 
 export function TextOverLineSubtitle(props: Props) {
-  const { text, ...rest } = props;
+  const { text, lineProps, ...rest } = props;
   return (
     <S.HorizontalBoxWrapper>
-      <S.HorizontalLine />
+      <S.HorizontalLine {...(lineProps || {})}/>
       <S.Title {...rest}>
         {text}
       </S.Title>
