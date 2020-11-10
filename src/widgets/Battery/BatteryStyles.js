@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React from "react";
+import {easyColor} from "./../../styles/utils";
 
 const widthToHeightRatio = .64;
 
@@ -41,7 +42,7 @@ const BatteryPart = styled.div`
 `;
 
 const OuterBattery = styled(BatteryPart)`
-  background: ${p => p.theme.colors.primaryColor};
+  background: ${p => easyColor(p, p.bkgEmotion, 'primaryColor')};
 `;
 
 const InnerBattery = styled(BatteryPart)`
