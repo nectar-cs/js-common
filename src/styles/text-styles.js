@@ -51,7 +51,7 @@ const CuckIcon = styled.i`
   ${commonSizeAttrs};
   ${commonFontAttrs};
   font-size: ${p => iconSize(p)};
-  color: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)} !important;
+  color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
 `;
 
 

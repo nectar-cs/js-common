@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Layout,
   AppLayout,
-  LeftHeader,
   ErrorToast,
+  FlexHeader,
   Stepper,
   Button,
   Input,
@@ -186,7 +186,7 @@ function FormsPanel(){
 
 function PageHeader(){
   return(
-    <LeftHeader
+    <FlexHeader
       graphicName={'dashboard'}
       title={'GUI Showcase Home'}
       subtitle={'Starting point for styles and widgets'}
