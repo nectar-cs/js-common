@@ -12,7 +12,7 @@ const gTypes = {
 
 function MaterialIcon(props){
   return(
-    <S.Icon className='material-icons'>
+    <S.Icon className='material-icons' {...(props.graphicProps || {})}>
       { props.graphicName }
     </S.Icon>
   )
