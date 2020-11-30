@@ -49,7 +49,7 @@ export const theme = {
     [colorKeys.nectar]: "#fc395b",
     [colorKeys.cool]: "#009384ff",
     'cool2': "#038074",
-
+    'milGreen': "#698F3F",
     [colorKeys.contentBackgroundColor]: "#f5f7fb",
     [colorKeys.itemBackgroundColor]: "#FFFFFF",
 
