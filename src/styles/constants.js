@@ -258,6 +258,22 @@ function hacker(p, defaults={}){
 
 function hover(p){
   let total = [];
+  if(p.hoverEmotion){
+    total.push(`
+      &:hover{
+        color: ${easyColor(p, p.hoverEmotion)} !important;
+      }
+    `)
+  }
+
+  if(p.hoverBkgEmotion){
+    total.push(`
+      &:hover{
+        background: ${easyColor(p, p.hoverBkgEmotion)};
+      }
+    `)
+  }
+
   if(p.hoverPoint){
     total.push(`
       &:hover{

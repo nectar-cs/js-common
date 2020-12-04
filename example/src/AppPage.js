@@ -43,8 +43,20 @@ function TwoPanels(){
         </Layout.PanelTop>
         <Layout.Div lightBorder padded halfRounded>
           <Text.Icon name='photo' ml={2}/>
-          <Text.Icon name='photo' ml={1} emotion={colorKeys.cool}/>
-          <Text.Icon size={1.2} name='photo' ml={1} emotion={colorKeys.excited}/>
+          <Text.Icon
+            name='photo'
+            ml={1}
+            emotion={colorKeys.cool}
+            hoverBkgEmotion={'black'}
+          />
+          <Text.Icon
+            size={1.2}
+            name='photo'
+            ml={1}
+            emotion={colorKeys.excited}
+            hoverEmotion={'cool'}
+            hoverPoint
+          />
         </Layout.Div>
       </Layout.Div>
 
