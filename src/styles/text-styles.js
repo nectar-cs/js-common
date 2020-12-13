@@ -14,7 +14,6 @@ import {easyColor} from "./utils";
 const P = styled.p`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  font-size: ${p => fontSize(p, '12px')};
   ${p => textPosition(p)};
   ${p => noSpill(p)};
   ${p => underlined(p)};
@@ -50,6 +49,7 @@ const H4 = styled(P)`
 const CuckIcon = styled.i`
   ${commonSizeAttrs};
   ${commonFontAttrs};
+  font-family: 'Material Icons', serif;
   font-size: ${p => iconSize(p)};
   color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
 `;

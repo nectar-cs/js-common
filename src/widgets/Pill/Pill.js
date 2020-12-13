@@ -18,8 +18,8 @@ function Letters({letters}){
 }
 
 export default function Pill(props: Props){
-  const length = (props.letters || []).length;
-  const emotion = props.emotion || colorKeys.calmTextBkg;
+  const length = props.letters.length;
+  const emotion = props.emotion;
 
   return(
     <div>
@@ -37,6 +37,11 @@ export default function Pill(props: Props){
 
 type Props = {
   text: string,
-  emotion: string,
+  emotion?: string,
   letters: Array<string>
+}
+
+Pill.defaultProps = {
+  emotion: colorKeys.calmTextBkg,
+  letters: []
 }

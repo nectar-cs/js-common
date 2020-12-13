@@ -4,7 +4,7 @@ import {
   borderRounding,
   commonFontAttrs,
   commonSizeAttrs,
-  contrastFontForBkg,
+  contrastFontForBkg, hover,
   simplePadding
 } from './constants'
 import {easyColor, shadeColor} from "./utils";
@@ -19,14 +19,12 @@ const _Button = styled.button`
   border-width: 0;
   border-style: solid;
   text-align: center;
+  ${p => hover(p, {hoverBkgEmotion: 'primaryBkg'})};
 
   &:focus{
     outline: transparent;
   }
-  &:hover {
-    cursor: pointer;
-    background: ${p => shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), 10)};
-  }
+
   &:active{
     background: ${p => easyColor(p, p.emotion, 'pleasant')};
   }
@@ -42,10 +40,7 @@ const ClearButton = styled(_Button)`
   color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
   border-radius: ${p => borderRounding(p, {rounding: 5})};
   border-color: ${p => easyColor(p, p.borderEmotion, 'grey3')};
-  
-  &:hover {
-    background: ${p => easyColor(p, p.bkgEmotion, 'grey3')};
-  }
+  ${p => hover(p, {hoverBkgEmotion: 'grey3'})};
   
   &:disabled {
     background: ${p => easyColor(p, p.bkgEmotion, 'grey4')};

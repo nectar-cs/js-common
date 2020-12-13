@@ -7,10 +7,11 @@ import {
   heightAndWidth,
   overflowScroll,
   resolveColor,
-  simplePadding
+  simplePadding,
+  borderStyles
 } from './constants'
 
-import {easyColor} from "./utils";
+import {easyColor, lilDim} from "./utils";
 
 const halfPanelOffset = "14px";
 const totalHeaderHeight = 80;
@@ -28,7 +29,7 @@ const Div = styled.div`
   border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
-  ${p => lightBorder(p)};
+  ${p => borderStyles(p)};
   ${p => halfRounded(p)};
   ${p => hipster(p)};
   ${p => absHipster(p)};
@@ -36,7 +37,7 @@ const Div = styled.div`
 `;
 
 const PanelBot = styled(Div)`
-  ${p => lightBorder(p, {lightBorder: true})};
+  ${p => borderStyles(p, {lightBorder: true})};
   ${p => halfRounded(p, {halfRounded: true, rounding: { sofa: true }})};
   padding: ${p => simplePadding(p, {padded: true})};
 `;
@@ -48,12 +49,12 @@ const TableFilterBox = styled(Div)`
    ${p => heightAndWidth(p, {width: '290px'})};
 `;
 
-const Separator = styled.div`
+const Separator = styled(Div)`
   ${commonSizeAttrs};
   ${p => heightAndWidth(p, {width: '99%', height: '.5px'})};
   margin-left: auto;
   margin-right: auto;
-  background: ${p => resolveColor(p, p.emotion, colorKeys.cool)};
+  background: ${p => easyColor(p, p.emotion, colorKeys.cool)};
 `;
 
 const applier = dim => `${dim} ${dim} 0 0`;
@@ -62,7 +63,7 @@ const PanelTop = styled(Div)`
   background: ${p => easyColor(p, p.emotion, 'panelGrey2')};
   padding: ${p => simplePadding(p, {padded: true})};
   border-radius: ${p => borderRounding(p, {sofa: true, applier})};
-  ${p => lightBorder(p, {lightBorder: true})};
+  ${p => borderStyles(p, {lightBorder: true})};
   border-style: solid;
   border-width: .5px .5px 0 .5px;
   border-color: #d6d6d6;
@@ -180,9 +181,13 @@ function PageWithHeader({Header, children}){
 
 const PageWithoutHeader = styled.div`
   ${commonSizeAttrs};
-  padding: 14px 18px 0 18px;
-  position: relative;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 16px 0 0 18px;
+  box-sizing: content-box;
 `;
 
 
@@ -215,10 +220,12 @@ function central(p, defaults={}){
 function hipster(p, defaults={}){
   if({...defaults, ...p}.hipster){
     return css`
-      width: auto;
-      max-width:  870px;
       margin-left: auto;
       margin-right: auto;
+      ${p => heightAndWidth(p, {
+        width: 'auto',
+        maxWidth: '870px'
+      })}
     `;
   }
 }
@@ -244,19 +251,6 @@ function center(p){
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
-    `;
-  }
-}
-
-function lightBorder(p, defaults={}){
-  const merged = {...defaults, ...p};
-  if(merged.lightBorder || merged.lightestBorder){
-    const lightest = !!merged.lightestBorder;
-    const color = p.theme.colors[lightest ? 'lightestGrey' : 'lightGrey'];
-    return css`
-      border-style: solid;
-      border-width: 0.5px;
-      border-color: ${color};
     `;
   }
 }

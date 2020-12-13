@@ -3,7 +3,6 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
 import Table from "../../styles/table-styles";
-import Button from "../../styles/button-styles";
 import SortableHeaderCell from "./SortableHeaderCell";
 import TagPoolFilter from "./TagPoolFilter";
 

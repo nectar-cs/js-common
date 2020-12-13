@@ -1,13 +1,22 @@
 import React from 'react'
 import styled, {css} from "styled-components";
-import {colorKeys, commonFontAttrs, commonSizeAttrs, resolveColor} from "./constants";
+import {
+  borderRounding,
+  borderStyles,
+  colorKeys,
+  commonFontAttrs,
+  commonSizeAttrs,
+  heightAndWidth,
+  resolveColor
+} from "./constants";
 import Layout from "./layout-styles";
 import clsx from 'clsx';
 import {checkboxStyles} from "./material-trash";
 import Checkbox from "@material-ui/core/Checkbox";
+import {easyColor} from "./utils";
 
 
-const borderWidth = p => .5;
+const borderWidth = p => 1;
 const borderWidthFocused = p => borderWidth(p) + .5;
 const paddingLr = 10;
 const paddingTb = 6.4;
@@ -99,12 +108,14 @@ function Radio(props){
 const FlatCss = css`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  background: #f7f6f6;
+  border-radius: ${p => borderRounding(p, {rounding: '6'})};
+  ${p => heightAndWidth(p, { width: '100%' })};
+  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
+  background: ${p => easyColor(p, p.bkgEmotion, "#f7f6f6")};
+  
   border-style: none;
-  width: ${p => p.width || '100%'};
   box-sizing: border-box;
   padding: 10px 10px;
-  border-radius: ${p => inputBorderRadius(p)};
   
   &::placeholder{
    color: ${p => p.theme.colors.primaryFontLess}
@@ -130,22 +141,24 @@ const FlatInput = styled.input`
 
 const FlatTextArea = styled.textarea`
   ${FlatCss};
-  min-width: 100%;
-  max-width: 100%;
+  ${p => heightAndWidth(p, {
+    minWidth: '100%',
+    minHeight: '100%'
+  })};
 `
 
 const _Input = styled.input`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  background: transparent;
+  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
+  background: ${p => easyColor(p, p.bkgEmotion, "transparent")};
+  ${p => borderStyles(p, { borderColor: 'hipBlue' })};
+  border-radius: ${p => borderRounding(p, {rounding: '6'})};
   border-style: solid;
-  width: ${p => p.width || '100%'};
-  border-color: ${p => inputBorderColor(p, "#f7f6f6")};
   border-width: ${p => borderWidth(p)}px;
   padding: ${paddingTb}px ${paddingLr}px;
-  border-radius: ${p => inputBorderRadius(p)};
   box-sizing: border-box;
-  color: ${p => p.theme.colors.primaryFont};
+  
   &::placeholder{
    color: ${p => p.theme.colors.primaryFontLess}
   }
@@ -153,7 +166,7 @@ const _Input = styled.input`
     outline: transparent;
     padding: ${p => paddingFocused(p)};
     border-width: ${p => borderWidthFocused(p)}px;
-    border-color: ${p => inputBorderColor(p, colorKeys.cool)};
+    ${p => borderStyles(p, {borderColor: 'cool'})};
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -193,17 +206,6 @@ const FlatSelect = styled(props => (
   </FlatInput>
 ))`
 `;
-
-function inputBorderRadius(p){
-  if(p.flat) return "0px";
-  else return p.theme.dims.borderRadius;
-}
-
-function inputBorderColor(p, def=colorKeys.secondaryFont){
-  const color = resolveColor(p, def, def);
-  if(p.flat) return `transparent transparent ${color} transparent`;
-  else return color;
-}
 
 const Input = {
   Line,

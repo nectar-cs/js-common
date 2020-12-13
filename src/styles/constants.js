@@ -13,6 +13,7 @@ export const colorKeys = {
   primaryFontLess: 'primaryFontLess',
   contrastColor: 'contrastColor',
   contrastFont: 'contrastFont',
+  contrastFontSecondary: 'contrastFont',
   secondaryColor: 'secondaryColor',
 
   contentBackgroundColor: 'contentBackgroundColor',
@@ -39,6 +40,7 @@ export const theme = {
     [colorKeys.primaryFont]: "#233142",
     [colorKeys.secondaryFont]: "#5c6070",
     [colorKeys.contrastFont]: "#FFFFFF",
+    [colorKeys.contrastFont]: "#FFFFFF",
 
     [colorKeys.primaryColor]: "#233142",
     [colorKeys.primaryFontLess]: "#5c6070",
@@ -59,11 +61,18 @@ export const theme = {
     [colorKeys.warning2]: "#f46036",
     [colorKeys.calmTextBkg]: "#f2f7f2",
     [colorKeys.transparent]: "transparent",
+    ruby: "#D81E5B",
+    tart: "#F0544F",
+    coffee: "#3A3335",
     comfy: "#6153cc",
+    calmBeige: "#F5F1ED",
+    soothing: "#f7f6f6",
+    primaryBkg: "#2a2b2a",
     panelGrey: "#f7f6f6",
     panelGrey2: '#fafafa',
     lightestGrey: "#ebebeb",
     lightGrey: "#d6d6d6",
+    hipBlue: "#0c63e7",
     grey2: "#fafafa",
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",
@@ -72,12 +81,18 @@ export const theme = {
   },
 
   dims: {
-    topBarHeight: "50px",
+    topBarHeight: "55px",
     sideBarWidth: "220px",
     borderRadius: "6px",
     borderWidth: "1px",
     inputBorderWidth: 1.3
   },
+
+  font: {
+    family: "'Inter', sans-serif",
+    size: '12px',
+    promoSize: '16px'
+  }
 };
 
 export const inverseTheme = {
@@ -103,6 +118,20 @@ export const noTopBarTheme = {
     topBarHeight: 0
   }
 }
+
+export const noSideBarTheme = {
+  ...theme,
+  dims: {
+    ...theme.dims,
+    sideBarWidth: 0,
+  },
+  font: {
+    ...theme.font,
+    size: '13px',
+    family: "'Lato', sans-serif",
+  }
+}
+
 
 
 
@@ -199,6 +228,7 @@ export const commonSizeAttrs = css`
 `;
 
 export const commonFontAttrs = css`
+  font-family: ${p => resolveFontFam(p)};
   color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
   background: ${p => resolveColor(p, p.bkgEmotion, null)};
   font-weight: ${p => textWeight(p)};
@@ -219,6 +249,12 @@ export const commonFontAttrs = css`
 
 /*--------------------UTILS---------------------*/
 
+
+export function resolveFontFam(p){
+  return `${p.fontFam || p.theme.font.family}`;
+}
+
+
 export function heightAndWidth(p, defaults={}){
   const merged = {...defaults, ...p};
   const total = [];
@@ -232,6 +268,10 @@ export function heightAndWidth(p, defaults={}){
   }
   if(merged.height) total.push(`height: ${lilDim(merged.height)};`);
   if(merged.width) total.push(`width: ${lilDim(merged.width)};`);
+  if(merged.minHeight) total.push(`min-height: ${lilDim(merged.minHeight)};`);
+  if(merged.minWidth) total.push(`min-width: ${lilDim(merged.minWidth)};`);
+  if(merged.maxHeight) total.push(`max-height: ${lilDim(merged.maxHeight)};`);
+  if(merged.maxWidth) total.push(`max-width: ${lilDim(merged.maxWidth)};`);
   if(total.length > 0)
     return css`
       ${total.join("\n")}
@@ -256,9 +296,10 @@ function hacker(p, defaults={}){
   }
 }
 
-function hover(p){
+export function hover(p, defaults={}){
   let total = [];
-  if(p.hoverEmotion){
+  const merged = {...(defaults || {}), ...p};
+  if(merged.hoverEmotion){
     total.push(`
       &:hover{
         color: ${easyColor(p, p.hoverEmotion)} !important;
@@ -266,7 +307,7 @@ function hover(p){
     `)
   }
 
-  if(p.hoverBkgEmotion){
+  if(merged.hoverBkgEmotion){
     total.push(`
       &:hover{
         background: ${easyColor(p, p.hoverBkgEmotion)};
@@ -274,14 +315,15 @@ function hover(p){
     `)
   }
 
-  if(p.hoverPoint){
+  if(merged.hoverPoint){
     total.push(`
       &:hover{
         cursor: pointer;
       }
     `)
   }
-  if(p.hoverUnderline){
+
+  if(merged.hoverUnderline){
     total.push(`
       &:hover{
         text-decoration: underline;
@@ -289,6 +331,28 @@ function hover(p){
     `)
   }
   return total.join("\n");
+}
+
+export function borderStyles(p, defaults={}){
+  const merged = {...defaults, ...p};
+  let { borderWidth, borderColor, borderStyle } = merged;
+
+  if(merged.lightBorder)
+    borderColor = 'lightGrey';
+
+  if(merged.lightestBorder)
+    borderColor = 'lightestGrey';
+
+  if(merged.lightBorder || merged.lightestBorder){
+    borderStyle = 'solid';
+    borderWidth = ".5px";
+  }
+
+  return css`
+    border-style: ${borderStyle};
+    border-width: ${borderWidth};
+    border-color: ${borderColor};
+  `;
 }
 
 function pulse(p){
@@ -311,14 +375,19 @@ function pulse(p){
 }
 
 export function sexyShadow(p, defaults={}){
-  if({...defaults, ...p}.sexyShadow){
+  const merged =  {...defaults, ...p};
+  if(merged.sexyShadow){
+    const opacity = merged.shadowOpacity || .2;
     return css`
-      box-shadow: 0 0.063em 
-      0.313em 0 
-      rgba(0,0,0,.07), 
-      0 0.438em 
-      1.063em 0
-       rgba(0,0,0,.07);
+      box-shadow: 0 0 14px 0 rgba(42,43,42, ${opacity});
+    `
+  }
+}
+
+export function heavyShadow(p, defaults={}){
+  if({...defaults, ...p}.heavyShadow){
+    return css`
+      box-shadow: 0px 0px 14px 0px rgba(42,43,42,0.3);
     `
   }
 }
@@ -426,7 +495,8 @@ function textAlign(p){
 }
 
 export function fontSize(p, backup){
-  return p.fontSize || backup || '13px';
+  if(p.promo) return p.theme.font.promoSize;
+  else return p.fontSize || backup || p.theme.font.size;
 }
 
 function textDisplay(p){

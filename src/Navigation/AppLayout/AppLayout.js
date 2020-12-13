@@ -4,8 +4,8 @@ import React from 'react';
 export default function AppLayout({SideBar, TopBar, children}) {
   return (
     <FullPage>
-      <SideBar/>
-      <TopBar/>
+      { SideBar && <SideBar/> }
+      { TopBar && <TopBar/> }
       <AppContent>
         { children }
       </AppContent>

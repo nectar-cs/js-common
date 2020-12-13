@@ -5,9 +5,9 @@ import {colorKeys} from "./../../styles/constants";
 
 function severityEmotion(severity){
   if(severity === 'error')
-    return "#db7f8e";
+    return "ruby";
   else if(severity === 'warning')
-    return "pink";
+    return "tart";
 }
 
 export default class ErrorToast extends React.Component{

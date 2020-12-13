@@ -1,5 +1,5 @@
 import Button from './styles/button-styles'
-import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme, sexyShadow} from './styles/constants'
+import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -12,6 +12,8 @@ import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
 import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import CenterCard from './widgets/CenterCard/CenterCard'
+import {BigStoreCard} from './widgets/StoreCard/BigStoreCard'
+import ProductView from './widgets/ProductView/ProductView'
 import Input from './styles/input-styles'
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
@@ -27,26 +29,32 @@ import SideBar from "./Navigation/SideBar/SideBar";
 import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
+import CategoriesBar from "./widgets/CategoriesBar/CategoriesBar";
 import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
+import PermsView from "./widgets/PermsView/PermsView";
 
 export {
   Loader,
+  ProductView,
   Button,
   SideBar,
   AppLayout,
   Donut,
+  PermsView,
   Gauge,
   TopBar,
   Input,
   colorKeys,
+  CategoriesBar,
   theme,
   inverseTheme,
   MosaicBaseStyle,
   Text,
   Layout,
   noTopBarTheme,
+  BigStoreCard,
   Table,
   LeftHeader,
   TextOverLineSubtitle,
@@ -56,6 +64,7 @@ export {
   CenterAnnouncement,
   CenterCard,
   ModestLink,
+  noSideBarTheme,
   FlexHeader,
   Img,
   ModalButton,

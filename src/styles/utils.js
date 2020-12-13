@@ -8,8 +8,9 @@ export function lilDim(value){
 
 export function coerceColorExprToHex(p, keyOrLiteral){
   const valueInTheme = p.theme.colors[keyOrLiteral];
-  if(valueInTheme) return valueInTheme;
-  const literalIsHex = keyOrLiteral.includes('#');
+  if(valueInTheme)
+    return valueInTheme;
+  const literalIsHex = (keyOrLiteral || '').includes('#');
   return literalIsHex ? keyOrLiteral : colNameToHex(keyOrLiteral);
 }
 

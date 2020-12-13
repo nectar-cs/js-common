@@ -1,35 +1,17 @@
 import styled from 'styled-components';
-import {resolveColor} from "./../../styles/constants";
 
 const Container = styled.div`
   position: fixed;
-  width: ${p => `calc(100% - ${p.theme.dims.sideBarWidth})`};
+  width: 100%;
   height: ${p => p.theme.dims.topBarHeight};
   top: 0;
-  left: ${p => p.theme.dims.sideBarWidth};
+  left: 0;
   z-index: 10;
   box-sizing: border-box;
-  background: ${p => resolveColor(p, p.theme.colors.primaryColor, null)};
+  background: ${p => p.theme.colors.primaryBkg};
   border-style: none none solid none;
   border-color: ${p => 'transparent'};
   border-width: 0 0 2px 0;
-`;
-
-const Search = styled.input`
-  position: absolute;
-  width: 400px;
-  height: 60%;
-  display: ${p => (p.theme.dims.topBarHeight === '0px' ? 'none' : 'default')};
-  left: 50%;
-  top: 50%;
-  background: white;
-  margin: 0;
-  padding: 0 0 0 12px;
-  text-align: center;
-  transform: translateX(-50%) translateY(-50%);
-  &::placeholder {
-    color: ${p => p.theme.colors.primaryFont};
-  }
 `;
 
 const CornerBox = styled.div`
@@ -60,11 +42,8 @@ const AvatarCircle = styled.img`
   }
 `;
 
-
-
 const S = {
   Container,
-  Search,
   LeftCorner,
   RightCorner,
   AvatarCircle
