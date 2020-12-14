@@ -1,28 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Button from "../../styles/button-styles";
+import {AppListingContext} from "./AppListingContext";
 
-export default function PlansSection({plans}){
+export default function PlansSection(){
+  const app = useContext(AppListingContext).app;
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   return(
-    <Layout.Div width='110%' mt={6}>
-      <Text.H1 fontSize='28px' mb={4}>Plans</Text.H1>
-      <Layout.Div flex>
-        <Layout.Div width={'100%'} mt={-1.5}>
-          { plans.map((plan, i) => (
-            <PlanOptionView
-              key={i}
-              plan={plan}
-              callback={_ => setSelectedIndex(i)}
-              isSelected={i === selectedIndex}
-            />
-          )) }
-        </Layout.Div>
-        <Layout.Div width={9}/>
-        <Layout.Div width={'100%'}>
-          <PlanSummaryView plan={plans[selectedIndex]}/>
-        </Layout.Div>
+    <Layout.Div flex width='110%'>
+      <Layout.Div width='100%' mt={-1.5}>
+        { app.plans.map((plan, i) => (
+          <PlanOptionView
+            key={i}
+            plan={plan}
+            callback={_ => setSelectedIndex(i)}
+            isSelected={i === selectedIndex}
+          />
+        )) }
+      </Layout.Div>
+      <Layout.Div width={9}/>
+      <Layout.Div width='100%'>
+        <PlanSummaryView plan={app.plans[selectedIndex]}/>
       </Layout.Div>
     </Layout.Div>
   )

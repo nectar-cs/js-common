@@ -18,17 +18,7 @@ export default function TopBarPage() {
         <Layout.PageWithoutHeader>
           <Layout.Div
             style={{position: 'fixed'}}>
-            <CategoriesBar items={[
-              {icon: 'laptop', name: "Latest"},
-              {icon: 'laptop', name: "Artificial Intelligence"},
-              {icon: 'done_all', name: "BI & Analytics"},
-              {icon: 'delete', name: "Artificial Intelligence"},
-              {icon: 'computer', name: "BI & Analytics"},
-              {icon: 'laptop', name: "Artificial Intelligence"},
-              {icon: 'done_all', name: "BI & Analytics"},
-              {icon: 'delete', name: "Artificial Intelligence"},
-              {icon: 'computer', name: "BI & Analytics"},
-            ]}/>
+            <CategoriesBar items={categoryItems}/>
           </Layout.Div>
           <Layout.Div absolute left={'250px'} top={2} right={0} bottom={0}>
             <Layout.Div hipster maxWidth={'1200px'}>
@@ -78,3 +68,15 @@ const data = [
     ]
   }
 ]
+
+const categoryItems = [
+  {icon: 'laptop', name: "Latest"},
+  {icon: 'laptop', name: "Artificial Intelligence"},
+  {icon: 'done_all', name: "BI & Analytics"},
+  {icon: 'delete', name: "Artificial Intelligence"},
+  {icon: 'computer', name: "BI & Analytics"},
+  {icon: 'laptop', name: "Artificial Intelligence"},
+  {icon: 'done_all', name: "BI & Analytics"},
+  {icon: 'delete', name: "Artificial Intelligence"},
+  {icon: 'computer', name: "BI & Analytics"},
+];

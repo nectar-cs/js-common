@@ -6,8 +6,8 @@ import Pill from "../../widgets/Pill/Pill";
 import {colorKeys} from './../../styles/constants'
 
 
-export default function PermsView({simplePerms}){
-  const entries = Object.entries(simplePerms);
+export default function PermsView({simplifiedPerms}){
+  const entries = Object.entries(simplifiedPerms);
 
   return(
     <Table.Table innerborder={'wtfcss'} ml={-.25}>

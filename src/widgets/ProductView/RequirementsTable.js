@@ -1,5 +1,4 @@
 import React from 'react'
-import Utils from "../../utils/Utils";
 import Table from "../../styles/table-styles";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
@@ -7,19 +6,29 @@ import humanizeString from "humanize-string";
 import inferGraphic from "./graphicInference";
 import LittleLabel from "./LittleLabel";
 
-export default function RequirementsTable({requirements}){
+export default function RequirementsTable({requirements, warning}){
   const entries = Object.entries(requirements);
 
   return(
-    <Table.Table innerborder={'wtfcss'} ml={-.25}>
-      { entries.map((category, i) => (
-        <CategoryRow
-          key={i}
-          reqName={category[0]}
-          requirements={category[1]}
-        />
-      )) }
-    </Table.Table>
+    <Layout.Div>
+      <Table.Table innerborder={'wtfcss'} ml={-.25}>
+        { entries.map((category, i) => (
+          <CategoryRow
+            key={i}
+            reqName={category[0]}
+            requirements={category[1]}
+          />
+        )) }
+      </Table.Table>
+      { warning &&
+        <Layout.Div flex mt={1}>
+          <Text.Icon name='help_outline'/>
+          <Text.P calm ml={.75}>
+            { warning }
+          </Text.P>
+        </Layout.Div>
+      }
+    </Layout.Div>
   )
 }
 

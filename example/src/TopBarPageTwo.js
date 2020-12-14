@@ -1,55 +1,19 @@
 import React from 'react'
 import {ThemeProvider} from "styled-components";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import faker from 'faker';
-import {Layout,
-  AppLayout,
-  ErrorToast,
-  FlexHeader,
-  Img,
-  Stepper,
-  Button,
-  Input,
-  theme,
-  TextOverLineSubtitle,
-  SideBar,
-  TopBar,
-  noSideBarTheme,
-  SmallStoreCard,
-  CategoriesBar,
-  Text,
-  TagPool,
-  colorKeys,
-  ProductView,
-  BigStoreCard
-}
-  from "nectar-gui";
-
-const leftGutterWidth = '250px';
+import {Layout, AppLayout, TopBar, noSideBarTheme, ProductView, AppListingContext} from "nectar-gui";
 
 export default function TopBarPageTwo() {
-
   return (
     <ThemeProvider theme={noSideBarTheme}>
       <AppLayout
         SideBar={null}
         TopBar={TopBar}>
         <Layout.PageWithoutHeader>
-          <ProductView
-            name='Nginx Enterprise'
-            logoUrl='https://img.icons8.com/color/452/nginx.png'
-            info={dummyInfo}
-            screenshotUrls={screenshotUrls}
-            features={dummyFeatures()}
-            footprint={footprint}
-            requirements={requirements}
-            usefulLinks={links}
-            plans={plansData}
-            wizFeatures={wizFeatures}
-            memData={memData}
-            perms={require('./fakeperms.json')}
-          />
+          <AppListingContext.Provider value={{app: dummyApp}}>
+            <ProductView/>
+          </AppListingContext.Provider>
           <Layout.Div height={5}/>
         </Layout.PageWithoutHeader>
       </AppLayout>
@@ -60,30 +24,23 @@ export default function TopBarPageTwo() {
 function dummyFeatures(){
   return [...Array(5).keys()].map(i => ({
     name: faker.commerce.productName(),
-    info: faker.commerce.productDescription()
+    info: faker.lorem.paragraph()
   }))
 }
 
-const footprint = [
-  { value: '~12', subtitle: 'Workload Sets' },
-  { value: '>3', subtitle: 'Persistent Stores' },
-  { value: '2', subtitle: 'Resource Definitions' },
-  { value: '1', subtitle: 'Web Interfaces' },
-  { value: '19', subtitle: 'Total Resources' },
-  { value: '50', subtitle: 'Manifest Variables' }
-
-]
+const clusterFootprint = {
+  workload_sets: '~12',
+  persistent_stores: '>3',
+  resource_definitions: '2',
+  web_interfaces: '1',
+  total_resources: '18',
+}
 
 const links = [
   { name: 'Application GitHub', url: "asdsasd" },
   { name: 'Community Helm Chart', url: "asdsasd" },
   { name: 'Discord', url: "asdsasd" }
 ]
-
-const dummyInfo = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-laboris nisi ut aliquip ex ea commodo consequat.`;
 
 const screenshotUrls = [
   "https://metro.co.uk/wp-content/uploads/2020/06/EZmvSUTXkAE1ljO-39e4.jpg?quality=90&strip=all",
@@ -126,7 +83,7 @@ const requirements = {
     '1Gb RAM',
     '10Gb Disk'
   ]
-}
+};
 
 const wizFeatures = {
   operations: [
@@ -147,36 +104,58 @@ const wizFeatures = {
     'Network Configuration',
     'Stress Testing & Resilience'
   ]
+};
 
-}
-
-const memData = [
+const benchmarks = [
   {
-    "name": "10 R/s",
-    "uv": 0.342,
-  },
-  {
-    "name": "50 R/s",
-    "uv": 0.342,
-  },
-  {
-    "name": "100 R/s",
-    "uv": 0.678,
-  },
-  {
-    "name": "200 R/s",
-    "uv": 1.122,
-  },
-  {
-    "name": "500 R/s",
-    "uv": 2.324,
-  },
-  {
-    "name": "1000 R/s",
-    "uv": 4.783,
-  },
-  {
-    "name": "2000 R/s",
-    "uv": 6.998,
+    name: 'Memory Consumed',
+    xUnit: "R/s",
+    yUnit: "Gb",
+    dataPoints: [
+      {
+        "name": "10",
+        "consumed": 0.342,
+      },
+      {
+        "name": "50",
+        "consumed": 0.342,
+      },
+      {
+        "name": "100",
+        "consumed": 0.678,
+      },
+      {
+        "name": "200",
+        "consumed": 1.122,
+      },
+      {
+        "name": "500",
+        "consumed": 2.324,
+      },
+      {
+        "name": "1000",
+        "consumed": 4.783,
+      },
+      {
+        "name": "2000",
+        "consumed": 6.998,
+      }
+    ]
   }
 ];
+
+const dummyApp = {
+  name: faker.commerce.productName(),
+  info: faker.lorem.paragraphs(),
+  logoUrl: 'https://img.icons8.com/color/452/nginx.png',
+  oneLiner: faker.company.catchPhrase(),
+  screenshotUrls: screenshotUrls,
+  features: dummyFeatures(),
+  usefulLinks: links,
+  clusterFootprint: clusterFootprint,
+  wizCapabilities: wizFeatures,
+  requirements: requirements,
+  benchmarks: benchmarks,
+  plans: plansData,
+  rbacPolicies: require('./fakeperms.json')
+}

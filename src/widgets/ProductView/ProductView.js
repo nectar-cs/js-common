@@ -3,25 +3,24 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {theme} from './../../styles/constants'
 import Button from "../../styles/button-styles";
-import Input from "../../styles/input-styles";
+import humanizeString from "humanize-string";
 import PermsView from "../PermsView/PermsView";
-import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
-import AreaChart from "recharts/lib/chart/AreaChart";
-import XAxis from "recharts/lib/cartesian/XAxis";
-import YAxis from "recharts/lib/cartesian/YAxis";
-import Tooltip from "recharts/lib/component/Tooltip";
-import Area from "recharts/lib/cartesian/Area";
 import LeftGutter from "./LeftGutter";
 import PlansSection from "./PlansSection";
 import PromoSection from "./PromoSection";
 import RequirementsTable from "./RequirementsTable";
+import {AppListingContext} from "./AppListingContext";
+import AppListingUtils from "../../utils/appCatUtils";
+import BenchmarksView from "./BenchmarksView";
+import {requirementsWarning} from "./copy";
 
 
 export default function ProductView(){
-  const app = useContext(AppContext);
-  const {footprint, memData, perms} = app;
+  const app = useContext(AppListingContext).app;
+  const {rbacPolicies} = app;
+  const simplifiedPerms = AppListingUtils.rbac2simplified(rbacPolicies);
 
-  const greed = _ => {
+  const scrollToBottom = _ => {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
   }
 
@@ -30,19 +29,30 @@ export default function ProductView(){
       <Layout.Div minWidth='230px'>
         <LeftGutter/>
       </Layout.Div>
-      <Layout.Div ml={7} mt={2} maxWidth='870px' >
-        <PromoSection {...props}/>
+      <Layout.Div ml={7} mt={2} maxWidth='870px'>
+        <PromoSection/>
+
         <Text.H1 fontSize='28px' mt={7} mb={4}>Cluster Footprint</Text.H1>
-        <ResourceBlocksView footprint={footprint}/>
-        <ChartView data={memData}/>
+        <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
+        <BenchmarksView/>
+
         <Text.H1 mt={4} mb={1}>Recommended Prerequisites</Text.H1>
-        <RequirementsTable requirements={props.requirements}/>
-        <Text.H1 mt={4} mb={1}>Nectar Wiz Capabilities</Text.H1>
-        <RequirementsTable requirements={props.wizFeatures}/>
-        <VariablePermsView perms={rbacPolicies}/>
-        <PlansSection {...props}/>
+        <RequirementsTable
+          requirements={app.requirements}
+          warning={requirementsWarning}
+        />
+
+        <Text.H1 mt={4} mb={2}>Nectar Wiz Capabilities</Text.H1>
+        <RequirementsTable requirements={app.wizCapabilities}/>
+
+        <Text.H1 mt={4.5} mb={3}>Standard RBAC Requests</Text.H1>
+        <PermsView simplifiedPerms={simplifiedPerms}/>
+
+        <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
+        <PlansSection/>
+
       </Layout.Div>
-      <NeedyPromptView callback={greed}/>
+      <NeedyPromptView callback={scrollToBottom}/>
     </Layout.Div>
   )
 }
@@ -69,60 +79,15 @@ function NeedyPromptView({callback}){
   )
 }
 
-function VariablePermsView({perms}){
-  return(
-    <Layout.Div mt={4.5}>
-      <Text.H1 mb={2}>Standard RBAC Requests</Text.H1>
-      <PermsView simplePerms={perms}/>
-    </Layout.Div>
-  )
-}
 
-function ChartView({data}){
-  return(
-    <Layout.Div mt={4.5}>
-      <Layout.Div flex  mb={0} align={'center'}>
-        <Text.H1>Requests/Second Benchmark</Text.H1>
-        <Input.FlatSelect mt={0} fontSize='14px' ml={1} width='auto'>
-          <option>Memory Used</option>
-          <option>Pods Used</option>
-        </Input.FlatSelect>
-
-      </Layout.Div>
-      <ResponsiveContainer width={'100%'} height={250}>
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="60%" stopColor={theme.colors.primaryColor} stopOpacity={0.8}/>
-              <stop offset="95%" stopColor={theme.colors.pleasant} stopOpacity={.5}/>
-            </linearGradient>
-          </defs>
-          <XAxis dataKey="name" />
-          <YAxis
-            orientation='right'
-            category={'Foo'}
-            interval={1}
-            tickFormatter={v => `${v} Gb`}
-          />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="uv"
-            stroke="#8884d8"
-            fillOpacity={1}
-            fill="url(#colorUv)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </Layout.Div>
-  )
-}
-
-function ResourceBlocksView({footprint}){
+function ResourceBlocksView({clusterFootprint}){
   const extra = '40px';
+
+  const entries = Object.entries(clusterFootprint);
+
   return(
     <Layout.Div flex width={`calc(100% + ${extra})`} ml={`calc(${extra} / -2)`}>
-      { footprint.map((stat, i) => (
+      { entries.map((entry, i) => (
         <Layout.Div height={'auto'}
           style={{
             borderColor: theme.colors.lightGrey,
@@ -132,45 +97,19 @@ function ResourceBlocksView({footprint}){
         >
           <Text.P
             mt={2}
-            fontSize={'29px'}
+            fontSize='29px'
             center>
-            { stat.value }
+            { entry[1] }
           </Text.P>
           <Text.P
-          fontSize={'13px'}
-          mt={2}
-          center
+            fontSize='13px'
+            mt={2}
+            center
           >
-            { stat.subtitle }
+            { humanizeString(entry[0]) }
           </Text.P>
         </Layout.Div>
       )) }
     </Layout.Div>
   )
 }
-
-function GraphView(){
-  return(
-    <p>asd</p>
-  )
-}
-
-export type ProductPlan = {
-  name: string,
-  info: string,
-  features: Array<string>,
-  cost: string,
-  period: string
-}
-
-export type ProductViewProps = {
-  logoUrl: string,
-  footprint: Array<{}>,
-  usefulLinks: Array<{}>,
-  screenshotUrls: Array<string>,
-  name: string,
-  info: string,
-  features: Array<{}>,
-}
-
-export const AppContext = React.createContext();

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Layout from "../../styles/layout-styles";
 import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
+import {AppListingContext} from "./AppListingContext";
 
-export default function LeftSection({app}){
+export default function LeftSection(){
+  const app = useContext(AppListingContext).app;
   const { logoUrl, usefulLinks } = app;
   return(
     <Layout.Div>
@@ -17,7 +19,7 @@ export default function LeftSection({app}){
       <Layout.Div ml={3} mt={2}>
         <Layout.Div flex align='center'>
           <Text.Icon name='verified' emotion='hipBlue' size={.88}/>
-          <Text.P fontSize={'14px'} ml={.5}>Nectar Certified</Text.P>
+          <Text.P fontSize='14px' ml={.5}>Nectar Certified</Text.P>
         </Layout.Div>
         <Text.P mt={.5} calm fontSize='12px'>
           This application was tested and certified
@@ -29,7 +31,7 @@ export default function LeftSection({app}){
         </Text.P>
         <Layout.Div flex align='center' mt={.6}>
           <Img.Img width='25px' src={logoUrl}/>
-          <SimpleLink text={'Nectar Corp'} ml={.5} mt={0}/>
+          <SimpleLink text='Nectar Corp' ml={.5} mt={0}/>
         </Layout.Div>
 
         <Text.P calm mt={2.5} hacker>

@@ -1,10 +1,12 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useContext} from 'react'
 import {Carousel} from "react-responsive-carousel";
 import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
 import {theme} from "../..";
+import {AppListingContext} from "./AppListingContext";
 
-export default function PromoSection(app){
+export default function PromoSection(){
+  const app = useContext(AppListingContext).app;
   const { name, info, screenshotUrls, features} = app;
   return(
     <Fragment>
@@ -21,7 +23,7 @@ export default function PromoSection(app){
       <Layout.Div width={'100%'}>
         <Carousel>
           { screenshotUrls.map((screenshotUrl, i) => (
-            <img src={screenshotUrl} />
+            <img src={screenshotUrl}  alt='screenshot'/>
           )) }
         </Carousel>
       </Layout.Div>
@@ -41,10 +43,12 @@ export default function PromoSection(app){
             </Text.P>
             <Text.P
               calm
+              clamp={3}
+              height={'100px'}
               style={{
-                borderWidth: '4px',
+                borderWidth: '3px',
                 borderStyle: "none none none solid",
-                borderColor: theme.colors.cool,
+                borderColor: theme.colors.lightGrey,
                 paddingLeft: '12px'
               }}
               fontSize={'14px'}

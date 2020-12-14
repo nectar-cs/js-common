@@ -26,7 +26,7 @@ export default function CategoriesBar({items}){
             </Text.H4>
           </Layout.Div>
           { i !== items.length -1 &&
-            <Layout.Div height={'1px'} emotion='grey3' />
+            <Layout.Div height={'1px'} emotion='transparent' />
           }
         </Layout.Div>
       )) }

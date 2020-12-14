@@ -1,1 +1,178 @@
-{"$cluster":{"nodes":["list","get"],"services":["list","get"],"services/proxy":["list","get"],"namespaces":["list","get"],"pods":["list","get"]},"$app":{"roles":["list","get"],"rolebindings":["list","get"],"pods":["*"],"nodes":["get","list"],"binndings":["*"],"endpoints":["*"],"configmaps":["*"],"limitranges":["*"],"persistentvolumeclaims":["*"],"replicationcontrollers":["*"],"resourcequotas":["*"],"secrets":["*"],"services":["*"],"leases":["*"],"daemonsets":["*"],"deployments":["*"],"networkpolicies":["*"],"replicasets":["*"],"pods/exec":["*"],"updateinfos":["*"],"jobs":["*"],"ingresses":["*"],"controllerrevisions":["*"],"managedcertificates":["get","list"],"localsubjectaccessreviews":["get","list"],"poddisruptionbudgets":["get","list"],"scalingpolicies":["get","list"],"pods/log":["get","list"],"horizontalpodautoscalers":["*"]},"kube_system":{"deployments":["get","list"],"pods":["get","list"],"services":["get","list"]}}
+{
+  "$cluster": [
+    {
+      "api_groups": [
+        ""
+      ],
+      "verbs": [
+        "list",
+        "get"
+      ],
+      "resources": [
+        "nodes",
+        "services",
+        "services/proxy",
+        "namespaces",
+        "pods"
+      ]
+    }
+  ],
+  "$app": [
+    {
+      "api_groups": [
+        "rbac.authorization.k8s.io"
+      ],
+      "verbs": [
+        "list",
+        "get"
+      ],
+      "resources": [
+        "roles",
+        "rolebindings"
+      ]
+    },
+    {
+      "api_groups": [
+        "metrics.k8s.io"
+      ],
+      "verbs": [
+        "get",
+        "list"
+      ],
+      "resources": [
+        "pods",
+        "nodes"
+      ]
+    },
+    {
+      "api_groups": [
+        ""
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "binndings",
+        "endpoints",
+        "configmaps",
+        "limitranges",
+        "persistentvolumeclaims",
+        "pods",
+        "replicationcontrollers",
+        "resourcequotas",
+        "secrets",
+        "services",
+        "leases",
+        "daemonsets",
+        "deployments",
+        "networkpolicies",
+        "replicasets",
+        "pods",
+        "pods/exec",
+        "updateinfos"
+      ]
+    },
+    {
+      "api_groups": [
+        "batch"
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "jobs"
+      ]
+    },
+    {
+      "api_groups": [
+        "extensions"
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "ingresses"
+      ]
+    },
+    {
+      "api_groups": [
+        "networking.k8s.io"
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "ingresses"
+      ]
+    },
+    {
+      "api_groups": [
+        ""
+      ],
+      "verbs": [
+        "get",
+        "list"
+      ],
+      "resources": [
+        "controllerrevisions",
+        "managedcertificates",
+        "localsubjectaccessreviews",
+        "poddisruptionbudgets",
+        "scalingpolicies",
+        "pods/log"
+      ]
+    },
+    {
+      "api_groups": [
+        "apps"
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "controllerrevisions",
+        "daemonsets",
+        "deployments",
+        "replicasets"
+      ]
+    },
+    {
+      "api_groups": [
+        "autoscaling"
+      ],
+      "verbs": [
+        "*"
+      ],
+      "resources": [
+        "horizontalpodautoscalers"
+      ]
+    }
+  ],
+  "kube-system": [
+    {
+      "api_groups": [
+        "apps"
+      ],
+      "verbs": [
+        "get",
+        "list"
+      ],
+      "resources": [
+        "deployments"
+      ]
+    },
+    {
+      "api_groups": [
+        ""
+      ],
+      "verbs": [
+        "get",
+        "list"
+      ],
+      "resources": [
+        "pods",
+        "services"
+      ]
+    }
+  ]
+}
