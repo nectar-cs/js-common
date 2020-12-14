@@ -45,16 +45,16 @@ function CenterView({app}){
       <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
       <BenchmarksView/>
 
-      <Text.H1 mt={4} mb={1}>Kubernetes Requirements</Text.H1>
+      <Text.H1 mt={4} mb={2}>Kubernetes Requirements</Text.H1>
       <RequirementsTable
         requirements={app.requirements}
         warning={requirementsWarning}
       />
 
-      <Text.H1 mt={4} mb={2}>Nectar Wiz Capabilities</Text.H1>
+      <Text.H1 mt={6.5} mb={2}>Control Panel Functionality</Text.H1>
       <RequirementsTable requirements={app.wizCapabilities}/>
 
-      <Text.H1 mt={4.5} mb={3}>Standard RBAC Requests</Text.H1>
+      <Text.H1 mt={5} mb={2.5}>Standard RBAC Requests</Text.H1>
       <PermsView simplifiedPerms={simplifiedPerms}/>
 
       <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
