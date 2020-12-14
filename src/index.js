@@ -18,6 +18,7 @@ import Input from './styles/input-styles'
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
 import ModalButton from './widgets/Buttons/ModalButton'
+import StoreCategoriesListing from "./widgets/StoreCard/StoreCategoriesListing";
 import CenterLoader from './widgets/CenterLoader/CenterLoader'
 import Tabs from './widgets/Tabs/Tabs'
 import LabelTags from './widgets/LabelTags/LabelTags'
@@ -78,5 +79,6 @@ export {
   Battery,
   sexyShadow,
   ErrorToast,
-  easyColor
+  easyColor,
+  StoreCategoriesListing
 }

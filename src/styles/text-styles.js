@@ -17,6 +17,7 @@ const P = styled.p`
   ${p => textPosition(p)};
   ${p => noSpill(p)};
   ${p => underlined(p)};
+  ${p => clamp(p)};
   line-height: ${p => lineHeight(p, '19px')};
 `;
 
@@ -84,6 +85,19 @@ function underlined(p) {
     return css`
       text-decoration: underline;
     `
+  }
+}
+
+function clamp(p, backup){
+  const _clamp = (p.clamp || backup);
+  if(_clamp != null){
+    return css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: ${_clamp};
+      -webkit-box-orient: vertical;
+    `;
   }
 }
 

@@ -30,24 +30,28 @@ const OpaqueCover = styled(Layout.Div)`
 `;
 
 export function BigStoreCard(props){
-  const { callback, app, bkgEmotion } = props;
-  const { name, info, logo, prices, activePromo } = app;
+  const { callback, app } = props;
+  const { name, info, logoUrl, identifier, prices, oneLiner, activePromo } = app;
   const dark = activePromo;
+
+  const bkgEmotion = dark ? "#252a34" : 'white';
 
   return(
     <Layout.Div
-      onClick={callback}
+      onClick={_ => callback(identifier)}
       mt={2}
       mr={2}
       style={{display: 'inline-block'}}
       width={activePromo ? '484px' : '230px'}
+      // width='230px'
+      // width='484px'
       height='230px'
       hoverPoint
       relative
       sofa
       sexyShadow={dark}>
       <RepeatingImages
-        src={logo}
+        src={logoUrl}
         sofa
         sexyShadow={dark}>
         <OpaqueCover
@@ -94,14 +98,16 @@ export function BigStoreCard(props){
             <Layout.Div flex mt={1.4}>
               <Img.Img
                 height={'80px'}
-                src={logo}
+                src={logoUrl}
               />
               <Text.P
+                clamp={3}
                 calm={!dark}
                 emotion={dark && 'lightGrey'}
+                maxHeight={'80px'}
                 mt={.7}
                 ml={1}>
-                { info }
+                { activePromo ? info :  oneLiner }
               </Text.P>
             </Layout.Div>
             <Text.BorderedStatusTag
@@ -114,8 +120,4 @@ export function BigStoreCard(props){
       </RepeatingImages>
     </Layout.Div>
   )
-}
-
-BigStoreCard.defaultProps = {
-  bkgEmotion: "#252a34"
 }

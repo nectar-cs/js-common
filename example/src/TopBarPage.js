@@ -2,22 +2,10 @@ import React from "react";
 import {ThemeProvider} from "styled-components";
 import {Layout,
   AppLayout,
-  ErrorToast,
-  FlexHeader,
-  Stepper,
-  Button,
-  Input,
-  theme,
-  TextOverLineSubtitle,
-  SideBar,
   TopBar,
   noSideBarTheme,
-  SmallStoreCard,
   CategoriesBar,
-  Text,
-  TagPool,
-  colorKeys,
-  BigStoreCard
+  StoreCategoriesListing
 }
   from "nectar-gui";
 
@@ -44,77 +32,9 @@ export default function TopBarPage() {
           </Layout.Div>
           <Layout.Div absolute left={'250px'} top={2} right={0} bottom={0}>
             <Layout.Div hipster maxWidth={'1200px'}>
-              <Text.H1 fontSize={'26px'} mt={1.1} mb={2} emotion='primaryBkg'>
-                Latest Deals
-              </Text.H1>
-              <Layout.Div>
-                <BigStoreCard
-                  bkgEmotion={'#252a34'}
-                  logo={'https://img.icons8.com/color/452/nginx.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfo}
-                  big={true}
-                  dark={true}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://img.icons8.com/color/452/nginx.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://img.icons8.com/color/452/nginx.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://img.icons8.com/color/452/nginx.png'}
-                  title={'Nginx Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-                <BigStoreCard
-                  bkgEmotion={'#252a34'}
-                  logo={'https://raw.githubusercontent.com/prometheus-net/grafana-dashboards/master/logo.png'}
-                  title={'Prometheus Enterprise'}
-                  info={dummyInfo}
-                  big={true}
-                  dark={true}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://img.icons8.com/color/452/mongodb.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://raw.githubusercontent.com/prometheus-net/grafana-dashboards/master/logo.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-                <BigStoreCard
-                  bkgEmotion={'white'}
-                  logo={'https://img.icons8.com/color/452/nginx.png'}
-                  title={'MongoDB Enterprise'}
-                  info={dummyInfoShort}
-                  big={false}
-                  dark={false}
-                />
-
-
-              </Layout.Div>
+              <StoreCategoriesListing
+                categories={data}
+              />
             </Layout.Div>
           </Layout.Div>
         </Layout.PageWithoutHeader>
@@ -135,3 +55,26 @@ const dummyInfo = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 laboris nisi ut aliquip ex ea commodo consequat.`;
 
 const dummyInfoShort = `Rip through the cloud with SQL Injection vectors.`;
+
+const data = [
+  {
+    category: 'DevOps Tooling',
+    apps: [
+      {
+        name: 'MongoDb Enterprise',
+        logoUrl: 'https://img.icons8.com/color/452/nginx.png',
+        oneLiner: dummyInfoShort,
+        info: dummyInfo,
+        activePromo: true
+      },
+      {
+        name: 'MongoDb Enterprise',
+        logoUrl: 'https://img.icons8.com/color/452/nginx.png',
+        oneLiner: dummyInfoShort,
+        info: dummyInfo,
+        activePromo: false
+      }
+
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {useContext} from 'react'
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {theme} from './../../styles/constants'
@@ -17,10 +17,9 @@ import PromoSection from "./PromoSection";
 import RequirementsTable from "./RequirementsTable";
 
 
-
-export default function ProductView(props: ProductViewProps){
-  const plansRef = React.useRef(null);
-  const {footprint, memData, perms} = props;
+export default function ProductView(){
+  const app = useContext(AppContext);
+  const {footprint, memData, perms} = app;
 
   const greed = _ => {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
@@ -29,7 +28,7 @@ export default function ProductView(props: ProductViewProps){
   return(
     <Layout.Div flex mt={2}>
       <Layout.Div minWidth='230px'>
-        <LeftGutter {...props}/>
+        <LeftGutter/>
       </Layout.Div>
       <Layout.Div ml={7} mt={2} maxWidth='870px' >
         <PromoSection {...props}/>
@@ -40,8 +39,8 @@ export default function ProductView(props: ProductViewProps){
         <RequirementsTable requirements={props.requirements}/>
         <Text.H1 mt={4} mb={1}>Nectar Wiz Capabilities</Text.H1>
         <RequirementsTable requirements={props.wizFeatures}/>
-        <VariablePermsView perms={perms}/>
-        <PlansSection {...props} ref={plansRef}/>
+        <VariablePermsView perms={rbacPolicies}/>
+        <PlansSection {...props}/>
       </Layout.Div>
       <NeedyPromptView callback={greed}/>
     </Layout.Div>
@@ -174,3 +173,4 @@ export type ProductViewProps = {
   features: Array<{}>,
 }
 
+export const AppContext = React.createContext();

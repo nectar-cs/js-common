@@ -4,8 +4,8 @@ import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
 import {theme} from "../..";
 
-export default function PromoSection(  props){
-  const { name, info, screenshotUrls, features} = props;
+export default function PromoSection(app){
+  const { name, info, screenshotUrls, features} = app;
   return(
     <Fragment>
       <Text.H1 fontSize={'29px'}>
