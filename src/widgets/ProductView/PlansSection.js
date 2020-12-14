@@ -31,7 +31,7 @@ export default function PlansSection(){
 function PlanSummaryView({plan}){
   return(
     <Layout.Div
-      width={'100%'}
+      width='100%'
       sexyShadow
       vertSwell={4.5}
       horSwell={1.89}
