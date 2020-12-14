@@ -71,14 +71,13 @@ function FeaturesTable({features}){
 
   return(
     <Table.Table
-      width={'110%'}
-      borderWidth='20px'
-      innerBorderWidth='50px'
+      borderWidth='12px'
+      innerBorderWidth='60px'
       innerborder={true}
       borderEmotion='transparent'>
       { [...Array(rowCount).keys()].map((i) => (
         <tr key={i}>
-          <FeatureCell feature={features[i * 2]} hack={true}/>
+          <FeatureCell feature={features[i * 2]}/>
           <FeatureCell feature={features[i * 2 + 1]}/>
         </tr>
       )) }
@@ -86,12 +85,12 @@ function FeaturesTable({features}){
   )
 }
 
-function FeatureCell({feature, hack}){
+function FeatureCell({feature}){
   if(!feature) return null;
   return(
     <td
-      style={{border: 'none', verticalAlign: 'top', width: '50%'}}>
-      <Layout.Div mr={hack ? 4 : 0}>
+      style={{verticalAlign: 'top', width: '50%'}}>
+      <Layout.Div>
         <Text.P
           fontSize='14.5px'
           bold>

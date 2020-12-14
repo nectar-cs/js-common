@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {commonFontAttrs, commonSizeAttrs} from "./constants";
 
 const RoundedForRow = styled.img`
@@ -9,9 +9,19 @@ const RoundedForRow = styled.img`
   margin-right: ${p => p.push ? "12px" : '0'}
 `;
 
+function applyCropping(p, defaults={}){
+  const merged = {...defaults, ...p};
+  if(merged.centerCrop){
+    return css`
+      object-fit: cover;
+    `;
+  }
+}
+
 const _Img = styled.img`
   ${commonSizeAttrs};
   ${commonFontAttrs};
+  ${p => applyCropping(p)};
 `;
 
 const Img = {

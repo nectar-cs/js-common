@@ -4,7 +4,7 @@ import Text from "../../styles/text-styles";
 import {BigStoreCard} from "./BigStoreCard";
 import humanizeString from "humanize-string";
 
-export default function StoreCategoriesListing({categories, onItemSelected}){
+export default function StoreCategoriesListing({categories, onItemSelected, View}){
   return categories.map((category, i) => (
       <Layout.Div key={i} mb={5}>
         <Text.H1
@@ -16,7 +16,7 @@ export default function StoreCategoriesListing({categories, onItemSelected}){
         </Text.H1>
         <Layout.Div>
           { category.apps.map((app, j) => (
-            <BigStoreCard
+            <View
               key={j}
               app={app}
               callback={onItemSelected}
@@ -41,4 +41,8 @@ const categoryMapping = {
   devops: { icon: 'code', name: "DevOps Tooling" },
   productivity: { icon: 'work_outline', name: "Productivity" },
   security: { icon: 'security', name: "Security" }
+}
+
+StoreCategoriesListing.defaultProps = {
+  View: BigStoreCard
 }

@@ -225,6 +225,7 @@ export const commonSizeAttrs = css`
   ${p => rotating(p)};
   ${p => pulse(p)};
   ${p => floating(p)};    
+  ${p => borderStyles(p)};
 `;
 
 export const commonFontAttrs = css`
@@ -335,24 +336,32 @@ export function hover(p, defaults={}){
 
 export function borderStyles(p, defaults={}){
   const merged = {...defaults, ...p};
-  let { borderWidth, borderColor, borderStyle } = merged;
+  const { borderWidth, borderEmotion, borderRadius, borderStyle } = merged;
+  if(merged.ignore) return null;
 
-  if(merged.lightBorder)
-    borderColor = 'lightGrey';
+  const total = [];
 
-  if(merged.lightestBorder)
-    borderColor = 'lightestGrey';
-
-  if(merged.lightBorder || merged.lightestBorder){
-    borderStyle = 'solid';
-    borderWidth = ".5px";
+  if(borderEmotion){
+    total.push(`border-color: ${easyColor(p, p.borderEmotion)};`);
+    total.push('border-style: solid;');
   }
 
-  return css`
-    border-style: ${borderStyle};
-    border-width: ${borderWidth};
-    border-color: ${borderColor};
+  if(borderWidth){
+    total.push(`border-width: ${borderWidth};`);
+    total.push('border-style: solid;');
+  }
+
+  if(borderRadius)
+    total.push(`border-radius: ${lilDim(borderRadius)};`);
+
+  if(borderStyle)
+    total.push(`border-style: ${lilDim(borderStyle)};`);
+
+  if(total.length > 0){
+    return css`
+      ${total.join("\n")}
   `;
+  }
 }
 
 function pulse(p){

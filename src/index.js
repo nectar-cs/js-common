@@ -15,6 +15,7 @@ import CenterCard from './widgets/CenterCard/CenterCard'
 import {BigStoreCard} from './widgets/StoreCard/BigStoreCard'
 import ProductView from './widgets/ProductView/ProductView'
 import Input from './styles/input-styles'
+import RoundStoreCard from "./widgets/StoreCard/RoundStoreCard";
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
 import ModalButton from './widgets/Buttons/ModalButton'
@@ -79,6 +80,7 @@ export {
   Stepper,
   Battery,
   sexyShadow,
+  RoundStoreCard,
   ErrorToast,
   easyColor,
   StoreCategoriesListing,

@@ -58,7 +58,7 @@ export function BigStoreCard(props){
           sofa
           emotion={bkgEmotion}
           padded
-          opacity={!dark && .95}
+          opacity={!dark && .97}
           sexyShadow
         >
           <Layout.Div

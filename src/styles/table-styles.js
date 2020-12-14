@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {commonSizeAttrs} from "./constants";
+import {borderStyles, commonSizeAttrs} from "./constants";
 
 const defBorderWidth = "1.0px";
 const defBorderEmotion = '#ddd';
@@ -19,6 +19,9 @@ const _Table = styled(props => (
   </table>
 ))`
     ${commonSizeAttrs};
+    border-style: none;
+    border-width: 0;
+    
     max-height: 100%;
     width: ${p => p.width || '100%'};
     border-collapse: collapse;
@@ -49,7 +52,7 @@ const _Table = styled(props => (
 `;
 
 function borWidth(p, backup){
-  return p.borderWidth || backup || defBorderWidth;
+  return backup || p.borderWidth || defBorderWidth;
 }
 
 function borEmo(p){
