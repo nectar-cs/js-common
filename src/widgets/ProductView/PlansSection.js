@@ -70,7 +70,7 @@ function PlanOptionView({plan, isSelected, callback}){
       onClick={callback}
       padded
       hoverPoint
-      rounding={7.5}
+      rounding={6}
       vertSwell={3}
       horSwell={2}
       emotion={isSelected ? 'primaryColor' : 'transparent'}>

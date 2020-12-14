@@ -1,16 +1,13 @@
 import React from 'react'
-import styled, {css} from "styled-components";
-import {commonSizeAttrs, overflowScroll} from "./constants";
+import styled from "styled-components";
+import {commonSizeAttrs} from "./constants";
 
-const borderWidth = "1.0px";
-
-function borderStyle(){
-  return `${borderWidth} solid #ddd`
-}
+const defBorderWidth = "1.0px";
+const defBorderEmotion = '#ddd';
 
 function innerBorderStyle(p){
   if(p.innerborder){
-    return `${borderWidth} solid #ddd`;
+    return `${borWidth(p, p.innerBorderWidth)} solid ${borEmo(p)}`;
   }
 }
 
@@ -38,8 +35,8 @@ const _Table = styled(props => (
     }
     
     tr {
-      border-top: ${borderWidth} solid transparent;
-      border-bottom: ${borderWidth} solid #ddd;
+      border-top: ${p => borWidth(p)} solid transparent;
+      border-bottom: ${p => borWidth(p)} solid ${p => borEmo(p)};
     }
     
     th p {
@@ -47,9 +44,17 @@ const _Table = styled(props => (
     }
     
     tr:last-child {
-      border-bottom: ${borderWidth} solid transparent;
+      border-bottom: ${p => borWidth(p)} solid transparent;
     }
 `;
+
+function borWidth(p, backup){
+  return p.borderWidth || backup || defBorderWidth;
+}
+
+function borEmo(p){
+  return p.borderEmotion || defBorderEmotion;
+}
 
 const ModestHeader = styled.tr`
   th{
@@ -78,7 +83,7 @@ const Table = {
   SlimTable,
   ModestHeader,
   SkinnyRow,
-  borderWidth
+  borderWidth: defBorderWidth
 };
 
 export default Table;

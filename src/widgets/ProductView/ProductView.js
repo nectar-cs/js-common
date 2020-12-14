@@ -17,8 +17,6 @@ import {requirementsWarning} from "./copy";
 
 export default function ProductView(){
   const app = useContext(AppListingContext).app;
-  const {rbacPolicies} = app;
-  const simplifiedPerms = AppListingUtils.rbac2simplified(rbacPolicies);
 
   const scrollToBottom = _ => {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
@@ -26,33 +24,42 @@ export default function ProductView(){
 
   return(
     <Layout.Div flex mt={2}>
-      <Layout.Div minWidth='230px'>
+      <Layout.Div width='210px' style={{position: 'absolute'}}>
         <LeftGutter/>
       </Layout.Div>
-      <Layout.Div ml={7} mt={2} maxWidth='870px'>
-        <PromoSection/>
+      <CenterView app={app}/>
+    </Layout.Div>
+  )
+}
 
-        <Text.H1 fontSize='28px' mt={7} mb={4}>Cluster Footprint</Text.H1>
-        <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
-        <BenchmarksView/>
+function CenterView({app}){
+  const simplifiedPerms = AppListingUtils.rbac2simplified(app.rbacPolicies);
 
-        <Text.H1 mt={4} mb={1}>Recommended Prerequisites</Text.H1>
-        <RequirementsTable
-          requirements={app.requirements}
-          warning={requirementsWarning}
-        />
+  return(
+    <Layout.Div
+      style={{position: 'absolute', left: '330px'}}
+      mt={2}
+      maxWidth='840px'>
+      <PromoSection/>
+      <Text.H1 fontSize='28px' mt={7} mb={4}>Cluster Footprint</Text.H1>
+      <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
+      <BenchmarksView/>
 
-        <Text.H1 mt={4} mb={2}>Nectar Wiz Capabilities</Text.H1>
-        <RequirementsTable requirements={app.wizCapabilities}/>
+      <Text.H1 mt={4} mb={1}>Kubernetes Requirements</Text.H1>
+      <RequirementsTable
+        requirements={app.requirements}
+        warning={requirementsWarning}
+      />
 
-        <Text.H1 mt={4.5} mb={3}>Standard RBAC Requests</Text.H1>
-        <PermsView simplifiedPerms={simplifiedPerms}/>
+      <Text.H1 mt={4} mb={2}>Nectar Wiz Capabilities</Text.H1>
+      <RequirementsTable requirements={app.wizCapabilities}/>
 
-        <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
-        <PlansSection/>
+      <Text.H1 mt={4.5} mb={3}>Standard RBAC Requests</Text.H1>
+      <PermsView simplifiedPerms={simplifiedPerms}/>
 
-      </Layout.Div>
-      <NeedyPromptView callback={scrollToBottom}/>
+      <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
+      <PlansSection/>
+
     </Layout.Div>
   )
 }

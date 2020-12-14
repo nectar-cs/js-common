@@ -6656,7 +6656,7 @@ promise@8.0.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -6855,13 +6855,6 @@ react-dom@^16.4.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-easy-swipe@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/react-easy-swipe/-/react-easy-swipe-0.0.21.tgz#ce9384d576f7a8529dc2ca377c1bf03920bac8eb"
-  integrity sha512-OeR2jAxdoqUMHIn/nS9fgreI5hSpgGoL5ezdal4+oO7YSSgJR8ga+PkYGJrSrJ9MKlPcQjMQXnketrD7WNmNsg==
-  dependencies:
-    prop-types "^15.5.8"
-
 react-error-overlay@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
@@ -6886,15 +6879,6 @@ react-resize-detector@^2.3.0:
     lodash.throttle "^4.1.1"
     prop-types "^15.6.0"
     resize-observer-polyfill "^1.5.0"
-
-react-responsive-carousel@^3.2.11:
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.2.11.tgz#4c561339ab9daf6aefd43f0858b7aea65db7291b"
-  integrity sha512-Nl/vZpH2V3STFreApsty9/MLjuMxIwIftZyiOyz+ry4TlRkBUo9LQRpGhARvE2USR12rQagRrp/AwueGJGuS5g==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.5.8"
-    react-easy-swipe "^0.0.21"
 
 react-router-dom@^5.1.2:
   version "5.1.2"

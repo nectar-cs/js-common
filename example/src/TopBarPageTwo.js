@@ -1,6 +1,5 @@
 import React from 'react'
 import {ThemeProvider} from "styled-components";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import faker from 'faker';
 import {Layout, AppLayout, TopBar, noSideBarTheme, ProductView, AppListingContext} from "nectar-gui";
 

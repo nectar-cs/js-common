@@ -10,7 +10,7 @@ export default function PermsView({simplifiedPerms}){
   const entries = Object.entries(simplifiedPerms);
 
   return(
-    <Table.Table innerborder={'wtfcss'} ml={-.25}>
+    <Table.Table innerborder ml={-.25}>
       { entries.map((entry, i) => (
         <CategoryRow
           key={i}

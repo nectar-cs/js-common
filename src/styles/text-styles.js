@@ -116,7 +116,7 @@ const BorderedStatusTag = styled(StatusTag)`
   padding: 2.5px 8px 0.5px 8px;
   border-width: 1px;
   background: ${p => easyColor(p, p.bkgEmotion, 'transparent')};
-  border-color: ${p => easyColor(p, '#DCDCDC', '#DCDCDC')};
+  border-color: ${p => easyColor(p, p.emotion, '#DCDCDC')};
   border-style: solid;
   color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
 `;
