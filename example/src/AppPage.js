@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Layout,
   AppLayout,
   ErrorToast,
@@ -9,7 +9,6 @@ import {Layout,
   noTopBarTheme,
   TextOverLineSubtitle,
   SideBar,
-  TopBar,
   Text,
   TagPool,
   colorKeys
@@ -22,8 +21,7 @@ export default function AppPage(){
   return(
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
-        SideBar={MySideBar}
-        TopBar={TopBar}>
+        SideBar={MySideBar}>
         <Layout.PageWithHeader Header={PageHeader}>
           <IntroPanel/>
           <TwoPanels/>

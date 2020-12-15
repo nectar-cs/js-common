@@ -18,7 +18,7 @@ export default function ListTablePage(){
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
         SideBar={MySideBar}
-        TopBar={TopBar}>
+        >
         <Layout.PageWithHeader Header={PageHeader}>
         </Layout.PageWithHeader>
       </AppLayout>

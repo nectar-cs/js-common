@@ -7,9 +7,7 @@ import Button from './../../styles/button-styles'
 import {Link} from "react-router-dom";
 import ModestLink from "../../widgets/ModestLink/ModestLink";
 import useOutsideAlerter from "../../utils/useOutsideAlerter";
-
-const GCP_BASE = "https://storage.googleapis.com/";
-const IMG_BASE = GCP_BASE + "nectar-mosaic-public/images";
+import LogoBox from "../../widgets/LogoBox";
 
 export default function TopBar(props) {
   const { rightSideButtons, loginCallback } = props;
@@ -17,8 +15,12 @@ export default function TopBar(props) {
 
   return (
     <S.Container>
-      <Layout.Div width={'100%'} height={'100%'} mt={.2}>
-        <LogoBox {...props}/>
+      <Layout.Div width='100%' height='100%' mt={.2}>
+        <LogoBox
+          left={2.7}
+          top={.85}
+          {...props}
+        />
         <S.RightCorner>
           { user &&
             <ProfileView
@@ -139,35 +141,6 @@ function RightSideButtons({rightSideButtons}){
       </Text.H4>
     </a>
   ))
-}
-
-function LogoBox(props){
-  return(
-    <ModestLink to={'/'}>
-      <Layout.Div
-        absolute
-        flex
-        left={2.7}
-        top={.85}>
-        <Img.Img
-          height='32px'
-          src={`${IMG_BASE}/nectar_mark_light.png`}
-        />
-        <Layout.Div ml={.4} mt={-.2}>
-          <Text.H3
-            bold
-            emotion='contrastFont'>
-            { props.title }
-          </Text.H3>
-          <Text.H3
-            bold
-            emotion='warning2'>
-            { props.subtitle }
-          </Text.H3>
-        </Layout.Div>
-      </Layout.Div>
-    </ModestLink>
-  )
 }
 
 function BreadcrumbsView({crumbs}){

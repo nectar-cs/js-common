@@ -35,7 +35,7 @@ export default function TopBarPage() {
 
 function MyTopBar(){
   return(
-    <TopBar bkgEmotion={'yellow'}/>
+    <TopBar title={'Demo Page'} subtitle={'Nectar GUI'}/>
   )
 }
 
