@@ -96,11 +96,11 @@ function ResourceBlocksView({clusterFootprint}){
     <Layout.Div flex width={`calc(100% + ${extra})`} ml={`calc(${extra} / -2)`}>
       { entries.map((entry, i) => (
         <Layout.Div height={'auto'}
-          style={{
-            borderColor: theme.colors.lightGrey,
-            borderStyle: `none none none ${i !== 0 ? 'solid' : 'none'}`
-          }}
-          width={'100%'}
+                    style={{
+                      borderColor: theme.colors.lightGrey,
+                      borderStyle: `none none none ${i !== 0 ? 'solid' : 'none'}`
+                    }}
+                    width={'100%'}
         >
           <Text.P
             mt={2}

@@ -51,7 +51,7 @@ export default function BenchmarksView(){
             tickFormatter={v => `${v} ${benchmark.xUnit}`}
           />
           <YAxis
-            orientation='right'
+            orientation='left'
             interval={1}
             tickFormatter={v => `${v} ${benchmark.yUnit}`}
           />

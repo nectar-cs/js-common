@@ -14,12 +14,13 @@ export default function CategoriesBar({items}){
             style={{justifyContent: 'space-between'}}
             onClick={item.callback}
             hoverPoint
-            hoverBkgEmotion='grey3'>
+            hoverBkgEmotion='soothing'>
             <Text.Icon
               name={item.icon}
-              emotion='primaryColor'
+              emotion={i === 0 ? 'warning2' : null}
             />
             <Text.H4
+              bold={i === 0}
               mt={.2}
               style={{textAlign: 'left'}} width='140px' >
               { item.name }

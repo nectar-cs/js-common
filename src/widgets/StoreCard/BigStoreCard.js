@@ -49,18 +49,18 @@ export function BigStoreCard(props){
       hoverPoint
       relative
       sofa
-      sexyShadow={dark}>
+      sexyShadow={!!dark}
+    >
       <RepeatingImages
         src={logoUrl}
-        sofa
-        sexyShadow={dark}>
+        sofa>
         <OpaqueCover
           sofa
           emotion={bkgEmotion}
           padded
           opacity={!dark && .97}
           sexyShadow
-        >
+          shadowOpacity={dark ? null : '.1'}>
           <Layout.Div
             mt={1.5}
             ml={.7}>

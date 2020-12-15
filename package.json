@@ -1,6 +1,6 @@
 {
   "name": "nectar-gui",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "React styles for Nectar",
   "author": "nectar-cs",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "clsx": "^1.1.0",
     "prop-types": "^15.5.4",
+    "react-modal-image": "^2.5.0",
     "react": "^16.8.0",
     "react-animations": "^1.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",

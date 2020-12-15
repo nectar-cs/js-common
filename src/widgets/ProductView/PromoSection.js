@@ -1,10 +1,12 @@
-import React, {Fragment, useContext} from 'react'
+import React, {Fragment, useState, useContext} from 'react'
 import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
 import {theme} from "../..";
 import {AppListingContext} from "./AppListingContext";
 import Img from "../../styles/img-styles";
 import Table from "../../styles/table-styles";
+import { Lightbox } from "react-modal-image";
+
 
 export default function PromoSection(){
   const app = useContext(AppListingContext).app;
@@ -43,11 +45,25 @@ function IntroView({name, info}){
 }
 
 function ScreenshotsGrid({screenshotUrls}){
+  const [isOpen, setIsOpen] = useState(false);
   const picSize = '90px';
   return(
     <Layout.Div width={'100%'} flex mt={3}>
+      { isOpen &&
+        <Lightbox
+          hideDownload={true}
+          hideZoom={true}
+          medium={isOpen}
+          large={isOpen}
+          onClose={_ => setIsOpen(false)}
+        />
+      }
+
       { screenshotUrls.map((screenshotUrl, i) => (
         <Img.Img
+          key={i}
+          hoverPoint
+          onClick={_ => setIsOpen(screenshotUrl)}
           mr={2}
           sexyShadow
           shadowOpacity={.5}
