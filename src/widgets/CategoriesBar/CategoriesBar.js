@@ -21,7 +21,7 @@ export default function CategoriesBar({items}){
             />
             <Text.H4
               bold={i === 0}
-              mt={.2}
+              mt={.15}
               style={{textAlign: 'left'}} width='140px' >
               { item.name }
             </Text.H4>

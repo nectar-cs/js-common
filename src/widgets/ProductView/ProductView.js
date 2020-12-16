@@ -48,7 +48,7 @@ export default function ProductView({callback}){
         />
 
         <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
-        <PlansSection/>
+        <PlansSection callback={callback}/>
       </Layout.Div>
     </Layout.Div>
   )
