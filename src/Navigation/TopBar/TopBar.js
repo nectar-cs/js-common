@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useRef} from 'react';
+import React, {Fragment, useEffect, useState, useRef} from 'react';
 import { S } from './TopBarStyles';
 import Text from './../../styles/text-styles'
 import Layout from './../../styles/layout-styles'
@@ -8,9 +8,11 @@ import {Link} from "react-router-dom";
 import ModestLink from "../../widgets/ModestLink/ModestLink";
 import useOutsideAlerter from "../../utils/useOutsideAlerter";
 import LogoBox from "../../widgets/LogoBox";
+import useHover from "../../utils/useHover";
+import {hover} from "../../styles/constants";
 
 export default function TopBar(props) {
-  const { rightSideButtons, loginCallback } = props;
+  const { rightSideButtons, loginCallback, bodyRef } = props;
   const { user, profileActions } = props;
 
   return (
@@ -32,6 +34,7 @@ export default function TopBar(props) {
             <LoginButton callback={loginCallback}/>
           }
           <RightSideButtons
+            bodyRef={bodyRef}
             rightSideButtons={rightSideButtons}
           />
         </S.RightCorner>
@@ -65,6 +68,130 @@ function ProfileView({user, profileActions}){
         />
       }
     </Fragment>
+  )
+}
+
+function RightSideButtons({rightSideButtons, bodyRef}) {
+  const thingRef = React.createRef(null);
+  const [hoverIndex, setHoverIndex] = useState(-1);
+
+  function onHoverChanged(i, isHovered){
+    if(isHovered)
+      setHoverIndex(i);
+  }
+
+  // useOutsideAlerter(bodyRef, _ => setHoverIndex(-1));
+
+  return rightSideButtons.map((descriptor, i) => (
+    <RightSideButton
+      descriptor={descriptor}
+      _ref={i === hoverIndex ? thingRef : null}
+      onHoverChanged={state => onHoverChanged(i, state)}
+      isDropped={i === hoverIndex}
+      key={i}
+    />
+  ))
+}
+
+function RightSideButton({descriptor, onHoverChanged, isDropped}){
+  const [hoverRef, isHovered] = useHover();
+
+  useEffect(_ => {
+    onHoverChanged(isHovered);
+  }, [isHovered]);
+
+  return(
+    <Layout.Div
+      ref={hoverRef}
+      flex
+      hoverPoint
+      align='center'
+      mr={3}>
+      { descriptor.href &&
+      <a href={descriptor.href}>
+        <RightSideButtonTextView descriptor={descriptor}/>
+      </a>
+      }
+      { !descriptor.href &&
+      <RightSideButtonTextView descriptor={descriptor}/>
+      }
+      { (descriptor.actions || descriptor.icon) &&
+      <Text.Icon
+        mt={-.1}
+        ml={.2}
+        size={1.0}
+        emotion='warning2'
+        name={descriptor.icon || 'arrow_drop_down'}
+      />
+      }
+      { descriptor.actions && isDropped &&
+      <RightSideButtonMenu
+        actions={descriptor.actions}
+      />
+      }
+    </Layout.Div>
+  )
+}
+
+function RightSideButtonMenu({actions}){
+  return(
+    <Layout.Div
+      sexyShadow
+      emotion='primaryBkg'
+      top={'43px'}
+      minWidth='132px'
+      pt={'20px'}
+      pb={'20px'}
+      pl={'15px'}
+      pr={'15px'}
+      rounded
+      style={{position: 'fixed'}}
+      >
+      { actions.map((action, i) =>  (
+        <Fragment key={i}>
+          <MenuItem action={action}/>
+          { i !== actions.length - 1 &&
+          <Layout.Div
+            mt={1}
+            mb={1}
+            height={'.5px'}
+            emotion={'lightestGrey'}
+            style={{opacity: '0.3'}}
+          />
+          }
+        </Fragment>
+      )) }
+    </Layout.Div>
+
+  )
+}
+
+function MenuItem({action, _ref}){
+  const [hoverRef, isHovered] = useHover();
+
+  const { path, icon, name } = action;
+  return(
+    <ModestLink to={path}>
+      <Layout.Div
+        ref={hoverRef}
+        flex
+        align='center'>
+        <Text.Icon
+          emotion='warning2'
+          name={icon}
+          size={.73}
+          style={{opacity: isHovered ? '1.0' : '0.7'}}
+        />
+        <Text.P
+          bold={isHovered}
+          mt={'1px'}
+          emotion='white'
+          hoverBold
+          ml={.8}>
+          {name}
+        </Text.P>
+      </Layout.Div>
+    </ModestLink>
   )
 }
 
@@ -127,20 +254,16 @@ function LoginButton({callback}){
   )
 }
 
-function RightSideButtons({rightSideButtons}){
-  return rightSideButtons.map((descriptor, i) => (
-    <a href={descriptor.href}>
-      <Text.H4
-        key={i}
-        bold
-        mr={4}
-        hoverPoint
-        hoverEmotion='warning2'
-        emotion='contrastFont'>
-        { descriptor.name }
-      </Text.H4>
-    </a>
-  ))
+function RightSideButtonTextView({descriptor}){
+  return(
+    <Text.H4
+      bold
+      hoverPoint
+      hoverEmotion='warning2'
+      emotion='contrastFont'>
+      { descriptor.name }
+    </Text.H4>
+  )
 }
 
 function BreadcrumbsView({crumbs}){

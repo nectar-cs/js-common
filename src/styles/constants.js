@@ -76,6 +76,8 @@ export const theme = {
     grey2: "#fafafa",
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",
+    inputGrey: "#fafbfc",
+    inputBorderGrey: "#f0f1f3",
     cool2: "#038074",
     milGreen: "#698F3F"
   },
@@ -250,7 +252,7 @@ export const commonFontAttrs = css`
 
 
 
-function marginsAndPadding(base, p, defaults={}){
+export function marginsAndPadding(base, p, defaults={}){
   const total = [];
   const merged = {...defaults, ...p};
   const suffixes = ['top', 'right', 'bottom', 'left'];
@@ -358,7 +360,7 @@ export function borderStyles(p, defaults={}){
   const total = [];
 
   if(borderEmotion){
-    total.push(`border-color: ${easyColor(p, p.borderEmotion)};`);
+    total.push(`border-color: ${easyColor(p, borderEmotion)};`);
     total.push('border-style: solid;');
   }
 

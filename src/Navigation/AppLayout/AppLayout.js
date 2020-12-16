@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import React from 'react';
 
 export default function AppLayout({SideBar, TopBar, children}) {
+  const bodyRef = React.createRef(null);
+
   return (
     <FullPage>
       { SideBar && <SideBar/> }
-      { TopBar && <TopBar/> }
-      <AppContent>
+      <AppContent ref={bodyRef}>
         { children }
       </AppContent>
+      { TopBar && <TopBar bodyRef={bodyRef}/> }
     </FullPage>
   );
 }

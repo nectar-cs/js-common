@@ -6,8 +6,8 @@ import {
   colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
-  heightAndWidth,
-  resolveColor
+  heightAndWidth, marginsAndPadding,
+  resolveColor, sexyShadow
 } from "./constants";
 import Layout from "./layout-styles";
 import clsx from 'clsx';
@@ -108,22 +108,39 @@ function Radio(props){
 const FlatCss = css`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  border-radius: ${p => borderRounding(p, {rounding: '6'})};
-  ${p => heightAndWidth(p, { width: '100%' })};
-  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
-  background: ${p => easyColor(p, p.bkgEmotion, "#f7f6f6")};
   
-  border-style: none;
+  outline: none;
+  background: ${p => easyColor(p, p.bkgEmotion, "inputGrey")};
+  ${p => borderStyles(p, {
+    borderRadius: '5px',
+    borderWidth: '1.5px',
+    borderEmotion: 'inputBorderGrey'
+  })};
+
+  //border-color: aqua;
+
+  ${p => marginsAndPadding('padding', p, {
+    pt: '10px', pr: '10px', pb: '10px', pl: '10px'
+  })};
+
+  ${p => heightAndWidth(p, {
+    width: '100%' 
+  })};
+  
+  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
+  
+  
   box-sizing: border-box;
-  padding: 10px 10px;
   
   &::placeholder{
    color: ${p => p.theme.colors.primaryFontLess}
   }
+
   &:focus{
-    outline: transparent;
-    background: #ebebeb;
+    background: ${p => easyColor(p, p.focusBkgEmotion, '#ebebeb')};
+    //border-color: ${p => easyColor(p, p.focusBorderEmotion, 'warning2')};
   }
+  
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
