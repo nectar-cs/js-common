@@ -1,6 +1,6 @@
 {
   "name": "nectar-gui",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "React styles for Nectar",
   "author": "nectar-cs",
   "license": "MIT",
@@ -23,6 +23,7 @@
   },
   "peerDependencies": {
     "@material-ui/core": "^4.9.8",
+    "react-scrollable-anchor": "^0.6.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "clsx": "^1.1.0",
     "prop-types": "^15.5.4",

@@ -13,6 +13,7 @@
     "nectar-gui": "link:..",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
+    "react-scrollable-anchor": "^0.6.1",
     "react-animations": "^1.0.0",
     "react-dom": "^16.4.1",
     "react-modal-image": "^2.5.0",

@@ -4,7 +4,7 @@ import Text from "../../styles/text-styles";
 import Button from "../../styles/button-styles";
 import {AppListingContext} from "./AppListingContext";
 
-export default function PlansSection(){
+export default function PlansSection({callback}){
   const app = useContext(AppListingContext).app;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -22,13 +22,20 @@ export default function PlansSection(){
       </Layout.Div>
       <Layout.Div width={9}/>
       <Layout.Div width='100%'>
-        <PlanSummaryView plan={app.plans[selectedIndex]}/>
+        <PlanSummaryView
+          plan={app.plans[selectedIndex]}
+          callback={callback}
+        />
       </Layout.Div>
     </Layout.Div>
   )
 }
 
-function PlanSummaryView({plan}){
+function PlanSummaryView({plan, callback}){
+  let { id, name, features, price } = plan;
+  features = features || [];
+  price = parseInt(price);
+
   return(
     <Layout.Div
       width='100%'
@@ -37,33 +44,40 @@ function PlanSummaryView({plan}){
       horSwell={1.89}
       shadowOpacity={.1}
       padded>
-      <Text.H1>{plan.name}</Text.H1>
+      <Text.H1>{name}</Text.H1>
       <Text.P mt={1} calm>{plan.info}</Text.P>
       <Layout.Div mt={1.9}>
-        { plan.features.map((feature, i) => (
+        { features.map((feature, i) => (
           <Layout.Div key={i} flex align={'center'} mt={.78}>
-            <Text.Icon name={'done'} emotion={'cool'} size={.88}/>
+            <Text.Icon name='add' emotion='warning2' size={.88}/>
             <Text.P ml={.75}>{feature}</Text.P>
           </Layout.Div>
         )) }
       </Layout.Div>
-      <Button.Button
-        funky
+      <Button.ClearButton
+        onClick={_ => callback(id)}
+        borderRadius='12px'
+        emotion='primaryFont'
+        borderEmotion='warning2'
+        hoverBkgEmotion={'calmBeige'}
         mt={2}
         fontSize='16px'
+        style={{borderWidth: '1spx'}}
         hoverPoint
-        // bkgEmotion='hipBlue'
         bold
-        width={'120px'}
-        vertSwell={2.1}
+        width='120px'
+        vertSwell={1.6}
         horSwell={1}>
-        { plan.price === 0 ? 'Install' : 'Payment' }
-      </Button.Button>
+        { price === 0 ? 'Install' : 'Purchase' }
+      </Button.ClearButton>
     </Layout.Div>
   )
 }
 
 function PlanOptionView({plan, isSelected, callback}){
+  let { name, price } = plan;
+  price = parseInt(price);
+
   return(
     <Layout.Div
       mt={1.5}
@@ -78,21 +92,42 @@ function PlanOptionView({plan, isSelected, callback}){
         <Text.H1
           bold
           emotion={isSelected ? 'contrastFont' : null}
-          fontSize={'19px'}>
-          { plan.name }
+          fontSize='19px'>
+          { name }
         </Text.H1>
         <Text.H1
           emotion={isSelected ? 'contrastFont' : null}>
-          ${ plan.price.toLocaleString() }
+          ${ price.toLocaleString() }
         </Text.H1>
       </Layout.Div>
-      <Text.P
-        mt={.59}
-        calm={!isSelected}
-        emotion={isSelected ? 'contrastFont' : null}
-      >
-        Some extra bullshit
-      </Text.P>
+      <Layout.Div flex align='center' mt={.59}>
+        <OptionSubtitles
+          text='Perpetual Ownership'
+          isSelected={isSelected}
+        />
+        <OptionSubtitles
+          text='•'
+          isSelected={isSelected}
+          ml={.5}
+          mr={.5}
+        />
+        <OptionSubtitles
+          text='Generic License'
+          isSelected={isSelected}
+        />
+      </Layout.Div>
     </Layout.Div>
+  )
+}
+
+function OptionSubtitles({text, isSelected, ...rest}){
+  return(
+    <Text.P
+      calm={!isSelected}
+      emotion={isSelected ? 'contrastFont' : null}
+      {...rest}
+    >
+      { text }
+    </Text.P>
   )
 }

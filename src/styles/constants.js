@@ -209,10 +209,8 @@ function centerLow(p) {
 }
 
 export const commonSizeAttrs = css`
-  margin-top: ${p => lilDim(p.mt)};
-  margin-right: ${p => lilDim(p.mr)};
-  margin-bottom: ${p => lilDim(p.mb)};
-  margin-left: ${p => lilDim(p.ml)};
+  ${p => marginsAndPadding('margin', p)};
+  ${p => marginsAndPadding('padding', p)};
   border-radius: ${p => borderRounding(p)};
   padding: ${p => simplePadding(p)};
   ${p => heightAndWidth(p)}
@@ -250,6 +248,24 @@ export const commonFontAttrs = css`
 
 /*--------------------UTILS---------------------*/
 
+
+
+function marginsAndPadding(base, p, defaults={}){
+  const total = [];
+  const merged = {...defaults, ...p};
+  const suffixes = ['top', 'right', 'bottom', 'left'];
+  for(let suffix of suffixes){
+    const acronym = `${base[0]}${suffix[0]}`;
+    const assignment = merged[acronym];
+    if(assignment)
+      total.push(`${base}-${suffix}: ${lilDim(assignment)};`);
+  }
+  if(total.length > 0){
+    return css`
+      ${total.join("\n")}
+    `;
+  }
+}
 
 export function resolveFontFam(p){
   return `${p.fontFam || p.theme.font.family}`;

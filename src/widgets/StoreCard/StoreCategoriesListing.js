@@ -2,11 +2,12 @@ import React from 'react'
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {BigStoreCard} from "./BigStoreCard";
-import humanizeString from "humanize-string";
+import humanizeString from 'humanize-string'
+
 
 export default function StoreCategoriesListing({categories, onItemSelected, View}){
   return categories.map((category, i) => (
-      <Layout.Div key={i} mb={5}>
+      <Layout.Div mb={5} key={i}>
         <Text.H1
           fontSize='26px'
           mt={1.1}
