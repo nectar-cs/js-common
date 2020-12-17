@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, {css} from "styled-components";
 import {
-  borderRounding,
+  borderStyles,
   colorKeys,
   commonFontAttrs,
   commonSizeAttrs,
@@ -107,9 +107,9 @@ const StatusTag = styled(P)`
   padding-bottom: 1px;
   text-align: center;
   display: inline-block;
-  border-radius: ${p => borderRounding(p, {rounding: 4})};
   background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
   color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
+  ${p => borderStyles(p, {borderRadius: '4px'})}
 `;
 
 const BorderedStatusTag = styled(StatusTag)`

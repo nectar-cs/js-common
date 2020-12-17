@@ -7,6 +7,11 @@ import Text from "../styles/text-styles";
 const GCP_BASE = "https://storage.googleapis.com/";
 const IMG_BASE = GCP_BASE + "nectar-mosaic-public/images";
 
+const textProps = {
+  bold: true,
+  style: { letterSpacing: '.3px' }
+}
+
 export default function LogoBox({title, subtitle, ...rest}){
   return(
     <ModestLink to={'/'}>
@@ -21,12 +26,12 @@ export default function LogoBox({title, subtitle, ...rest}){
         />
         <Layout.Div ml={.4} mt={-.2}>
           <Text.H3
-            bold
+            {...textProps}
             emotion='contrastFont'>
             { title }
           </Text.H3>
           <Text.H3
-            bold
+            {...textProps}
             emotion='warning2'>
             { subtitle }
           </Text.H3>

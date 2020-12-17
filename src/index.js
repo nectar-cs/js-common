@@ -1,6 +1,7 @@
 import Button from './styles/button-styles'
 import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
+import AppListingUtils from "./utils/appCatUtils";
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
 import Table from './styles/table-styles'
@@ -19,6 +20,7 @@ import RoundStoreCard from "./widgets/StoreCard/RoundStoreCard";
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
 import ModalButton from './widgets/Buttons/ModalButton'
+import BigHeader from "./widgets/BigHeader/BigHeader";
 import StoreCategoriesListing from "./widgets/StoreCard/StoreCategoriesListing";
 import {AppListingContext} from './widgets/ProductView/AppListingContext'
 import CenterLoader from './widgets/CenterLoader/CenterLoader'
@@ -65,6 +67,8 @@ export {
   ColoredLabelList,
   EasyListItem,
   CenterAnnouncement,
+  BigHeader,
+  AppListingUtils,
   CenterCard,
   ModestLink,
   noSideBarTheme,

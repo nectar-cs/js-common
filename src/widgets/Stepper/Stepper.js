@@ -8,21 +8,21 @@ import {theme} from "./../../styles/constants";
 function ballColor(index, onStepIndex){
 
   if(index === onStepIndex){
-    return theme.colors.primaryColor;
+    return theme.colors.warning2;
   }
 
   else if(index <= onStepIndex){
-    return theme.colors.cool;
+    return theme.colors.warning2;
   }
   else {
-    return '#d6d6d6';
+    return theme.colors.primaryColor;
   }
 }
 
 export default function Stepper(props: Props){
   const [ref, stepContainerDims] = useDimensions();
   const offset = stepContainerDims ? stepContainerDims.width / 2 : 0;
-  const { steps, setStep, onStepIndex } = props;
+  const { steps, setStep, onStepIndex, showCrtStepText } = props;
 
   return(
     <Outer>
@@ -46,17 +46,23 @@ export default function Stepper(props: Props){
                 }
               </BallText>
             </Ball>
-            <Text.P
-              calm
-              bold={i === onStepIndex}
-              mt={.76}>
-              {stepDesc.name}
-            </Text.P>
+            { (i !== onStepIndex || showCrtStepText) &&
+              <Text.P
+                calm
+                bold={i === onStepIndex}
+                mt={.76}>
+                {stepDesc.name}
+              </Text.P>
+            }
           </BallContainer>
         )) }
       </Inner>
     </Outer>
   )
+}
+
+Stepper.defaultProps = {
+  showCrtStepText: true
 }
 
 type Props = {

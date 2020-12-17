@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Text from "../../styles/text-styles";
 
-const ballHeight = 12;
-const lineHeight = 1;
+const ballHeight = 12.4;
+const lineHeight = 1.4;
 const lineTopOffset = (ballHeight / 2) - (lineHeight / 2);
 
 export const Outer = styled.div`
@@ -20,7 +20,7 @@ export const Line = styled.div`
   height: ${lineHeight}px;
   left: ${p => p.offset}px;
   right: ${p => p.offset}px;
-  background: #d6d6d6;
+  background: ${p => p.theme.colors.primaryFontLess};
 `;
 
 export const BallContainer = styled.div`
@@ -45,7 +45,9 @@ export const Ball = styled.div`
 export const BallText = styled(Text.P)`
   color: white;
   text-align: center;
+  padding-top: 1px;
   font-size: 11px;
+  font-weight: bold;
   background: transparent;
   line-height: normal;
 `;

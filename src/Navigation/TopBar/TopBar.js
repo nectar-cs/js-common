@@ -4,16 +4,14 @@ import Text from './../../styles/text-styles'
 import Layout from './../../styles/layout-styles'
 import Img from './../../styles/img-styles'
 import Button from './../../styles/button-styles'
-import {Link} from "react-router-dom";
 import ModestLink from "../../widgets/ModestLink/ModestLink";
 import useOutsideAlerter from "../../utils/useOutsideAlerter";
 import LogoBox from "../../widgets/LogoBox";
 import useHover from "../../utils/useHover";
-import {hover} from "../../styles/constants";
 
 export default function TopBar(props) {
   const { rightSideButtons, loginCallback, bodyRef } = props;
-  const { user, profileActions } = props;
+  const { user, profileActions, centerPiece } = props;
 
   return (
     <S.Container>
@@ -23,6 +21,9 @@ export default function TopBar(props) {
           top={.85}
           {...props}
         />
+
+        <MegaCrumb {...centerPiece}/>
+
         <S.RightCorner>
           { user &&
             <ProfileView
@@ -43,6 +44,35 @@ export default function TopBar(props) {
   )
 }
 
+function MegaCrumb({name, icon, path}){
+  return(
+    <ModestLink to={path}>
+      <Layout.Div
+        absolute
+        flex
+        left='50%'
+        style={{transform: 'translate(-50%, -45%)'}}
+        top={'50%'}
+        align='center'
+      >
+        <Text.Icon
+          style={{opacity: '.7'}}
+          name={icon}
+          emotion='warning2'
+          size={1.3}
+        />
+        <Text.H2
+          mt={.1}
+          ml={1}
+          style={{textTransform: 'uppercase'}}
+          emotion={'white'}>
+          { name }
+        </Text.H2>
+      </Layout.Div>
+    </ModestLink>
+  )
+}
+
 function ProfileView({user, profileActions}){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -58,7 +88,7 @@ function ProfileView({user, profileActions}){
         centerCrop
         width={'auto'}
         height={size}
-        src={user.picture}
+        src={user['picture']}
       />
       { isMenuOpen &&
         <ProfileMenu
@@ -264,30 +294,6 @@ function RightSideButtonTextView({descriptor}){
       { descriptor.name }
     </Text.H4>
   )
-}
-
-function BreadcrumbsView({crumbs}){
-  return (crumbs || []).map((crumb, index) => {
-    let separator = null;
-    const text = (
-      <Link to={crumb.path}>
-        <Text.P emotion='contrastFont'>
-          { crumb.display }
-        </Text.P>
-      </Link>
-    );
-
-    if(index < (crumbs || []).length - 1){
-      separator = <Text.P lt={0.3} right={0.3} emotion='contrastFont'> / </Text.P>
-    }
-
-    return(
-      <Fragment key={`${crumb.path}${index}`}>
-        { text }
-        { separator }
-      </Fragment>
-    )
-  });
 }
 
 TopBar.defaultProps = {

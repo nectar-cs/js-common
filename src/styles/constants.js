@@ -213,7 +213,6 @@ function centerLow(p) {
 export const commonSizeAttrs = css`
   ${p => marginsAndPadding('margin', p)};
   ${p => marginsAndPadding('padding', p)};
-  border-radius: ${p => borderRounding(p)};
   padding: ${p => simplePadding(p)};
   ${p => heightAndWidth(p)}
   ${p => centered(p)};
@@ -352,12 +351,33 @@ export function hover(p, defaults={}){
   return total.join("\n");
 }
 
+const defRoundingApplier = (x) => x;
+
 export function borderStyles(p, defaults={}){
   const merged = {...defaults, ...p};
   const { borderWidth, borderEmotion, borderRadius, borderStyle } = merged;
+  const { lightBorder, sofa, funky } = merged;
+  let { halfRounded, roundingApplier} = merged;
   if(merged.ignore) return null;
 
   const total = [];
+
+  if(halfRounded)
+    roundingApplier = x => `0 0 ${x} ${x}`;
+
+  roundingApplier = roundingApplier || defRoundingApplier;
+
+  if(lightBorder){
+    total.push(`border-color: ${easyColor(p, null, 'grey3')};`);
+    total.push('border-style: solid;');
+    total.push(`border-width: ${borderWidth || '.5px'};`);
+  }
+
+  if(sofa)
+    total.push(`border-radius: ${roundingApplier('8px')}`)
+
+  if(funky)
+    total.push(`border-radius: ${roundingApplier('25px')}`)
 
   if(borderEmotion){
     total.push(`border-color: ${easyColor(p, borderEmotion)};`);
@@ -370,7 +390,7 @@ export function borderStyles(p, defaults={}){
   }
 
   if(borderRadius)
-    total.push(`border-radius: ${lilDim(borderRadius)};`);
+    total.push(`border-radius: ${roundingApplier(lilDim(borderRadius))};`);
 
   if(borderStyle)
     total.push(`border-style: ${lilDim(borderStyle)};`);
@@ -456,15 +476,15 @@ export function simplePadding(p, defaults={}){
   return `${vertPadding} ${horPadding}`;
 }
 
-export function borderRounding(p, defaults={}){
-  const defaultApplier = x => x;
-  const merged = {...defaults, ...p};
-  const funky = merged.funky ? 25 : null;
-  const sofa = merged.sofa ? 8 : null;
-  const swell = funky || sofa || merged.rounding;
-  const finalValue = swell !== null ? `${swell}px` : 'default';
-  return (merged.applier || defaultApplier)(finalValue);
-}
+// export function borderRounding(p, defaults={}){
+//   const defaultApplier = x => x;
+//   const merged = {...defaults, ...p};
+//   const funky = merged.funky ? 25 : null;
+//   const sofa = merged.sofa ? 8 : null;
+//   const swell = funky || sofa || merged.rounding;
+//   const finalValue = swell !== null ? `${swell}px` : 'default';
+//   return (merged.applier || defaultApplier)(finalValue);
+// }
 
 export function resolveColorKey(props, colorKey, backupColorKey){
   if(props.calm) return colorKeys.calm;

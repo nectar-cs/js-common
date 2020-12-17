@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import styled, {css} from 'styled-components'
 import {
-  borderRounding,
   colorKeys,
   commonSizeAttrs,
   heightAndWidth,
@@ -26,19 +25,16 @@ const Div = styled.div`
   background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
-  border-radius: ${p => borderRounding(p, {rounding: 4})};
   ${p => central(p)};
   ${p => center(p)};
   ${p => borderStyles(p)};
-  ${p => halfRounded(p)};
   ${p => hipster(p)};
   ${p => absHipster(p)};
   ${p => overflowScroll(p)};
 `;
 
 const PanelBot = styled(Div)`
-  ${p => borderStyles(p, {lightBorder: true})};
-  ${p => halfRounded(p, {halfRounded: true, rounding: { sofa: true }})};
+  ${p => borderStyles(p, {lightBorder: true, sofa: true, halfRounded: true})};
   padding: ${p => simplePadding(p, {padded: true})};
 `;
 
@@ -57,16 +53,15 @@ const Separator = styled(Div)`
   background: ${p => easyColor(p, p.emotion, colorKeys.cool)};
 `;
 
-const applier = dim => `${dim} ${dim} 0 0`;
-
 const PanelTop = styled(Div)`
   background: ${p => easyColor(p, p.emotion, 'panelGrey2')};
   padding: ${p => simplePadding(p, {padded: true})};
-  border-radius: ${p => borderRounding(p, {sofa: true, applier})};
-  ${p => borderStyles(p, {lightBorder: true})};
-  border-style: solid;
+  ${p => borderStyles(p, {
+    borderRadius: '8px',
+    roundingApplier: ((x) => `${x} ${x} 0 0`),
+    borderEmotion: "#d6d6d6"
+  })};
   border-width: .5px .5px 0 .5px;
-  border-color: #d6d6d6;
 `;
 
 const CenteringDiv = styled(props => (
@@ -255,17 +250,6 @@ function center(p){
   }
 }
 
-function halfRounded(p, defaults={}){
-  const merged = {...defaults, ...p};
-  if(merged.halfRounded){
-    const roundingDefaults = { rounding: 4 };
-    const roundingProps = { ...roundingDefaults, ...merged.rounding }
-    const applier = x => `0 0 ${x} ${x}`;
-    return css`
-      border-radius: ${p => borderRounding(p, {...roundingProps, applier})};
-    `;
-  }
-}
 
 
 

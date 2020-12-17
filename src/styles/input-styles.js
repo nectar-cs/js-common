@@ -1,7 +1,6 @@
 import React from 'react'
 import styled, {css} from "styled-components";
 import {
-  borderRounding,
   borderStyles,
   colorKeys,
   commonFontAttrs,
@@ -117,10 +116,8 @@ const FlatCss = css`
     borderEmotion: 'inputBorderGrey'
   })};
 
-  //border-color: aqua;
-
   ${p => marginsAndPadding('padding', p, {
-    pt: '10px', pr: '10px', pb: '10px', pl: '10px'
+    pt: '9px', pr: '10px', pb: '9px', pl: '10px'
   })};
 
   ${p => heightAndWidth(p, {
@@ -137,8 +134,7 @@ const FlatCss = css`
   }
 
   &:focus{
-    background: ${p => easyColor(p, p.focusBkgEmotion, '#ebebeb')};
-    //border-color: ${p => easyColor(p, p.focusBorderEmotion, 'warning2')};
+    border-color: ${p => easyColor(p, p.focusBorderEmotion, 'milGreen')};
   }
   
   &:-webkit-autofill,
@@ -169,8 +165,7 @@ const _Input = styled.input`
   ${commonFontAttrs};
   color: ${p => easyColor(p, p.emotion, 'primaryFont')};
   background: ${p => easyColor(p, p.bkgEmotion, "transparent")};
-  ${p => borderStyles(p, { borderColor: 'hipBlue' })};
-  border-radius: ${p => borderRounding(p, {rounding: '6'})};
+  ${p => borderStyles(p, { borderColor: 'hipBlue', borderRadius: '6px' })};
   border-style: solid;
   border-width: ${p => borderWidth(p)}px;
   padding: ${paddingTb}px ${paddingLr}px;
