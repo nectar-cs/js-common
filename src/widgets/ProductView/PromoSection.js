@@ -1,7 +1,6 @@
 import React, {Fragment, useState, useContext} from 'react'
 import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
-import {theme} from "../..";
 import {AppListingContext} from "./AppListingContext";
 import Img from "../../styles/img-styles";
 import Table from "../../styles/table-styles";

@@ -9,14 +9,6 @@ const HorizontalBoxWrapper = styled.div`
   margin-bottom: 12px;
 `;
 
-const HorizontalLine = styled.div`
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 1.0px;
-  background: ${p => p.theme.colors.cool};
-`;
-
 const Title = styled.p`
   ${commonSizeAttrs};
   ${commonFontAttrs};
@@ -24,30 +16,14 @@ const Title = styled.p`
   top: 47.5%;
   transform: translateY(-50%);
   display: inline-block;
-  padding: 0 13px;
+  padding: 0 15px;
   margin-left: 34px;
   background: ${p => p.theme.colors.itemBackgroundColor};
 `;
 
-const Toggle = styled.i`
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  transform: translateY(-50%);
-  font-size: 30px;
-  color: ${p => p.theme.colors.primaryColor};
-  background: ${p => p.theme.colors.itemBackgroundColor};
-  display: ${p => (p.there ? 'inline-block' : 'none')};
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 const S = {
   HorizontalBoxWrapper,
-  HorizontalLine,
-  Title,
-  Toggle,
+  Title
 };
 
 export default S;

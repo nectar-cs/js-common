@@ -9,7 +9,7 @@ import {AppListingContext} from "./AppListingContext";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Input from "../../styles/input-styles";
-import {theme} from "../..";
+import {theme} from "./../../styles/constants";
 
 export default function BenchmarksView(){
   const app = useContext(AppListingContext).app;

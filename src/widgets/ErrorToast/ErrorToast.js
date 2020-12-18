@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {colorKeys} from "./../../styles/constants";
 
 function severityEmotion(severity){
   if(severity === 'error')
-    return "ruby";
+    return "error";
   else if(severity === 'warning')
     return "tart";
 }
@@ -33,7 +33,7 @@ export default class ErrorToast extends React.Component{
       <Layout.Div
         relative
         padded
-        sofa
+        rounded
         emotion={severityEmotion(severity)}
         mt={1}
         {...rest}>

@@ -24,7 +24,7 @@ import BigHeader from "./widgets/BigHeader/BigHeader";
 import StoreCategoriesListing from "./widgets/StoreCard/StoreCategoriesListing";
 import {AppListingContext} from './widgets/ProductView/AppListingContext'
 import CenterLoader from './widgets/CenterLoader/CenterLoader'
-import Tabs from './widgets/Tabs/Tabs'
+import TabsView from "./widgets/TabsView/TabsView";
 import LabelTags from './widgets/LabelTags/LabelTags'
 import Checklist from './widgets/Checklist/Checklist'
 import Pill from './widgets/Pill/Pill'
@@ -76,7 +76,7 @@ export {
   Img,
   ModalButton,
   CenterLoader,
-  Tabs,
+  TabsView,
   LabelTags,
   Checklist,
   Pill,

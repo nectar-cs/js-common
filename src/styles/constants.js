@@ -356,7 +356,7 @@ const defRoundingApplier = (x) => x;
 export function borderStyles(p, defaults={}){
   const merged = {...defaults, ...p};
   const { borderWidth, borderEmotion, borderRadius, borderStyle } = merged;
-  const { lightBorder, sofa, funky } = merged;
+  const { lightBorder, sofa, funky, rounded } = merged;
   let { halfRounded, roundingApplier} = merged;
   if(merged.ignore) return null;
 
@@ -372,6 +372,9 @@ export function borderStyles(p, defaults={}){
     total.push('border-style: solid;');
     total.push(`border-width: ${borderWidth || '.5px'};`);
   }
+
+  if(rounded)
+    total.push(`border-radius: ${roundingApplier('4px')}`)
 
   if(sofa)
     total.push(`border-radius: ${roundingApplier('8px')}`)

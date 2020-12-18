@@ -7,7 +7,7 @@ import {
   overflowScroll,
   resolveColor,
   simplePadding,
-  borderStyles
+  borderStyles, marginsAndPadding
 } from './constants'
 
 import {easyColor, lilDim} from "./utils";
@@ -42,7 +42,7 @@ const TableFilterBox = styled(Div)`
    position: fixed;
    right: 22px;
    top: ${totalHeaderHeight + 18}px;
-   ${p => heightAndWidth(p, {width: '290px'})};
+   ${p => heightAndWidth(p, { width: '270px' })};
 `;
 
 const Separator = styled(Div)`
@@ -176,12 +176,12 @@ function PageWithHeader({Header, children}){
 
 const PageWithoutHeader = styled.div`
   ${commonSizeAttrs};
+  ${p => marginsAndPadding('padding', p, { pt: '16px', pl: '18px'})};
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 16px 0 0 18px;
   box-sizing: content-box;
 `;
 

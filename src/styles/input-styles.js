@@ -134,7 +134,7 @@ const FlatCss = css`
   }
 
   &:focus{
-    border-color: ${p => easyColor(p, p.focusBorderEmotion, 'milGreen')};
+    border-color: ${p => easyColor(p, p.focusBorderEmotion, '#b2d1f3')};
   }
   
   &:-webkit-autofill,
