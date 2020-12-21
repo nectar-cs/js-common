@@ -32,8 +32,8 @@ export default function TabsView(props){
             key={i}
             flex
             onClick={_ => onTabSelected ? onTabSelected(i) : null}
-            hov_bkgEmotion={'calmBeige'}
-            hoverPoint
+            hov_bkgEmotion='calmBeige'
+            hov_point
             align='center'
             pl={1.5}
             pr={1.5}

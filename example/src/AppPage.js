@@ -53,7 +53,7 @@ function TwoPanels(){
             ml={1}
             emotion={colorKeys.excited}
             hov_emotion={'cool'}
-            hoverPoint
+            hov_point
           />
         </Layout.Div>
       </Layout.Div>
@@ -99,7 +99,7 @@ function PulsarView(){
         mb={1.5}
         center
         onClick={_ => setPulseEnabled(!pulseEnabled)}
-        hoverPoint>
+        hov_point>
         Click me!
       </Text.P>
     </Layout.Div>

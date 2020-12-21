@@ -160,7 +160,7 @@ export const commonSizeAttrs = css`
   ${p => hover(p)};
   ${p => sexyShadow(p)};  
   ${p => rotating(p)};
-  
+  ${p => pulse(p)};
   ${p => floating(p)};    
   ${p => borderStyles(p)};
 `;
@@ -245,9 +245,9 @@ function centerLow(p) {
 
 
 const positionalShorthands = {
-  t: ['top'], r: ['right'], b: ['bottom'], l: ['left'],
+  trbl: ['top', 'right', 'bottom', 'left'],
   tb: ['top', 'bottom'], lr: ['left', 'right'],
-  trbl: ['top', 'right', 'bottom', 'left']
+  t: ['top'], r: ['right'], b: ['bottom'], l: ['left']
 }
 
 export function marginsAndPadding(base, p, defaults={}){
@@ -315,7 +315,7 @@ function hacker(p, defaults={}){
 export function hover(p, defaults={}){
   let total = [];
   const merged = {...(defaults || {}), ...p};
-  if(merged.hoverPoint){
+  if(merged.hov_point){
     total.push(`
       &:hover{
         cursor: pointer;
@@ -354,16 +354,14 @@ export function multiMode(merged, worker){
   function push(propName, intent){
     for(let prefix of Object.keys(prefixCodes)){
       const propValue = merged[`${prefix}${propName}`];
-      if(propValue != null){
+      if(propValue){
         const isGen = typeof intent === 'function';
         const getter = naive => miniResolve(merged, naive, prefix);
         let resolvedCssStmts = isGen ? intent(propValue, getter) : intent;
-        if(resolvedCssStmts != null){
+        if(resolvedCssStmts){
           if(!Array.isArray(resolvedCssStmts))
             resolvedCssStmts = [resolvedCssStmts];
 
-          console.log("GOT ");
-          console.log(resolvedCssStmts);
           resolvedCssStmts = resolvedCssStmts.map(stmt => (
             stmt.endsWith(";") ? stmt : `${stmt};`)
           );
@@ -374,8 +372,6 @@ export function multiMode(merged, worker){
         }
       }
     }
-    // console.log(`push(${propName}, ${intent}) =>`);
-    // console.log(encapsulationBuckets);
   }
 
   worker(push);
@@ -394,9 +390,6 @@ export function multiMode(merged, worker){
     pray.push(enclosed);
   }
 
-  console.log("CSS");
-  console.log(pray);
-
   if(pray.length > 0){
     return css`
       ${pray.join("\n")}
@@ -406,8 +399,10 @@ export function multiMode(merged, worker){
 
 export function colorStyles(p, defaults={}){
   return multiMode({...defaults, ...p}, push => {
+    push('calm', `color: ${easyColor(p, 'secondaryFont')}`);
     push('emotion', val => `color: ${easyColor(p, val)}`);
-    push('bkgEmotion', val => `color: ${easyColor(p, val)}`);
+    push('bkgEmotion', val => `background: ${easyColor(p, val)}`);
+    push('point', 'cursor: pointer');
   });
 }
 
@@ -418,6 +413,7 @@ export function fontStyles(p, defaults={}){
     push('fontSize', val => `font-size: ${val}`);
     push('promo', `font-size: ${p.theme.font.promoSize}`);
     push('invisible', 'visibility: hidden');
+    push('underline', 'text-decoration: underline');
   });
 }
 

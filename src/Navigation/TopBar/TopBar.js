@@ -83,7 +83,7 @@ function ProfileView({user, profileActions}){
     <Fragment>
       <Img.Img
         onClick={_ => setIsMenuOpen(!isMenuOpen)}
-        hoverPoint
+        hov_point
         mt='-2px'
         centerCrop
         width={'auto'}
@@ -134,7 +134,7 @@ function RightSideButton({descriptor, onHoverChanged, isDropped}){
     <Layout.Div
       ref={hoverRef}
       flex
-      hoverPoint
+      hov_point
       align='center'
       mr={3}>
       { descriptor.href &&
@@ -249,7 +249,7 @@ function ProfileMenu({profileActions, _ref, closeSelf}){
             />
             <Text.P
               // emotion={'white'}
-              hoverPoint
+              hov_point
               hoverUnderline
               ml={.8}>
               {action.name}
@@ -273,7 +273,7 @@ function LoginButton({callback}){
   return(
     <Button.ClearButton
       onClick={callback}
-      hoverPoint
+      hov_point
       bkgEmotion='transparent'
       emotion='white'
       hov_emotion='nectar'
@@ -288,7 +288,7 @@ function RightSideButtonTextView({descriptor}){
   return(
     <Text.H4
       bold
-      hoverPoint
+      hov_point
       hov_emotion='warning2'
       emotion='contrastFont'>
       { descriptor.name }

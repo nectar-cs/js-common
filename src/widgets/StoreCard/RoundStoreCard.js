@@ -11,7 +11,7 @@ export default function RoundStoreCard(props){
     <Layout.CenteringDivY
       mr={9}
       onClick={_ => callback(identifier)}
-      hoverPoint>
+      hov_point>
       <Img.Img
         borderRadius='50%'
         emotion='primaryColor'

@@ -95,7 +95,7 @@ export default function SlickBar(){
         </Text.P>
 
         <Img.Img
-          hoverPoint
+          hov_point
           borderRadius='50%'
           centered
           centerCrop

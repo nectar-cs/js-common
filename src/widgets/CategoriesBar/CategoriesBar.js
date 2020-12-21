@@ -13,7 +13,7 @@ export default function CategoriesBar({items}){
             horSwell={1}
             style={{justifyContent: 'space-between'}}
             onClick={item.callback}
-            hoverPoint
+            hov_point
             hov_bkgEmotion='soothing'>
             <Text.Icon
               name={item.icon}

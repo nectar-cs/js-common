@@ -63,7 +63,7 @@ function PlanSummaryView({plan, callback}){
         mt={2}
         fontSize='16px'
         style={{borderWidth: '1spx'}}
-        hoverPoint
+        hov_point
         bold
         width='120px'
         vertSwell={1.6}
@@ -83,7 +83,7 @@ function PlanOptionView({plan, isSelected, callback}){
       mt={1.5}
       onClick={callback}
       padded
-      hoverPoint
+      hov_point
       rounding={6}
       vertSwell={3}
       horSwell={2}

@@ -44,7 +44,7 @@ export default class ErrorToast extends React.Component{
           name='close'
           top='8px'
           right='8px'
-          hoverPoint
+          hov_point
           onClick={_ => this.setState(s => ({...s, isDismissed: true}))}
         />
         { errors.map((error, i) => (

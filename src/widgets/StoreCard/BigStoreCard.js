@@ -46,7 +46,7 @@ export function BigStoreCard(props){
       // width='230px'
       // width='484px'
       height='230px'
-      hoverPoint
+      hov_point
       relative
       sexyShadow={!!dark}
     >

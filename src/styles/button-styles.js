@@ -14,23 +14,25 @@ const _Button = styled.button`
   ${commonFontAttrs};
   ${p => colorStyles(p, {
     bkgEmotion: 'primaryColor',
-    hov_bkgEmotion: 'primaryBkg',
-    dis_bkgEmotion: 'grey'
+    hov_bkgEmotion: shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), -20),
+    dis_bkgEmotion: 'grey',
+    hov_point: true
   })};
-  ${p => marginsAndPadding('padding', p, { ptb: '6.5', plr: '18.2' })};
+  ${p => marginsAndPadding('padding', p, { 
+    ptb: '6.5px', plr: '18.2px'
+  })};
   ${p => borderStyles(p, {
     borderRadius: '5px',
     borderWidth: '.5px',
-    borderEmotion: 'pleasant'
+    borderEmotion: 'pleasant',
+    hov_borderEmotion: 'transparent'
   })};
+  
   
   text-align: center;
 
   &:focus{
     outline: transparent;
-  }
-  &:active{
-    background: ${p => shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), 20)});
   }
   &:disabled {
     cursor: default;

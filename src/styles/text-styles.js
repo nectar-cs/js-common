@@ -111,7 +111,7 @@ const StatusTag = styled(P)`
 
 const BorderedStatusTag = styled(StatusTag)`
   ${p => marginsAndPadding('padding', p, {
-    pt: '2.4px', plr: '8px', bb: '0.4px'
+    pt: '2.4px', plr: '8px', pb: '0.4px'
   })};
   ${p => borderStyles(p, {
     borderWidth: '1px',

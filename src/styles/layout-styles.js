@@ -2,7 +2,6 @@ import React from 'react'
 // noinspection NpmUsedModulesInstalled
 import styled, {css} from 'styled-components'
 import {
-  colorKeys,
   commonSizeAttrs,
   heightAndWidth,
   overflowScroll,
@@ -23,12 +22,10 @@ const Dims = {
 // noinspection JSUnresolvedFunction
 const Div = styled.div`
   ${commonSizeAttrs};
-  background: ${p => easyColor(p, p.emotion, 'transparent')};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   ${p => central(p)};
   ${p => center(p)};
-  ${p => borderStyles(p)};
   ${p => hipster(p)};
   ${p => absHipster(p)};
   ${p => overflowScroll(p)};

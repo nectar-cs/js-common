@@ -13,7 +13,7 @@ export default function ModestLink({to, children, disabled}) {
     );
   } else {
     return(
-      <Layout.Div onClick={to} hoverPoint>
+      <Layout.Div onClick={to} hov_point>
         { children }
       </Layout.Div>
     )

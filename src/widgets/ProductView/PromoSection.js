@@ -61,7 +61,7 @@ function ScreenshotsGrid({screenshotUrls}){
       { screenshotUrls.map((screenshotUrl, i) => (
         <Img.Img
           key={i}
-          hoverPoint
+          hov_point
           onClick={_ => setIsOpen(screenshotUrl)}
           mr={2}
           sexyShadow
