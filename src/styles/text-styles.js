@@ -1,13 +1,15 @@
 import React from 'react'
+// noinspection NpmUsedModulesInstalled
 import styled, {css} from "styled-components";
 import {
   borderStyles,
   colorKeys,
+  colorStyles,
   commonFontAttrs,
   commonSizeAttrs,
-  contrastFontForBkg, fontSize, noDec,
-  resolveColor, simplePadding
+  fontStyles, marginsAndPadding, multiMode,
 } from './constants'
+// noinspection NpmUsedModulesInstalled
 import { Link } from 'react-router-dom';
 import {easyColor} from "./utils";
 
@@ -21,10 +23,6 @@ const P = styled.p`
   line-height: ${p => lineHeight(p, '19px')};
 `;
 
-const L = styled(P)`
-  font-size: ${p => fontSize(p, '13px')};
-`;
-
 const A = styled.a`
   ${commonSizeAttrs};
   ${commonFontAttrs};
@@ -32,29 +30,31 @@ const A = styled.a`
 `;
 
 const H1 = styled(P)`
-  font-size: ${p => fontSize(p, '19px')};
+  ${p => fontStyles(p, { fontSize: '19px' })};
 `;
 
 const H2 = styled(P)`
-  font-size: ${p => fontSize(p, '17px')};
+  ${p => fontStyles(p, { fontSize: '17px' })};
 `;
 
 const H3 = styled(P)`
-  font-size: ${p => fontSize(p, '15px')};
+  ${p => fontStyles(p, { fontSize: '15px' })};
 `;
 
 const H4 = styled(P)`
-  font-size: ${p => fontSize(p, '13px')};
+  ${p => fontStyles(p, { fontSize: '13px' })};
 `;
 
+// noinspection JSUnresolvedFunction
 const CuckIcon = styled.i`
   ${commonSizeAttrs};
   ${commonFontAttrs};
   font-family: 'Material Icons', serif;
-  font-size: ${p => iconSize(p)};
+  ${p => fontStyles(p, {
+    fontSize: iconSize(p)  
+  })};
   color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
 `;
-
 
 function Icon({name, ...props}){
   return(
@@ -71,7 +71,7 @@ function textPosition(p){
 }
 
 function noSpill(p){
-  if(p.noSpill){
+  if(p['noSpill']){
     return css`
       overflow: hidden;
       text-overflow: ellipsis;
@@ -80,17 +80,17 @@ function noSpill(p){
   }
 }
 
-function underlined(p) {
-  if(p.underline || p.underlined){
-    return css`
-      text-decoration: underline;
-    `
-  }
+function underlined(p, defaults={}) {
+  return multiMode({...defaults, ...p}, push => {
+    push('underline', 'text-decoration: underline');
+    push('underline2', 'text-decoration: underline');
+  })
 }
 
 function clamp(p, backup){
   const _clamp = (p.clamp || backup);
   if(_clamp != null){
+    // noinspection CssUnknownProperty
     return css`
       overflow: hidden;
       text-overflow: ellipsis;
@@ -102,23 +102,26 @@ function clamp(p, backup){
 }
 
 const StatusTag = styled(P)`
-  padding: ${p => simplePadding(p, {horSwell: 1, vertSwell: 1})};
-  padding-top: 3px;
-  padding-bottom: 1px;
+  ${p => marginsAndPadding('padding', p, { plr: '14px', ptb: '5px' })};
+  ${p => colorStyles(p, { bkgEmotion: 'primaryColor' })};
+  ${p => borderStyles(p, { borderRadius: '4px' })};
   text-align: center;
   display: inline-block;
-  background: ${p => resolveColor(p, p.emotion, colorKeys.primaryColor)};
-  color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.primaryColor)};
-  ${p => borderStyles(p, {borderRadius: '4px'})}
 `;
 
 const BorderedStatusTag = styled(StatusTag)`
-  padding: 2.5px 8px 0.5px 8px;
-  border-width: 1px;
-  background: ${p => easyColor(p, p.bkgEmotion, 'transparent')};
-  border-color: ${p => easyColor(p, p.emotion, '#DCDCDC')};
-  border-style: solid;
-  color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
+  ${p => marginsAndPadding('padding', p, {
+    pt: '2.4px', plr: '8px', bb: '0.4px'
+  })};
+  ${p => borderStyles(p, {
+    borderWidth: '1px',
+    borderRadius: '3px',
+    borderEmotion: p.emotion || '#DCDCDC'
+  })};
+  ${p => colorStyles(p, {
+    emotion: 'secondaryFont',
+    bkgEmotion: 'transparent'
+  })};
 `;
 
 const CleanStatus = styled(P)`
@@ -133,7 +136,7 @@ const BoldStatus = styled(P)`
 
 const Code = styled.code`
   display: block;
-  margin-top: ${p => p.chill ? "6px" : "2px"};
+  margin-top: ${p => p['chill'] ? "6px" : "2px"};
   color: ${p => p.theme.colors.contrastFont};
   font-size: 12px;
   &:first-child{
@@ -141,15 +144,11 @@ const Code = styled.code`
   }
 `;
 
-const ContrastCode = styled(Code)`
-  color: ${p => p.theme.colors.primaryFont};
-`;
-
 const BoldRef = styled.p`
   text-decoration: underline;
   font-weight: bold;
   margin-right: ${p => p.push ? "3px" : '0'}
-  margin-left: ${p => p.pushed ? "3px" : '0'}
+  margin-left: ${p => p['pushed'] ? "3px" : '0'}
 `;
 
 const SilentLink = styled(props => (
@@ -183,6 +182,7 @@ const Text = {
   H3,
   H4,
   Icon,
+  CuckIcon,
   SilentLink,
   HoverLink,
   Code,
@@ -190,8 +190,7 @@ const Text = {
   CleanStatus,
   StatusTag,
   BoldRef,
-  BorderedStatusTag,
-  ContrastCode
+  BorderedStatusTag
 };
 
 export default Text;

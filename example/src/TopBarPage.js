@@ -13,7 +13,6 @@ export default function TopBarPage() {
   return(
     <ThemeProvider theme={noSideBarTheme}>
       <AppLayout
-        SideBar={null}
         TopBar={MyTopBar}>
         <Layout.PageWithoutHeader>
           <Layout.Div

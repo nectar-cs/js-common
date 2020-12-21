@@ -3,8 +3,8 @@ import Layout from "../../styles/layout-styles";
 import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
 
-export default function BigHeader({title, subtitle, graphicName}){
-  const height = '90px';
+export default function BigHeader({title, Subtitle, graphicName}){
+  const height = '80px';
   return(
     <Layout.Div flex>
       <Img.Img
@@ -15,23 +15,21 @@ export default function BigHeader({title, subtitle, graphicName}){
         src={graphicName}
       />
       <Layout.Div
-        // pt='28px'
-        // pb='28px'
-        width={'100%'}
+        width='100%'
         height={height}
         relative
-        ml={.7}>
+        ml={1.22}>
         <Text.H1
           fontSize='28px'
           absolute
-          top={1.3}>
+          top={1.7}>
           { title }
         </Text.H1>
-        <Text.P
+        <Layout.Div
          absolute
-         bottom={1.3}>
-          { subtitle }
-        </Text.P>
+         bottom={.5}>
+          <Subtitle/>
+        </Layout.Div>
       </Layout.Div>
     </Layout.Div>
   )

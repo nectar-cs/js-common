@@ -1,36 +1,38 @@
+// noinspection NpmUsedModulesInstalled
 import styled from 'styled-components'
-
 import {
   borderStyles,
+  colorStyles,
   commonFontAttrs,
   commonSizeAttrs,
-  contrastFontForBkg, hover,
-  simplePadding
+  marginsAndPadding
 } from './constants'
-import {easyColor} from "./utils";
+import {easyColor, shadeColor} from "./utils";
 
 const _Button = styled.button`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  background: ${p => easyColor(p, p.bkgEmotion, 'primaryColor')};
-  color: ${p => contrastFontForBkg(p, p.bkgEmotion, 'primaryColor')};
-  padding: ${p => simplePadding(p, { vertSwell: 1.3, horSwell: 1.3 })};
-  text-align: center;
-  ${p => hover(p, {hoverBkgEmotion: 'primaryBkg'})};
+  ${p => colorStyles(p, {
+    bkgEmotion: 'primaryColor',
+    hov_bkgEmotion: 'primaryBkg',
+    dis_bkgEmotion: 'grey'
+  })};
+  ${p => marginsAndPadding('padding', p, { ptb: '6.5', plr: '18.2' })};
   ${p => borderStyles(p, {
-    borderRadius: '5px', 
+    borderRadius: '5px',
     borderWidth: '.5px',
     borderEmotion: 'pleasant'
   })};
+  
+  text-align: center;
 
   &:focus{
     outline: transparent;
   }
   &:active{
-    background: ${p => easyColor(p, p.emotion, 'pleasant')};
+    background: ${p => shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), 20)});
   }
   &:disabled {
-    background: ${p => 'grey'};
     cursor: default;
   }
 `;
@@ -40,7 +42,6 @@ const ClearButton = styled(_Button)`
   background: ${p => easyColor(p, p.bkgEmotion, 'grey2')};
   color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
   ${p => borderStyles(p, { borderRadius: '5px', borderEmotion: 'grey3' })};
-  // ${p => hover(p, {hoverBkgEmotion: 'grey3'})};
   
   &:disabled {
     background: ${p => easyColor(p, p.bkgEmotion, 'grey4')};

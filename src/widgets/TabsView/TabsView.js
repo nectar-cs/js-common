@@ -4,7 +4,7 @@ import Text from "../../styles/text-styles";
 
 export default function TabsView(props){
   const { descriptors, onTabSelected, crtIndex } = props;
-  const { pProps, iconProps, tabProps } = props;
+  const { pProps, iconProps, tabProps, highlightEmotion } = props;
 
   return(
     <Layout.Div
@@ -32,24 +32,27 @@ export default function TabsView(props){
             key={i}
             flex
             onClick={_ => onTabSelected ? onTabSelected(i) : null}
-            hoverBkgEmotion={'calmBeige'}
+            hov_bkgEmotion={'calmBeige'}
             hoverPoint
             align='center'
             pl={1.5}
             pr={1.5}
             height='100%'
-            borderRadius={'4px 4px 0 0'}
+            borderRadius='2px 2px 0 0'
             borderStyle='none none solid none'
-            borderEmotion={i === crtIndex ? 'warning2' : 'transparent'}
+            borderEmotion={i === crtIndex ? highlightEmotion : 'transparent'}
             borderWidth='2px'
             {...tabProps}
           >
             <Text.Icon
+              emotion={i === crtIndex ? null : 'primaryFontLess'}
               name={desc.icon}
               size={.9}
               {...iconProps}
             />
             <Text.P
+              calm={i !== crtIndex}
+              bold={i === crtIndex}
               ml={.6}
               {...pProps}>
               { desc.name }
@@ -65,5 +68,6 @@ TabsView.defaultProps = {
   crtIndex: 0,
   pProps: {},
   iconProps: {},
-  tabProps: {}
+  tabProps: {},
+  highlightEmotion: 'warning2'
 }

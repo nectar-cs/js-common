@@ -45,14 +45,14 @@ function TwoPanels(){
             name='photo'
             ml={1}
             emotion={colorKeys.cool}
-            hoverBkgEmotion={'black'}
+            hov_kgEmotion={'black'}
           />
           <Text.Icon
             size={1.2}
             name='photo'
             ml={1}
             emotion={colorKeys.excited}
-            hoverEmotion={'cool'}
+            hov_emotion={'cool'}
             hoverPoint
           />
         </Layout.Div>

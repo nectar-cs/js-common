@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {commonFontAttrs, commonSizeAttrs, fontSize} from "../../styles/constants";
+import {commonFontAttrs, commonSizeAttrs} from "../../styles/constants";
 
 const HorizontalBoxWrapper = styled.div`
   position: relative;

@@ -85,6 +85,7 @@ export const theme = {
   dims: {
     topBarHeight: "55px",
     sideBarWidth: "220px",
+    slickBarWidth: '56px',
     borderRadius: "6px",
     borderWidth: "1px",
     inputBorderWidth: 1.3
@@ -121,6 +122,14 @@ export const noTopBarTheme = {
   }
 }
 
+export const slickBarTheme = {
+  ...theme,
+  dims: {
+    topBarHeight: 0,
+    sideBarWidth: theme.dims.slickBarWidth
+  }
+}
+
 export const noSideBarTheme = {
   ...theme,
   dims: {
@@ -140,27 +149,41 @@ export const noSideBarTheme = {
 
 /*--------------------MIXINS---------------------*/
 
+export const commonSizeAttrs = css`
+  ${p => marginsAndPadding('margin', p)};
+  ${p => marginsAndPadding('padding', p)};
+  ${p => heightAndWidth(p)};
+  ${p => colorStyles(p)};
+  ${p => centered(p)};
+  ${p => centerLow(p)};
+  ${p => absolutePositioning(p)};
+  ${p => hover(p)};
+  ${p => sexyShadow(p)};  
+  ${p => rotating(p)};
+  
+  ${p => floating(p)};    
+  ${p => borderStyles(p)};
+`;
+
+export const commonFontAttrs = css`
+  ${p => noDec(p)};
+  ${p => hacker(p)};
+  ${p => fontStyles(p)};
+  font-family: ${p => p['fontFam'] || p.theme.font.family};
+`;
+
+
+
+
+
+
+
+
+/*********************WHATEVER************************/
 const corners = ['top', 'right', 'bottom', 'left'];
 
-function blinking(p){
-  if(p.blink){
-    const fromCol = resolveColor(p, p.blinkFrom, colorKeys.contrastFont);
-    const toCol = resolveColor(p, p.blinkTo, colorKeys.disabled);
-    return css`
-      animation-name: blink-animation;
-      animation-duration: .15s;
-      animation-iteration-count: 2;
-      animation-timing-function: ease-in-out;
-      @keyframes blink-animation {
-        from { background: ${fromCol}; }
-        to { background: rgba(0, 148, 133, 0.4); }
-      }
-    `;
-  }
-}
-
 function rotating(p){
-  if(p.rotating){
+  if(p['rotating']){
     return(
       css`
         -webkit-animation:spin 4s linear infinite;
@@ -210,35 +233,6 @@ function centerLow(p) {
   }
 }
 
-export const commonSizeAttrs = css`
-  ${p => marginsAndPadding('margin', p)};
-  ${p => marginsAndPadding('padding', p)};
-  padding: ${p => simplePadding(p)};
-  ${p => heightAndWidth(p)}
-  ${p => centered(p)};
-  ${p => centerLow(p)};
-  ${p => blinking(p)};
-  ${p => absolutePositioning(p)};
-  ${p => hover(p)};
-  ${p => sexyShadow(p)};
-  ${p => rotating(p)};
-  ${p => pulse(p)};
-  ${p => floating(p)};    
-  ${p => borderStyles(p)};
-`;
-
-export const commonFontAttrs = css`
-  font-family: ${p => resolveFontFam(p)};
-  color: ${p => resolveColor(p, p.emotion, colorKeys.primaryFont)};
-  background: ${p => resolveColor(p, p.bkgEmotion, null)};
-  font-weight: ${p => textWeight(p)};
-  text-align: ${p => textAlign(p)};
-  font-size: ${p => fontSize(p)};
-  display: ${p => textDisplay(p)};
-  visibility: ${p => textVisibility(p)};
-  ${p => noDec(p)};
-  ${p => hacker(p)};
-`;
 
 
 
@@ -250,17 +244,29 @@ export const commonFontAttrs = css`
 /*--------------------UTILS---------------------*/
 
 
+const positionalShorthands = {
+  t: ['top'], r: ['right'], b: ['bottom'], l: ['left'],
+  tb: ['top', 'bottom'], lr: ['left', 'right'],
+  trbl: ['top', 'right', 'bottom', 'left']
+}
 
 export function marginsAndPadding(base, p, defaults={}){
   const total = [];
   const merged = {...defaults, ...p};
-  const suffixes = ['top', 'right', 'bottom', 'left'];
-  for(let suffix of suffixes){
-    const acronym = `${base[0]}${suffix[0]}`;
-    const assignment = merged[acronym];
-    if(assignment)
-      total.push(`${base}-${suffix}: ${lilDim(assignment)};`);
+
+  if(merged['padded'])
+    total.push('padding: 9px 14px;');
+
+  for(let shortHand of Object.entries(positionalShorthands)){
+    const [propName, cssMappings] = shortHand;
+    const propValue = merged[`${base[0]}${propName}`];
+    if(propValue){
+      for(let cssMapping of cssMappings){
+        total.push(`${base}-${cssMapping}: ${lilDim(propValue)};`);
+      }
+    }
   }
+
   if(total.length > 0){
     return css`
       ${total.join("\n")}
@@ -268,19 +274,14 @@ export function marginsAndPadding(base, p, defaults={}){
   }
 }
 
-export function resolveFontFam(p){
-  return `${p.fontFam || p.theme.font.family}`;
-}
-
-
 export function heightAndWidth(p, defaults={}){
   const merged = {...defaults, ...p};
   const total = [];
-  if(merged.wh){
+  if(merged['wh']){
     let width, height;
-    if(typeof merged.wh === 'string')
-      [width, height] = merged.wh.split(" ");
-    else width = merged.wh;
+    if(typeof merged['wh'] === 'string')
+      [width, height] = merged['wh'].split(" ");
+    else width = merged['wh'];
     total.push(`width: ${lilDim(width)};`);
     total.push(`height: ${lilDim(height == null ? width : height)};`);
   }
@@ -298,41 +299,22 @@ export function heightAndWidth(p, defaults={}){
 
 function floating(p, defaults={}){
   const merged = {...defaults, ...p};
-  if(merged.flt){
+  if(merged['flt']){
     return css`
-      float: ${merged.flt};
+      float: ${merged['flt']};
     `;
   }
 }
 
 function hacker(p, defaults={}){
-  const merged = {...defaults, ...p};
-  if(merged.hacker){
-    return css`
-      font-family: "Courier 10 Pitch", monospace;
-    `;
-  }
+  return multiMode({...defaults, ...p}, push => {
+    push('hacker', 'font-family: "Courier 10 Pitch", monospace;')
+  })
 }
 
 export function hover(p, defaults={}){
   let total = [];
   const merged = {...(defaults || {}), ...p};
-  if(merged.hoverEmotion){
-    total.push(`
-      &:hover{
-        color: ${easyColor(p, p.hoverEmotion)} !important;
-      }
-    `)
-  }
-
-  if(merged.hoverBkgEmotion){
-    total.push(`
-      &:hover{
-        background: ${easyColor(p, p.hoverBkgEmotion)};
-      }
-    `)
-  }
-
   if(merged.hoverPoint){
     total.push(`
       &:hover{
@@ -348,98 +330,162 @@ export function hover(p, defaults={}){
       }
     `)
   }
+
   return total.join("\n");
 }
 
 const defRoundingApplier = (x) => x;
 
+const prefixCodes = {
+  '': '',
+  'hov_': 'hover',
+  'foc_': 'focus',
+  'dis_': 'disabled'
+};
+
+function miniResolve(merged, naivePropName, crtPrefix){
+  const fullPropName = `${crtPrefix}${naivePropName}`;
+  return merged[fullPropName];
+}
+
+export function multiMode(merged, worker){
+  let encapsulationBuckets = {};
+
+  function push(propName, intent){
+    for(let prefix of Object.keys(prefixCodes)){
+      const propValue = merged[`${prefix}${propName}`];
+      if(propValue != null){
+        const isGen = typeof intent === 'function';
+        const getter = naive => miniResolve(merged, naive, prefix);
+        let resolvedCssStmts = isGen ? intent(propValue, getter) : intent;
+        if(resolvedCssStmts != null){
+          if(!Array.isArray(resolvedCssStmts))
+            resolvedCssStmts = [resolvedCssStmts];
+
+          console.log("GOT ");
+          console.log(resolvedCssStmts);
+          resolvedCssStmts = resolvedCssStmts.map(stmt => (
+            stmt.endsWith(";") ? stmt : `${stmt};`)
+          );
+
+          if(encapsulationBuckets[prefix] == null)
+            encapsulationBuckets[prefix] = [];
+          encapsulationBuckets[prefix].push(...resolvedCssStmts);
+        }
+      }
+    }
+    // console.log(`push(${propName}, ${intent}) =>`);
+    // console.log(encapsulationBuckets);
+  }
+
+  worker(push);
+
+  const pray = [];
+
+  for(let entry of Object.entries(encapsulationBuckets)){
+    const [code, cssStatements] = entry;
+    const stmts = cssStatements.join("\n");
+    let enclosed;
+    if(prefixCodes[code]){
+      enclosed = `&:${prefixCodes[code]}{
+        ${stmts}
+      }`;
+    } else enclosed = stmts;
+    pray.push(enclosed);
+  }
+
+  console.log("CSS");
+  console.log(pray);
+
+  if(pray.length > 0){
+    return css`
+      ${pray.join("\n")}
+    `;
+  }
+}
+
+export function colorStyles(p, defaults={}){
+  return multiMode({...defaults, ...p}, push => {
+    push('emotion', val => `color: ${easyColor(p, val)}`);
+    push('bkgEmotion', val => `color: ${easyColor(p, val)}`);
+  });
+}
+
+export function fontStyles(p, defaults={}){
+  const bkp = { fontSize: p.theme.font.size };
+  return multiMode({...bkp, ...defaults, ...p}, push => {
+    push('bold', 'font-weight: bold');
+    push('fontSize', val => `font-size: ${val}`);
+    push('promo', `font-size: ${p.theme.font.promoSize}`);
+    push('invisible', 'visibility: hidden');
+  });
+}
+
 export function borderStyles(p, defaults={}){
   const merged = {...defaults, ...p};
-  const { borderWidth, borderEmotion, borderRadius, borderStyle } = merged;
-  const { lightBorder, sofa, funky, rounded } = merged;
   let { halfRounded, roundingApplier} = merged;
-  if(merged.ignore) return null;
-
-  const total = [];
 
   if(halfRounded)
     roundingApplier = x => `0 0 ${x} ${x}`;
 
   roundingApplier = roundingApplier || defRoundingApplier;
 
-  if(lightBorder){
-    total.push(`border-color: ${easyColor(p, null, 'grey3')};`);
-    total.push('border-style: solid;');
-    total.push(`border-width: ${borderWidth || '.5px'};`);
-  }
-
-  if(rounded)
-    total.push(`border-radius: ${roundingApplier('4px')}`)
-
-  if(sofa)
-    total.push(`border-radius: ${roundingApplier('8px')}`)
-
-  if(funky)
-    total.push(`border-radius: ${roundingApplier('25px')}`)
-
-  if(borderEmotion){
-    total.push(`border-color: ${easyColor(p, borderEmotion)};`);
-    total.push('border-style: solid;');
-  }
-
-  if(borderWidth){
-    total.push(`border-width: ${borderWidth};`);
-    total.push('border-style: solid;');
-  }
-
-  if(borderRadius)
-    total.push(`border-radius: ${roundingApplier(lilDim(borderRadius))};`);
-
-  if(borderStyle)
-    total.push(`border-style: ${lilDim(borderStyle)};`);
-
-  if(total.length > 0){
-    return css`
-      ${total.join("\n")}
-  `;
-  }
+  return multiMode({...defaults, ...p}, push => {
+    push('lightBorder', (_, get) => [
+      `border-color: ${easyColor(p, null, 'grey3')}`,
+      'border-style: solid;',
+      `border-width: ${get('borderWidth') || '.5px'}`
+    ]);
+    push('rounded', `border-radius: ${roundingApplier('4px')}`);
+    push('sofa', `border-radius: ${roundingApplier('8px')}`);
+    push('funky', `border-radius: ${roundingApplier('25px')}`);
+    push('borderEmotion', val => [
+      `border-color: ${easyColor(p, val)};`,
+      'border-style: solid;'
+    ]);
+    push('borderWidth', val => [
+      `border-width: ${val}`,
+      'border-style: solid'
+    ]);
+    push('borderStyle', val => `border-style: ${lilDim(val)};`);
+    push('borderRadius', val => `border-radius: ${roundingApplier(lilDim(val))};`);
+  });
 }
 
-function pulse(p){
-  if(p.pulse){
-    const baseColor = easyColor(p, p.pulseColor, colorKeys.primaryColor);
-    const color = hexToRgb(baseColor);
-    const op = val => `rgba(${color.toString()}, ${val.toString()})`;
+function pulse(p, defaults={}){
+  const merged = {...defaults, ...p};
+  return multiMode(merged, push => {
+    push('pulse', (_, get) => {
+      const baseColor = easyColor(p, get('pulseColor'), colorKeys.primaryColor);
+      const color = hexToRgb(baseColor);
+      const op = val => `rgba(${color.toString()}, ${val.toString()})`;
 
-    return(
-      css`
+      return(
+        css`
         animation: pulse 2s infinite;
         @keyframes pulse {
           0% { box-shadow: 0 0 0 0 ${op(.5)}; }
           70% { box-shadow: 0 0 0 5px ${op(0)}; }
           100% { box-shadow: 0 0 0 0 ${op(0)}; }
         }
-      `
-    );
-  }
+      `);
+    });
+  });
 }
 
 export function sexyShadow(p, defaults={}){
-  const merged =  {...defaults, ...p};
-  if(merged.sexyShadow){
-    const opacity = merged.shadowOpacity || .2;
-    return css`
-      box-shadow: 0 0 14px 0 rgba(42,43,42, ${opacity});
-    `
-  }
+  return multiMode({...defaults, ...p}, push => {
+    push('sexyShadow', (_, get) => {
+      const opacity = get('shadowOpacity') || .2;
+      return `box-shadow: 0 0 14px 0 rgba(42,43,42, ${opacity});`;
+    })
+  });
 }
 
 export function heavyShadow(p, defaults={}){
-  if({...defaults, ...p}.heavyShadow){
-    return css`
-      box-shadow: 0px 0px 14px 0px rgba(42,43,42,0.3);
-    `
-  }
+  return multiMode({...defaults, ...p}, push => {
+    push('heavyShadow', `box-shadow: 0px 0px 14px 0px rgba(42,43,42,0.3)`)
+  })
 }
 
 function absolutePositioning(p, defaults){
@@ -469,88 +515,10 @@ function absolutePositioning(p, defaults){
     `
 }
 
-export function simplePadding(p, defaults={}){
-  const [vertMultiplier, horMultiplier] = [5, 14];
-  const merged = {...defaults, ...p};
-  const vertSwell = merged.vertSwell || merged.swell || (merged.padded ? 1.8 : null);
-  const horSwell = merged.horSwell || merged.swell || (merged.padded ? 1 : null);
-  const vertPadding = vertSwell !== null ? `${vertMultiplier * vertSwell}px` : 'default';
-  const horPadding = horSwell !== null ? `${horMultiplier * horSwell}px` : 'default';
-  return `${vertPadding} ${horPadding}`;
-}
-
-// export function borderRounding(p, defaults={}){
-//   const defaultApplier = x => x;
-//   const merged = {...defaults, ...p};
-//   const funky = merged.funky ? 25 : null;
-//   const sofa = merged.sofa ? 8 : null;
-//   const swell = funky || sofa || merged.rounding;
-//   const finalValue = swell !== null ? `${swell}px` : 'default';
-//   return (merged.applier || defaultApplier)(finalValue);
-// }
-
-export function resolveColorKey(props, colorKey, backupColorKey){
-  if(props.calm) return colorKeys.calm;
-  return colorKey || backupColorKey;
-}
-
-export function resolveColor(props, colorKey, backupColorKey){
-  if((colorKey || "").includes("#"))
-    return colorKey;
-
-  if(backupColorKey || colorKey){
-    const resolvedKey = resolveColorKey(props, colorKey, backupColorKey);
-    return props.theme.colors[resolvedKey] || colorKey || backupColorKey;
-  } else return "inherit";
-}
-
-function contrastFontKeyForBkg(props, colorKey, backupColorKey){
-  const bkgColorKey = resolveColorKey(props, colorKey, backupColorKey);
-  switch (bkgColorKey) {
-    case colorKeys.disabled:
-    case colorKeys.contrastColor:
-    case colorKeys.calmTextBkg:
-    case colorKeys.contentBackgroundColor:
-      return colorKeys.primaryFont;
-    default: return colorKeys.contrastFont;
-  }
-}
-
-export function contrastFontForBkg(props, colorKey, backupColorKey){
-  const finalKey = contrastFontKeyForBkg(props, colorKey, backupColorKey);
-  return props.theme.colors[finalKey];
-}
-
-function textVisibility(p){
-  return p.invisible ? "hidden" : "visible";
-}
-
 export function overflowScroll(p, defaults={}){
   if({...defaults, ...p}.scroll){
     return css`
       overflow: scroll;
     `
   }
-}
-
-function textWeight(p){
-  if(p.bold) return "bold";
-  else return p.weight || "normal";
-}
-
-function textAlign(p){
-  if(p.center) return 'center';
-  if(p.right) return 'right';
-  return 'left';
-}
-
-export function fontSize(p, backup){
-  if(p.promo) return p.theme.font.promoSize;
-  else return p.fontSize || backup || p.theme.font.size;
-}
-
-function textDisplay(p){
-  if(p.iblock) return "inline-block";
-  else if(p.block) return "block";
-  return "default";
 }

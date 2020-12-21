@@ -1,31 +1,21 @@
 import React from 'react'
+// noinspection NpmUsedModulesInstalled
 import styled, {css} from "styled-components";
 import {
   borderStyles,
-  colorKeys,
+  colorKeys, colorStyles,
   commonFontAttrs,
   commonSizeAttrs,
-  heightAndWidth, marginsAndPadding,
-  resolveColor, sexyShadow
+  heightAndWidth,
+  marginsAndPadding,
 } from "./constants";
-import Layout from "./layout-styles";
+// noinspection NpmUsedModulesInstalled
 import clsx from 'clsx';
 import {checkboxStyles} from "./material-trash";
+// noinspection NpmUsedModulesInstalled
 import Checkbox from "@material-ui/core/Checkbox";
 import {easyColor} from "./utils";
 
-
-const borderWidth = p => 1;
-const borderWidthFocused = p => borderWidth(p) + .5;
-const paddingLr = 10;
-const paddingTb = 6.4;
-
-function paddingFocused(p){
-  const difference = (borderWidthFocused(p) - borderWidth(p));
-  const lr = paddingLr - difference;
-  const tb = (paddingTb - difference);
-  return `${tb}px ${lr}px`;
-}
 
 const radioRad = 18;
 const innerRadioRad = 15;
@@ -36,7 +26,7 @@ function _Checkbox(props){
     <Checkbox
       className={classes.root}
       disableRipple
-      color="default"
+      color="red"
       checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
       icon={<span className={classes.icon} />}
       inputProps={{ 'aria-label': 'decorative checkbox' }}
@@ -63,7 +53,7 @@ const RadioSpan = styled.span`
   height: ${radioRad}px;
   width: ${radioRad}px;
   border-radius: 50%;
-  background: ${p => resolveColor(p, null, colorKeys.primaryColor)};
+  background: ${p => easyColor(p, null, colorKeys.primaryColor)};
 
   &:after {
     content: "";
@@ -75,7 +65,7 @@ const RadioSpan = styled.span`
     height: ${innerRadioRad}px;
     transform: translateX(-50%) translateY(-50%);
     border-radius: 50%;
-    background: ${p => resolveColor(p, null, colorKeys.contrastColor)};
+    background: ${p => easyColor(p, null, colorKeys.contrastColor)};
   }
 `;
 
@@ -85,11 +75,11 @@ const RadioStyles = styled.input`
   cursor: pointer;
   &:checked {
     &~span {
-      background: ${p => resolveColor(p, null, colorKeys.primaryColor)};
+      background: ${p => easyColor(p, null, colorKeys.primaryColor)};
       &:after{
         width: ${innerRadioRad *  .6}px;
         height: ${innerRadioRad * .6}px;
-        background: ${p => resolveColor(p, null, colorKeys.contrastColor)};
+        background: ${p => easyColor(p, null, colorKeys.contrastColor)};
       }
     }
   }  
@@ -109,23 +99,14 @@ const FlatCss = css`
   ${commonFontAttrs};
   
   outline: none;
-  background: ${p => easyColor(p, p.bkgEmotion, "inputGrey")};
+  ${p => marginsAndPadding('padding', p, { ptb: '9px', plr: '10px'})};
+  ${p => heightAndWidth(p, { width: '100%' })};
+  ${p => colorStyles(p, { emotion: 'primaryFont', bkgEmotion: 'inputGrey' })};
   ${p => borderStyles(p, {
     borderRadius: '5px',
     borderWidth: '1.5px',
     borderEmotion: 'inputBorderGrey'
   })};
-
-  ${p => marginsAndPadding('padding', p, {
-    pt: '9px', pr: '10px', pb: '9px', pl: '10px'
-  })};
-
-  ${p => heightAndWidth(p, {
-    width: '100%' 
-  })};
-  
-  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
-  
   
   box-sizing: border-box;
   
@@ -134,7 +115,7 @@ const FlatCss = css`
   }
 
   &:focus{
-    border-color: ${p => easyColor(p, p.focusBorderEmotion, '#b2d1f3')};
+    border-color: ${p => easyColor(p, p['focusBorderEmotion'], '#b2d1f3')};
   }
   
   &:-webkit-autofill,
@@ -152,6 +133,7 @@ const FlatInput = styled.input`
   ${FlatCss}
 `;
 
+// noinspection JSUnresolvedFunction
 const FlatTextArea = styled.textarea`
   ${FlatCss};
   ${p => heightAndWidth(p, {
@@ -159,58 +141,6 @@ const FlatTextArea = styled.textarea`
     minHeight: '100%'
   })};
 `
-
-const _Input = styled.input`
-  ${commonSizeAttrs};
-  ${commonFontAttrs};
-  color: ${p => easyColor(p, p.emotion, 'primaryFont')};
-  background: ${p => easyColor(p, p.bkgEmotion, "transparent")};
-  ${p => borderStyles(p, { borderColor: 'hipBlue', borderRadius: '6px' })};
-  border-style: solid;
-  border-width: ${p => borderWidth(p)}px;
-  padding: ${paddingTb}px ${paddingLr}px;
-  box-sizing: border-box;
-  
-  &::placeholder{
-   color: ${p => p.theme.colors.primaryFontLess}
-  }
-  &:focus{
-    outline: transparent;
-    padding: ${p => paddingFocused(p)};
-    border-width: ${p => borderWidthFocused(p)}px;
-    ${p => borderStyles(p, {borderColor: 'cool'})};
-  }
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-   transition: background-color 5000s ease-in-out 0s;
-  }
-  &:-webkit-autofill {
-    -webkit-text-fill-color: ${p => p.theme.colors.primaryFont} !important;
-  }
-`;
-
-const Label = styled.p`
-  ${commonFontAttrs};
-  ${commonSizeAttrs};
-  width: 150px;
-  min-width: 150px;
-`;
-
-const Line = styled(props => (
-  <Layout.Div flex align='center' mt={2} {...props}>
-    { props.children }
-  </Layout.Div>
-))`
-`;
-
-const Select = styled(props => (
-  <_Input as='select' {...props}>
-    { props.children }
-  </_Input>
-))`
-`;
 
 const FlatSelect = styled(props => (
   <FlatInput as='select' {...props}>
@@ -220,11 +150,7 @@ const FlatSelect = styled(props => (
 `;
 
 const Input = {
-  Line,
-  Label,
-  Input: _Input,
   Radio: Radio,
-  Select,
   Checkbox: _Checkbox,
   FlatInput,
   FlatSelect,

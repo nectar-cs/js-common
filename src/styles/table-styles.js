@@ -1,6 +1,7 @@
 import React from 'react'
+// noinspection NpmUsedModulesInstalled
 import styled from "styled-components";
-import {borderStyles, commonSizeAttrs} from "./constants";
+import {commonSizeAttrs} from "./constants";
 
 const defBorderWidth = "1.0px";
 const defBorderEmotion = '#ddd';
@@ -59,6 +60,7 @@ function borEmo(p){
   return p.borderEmotion || defBorderEmotion;
 }
 
+// noinspection JSUnresolvedFunction
 const ModestHeader = styled.tr`
   th{
     p {
@@ -69,13 +71,14 @@ const ModestHeader = styled.tr`
 
 const SlimTable = styled(_Table)`
   tr{
-    ${p => p.borderless ? 'border-style: none;' : 'solid'};
+    ${p => p['borderless'] ? 'border-style: none;' : 'solid'};
     td{
       padding: ${p => (p.space || 1) * 6}px;
     }
   }
 `;
 
+// noinspection JSUnresolvedFunction
 const SkinnyRow = styled.td`
   padding-top: 8px;
   padding-bottom: 8px;

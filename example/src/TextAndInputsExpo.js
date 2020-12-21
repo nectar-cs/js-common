@@ -2,13 +2,14 @@ import React, {Fragment} from 'react'
 import {
   Text,
   Layout,
+  SlickBar,
   Input,
-  LeftHeader,
+  AppLayout,
   inverseTheme,
   colorKeys,
   Table,
+  slickBarTheme,
   Button,
-  FlexHeader
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
 import {Link} from "react-router-dom";
@@ -122,97 +123,67 @@ function TablesExpo(){
   )
 }
 
-function FormsExpo(){
-  return(
-    <Layout.Div mt={2}>
-      <Text.H2>Unlabelled Inputs</Text.H2>
-      <Input.Input mt={2.5} placeholder='Length set to Auto'/>
-      <Input.Input flat mt={1.5} placeholder='Flat Input'/>
-      <Input.Select mt={2.5}><option>Hey</option></Input.Select>
-      <Layout.Div flex mt={1.5}>
-        <Input.Radio name='one'/>
-        <Input.Radio name='one' s={{ml: 1}} checked/>
-        <Text.P ml={.3}>With label</Text.P>
-        <Input.Checkbox />
-      </Layout.Div>
-
-      <Text.H2 mt={4}>Labelled Inputs</Text.H2>
-      <Layout.Div mt={1.5} sexyShadow padded rounded emotion={colorKeys.primaryColor}>
-        <ThemeProvider theme={inverseTheme}>
-          <Input.Line mt={0.5}>
-            <Input.Label>Field label</Input.Label>
-            <Input.Input placeholder='Length set to Auto'/>
-          </Input.Line>
-          <Input.Line>
-            <Input.Label>Field label</Input.Label>
-            <Input.Input flat placeholder='Flat Input'/>
-            <Input.Select flat placeholder='Flat Input' ml={3}>
-              <option>Flat Select</option>
-            </Input.Select>
-          </Input.Line>
-        </ThemeProvider>
-      </Layout.Div>
-
-      <Text.H2 mt={4}>Buttons</Text.H2>
-      <Button.Button mt={2}>Raw Button</Button.Button>
-      <Link to='/widgets'>
-        <Button.Button ml={2}>Widgets Demo</Button.Button>
-      </Link>
-      <Button.Button
-        funky
-        ml={2}
-        horSwell={2}
-        bkgEmotion='excited'>
-        Round & Wide
-      </Button.Button>
-      <Button.Button ml={2} bkgEmotion={colorKeys.contentBackgroundColor}>
-        Auto-contrast
-      </Button.Button>
-      <Button.Button disabled ml={2}>Disabled</Button.Button>
-      <Layout.Div mt={2} relative>
-        <Link to='/layout'>
-          <Button.BigButton funky>Layouts Demo</Button.BigButton>
-        </Link>
-      </Layout.Div>
-      <Button.BigButton centerLow>Bottom Button</Button.BigButton>
-    </Layout.Div>
-  )
-}
-
 export default function TextAndInputsExpo(){
   return(
-    <Fragment>
-      <Layout.LeftPanel>
-        <LeftHeader
-          graphicName='insert_photo'
-          title='Text and Colors Expo'
-          subtitle='Subtitle'
-          graphicType='icon'
-        />
-        <SimpleTextExpo/>
-        <TablesExpo/>
-      </Layout.LeftPanel>
-      <Layout.RightPanel>
-        <FlexHeader
-          graphicType='image'
-          graphicName='https://storage.googleapis.com/nectar-mosaic-public/images/nectar-tomato.png'
-        >
-          <Fragment>
-            <Text.H1>Inputs and </Text.H1>
-            <Text.Icon name='laptop' size={1} ml={.4} mt={-.1}/>
-          </Fragment>
-          <Fragment>
-            <Text.P>Also demoing</Text.P>
-            <Text.StatusTag
-              vertSwell={.1}
-              ml={.8}
-              emotion={colorKeys.cool}>
-              Swag
-            </Text.StatusTag>
-          </Fragment>
-        </FlexHeader>
-        <FormsExpo/>
-      </Layout.RightPanel>
-    </Fragment>
+    <ThemeProvider theme={slickBarTheme}>
+      <AppLayout
+        SideBar={SlickBar}
+      >
+        <Layout.PageWithoutHeader>
+          <Layout.Div mt={2}>
+            <Text.H2>Unlabelled Inputs</Text.H2>
+            <Input.Input mt={2.5} placeholder='Length set to Auto'/>
+            <Input.Input flat mt={1.5} placeholder='Flat Input'/>
+            <Input.Select mt={2.5}><option>Hey</option></Input.Select>
+            <Layout.Div flex mt={1.5}>
+              <Input.Radio name='one'/>
+              <Input.Radio name='one' s={{ml: 1}} checked/>
+              <Text.P ml={.3}>With label</Text.P>
+              <Input.Checkbox />
+            </Layout.Div>
+
+            <Text.H2 mt={4}>Labelled Inputs</Text.H2>
+            <Layout.Div mt={1.5} sexyShadow padded rounded emotion={colorKeys.primaryColor}>
+              <ThemeProvider theme={inverseTheme}>
+                <Input.Line mt={0.5}>
+                  <Input.Label>Field label</Input.Label>
+                  <Input.Input placeholder='Length set to Auto'/>
+                </Input.Line>
+                <Input.Line>
+                  <Input.Label>Field label</Input.Label>
+                  <Input.Input flat placeholder='Flat Input'/>
+                  <Input.Select flat placeholder='Flat Input' ml={3}>
+                    <option>Flat Select</option>
+                  </Input.Select>
+                </Input.Line>
+              </ThemeProvider>
+            </Layout.Div>
+
+            <Text.H2 mt={4}>Buttons</Text.H2>
+            <Button.Button mt={2}>Raw Button</Button.Button>
+            <Link to='/widgets'>
+              <Button.Button ml={2}>Widgets Demo</Button.Button>
+            </Link>
+            <Button.Button
+              funky
+              ml={2}
+              horSwell={2}
+              bkgEmotion='excited'>
+              Round & Wide
+            </Button.Button>
+            <Button.Button ml={2} bkgEmotion={colorKeys.contentBackgroundColor}>
+              Auto-contrast
+            </Button.Button>
+            <Button.Button disabled ml={2}>Disabled</Button.Button>
+            <Layout.Div mt={2} relative>
+              <Link to='/layout'>
+                <Button.BigButton funky>Layouts Demo</Button.BigButton>
+              </Link>
+            </Layout.Div>
+            <Button.BigButton centerLow>Bottom Button</Button.BigButton>
+          </Layout.Div>
+        </Layout.PageWithoutHeader>
+      </AppLayout>
+    </ThemeProvider>
   )
 }

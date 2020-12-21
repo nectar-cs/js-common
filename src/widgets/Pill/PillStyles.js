@@ -1,5 +1,7 @@
+// noinspection NpmUsedModulesInstalled
 import styled, {css} from 'styled-components'
-import {colorKeys, resolveColor, contrastFontForBkg, commonSizeAttrs} from './../../styles/constants'
+import {colorKeys, commonSizeAttrs} from './../../styles/constants'
+import {easyColor} from "./../../styles/utils";
 
 const borderRad = "5.0px";
 const borderWidth = "0.0px";
@@ -11,9 +13,9 @@ const Letter = styled.p`
   text-align: center;
   border-style: solid none;
   border-radius: 0;
-  border-color: ${p => resolveColor(p, null, colorKeys.primaryColor)};
-  background: ${p => resolveColor(p, p.emotion, colorKeys.cool)};
-  color: ${p => resolveColor(p, null, colorKeys.contrastColor)};
+  border-color: ${p => easyColor(p, null, colorKeys.primaryColor)};
+  background: ${p => easyColor(p, p.emotion, colorKeys.cool)};
+  color: ${p => easyColor(p, null, colorKeys.contrastColor)};
   padding: ${vertPadding}px 0;
   
   &:last-child{
@@ -24,11 +26,11 @@ const Letter = styled.p`
 
 const Text = styled.p`
   background: #f7f6f6;
-  color: ${p => contrastFontForBkg(p, p.emotion, colorKeys.contrastColor)};
+  color: ${p => easyColor(p, 'primaryBkg')};
   border-style: solid none solid solid;
   border-radius: ${borderRad} 0 0 ${borderRad};
   border-width: ${borderWidth};
-  border-color: ${p => resolveColor(p, null, colorKeys.primaryColor)};
+  border-color: ${p => easyColor(p, null, colorKeys.primaryColor)};
   padding: ${vertPadding}px 6px;
   ${p => childlessPillStyle(p)};
 `;
@@ -42,6 +44,7 @@ function childlessPillStyle(p){
   }
 }
 
+// noinspection JSUnresolvedFunction
 const Container = styled.div`
   ${commonSizeAttrs};
   display: inline-flex;

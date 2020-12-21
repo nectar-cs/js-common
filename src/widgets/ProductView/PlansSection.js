@@ -59,7 +59,7 @@ function PlanSummaryView({plan, callback}){
         borderRadius='12px'
         emotion='primaryFont'
         borderEmotion='warning2'
-        hoverBkgEmotion={'calmBeige'}
+        hov_bkgEmotion={'calmBeige'}
         mt={2}
         fontSize='16px'
         style={{borderWidth: '1spx'}}

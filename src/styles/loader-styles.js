@@ -1,5 +1,7 @@
+// noinspection NpmUsedModulesInstalled
 import styled, {keyframes} from "styled-components";
-import {colorKeys, commonSizeAttrs, resolveColor} from './constants'
+import {colorKeys, commonSizeAttrs} from './constants'
+import {easyColor} from "./utils";
 
 const rotate = keyframes`
   0% {
@@ -11,9 +13,10 @@ const rotate = keyframes`
 `;
 
 function borderColor(p){
-  return resolveColor(p, p.emotion, colorKeys.primaryColor);
+  return easyColor(p, p.emotion, colorKeys.primaryColor);
 }
 
+// noinspection JSUnresolvedFunction
 const Spinner = styled.div`
   ${commonSizeAttrs};
   display: inline-block;
@@ -34,7 +37,7 @@ const TopRightSpinner = styled(Spinner)`
   position: absolute;
   top: 12px;
   right: -14px;
-  display: ${p => (p.there || p.there === undefined) ? 'block' : 'none'};
+  display: ${p => (p['there'] || p['there'] === undefined) ? 'block' : 'none'};
 `;
 
 const CenteredSpinner = styled(Spinner)`

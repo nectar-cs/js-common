@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import {theme} from './constants'
 
 export const checkboxStyles = makeStyles({
   root: {
@@ -28,7 +29,7 @@ export const checkboxStyles = makeStyles({
     },
   },
   checkedIcon: {
-    backgroundColor: '#137cbd',
+    backgroundColor: theme.colors.primaryBkg,
     backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
     '&:before': {
       display: 'block',
@@ -43,7 +44,7 @@ export const checkboxStyles = makeStyles({
       content: '""',
     },
     'input:hover ~ &': {
-      backgroundColor: '#106ba3',
+      backgroundColor: theme.colors.warning2,
     },
   },
 });

@@ -1,6 +1,7 @@
 import Button from './styles/button-styles'
-import {resolveColor, theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
+import {theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
+import TwoFace from "./widgets/TwoFace";
 import AppListingUtils from "./utils/appCatUtils";
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -10,27 +11,23 @@ import FlexHeader from './widgets/LeftHeader/FlexHeader'
 import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineSubtitle'
 import {Loader} from './styles/loader-styles'
 import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
-import {EasyListItem} from './widgets/EasyListItem/EasyListItem'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
-import CenterCard from './widgets/CenterCard/CenterCard'
 import {BigStoreCard} from './widgets/StoreCard/BigStoreCard'
 import ProductView from './widgets/ProductView/ProductView'
 import Input from './styles/input-styles'
+import {slickBarTheme} from './styles/constants'
+import SlickBar from "./Navigation/SlickBar/SlickBar";
 import RoundStoreCard from "./widgets/StoreCard/RoundStoreCard";
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
-import ModalButton from './widgets/Buttons/ModalButton'
 import BigHeader from "./widgets/BigHeader/BigHeader";
 import StoreCategoriesListing from "./widgets/StoreCard/StoreCategoriesListing";
 import {AppListingContext} from './widgets/ProductView/AppListingContext'
 import CenterLoader from './widgets/CenterLoader/CenterLoader'
 import TabsView from "./widgets/TabsView/TabsView";
 import LabelTags from './widgets/LabelTags/LabelTags'
-import Checklist from './widgets/Checklist/Checklist'
 import Pill from './widgets/Pill/Pill'
 import Battery from "./widgets/Battery/Battery";
-import Gauge, {Donut} from "./widgets/Gauge/Gauge";
-import SideBar from "./Navigation/SideBar/SideBar";
 import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
@@ -44,15 +41,13 @@ export {
   Loader,
   ProductView,
   Button,
-  SideBar,
   AppLayout,
-  Donut,
   PermsView,
-  Gauge,
   TopBar,
   Input,
   colorKeys,
   CategoriesBar,
+  TwoFace,
   theme,
   inverseTheme,
   MosaicBaseStyle,
@@ -65,28 +60,25 @@ export {
   TextOverLineSubtitle,
   TagPool,
   ColoredLabelList,
-  EasyListItem,
   CenterAnnouncement,
   BigHeader,
   AppListingUtils,
-  CenterCard,
   ModestLink,
   noSideBarTheme,
   FlexHeader,
   Img,
-  ModalButton,
   CenterLoader,
   TabsView,
   LabelTags,
-  Checklist,
   Pill,
-  resolveColor,
   Stepper,
   Battery,
   sexyShadow,
   RoundStoreCard,
   ErrorToast,
   easyColor,
+  slickBarTheme,
   StoreCategoriesListing,
-  AppListingContext
+  AppListingContext,
+  SlickBar
 }

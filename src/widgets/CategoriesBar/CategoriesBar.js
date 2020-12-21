@@ -14,7 +14,7 @@ export default function CategoriesBar({items}){
             style={{justifyContent: 'space-between'}}
             onClick={item.callback}
             hoverPoint
-            hoverBkgEmotion='soothing'>
+            hov_bkgEmotion='soothing'>
             <Text.Icon
               name={item.icon}
               emotion={i === 0 ? 'warning2' : null}

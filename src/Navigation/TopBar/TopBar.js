@@ -84,7 +84,7 @@ function ProfileView({user, profileActions}){
       <Img.Img
         onClick={_ => setIsMenuOpen(!isMenuOpen)}
         hoverPoint
-        mt={'-2px'}
+        mt='-2px'
         centerCrop
         width={'auto'}
         height={size}
@@ -101,7 +101,7 @@ function ProfileView({user, profileActions}){
   )
 }
 
-function RightSideButtons({rightSideButtons, bodyRef}) {
+function RightSideButtons({rightSideButtons}) {
   const thingRef = React.createRef(null);
   const [hoverIndex, setHoverIndex] = useState(-1);
 
@@ -167,8 +167,8 @@ function RightSideButtonMenu({actions}){
   return(
     <Layout.Div
       sexyShadow
-      emotion='primaryBkg'
-      top={'43px'}
+      bkgEmotion='white'
+      top='58px'
       minWidth='132px'
       pt={'20px'}
       pb={'20px'}
@@ -185,7 +185,7 @@ function RightSideButtonMenu({actions}){
             mt={1}
             mb={1}
             height={'.5px'}
-            emotion={'lightestGrey'}
+            bkgEmotion={'primaryColor'}
             style={{opacity: '0.3'}}
           />
           }
@@ -215,7 +215,7 @@ function MenuItem({action, _ref}){
         <Text.P
           bold={isHovered}
           mt={'1px'}
-          emotion='white'
+          // emotion='white'
           hoverBold
           ml={.8}>
           {name}
@@ -231,7 +231,7 @@ function ProfileMenu({profileActions, _ref, closeSelf}){
       ref={_ref}
       sexyShadow
       padded
-      emotion='soothing'
+      bkgEmotion='soothing'
       minWidth='122px'
       rounded
       style={{position: 'fixed'}}
@@ -260,7 +260,7 @@ function ProfileMenu({profileActions, _ref, closeSelf}){
               mt={.78}
               mb={.75}
               height={'1px'}
-              emotion={'lightGrey'}
+              bkgEmotion={'lightGrey'}
             />
           }
         </Fragment>
@@ -276,8 +276,8 @@ function LoginButton({callback}){
       hoverPoint
       bkgEmotion='transparent'
       emotion='white'
-      hoverEmotion='nectar'
-      hoverBkgEmotion='transparent'
+      hov_emotion='nectar'
+      hov_bkgEmotion='transparent'
       borderWidth={'2px'}>
       Login
     </Button.ClearButton>
@@ -289,7 +289,7 @@ function RightSideButtonTextView({descriptor}){
     <Text.H4
       bold
       hoverPoint
-      hoverEmotion='warning2'
+      hov_emotion='warning2'
       emotion='contrastFont'>
       { descriptor.name }
     </Text.H4>

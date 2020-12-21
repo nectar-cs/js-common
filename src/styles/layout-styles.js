@@ -1,16 +1,16 @@
-import React, {Fragment} from 'react'
+import React from 'react'
+// noinspection NpmUsedModulesInstalled
 import styled, {css} from 'styled-components'
 import {
   colorKeys,
   commonSizeAttrs,
   heightAndWidth,
   overflowScroll,
-  resolveColor,
-  simplePadding,
-  borderStyles, marginsAndPadding
+  borderStyles,
+  marginsAndPadding, colorStyles
 } from './constants'
 
-import {easyColor, lilDim} from "./utils";
+import {easyColor} from "./utils";
 
 const halfPanelOffset = "14px";
 const totalHeaderHeight = 80;
@@ -20,9 +20,10 @@ const Dims = {
   containerPaddingHor: "16px",
 };
 
+// noinspection JSUnresolvedFunction
 const Div = styled.div`
   ${commonSizeAttrs};
-  background: ${p => resolveColor(p, p.emotion, colorKeys.none)};
+  background: ${p => easyColor(p, p.emotion, 'transparent')};
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   ${p => central(p)};
@@ -34,8 +35,8 @@ const Div = styled.div`
 `;
 
 const PanelBot = styled(Div)`
-  ${p => borderStyles(p, {lightBorder: true, sofa: true, halfRounded: true})};
-  padding: ${p => simplePadding(p, {padded: true})};
+  ${p => borderStyles(p, { lightBorder: true, sofa: true, halfRounded: true })};
+  ${p => marginsAndPadding('padding', p, { padded: true })};
 `;
 
 const TableFilterBox = styled(Div)`
@@ -46,22 +47,20 @@ const TableFilterBox = styled(Div)`
 `;
 
 const Separator = styled(Div)`
-  ${commonSizeAttrs};
-  ${p => heightAndWidth(p, {width: '99%', height: '.5px'})};
-  margin-left: auto;
-  margin-right: auto;
-  background: ${p => easyColor(p, p.emotion, colorKeys.cool)};
+  ${p => heightAndWidth(p, { width: '99%', height: '.5px' })};
+  ${p => colorStyles(p, { bkgEmotion: 'cool' }) };
+  ${p => marginsAndPadding('margin', p, { ml: 'auto', mr: 'auto' })};
 `;
 
 const PanelTop = styled(Div)`
   background: ${p => easyColor(p, p.emotion, 'panelGrey2')};
-  padding: ${p => simplePadding(p, {padded: true})};
+  ${p => marginsAndPadding(p, { padded: true })};
   ${p => borderStyles(p, {
     borderRadius: '8px',
     roundingApplier: ((x) => `${x} ${x} 0 0`),
-    borderEmotion: "#d6d6d6"
+    borderEmotion: "#d6d6d6",
+    borderWidth: ".5px .5px 0 .5px" 
   })};
-  border-width: .5px .5px 0 .5px;
 `;
 
 const CenteringDiv = styled(props => (
@@ -87,6 +86,7 @@ const CenteringDivY = styled(props => (
     align-items: center;
 `;
 
+// noinspection JSUnresolvedFunction
 const ThemePage = styled.div`
   background: ${p => p.theme.colors.primaryColor};
   position: absolute;
@@ -96,6 +96,7 @@ const ThemePage = styled.div`
   right: 0;
 `;
 
+// noinspection JSUnresolvedFunction
 const ModalLayout = styled.div`
   padding: 14px 20px 14px 20px;
   width: 580px;
@@ -107,6 +108,7 @@ const Panel = styled(Div)`
   border-radius: 4px;     
 `;
 
+// noinspection JSUnresolvedFunction
 const TextLine = styled.div`
   margin-top: ${p => `${(p.low) * 12}px`};
   display: flex;
@@ -115,6 +117,7 @@ const TextLine = styled.div`
   align-items: ${p => p.center ? 'center' : 'stretch'};
 `;
 
+// noinspection JSUnresolvedFunction
 const BigCodeViewer = styled.div`
   margin-top: 18px;
   padding: 20px 12px;
@@ -133,50 +136,18 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 
 
 
+// noinspection JSUnresolvedFunction
 /******************************PAGE*****************************/
 
 
 
 
 
-const FixedHeaderWrapper = styled.div`
-  position: relative;
-  top: 0;
-  height: ${totalHeaderHeight}px;
-  right: 0;
-  padding: 0 0 0 12px;
-`;
 
-const UnderHeaderContainer = styled.div`
-  position: absolute;
-  top: ${totalHeaderHeight}px;
-  height: calc(100% - ${totalHeaderHeight}px);
-  max-height: calc(100% - ${totalHeaderHeight}px);
-  overflow: scroll;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 18px 14px;
-  box-sizing: border-box;
-`;
-
-function PageWithHeader({Header, children}){
-  return(
-    <Fragment>
-      <FixedHeaderWrapper>
-        { Header && <Header/> }
-      </FixedHeaderWrapper>
-      <UnderHeaderContainer>
-        { children }
-      </UnderHeaderContainer>
-    </Fragment>
-  )
-}
-
+// noinspection JSUnresolvedFunction
 const PageWithoutHeader = styled.div`
   ${commonSizeAttrs};
-  ${p => marginsAndPadding('padding', p, { pt: '16px', pl: '18px'})};
+  ${p => marginsAndPadding('padding', p, { ptb: '16px', plr: '18px'})};
   position: absolute;
   top: 0;
   bottom: 0;
@@ -196,13 +167,13 @@ const PageWithoutHeader = styled.div`
 
 function displayType(p, defaults={}){
   if({...defaults, ...p}.flex) return "flex";
-  else if(p.iFlex) return "inline-flex";
+  else if(p['iFlex']) return "inline-flex";
   else if(p.wrapped) return "inline-block";
   else return "block";
 }
 
 function central(p, defaults={}){
-  if({...defaults, ...p}.absCentered){
+  if({...defaults, ...p}['absCentered']){
     return css`
       position: absolute;
       display: inline-block;
@@ -226,7 +197,7 @@ function hipster(p, defaults={}){
 }
 
 function absHipster(p, defaults={}){
-  if({...defaults, ...p}.absHipster){
+  if({...defaults, ...p}['absHipster']){
     return css`
       position: absolute;
       left: calc((100% - 870px) / 2);
@@ -274,9 +245,7 @@ const Layout = {
   halfPanelOffset,
   ThemePage,
   Panel,
-  PageWithHeader,
   Separator,
-  UnderHeaderContainer,
   TableFilterBox,
   PanelBot
 };
