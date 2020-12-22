@@ -49,9 +49,9 @@ const H4 = styled(P)`
 const CuckIcon = styled.i`
   ${commonSizeAttrs};
   ${commonFontAttrs};
-  font-family: 'Material Icons', serif;
   ${p => fontStyles(p, {
-    fontSize: iconSize(p)  
+    fontSize: iconSize(p),
+    fontFam: "'Material Icons', serif"
   })};
   color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
 `;

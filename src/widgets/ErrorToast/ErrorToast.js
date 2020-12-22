@@ -34,7 +34,7 @@ export default class ErrorToast extends React.Component{
         relative
         padded
         rounded
-        emotion={severityEmotion(severity)}
+        bkgEmotion={severityEmotion(severity)}
         mt={1}
         {...rest}>
         <Text.Icon

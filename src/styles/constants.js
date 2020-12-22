@@ -167,9 +167,7 @@ export const commonSizeAttrs = css`
 
 export const commonFontAttrs = css`
   ${p => noDec(p)};
-  ${p => hacker(p)};
   ${p => fontStyles(p)};
-  font-family: ${p => p['fontFam'] || p.theme.font.family};
 `;
 
 
@@ -306,12 +304,6 @@ function floating(p, defaults={}){
   }
 }
 
-function hacker(p, defaults={}){
-  return multiMode({...defaults, ...p}, push => {
-    push('hacker', 'font-family: "Courier 10 Pitch", monospace;')
-  })
-}
-
 export function hover(p, defaults={}){
   let total = [];
   const merged = {...(defaults || {}), ...p};
@@ -407,13 +399,15 @@ export function colorStyles(p, defaults={}){
 }
 
 export function fontStyles(p, defaults={}){
-  const bkp = { fontSize: p.theme.font.size };
+  const bkp = { fontSize: p.theme.font.size, fontFam: p.theme.font.family };
   return multiMode({...bkp, ...defaults, ...p}, push => {
     push('bold', 'font-weight: bold');
     push('fontSize', val => `font-size: ${val}`);
     push('promo', `font-size: ${p.theme.font.promoSize}`);
     push('invisible', 'visibility: hidden');
     push('underline', 'text-decoration: underline');
+    push('fontFam', val => `font-family: ${val}`)
+    push('hacker', "font-family: \"Courier 10 Pitch\", monospace");
   });
 }
 

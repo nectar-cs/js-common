@@ -26,7 +26,7 @@ const Letter = styled.p`
 
 const Text = styled.p`
   background: #f7f6f6;
-  color: ${p => easyColor(p, 'primaryBkg')};
+  color: ${p => easyColor(p, p.emotion, 'primaryBkg')};
   border-style: solid none solid solid;
   border-radius: ${borderRad} 0 0 ${borderRad};
   border-width: ${borderWidth};

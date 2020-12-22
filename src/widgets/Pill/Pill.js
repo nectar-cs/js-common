@@ -25,8 +25,9 @@ export default function Pill(props: Props){
     <div>
       <S.Container>
         <S.Text
+          calm
           childCount={length}
-          emotion={emotion}>
+          >
           {props.text}
         </S.Text>
         <Letters letters={props.letters}/>

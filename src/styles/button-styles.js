@@ -41,12 +41,18 @@ const _Button = styled.button`
 
 const ClearButton = styled(_Button)`
   border-width: 1px;
-  background: ${p => easyColor(p, p.bkgEmotion, 'grey2')};
-  color: ${p => easyColor(p, p.emotion, 'secondaryFont')};
-  ${p => borderStyles(p, { borderRadius: '5px', borderEmotion: 'grey3' })};
+    ${p => colorStyles(p, {
+      emotion: 'secondaryFont',
+      bkgEmotion: 'grey2',
+      hov_bkgEmotion: shadeColor(easyColor(p, p.bkgEmotion, 'grey2'), -20),
+      dis_bkgEmotion: 'grey4'
+  })};
+
+  ${p => borderStyles(p, { 
+    borderEmotion: 'grey3',
+  })};
   
   &:disabled {
-    background: ${p => easyColor(p, p.bkgEmotion, 'grey4')};
     cursor: default;
     border-width: 0;
   }
