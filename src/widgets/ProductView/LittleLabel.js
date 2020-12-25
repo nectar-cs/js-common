@@ -13,7 +13,7 @@ export default function LittleLabel({graphicType, graphicName, text}){
       mt={1}
       mr={1.1}
       align={'center'}
-      emotion='soothing'
+      bkgEmotion='soothing'
       flex>
       { graphicType === 'icon' &&
         <Text.Icon

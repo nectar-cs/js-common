@@ -4,13 +4,12 @@ import Layout from '../../styles/layout-styles'
 
 export default function CategoriesBar({items}){
   return(
-    <Layout.Div width='205px'>
+    <Layout.Div width='180px'>
       { items.map((item, i) => (
         <Layout.Div key={i}>
           <Layout.Div
             flex
-            vertSwell={2.5}
-            horSwell={1}
+            ptb='10px'
             style={{justifyContent: 'space-between'}}
             onClick={item.callback}
             hov_point
@@ -20,6 +19,7 @@ export default function CategoriesBar({items}){
               emotion={i === 0 ? 'warning2' : null}
             />
             <Text.H4
+              fontSize='14px'
               bold={i === 0}
               mt={.15}
               style={{textAlign: 'left'}} width='140px' >

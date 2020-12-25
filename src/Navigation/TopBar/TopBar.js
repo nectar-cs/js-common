@@ -130,6 +130,8 @@ function RightSideButton({descriptor, onHoverChanged, isDropped}){
     onHoverChanged(isHovered);
   }, [isHovered]);
 
+  const {  href, actions,  icon, newTab } = descriptor;
+
   return(
     <Layout.Div
       ref={hoverRef}
@@ -137,26 +139,26 @@ function RightSideButton({descriptor, onHoverChanged, isDropped}){
       hov_point
       align='center'
       mr={3}>
-      { descriptor.href &&
-      <a href={descriptor.href}>
+      { href &&
+      <a href={href} target={newTab ? '_blank' : null}>
         <RightSideButtonTextView descriptor={descriptor}/>
       </a>
       }
       { !descriptor.href &&
       <RightSideButtonTextView descriptor={descriptor}/>
       }
-      { (descriptor.actions || descriptor.icon) &&
+      { (actions || icon) &&
       <Text.Icon
         mt={-.1}
         ml={.2}
         size={1.0}
         emotion='warning2'
-        name={descriptor.icon || 'arrow_drop_down'}
+        name={icon || 'arrow_drop_down'}
       />
       }
       { descriptor.actions && isDropped &&
       <RightSideButtonMenu
-        actions={descriptor.actions}
+        actions={actions}
       />
       }
     </Layout.Div>

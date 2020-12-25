@@ -21,8 +21,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^1.1.4",
     "react-use-dimensions": "^1.2.1",
-    "recharts": "^1.8.5",
     "styled-components": "^5.0.1",
+    "@nivo/core": "^0.67.0",
+    "@nivo/line": "^0.67.0",
     "use-async-effect": "^2.2.2"
   },
   "scripts": {

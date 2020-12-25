@@ -40,10 +40,9 @@ function PlanSummaryView({plan, callback}){
     <Layout.Div
       width='100%'
       sexyShadow
-      vertSwell={4.5}
-      horSwell={1.89}
-      shadowOpacity={.1}
-      padded>
+      ptb={2}
+      plr={2}
+      shadowOpacity={.1}>
       <Text.H1>{name}</Text.H1>
       <Text.P mt={1} calm>{plan.info}</Text.P>
       <Layout.Div mt={1.9}>
@@ -55,19 +54,19 @@ function PlanSummaryView({plan, callback}){
         )) }
       </Layout.Div>
       <Button.ClearButton
+        width='120px'
         onClick={_ => callback(id)}
-        borderRadius='12px'
+        borderRadius='4px'
         emotion='primaryFont'
         borderEmotion='warning2'
-        hov_bkgEmotion={'calmBeige'}
+        hov_bkgEmotion={'warning2'}
+        hov_emotion={'white'}
         mt={2}
         fontSize='16px'
         style={{borderWidth: '1spx'}}
         hov_point
         bold
-        width='120px'
-        vertSwell={1.6}
-        horSwell={1}>
+        >
         { price === 0 ? 'Install' : 'Purchase' }
       </Button.ClearButton>
     </Layout.Div>
@@ -82,12 +81,11 @@ function PlanOptionView({plan, isSelected, callback}){
     <Layout.Div
       mt={1.5}
       onClick={callback}
-      padded
       hov_point
-      rounding={6}
-      vertSwell={3}
-      horSwell={2}
-      emotion={isSelected ? 'primaryColor' : 'transparent'}>
+      borderRadius='6px'
+      ptb={1.4}
+      plr={1.2}
+      bkgEmotion={isSelected ? 'primaryColor' : 'transparent'}>
       <Layout.Div flex style={{justifyContent: 'space-between'}}>
         <Text.H1
           bold

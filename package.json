@@ -1,6 +1,6 @@
 {
   "name": "nectar-gui",
-  "version": "1.0.66",
+  "version": "1.0.67",
   "description": "React styles for Nectar",
   "author": "nectar-cs",
   "license": "MIT",
@@ -34,10 +34,11 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-use-dimensions": "^1.2.1",
-    "recharts": "^1.8.5",
     "humanize-string": "^2.1.0",
     "styled-components": "^4.4.1",
-    "use-async-effect": "^2.2.2"
+    "use-async-effect": "^2.2.2",
+    "@nivo/core": "^0.67.0",
+    "@nivo/line": "^0.67.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",

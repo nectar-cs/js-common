@@ -54,7 +54,7 @@ export function BigStoreCard(props){
         src={logoUrl}
         sofa>
         <OpaqueCover
-          emotion={bkgEmotion}
+          bkgEmotion={bkgEmotion}
           padded
           opacity={!dark && .97}
           sexyShadow
@@ -96,7 +96,7 @@ export function BigStoreCard(props){
             </Layout.Div>
             <Layout.Div flex mt={1.4}>
               <Img.Img
-                height={'80px'}
+                height='80px'
                 src={logoUrl}
               />
               <Text.P
@@ -111,6 +111,7 @@ export function BigStoreCard(props){
             </Layout.Div>
             <Text.BorderedStatusTag
               mt={1}
+              borderEmotion={dark ? 'lightGrey' : 'lightGrey'}
               emotion={dark ? 'white' : 'primaryBkg'}>
               $1,000 - $10,000
             </Text.BorderedStatusTag>

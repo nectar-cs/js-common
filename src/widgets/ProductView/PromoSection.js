@@ -12,7 +12,7 @@ export default function PromoSection(){
   return(
     <Fragment>
       <IntroView name={app.name} info={app.info}/>
-      <ScreenshotsGrid screenshotUrls={app.screenshotUrls}/>
+      <ScreenshotsGrid screenshots={app.screenshots}/>
       <Layout.Div height={2}/>
       <FeaturesTable features={app.features}/>
     </Fragment>
@@ -43,26 +43,27 @@ function IntroView({name, info}){
   )
 }
 
-function ScreenshotsGrid({screenshotUrls}){
-  const [isOpen, setIsOpen] = useState(false);
+function ScreenshotsGrid({screenshots}){
+  const [activeScreenshotUrl, setActiveScreenshotUrl] = useState(null);
+
   const picSize = '90px';
   return(
     <Layout.Div width={'100%'} flex mt={3}>
-      { isOpen &&
+      { activeScreenshotUrl &&
         <Lightbox
           hideDownload={true}
           hideZoom={true}
-          medium={isOpen}
-          large={isOpen}
-          onClose={_ => setIsOpen(false)}
+          medium={activeScreenshotUrl}
+          large={activeScreenshotUrl}
+          onClose={_ => setActiveScreenshotUrl(null)}
         />
       }
 
-      { screenshotUrls.map((screenshotUrl, i) => (
+      { screenshots.map((screenshot, i) => (
         <Img.Img
           key={i}
           hov_point
-          onClick={_ => setIsOpen(screenshotUrl)}
+          onClick={_ => setActiveScreenshotUrl(screenshot.url)}
           mr={2}
           sexyShadow
           shadowOpacity={.5}
@@ -73,8 +74,8 @@ function ScreenshotsGrid({screenshotUrls}){
             borderRadius: '12px',
             objectFit: 'cover'
           }}
-          src={screenshotUrl}
-          alt='screenshot'
+          src={screenshot.url}
+          alt={screenshot.name}
         />
       )) }
     </Layout.Div>
@@ -112,6 +113,7 @@ function FeatureCell({feature}){
           { feature.name }
         </Text.P>
         <Text.P
+          calm
           mt={1}
           clamped={3}
           style={{lineHeight: '24px'}}

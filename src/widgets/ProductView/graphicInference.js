@@ -1,7 +1,7 @@
 import Utils from "../../utils/Utils";
 
 export default function inferGraphic(type, value){
-  if(type === 'clusterType'){
+  if(type === 'clusterTypes'){
     let core = 'gke';
     if(value.toLowerCase().includes("gke"))
       core = 'gke';

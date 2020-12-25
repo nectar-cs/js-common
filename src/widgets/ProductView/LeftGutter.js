@@ -30,8 +30,8 @@ export default function LeftSection(){
           Application Publisher
         </Text.P>
         <Layout.Div flex align='center' mt={.6}>
-          <Img.Img width='25px' src={logoUrl}/>
-          <SimpleLink text='Nectar Corp' ml={.5} mt={0}/>
+          <Img.Img width='16px' src={logoUrl} height={'16px'}/>
+          <SimpleLink text='Nectar Corp' ml={.5} mt={.2}/>
         </Layout.Div>
 
         <Text.P calm mt={2.5} hacker>

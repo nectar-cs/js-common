@@ -29,11 +29,15 @@ export default function ProductView({callback}){
         mt={2}
         maxWidth='840px'>
         <PromoSection/>
-        <Text.H1 fontSize='28px' mt={7} mb={4}>Cluster Footprint</Text.H1>
+
+        <Text.H1 mt={4} mb={4}>Cluster Footprint</Text.H1>
         <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
+
+        {/*<Text.H1 mt={6} mb={4}>Requests/Second Benchmark</Text.H1>*/}
+        <Layout.Div height={3}/>
         <BenchmarksView/>
 
-        <Text.H1 mt={4} mb={2}>Kubernetes Requirements</Text.H1>
+        <Text.H1 mt={8} mb={2}>Kubernetes Requirements</Text.H1>
         <RequirementsTable
           requirements={app.requirements}
           warning={requirementsWarning}
@@ -55,30 +59,35 @@ export default function ProductView({callback}){
 }
 
 function ResourceBlocksView({clusterFootprint}){
-  const extra = '40px';
+  const extra = '70px';
 
   const entries = Object.entries(clusterFootprint);
 
   return(
-    <Layout.Div flex width={`calc(100% + ${extra})`} ml={`calc(${extra} / -2)`}>
+    <Layout.Div
+      flex
+      width={`calc(100% + ${extra})`}
+      ml={`calc(${extra} / -2)`}>
       { entries.map((entry, i) => (
-        <Layout.Div height={'auto'}
-                    style={{
-                      borderColor: theme.colors.lightGrey,
-                      borderStyle: `none none none ${i !== 0 ? 'solid' : 'none'}`
-                    }}
-                    width={'100%'}
+        <Layout.Div
+          height='auto'
+          style={{
+            borderColor: theme.colors.lightGrey,
+            borderStyle: `none none none ${i !== 0 ? 'solid' : 'none'}`
+          }}
+          width={'100%'}
         >
           <Text.P
             mt={2}
+            style={{textAlign: 'center'}}
             fontSize='29px'
-            center>
+            >
             { entry[1] }
           </Text.P>
           <Text.P
             fontSize='13px'
             mt={2}
-            center
+            style={{textAlign: 'center'}}
           >
             { humanizeString(entry[0]) }
           </Text.P>
