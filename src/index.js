@@ -14,6 +14,7 @@ import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import {BigStoreCard} from './widgets/StoreCard/BigStoreCard'
 import ProductView from './widgets/ProductView/ProductView'
+import LittleLabel from "./widgets/ProductView/LittleLabel";
 import Input from './styles/input-styles'
 import {slickBarTheme} from './styles/constants'
 import SlickBar from "./Navigation/SlickBar/SlickBar";
@@ -67,6 +68,7 @@ export {
   noSideBarTheme,
   FlexHeader,
   Img,
+  LittleLabel,
   CenterLoader,
   TabsView,
   LabelTags,

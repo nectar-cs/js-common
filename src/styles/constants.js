@@ -157,7 +157,6 @@ export const commonSizeAttrs = css`
   ${p => centered(p)};
   ${p => centerLow(p)};
   ${p => absolutePositioning(p)};
-  ${p => hover(p)};
   ${p => sexyShadow(p)};  
   ${p => rotating(p)};
   ${p => pulse(p)};
@@ -252,8 +251,9 @@ export function marginsAndPadding(base, p, defaults={}){
   const total = [];
   const merged = {...defaults, ...p};
 
-  if(merged['padded'])
+  if(merged['padded']){
     total.push('padding: 9px 14px;');
+  }
 
   for(let shortHand of Object.entries(positionalShorthands)){
     const [propName, cssMappings] = shortHand;

@@ -7,8 +7,7 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - 'gcloud secrets versions access latest --secret=npm-token > npm-token.txt
-       '
+      - 'gcloud secrets versions access latest --secret=npm-token > npm-token.txt'
 
   - id: "Build Publisher"
     waitFor: []
@@ -28,6 +27,9 @@ steps:
     args:
       - '-c'
       - '
+        echo START;
+        cat npm-token.txt;
+        echo END;
          docker run
          --env NPM_TOKEN=$(cat npm-token.txt)
          publisher; exit 0
