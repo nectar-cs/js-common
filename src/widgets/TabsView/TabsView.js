@@ -38,7 +38,7 @@ export default function TabsView(props){
             pl={1.5}
             pr={1.5}
             height='100%'
-            borderRadius='2px 2px 0 0'
+            borderRadius='3px 3px 0 0'
             borderStyle='none none solid none'
             borderEmotion={i === crtIndex ? highlightEmotion : 'transparent'}
             borderWidth='2px'

@@ -4,8 +4,6 @@ const headerHeight = "56px";
 const imageShrink = .82;
 
 const Container = styled.div`
-  position: absolute;
-  top: 14px;
   padding: 0;
   display: inline-flex;
   height: ${headerHeight};
