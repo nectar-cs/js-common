@@ -32,8 +32,13 @@ const Div = styled.div`
 `;
 
 const PanelBot = styled(Div)`
-  ${p => borderStyles(p, { lightBorder: true, sofa: true, halfRounded: true })};
   ${p => marginsAndPadding('padding', p, { padded: true })};
+  ${p => borderStyles(p, {
+    borderRadius: '8px',
+    roundingApplier: ((x) => `0 0 ${x} ${x}`),
+    borderEmotion: "#d6d6d6",
+    borderWidth: "0 .5px .5px .5px"
+  })};
 `;
 
 const TableFilterBox = styled(Div)`
@@ -50,8 +55,8 @@ const Separator = styled(Div)`
 `;
 
 const PanelTop = styled(Div)`
-  background: ${p => easyColor(p, p.emotion, 'panelGrey2')};
   ${p => marginsAndPadding(p, { padded: true })};
+  ${p => colorStyles(p, { bkgEmotion: 'panelGrey2' }) };
   ${p => borderStyles(p, {
     borderRadius: '8px',
     roundingApplier: ((x) => `${x} ${x} 0 0`),

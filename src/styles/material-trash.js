@@ -29,7 +29,7 @@ export const checkboxStyles = makeStyles({
     },
   },
   checkedIcon: {
-    backgroundColor: theme.colors.primaryBkg,
+    backgroundColor: theme.colors.warning2,
     backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
     '&:before': {
       display: 'block',

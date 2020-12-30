@@ -61,6 +61,7 @@ export const theme = {
     [colorKeys.warning2]: "#f46036",
     [colorKeys.calmTextBkg]: "#f2f7f2",
     [colorKeys.transparent]: "transparent",
+    panelBlue: "#f1f8ff",
     ruby: "#D81E5B",
     tart: "#F0544F",
     coffee: "#3A3335",
@@ -406,8 +407,9 @@ export function fontStyles(p, defaults={}){
     push('promo', `font-size: ${p.theme.font.promoSize}`);
     push('invisible', 'visibility: hidden');
     push('underline', 'text-decoration: underline');
-    push('fontFam', val => `font-family: ${val}`)
+    push('fontFam', val => `font-family: ${val}`);
     push('hacker', "font-family: \"Courier 10 Pitch\", monospace");
+    push('humane', "font-size: 13.5px");
   });
 }
 
