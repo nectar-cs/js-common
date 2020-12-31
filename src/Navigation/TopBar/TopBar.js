@@ -102,7 +102,7 @@ function ProfileView({user, profileActions}){
 }
 
 function RightSideButtons({rightSideButtons}) {
-  const thingRef = React.createRef(null);
+  const thingRef = useRef(null);
   const [hoverIndex, setHoverIndex] = useState(-1);
 
   function onHoverChanged(i, isHovered){
@@ -117,14 +117,16 @@ function RightSideButtons({rightSideButtons}) {
       descriptor={descriptor}
       _ref={i === hoverIndex ? thingRef : null}
       onHoverChanged={state => onHoverChanged(i, state)}
+      closeSelf={_ => setHoverIndex(-1)}
       isDropped={i === hoverIndex}
       key={i}
     />
   ))
 }
 
-function RightSideButton({descriptor, onHoverChanged, isDropped}){
+function RightSideButton({descriptor, onHoverChanged, isDropped, closeSelf}){
   const [hoverRef, isHovered] = useHover();
+  useOutsideAlerter(hoverRef, closeSelf);
 
   useEffect(_ => {
     onHoverChanged(isHovered);
@@ -233,40 +235,73 @@ function ProfileMenu({profileActions, _ref, closeSelf}){
       ref={_ref}
       sexyShadow
       padded
-      bkgEmotion='soothing'
-      minWidth='122px'
+      ptb={1.3}
+      bkgEmotion='white'
+      minWidth='132px'
       rounded
       style={{position: 'fixed'}}
-      top={'60px'}>
+      top='60px'>
       { profileActions.map((action, i) =>  (
         <Fragment key={i}>
-          <Layout.Div
-            flex
-            align='center'
-            onClick={_ => { closeSelf(); action.callback()}}>
-            <Text.Icon
-              // emotion={'white'}
-              name={action.icon}
-              size={.89}
+          { action.path && (
+            <ModestLink to={action.path}>
+              <ProfileMenuItem
+                action={action}
+                closeSelf={closeSelf}
+              />
+            </ModestLink>
+          ) }
+          { action.callback && (
+            <ProfileMenuItem
+              action={action}
+              closeSelf={closeSelf}
             />
-            <Text.P
-              // emotion={'white'}
-              hov_point
-              hoverUnderline
-              ml={.8}>
-              {action.name}
-            </Text.P>
-          </Layout.Div>
-          { i !== profileActions.length - 1 &&
+          ) }
+          { i !== profileActions.length - 1 && (
             <Layout.Div
-              mt={.78}
-              mb={.75}
+              mt={1.2}
+              mb={1.2}
               height={'1px'}
               bkgEmotion={'lightGrey'}
             />
-          }
+          )}
         </Fragment>
       )) }
+    </Layout.Div>
+  )
+}
+
+function ProfileMenuItem({action, closeSelf}){
+  const [hoverRef, isHovered] = useHover();
+
+  function callback(){
+    if(action.callback){
+      closeSelf();
+      action.callback();
+    }
+  }
+
+  return(
+    <Layout.Div
+      ref={hoverRef}
+      flex
+      align='center'
+      onClick={callback}>
+      <Text.Icon
+        calm
+        emotion='warning2'
+        name={action.icon}
+        size={.89}
+        style={{opacity: isHovered ? '1.0' : '0.7'}}
+      />
+      <Text.P
+        bold={isHovered}
+        point={isHovered}
+        fontSize='13px'
+        hoverUnderline
+        ml={.8}>
+        {action.name}
+      </Text.P>
     </Layout.Div>
   )
 }

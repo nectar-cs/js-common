@@ -9,19 +9,20 @@ export default function CategoriesBar({items}){
         <Layout.Div key={i}>
           <Layout.Div
             flex
-            ptb='10px'
+            ptb='12px'
             style={{justifyContent: 'space-between'}}
             onClick={item.callback}
             hov_point
             hov_bkgEmotion='soothing'>
             <Text.Icon
+              size={.9}
               name={item.icon}
               emotion={i === 0 ? 'warning2' : null}
             />
             <Text.H4
-              fontSize='14px'
+              fontSize='13.5px'
               bold={i === 0}
-              mt={.15}
+              mt={'1px'}
               style={{textAlign: 'left'}} width='140px' >
               { item.name }
             </Text.H4>
