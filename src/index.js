@@ -13,7 +13,8 @@ import {Loader} from './styles/loader-styles'
 import {ColoredLabelList} from './widgets/ColoredLabelList/ColoredLabelList'
 import CenterAnnouncement from './widgets/CenterAnnouncement/CenterAnnouncement'
 import {BigStoreCard} from './widgets/StoreCard/BigStoreCard'
-import ProductView from './widgets/ProductView/ProductView'
+import ProductView from './widgets/ProductView/ProductView';
+import TopBarViews from "./Navigation/TopBar/TopBarViews";
 import LittleLabel from "./widgets/ProductView/LittleLabel";
 import Input from './styles/input-styles'
 import {slickBarTheme} from './styles/constants'
@@ -84,5 +85,6 @@ export {
   slickBarTheme,
   StoreCategoriesListing,
   AppListingContext,
-  SlickBar
+  SlickBar,
+  TopBarViews
 }

@@ -115,7 +115,7 @@ const FlatCss = css`
   }
 
   &:focus{
-    border-color: ${p => easyColor(p, p['focusBorderEmotion'], '#b2d1f3')};
+    border-color: ${p => easyColor(p, p['focusBorderEmotion'], 'formBorderBlue')};
   }
   
   &:-webkit-autofill,

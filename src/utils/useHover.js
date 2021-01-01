@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
 
 export default function useHover() {
-  const [value, setValue] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   const ref = useRef(null);
 
-  const handleMouseOver = () => setValue(true);
-  const handleMouseOut = () => setValue(false);
+  const handleMouseOver = () => setIsHovering(true);
+  const handleMouseOut = () => setIsHovering(false);
 
   useEffect(
     () => {
@@ -24,5 +24,5 @@ export default function useHover() {
     [ref.current] // Recall only if ref changes
   );
 
-  return [ref, value];
+  return [ref, isHovering];
 }

@@ -14,7 +14,7 @@ const _Button = styled.button`
   ${commonFontAttrs};
   ${p => colorStyles(p, {
     bkgEmotion: 'primaryColor',
-    hov_bkgEmotion: shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), -20),
+    hov_bkgEmotion: shadeColor(easyColor(p, p.bkgEmotion, 'primaryColor'), 15),
     dis_bkgEmotion: 'grey',
     hov_point: true
   })};

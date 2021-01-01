@@ -11,7 +11,7 @@ import useHover from "../../utils/useHover";
 
 export default function TopBar(props) {
   const { rightSideButtons, loginCallback, bodyRef } = props;
-  const { user, profileActions, centerPiece } = props;
+  const { user, ProfileSubview, centerPiece } = props;
 
   return (
     <S.Container>
@@ -22,18 +22,20 @@ export default function TopBar(props) {
           {...props}
         />
 
-        <MegaCrumb {...centerPiece}/>
+        <JumboCrumb {...centerPiece}/>
 
         <S.RightCorner>
-          { user &&
+          { user && (
             <ProfileView
               user={user}
-              profileActions={profileActions}
+              ProfileSubview={ProfileSubview}
             />
-          }
-          { !user &&
-            <LoginButton callback={loginCallback}/>
-          }
+          )}
+          { !user && (
+            <LoginButton
+              callback={loginCallback}
+            />
+          )}
           <RightSideButtons
             bodyRef={bodyRef}
             rightSideButtons={rightSideButtons}
@@ -44,7 +46,7 @@ export default function TopBar(props) {
   )
 }
 
-function MegaCrumb({name, icon, path}){
+function JumboCrumb({name, icon, path}){
   return(
     <ModestLink to={path}>
       <Layout.Div
@@ -73,7 +75,7 @@ function MegaCrumb({name, icon, path}){
   )
 }
 
-function ProfileView({user, profileActions}){
+function ProfileView({user, ProfileSubview}){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
@@ -90,13 +92,19 @@ function ProfileView({user, profileActions}){
         height={size}
         src={user['picture']}
       />
-      { isMenuOpen &&
-        <ProfileMenu
-          closeSelf={_ => setIsMenuOpen(false)}
-          _ref={menuRef}
-          profileActions={profileActions}
-        />
-      }
+      { isMenuOpen && (
+        <Layout.Div
+          minWidth='242px'
+          sexyShadow
+          shadowOpacity={.5}
+          ptb={1.6}
+          bkgEmotion='white'
+          rounded
+          style={{position: 'fixed'}}
+          top='60px'>
+          <ProfileSubview/>
+        </Layout.Div>
+      )}
     </Fragment>
   )
 }
@@ -224,83 +232,6 @@ function MenuItem({action, _ref}){
         </Text.P>
       </Layout.Div>
     </ModestLink>
-  )
-}
-
-function ProfileMenu({profileActions, _ref, closeSelf}){
-  return(
-    <Layout.Div
-      ref={_ref}
-      sexyShadow
-      padded
-      ptb={1.3}
-      bkgEmotion='white'
-      minWidth='132px'
-      rounded
-      style={{position: 'fixed'}}
-      top='60px'>
-      { profileActions.map((action, i) =>  (
-        <Fragment key={i}>
-          { action.path && (
-            <ModestLink to={action.path}>
-              <ProfileMenuItem
-                action={action}
-                closeSelf={closeSelf}
-              />
-            </ModestLink>
-          ) }
-          { action.callback && (
-            <ProfileMenuItem
-              action={action}
-              closeSelf={closeSelf}
-            />
-          ) }
-          { i !== profileActions.length - 1 && (
-            <Layout.Div
-              mt={1.2}
-              mb={1.2}
-              height={'1px'}
-              bkgEmotion={'lightGrey'}
-            />
-          )}
-        </Fragment>
-      )) }
-    </Layout.Div>
-  )
-}
-
-function ProfileMenuItem({action, closeSelf}){
-  const [hoverRef, isHovered] = useHover();
-
-  function callback(){
-    if(action.callback){
-      closeSelf();
-      action.callback();
-    }
-  }
-
-  return(
-    <Layout.Div
-      ref={hoverRef}
-      flex
-      align='center'
-      onClick={callback}>
-      <Text.Icon
-        calm
-        emotion='warning2'
-        name={action.icon}
-        size={.89}
-        style={{opacity: isHovered ? '1.0' : '0.7'}}
-      />
-      <Text.P
-        bold={isHovered}
-        point={isHovered}
-        fontSize='13px'
-        hoverUnderline
-        ml={.8}>
-        {action.name}
-      </Text.P>
-    </Layout.Div>
   )
 }
 

@@ -4,9 +4,15 @@ import S from './Styles';
 import Layout from "../../styles/layout-styles";
 
 export function TextOverLineSubtitle(props: Props) {
-  const { text, lineProps, ...rest } = props;
+  const { text, lineProps, outerProps, ...rest } = props;
   return (
-    <S.HorizontalBoxWrapper>
+    <Layout.Div
+      relative
+      width='100%'
+      height='40px'
+      mt='20px'
+      mb='12px'
+      {...outerProps}>
       <Layout.Div
         absolute
         top='50%'
@@ -18,7 +24,7 @@ export function TextOverLineSubtitle(props: Props) {
       <S.Title {...rest}>
         {text}
       </S.Title>
-    </S.HorizontalBoxWrapper>
+    </Layout.Div>
   );
 }
 

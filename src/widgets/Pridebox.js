@@ -22,7 +22,7 @@ const OpaqueCover = styled(Layout.Div)`
 
 const nectarImgSize = '40px';
 
-export default function PrideBox({title, children}){
+export default function PrideBox({title, children, top}){
   return(
     <RepeatingImages
       width='100%'
@@ -39,7 +39,7 @@ export default function PrideBox({title, children}){
         <Layout.Div
           style={{transform: 'translate(-50%)'}}
           absolute
-          top='40%'
+          top={top}
           left='50%'>
           <Layout.Div flex align='center'>
             <Img.Img
@@ -60,4 +60,8 @@ export default function PrideBox({title, children}){
       </OpaqueCover>
     </RepeatingImages>
   )
+}
+
+PrideBox.defaultProps = {
+  top: '35%'
 }

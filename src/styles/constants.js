@@ -66,6 +66,7 @@ export const theme = {
     tart: "#F0544F",
     coffee: "#3A3335",
     comfy: "#6153cc",
+    formBorderBlue: "#b2d1f3",
     calmBeige: "#F5F1ED",
     soothing: "#f7f6f6",
     primaryBkg: "#2a2b2a",
