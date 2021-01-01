@@ -8,7 +8,7 @@ import Text from "../styles/text-styles";
 export const RepeatingImages = styled(Layout.Div)`
   background-image: ${p => `url(${p.src})`};
   background-repeat: space space;
-  background-size: 115px;
+  background-size: 85px;
 `;
 
 const OpaqueCover = styled(Layout.Div)`
