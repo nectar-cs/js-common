@@ -1,13 +1,10 @@
 import React, {Fragment} from 'react'
 import {
-  inverseTheme,
   Text,
   Layout,
-  LeftHeader,
+  SlickBar,
   AppLayout,
-  SideBar,
   colorKeys,
-  TopBar,
   noTopBarTheme
 } from 'nectar-gui'
 import {ThemeProvider} from 'styled-components'
@@ -57,33 +54,11 @@ export default function LayoutExpo() {
   return (
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
-        SideBar={MySideBar}
-        TopBar={TopBar}>
-        <Layout.PageWithHeader Header={PageHeader}>
+        SideBar={SlickBar}>
+        <Layout.PageWithoutHeader>
           <Layout.Div height={'100%'} width={'100%'} emotion={'nectar'}>asdsad</Layout.Div>
-        </Layout.PageWithHeader>
+        </Layout.PageWithoutHeader>
       </AppLayout>
     </ThemeProvider>
   );
-}
-
-function PageHeader(){
-  return(
-    <LeftHeader
-      graphicName={'dashboard'}
-      title={'GUI Showcase Home'}
-      subtitle={'Starting point for styles and widgets'}
-      graphicType={'icon'}
-    />
-  )
-}
-
-
-function MySideBar(){
-  return(
-    <SideBar
-      title='Fixed Height'
-      subtitle='Nectar GUI Demo'
-    />
-  )
 }

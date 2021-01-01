@@ -5,11 +5,11 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {Switch} from "react-router";
 import TextAndInputsExpo from './TextAndInputsExpo'
 import LayoutExpo from './LayoutExpo'
-import WidgetsDemo from './WidgetsDemo'
 import AppPage from "./AppPage";
 import ListTablePage from "./ListTablePage";
 import TopBarPage from "./TopBarPage";
 import TopBarPageTwo from "./TopBarPageTwo";
+import PridePage from "./PridePage";
 
 export default class App extends Component {
 
@@ -25,8 +25,8 @@ export default class App extends Component {
             <Route path='/list-table' component={ListTablePage}/>
             <Route path='/layout' component={LayoutExpo}/>
             <Route path='/basics' component={TextAndInputsExpo}/>
-            <Route path='/widgets' component={WidgetsDemo}/>
-            <Route exact path='/' component={AppPage}/>
+            <Route path='/pride' component={PridePage}/>
+            <Route exact path='/' component={PridePage}/>
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

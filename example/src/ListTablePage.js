@@ -3,9 +3,8 @@ import {
   Layout,
   LeftHeader,
   AppLayout,
-  SideBar,
   Text,
-  TopBar,
+  SlickBar,
   noTopBarTheme
 } from 'nectar-gui'
 import {ThemeProvider} from "styled-components";
@@ -87,7 +86,7 @@ function PageHeader(){
 
 function MySideBar(){
   return(
-    <SideBar
+    <SlickBar
       title='Fixed Height'
       subtitle='Nectar GUI Demo'
     />

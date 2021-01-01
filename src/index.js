@@ -19,6 +19,7 @@ import Input from './styles/input-styles'
 import {slickBarTheme} from './styles/constants'
 import SlickBar from "./Navigation/SlickBar/SlickBar";
 import RoundStoreCard from "./widgets/StoreCard/RoundStoreCard";
+import PrideBox from "./widgets/Pridebox";
 import ModestLink from './widgets/ModestLink/ModestLink'
 import Img from './styles/img-styles'
 import BigHeader from "./widgets/BigHeader/BigHeader";
@@ -72,6 +73,7 @@ export {
   CenterLoader,
   TabsView,
   LabelTags,
+  PrideBox,
   Pill,
   Stepper,
   Battery,

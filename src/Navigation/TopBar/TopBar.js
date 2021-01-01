@@ -52,7 +52,7 @@ function MegaCrumb({name, icon, path}){
         flex
         left='50%'
         style={{transform: 'translate(-50%, -45%)'}}
-        top={'50%'}
+        top='50%'
         align='center'
       >
         <Text.Icon
@@ -65,7 +65,7 @@ function MegaCrumb({name, icon, path}){
           mt={.1}
           ml={1}
           style={{textTransform: 'uppercase'}}
-          emotion={'white'}>
+          emotion='white'>
           { name }
         </Text.H2>
       </Layout.Div>
@@ -86,7 +86,7 @@ function ProfileView({user, profileActions}){
         hov_point
         mt='-2px'
         centerCrop
-        width={'auto'}
+        width='auto'
         height={size}
         src={user['picture']}
       />
@@ -126,7 +126,7 @@ function RightSideButtons({rightSideButtons}) {
 
 function RightSideButton({descriptor, onHoverChanged, isDropped, closeSelf}){
   const [hoverRef, isHovered] = useHover();
-  useOutsideAlerter(hoverRef, closeSelf);
+  // useOutsideAlerter(hoverRef, closeSelf);
 
   useEffect(_ => {
     onHoverChanged(isHovered);
@@ -174,10 +174,8 @@ function RightSideButtonMenu({actions}){
       bkgEmotion='white'
       top='58px'
       minWidth='132px'
-      pt={'20px'}
-      pb={'20px'}
-      pl={'15px'}
-      pr={'15px'}
+      ptb='20px'
+      plr='15px'
       rounded
       style={{position: 'fixed'}}
       >

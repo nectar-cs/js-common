@@ -2,13 +2,12 @@ import React, {useState} from "react";
 import {Layout,
   AppLayout,
   ErrorToast,
-  FlexHeader,
   Stepper,
   Button,
   Input,
   noTopBarTheme,
   TextOverLineSubtitle,
-  SideBar,
+  SlickBar,
   Text,
   TagPool,
   colorKeys
@@ -21,12 +20,12 @@ export default function AppPage(){
   return(
     <ThemeProvider theme={noTopBarTheme}>
       <AppLayout
-        SideBar={MySideBar}>
-        <Layout.PageWithHeader Header={PageHeader}>
+        SideBar={SlickBar}>
+        <Layout.PageWithoutHeader>
           <IntroPanel/>
           <TwoPanels/>
           <FormsPanel/>
-        </Layout.PageWithHeader>
+        </Layout.PageWithoutHeader>
       </AppLayout>
     </ThemeProvider>
   )
@@ -191,26 +190,5 @@ function FormsPanel(){
         </Layout.Div>
       </Layout.Div>
     </Layout.Div>
-  )
-}
-
-function PageHeader(){
-  return(
-    <FlexHeader
-      graphicName={'dashboard'}
-      title={'GUI Showcase Home'}
-      subtitle={'Starting point for styles and widgets'}
-      graphicType={'icon'}
-    />
-  )
-}
-
-
-function MySideBar(){
-  return(
-    <SideBar
-      title='Fixed Height'
-      subtitle='Nectar GUI Demo'
-    />
   )
 }
