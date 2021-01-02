@@ -1,6 +1,6 @@
 import React from 'react'
-import Layout from "../../styles/layout-styles";
-import Text from "../../styles/text-styles";
+import Layout from "../styles/layout-styles";
+import Text from "../styles/text-styles";
 
 export default function TabsView(props){
   const { descriptors, onTabSelected, crtIndex } = props;

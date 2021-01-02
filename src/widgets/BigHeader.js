@@ -1,9 +1,9 @@
 import React from 'react'
-import Layout from "../../styles/layout-styles";
-import Img from "../../styles/img-styles";
-import Text from "../../styles/text-styles";
+import Layout from "../styles/layout-styles";
+import Img from "../styles/img-styles";
+import Text from "../styles/text-styles";
 
-export default function BigHeader({title, Subtitle, graphicName}){
+export default function BigHeader({title, Title, Subtitle, graphicName}){
   const height = '80px';
   return(
     <Layout.Div flex>
@@ -19,12 +19,17 @@ export default function BigHeader({title, Subtitle, graphicName}){
         height={height}
         relative
         ml={1.22}>
-        <Text.H1
-          fontSize='28px'
-          absolute
-          top={1.7}>
-          { title }
-        </Text.H1>
+        { title && (
+          <Text.H1
+            fontSize='28px'
+            absolute
+            top={1.7}>
+            { title }
+          </Text.H1>
+        ) }
+        { !!Title && (
+          <Title/>
+        ) }
         <Layout.Div
          absolute
          bottom={.5}>

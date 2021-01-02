@@ -1,9 +1,9 @@
 import React from 'react'
-import Layout from "../../styles/layout-styles";
-import Text from "../../styles/text-styles";
-import Table from "../../styles/table-styles";
-import Pill from "../../widgets/Pill/Pill";
-import {colorKeys} from './../../styles/constants'
+import Layout from "../styles/layout-styles";
+import Text from "../styles/text-styles";
+import Table from "../styles/table-styles";
+import Pill from "./Pill/Pill";
+import {colorKeys} from '../styles/constants'
 
 
 export default function PermsView({simplifiedPerms}){

@@ -3,7 +3,7 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {theme} from './../../styles/constants'
 import humanizeString from "humanize-string";
-import PermsView from "../PermsView/PermsView";
+import PermsView from "../PermsView";
 import LeftGutter from "./LeftGutter";
 import PlansSection from "./PlansSection";
 import PromoSection from "./PromoSection";

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Layout from "../../styles/layout-styles";
+import Layout from "../styles/layout-styles";
 
 export default function ModestLink({to, children, disabled}) {
   if(disabled) return children;

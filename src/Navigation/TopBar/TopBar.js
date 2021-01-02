@@ -1,16 +1,16 @@
-import React, {Fragment, useEffect, useState, useRef} from 'react';
+import React, {Fragment, useState, useRef} from 'react';
 import { S } from './TopBarStyles';
 import Text from './../../styles/text-styles'
 import Layout from './../../styles/layout-styles'
 import Img from './../../styles/img-styles'
 import Button from './../../styles/button-styles'
-import ModestLink from "../../widgets/ModestLink/ModestLink";
+import ModestLink from "../../widgets/ModestLink";
 import useOutsideAlerter from "../../utils/useOutsideAlerter";
 import LogoBox from "../../widgets/LogoBox";
 import useHover from "../../utils/useHover";
 
 export default function TopBar(props) {
-  const { rightSideButtons, loginCallback, bodyRef } = props;
+  const { rightSideButtons, loginCallback } = props;
   const { user, ProfileSubview, centerPiece } = props;
 
   return (
@@ -37,7 +37,6 @@ export default function TopBar(props) {
             />
           )}
           <RightSideButtons
-            bodyRef={bodyRef}
             rightSideButtons={rightSideButtons}
           />
         </S.RightCorner>
@@ -86,6 +85,7 @@ function ProfileView({user, ProfileSubview}){
       <Img.Img
         onClick={_ => setIsMenuOpen(!isMenuOpen)}
         hov_point
+        ref={menuRef}
         mt='-2px'
         centerCrop
         width='auto'
@@ -110,67 +110,53 @@ function ProfileView({user, ProfileSubview}){
 }
 
 function RightSideButtons({rightSideButtons}) {
-  const thingRef = useRef(null);
-  const [hoverIndex, setHoverIndex] = useState(-1);
-
-  function onHoverChanged(i, isHovered){
-    if(isHovered)
-      setHoverIndex(i);
-  }
-
-  // useOutsideAlerter(bodyRef, _ => setHoverIndex(-1));
-
   return rightSideButtons.map((descriptor, i) => (
     <RightSideButton
       descriptor={descriptor}
-      _ref={i === hoverIndex ? thingRef : null}
-      onHoverChanged={state => onHoverChanged(i, state)}
-      closeSelf={_ => setHoverIndex(-1)}
-      isDropped={i === hoverIndex}
       key={i}
     />
   ))
 }
 
-function RightSideButton({descriptor, onHoverChanged, isDropped, closeSelf}){
-  const [hoverRef, isHovered] = useHover();
-  // useOutsideAlerter(hoverRef, closeSelf);
-
-  useEffect(_ => {
-    onHoverChanged(isHovered);
-  }, [isHovered]);
+function RightSideButton({descriptor}){
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
 
   const {  href, actions,  icon, newTab } = descriptor;
 
   return(
     <Layout.Div
-      ref={hoverRef}
+      ref={menuRef}
       flex
       hov_point
+      onClick={_ => setIsMenuOpen(!isMenuOpen)}
       align='center'
       mr={3}>
-      { href &&
-      <a href={href} target={newTab ? '_blank' : null}>
-        <RightSideButtonTextView descriptor={descriptor}/>
-      </a>
-      }
-      { !descriptor.href &&
-      <RightSideButtonTextView descriptor={descriptor}/>
-      }
-      { (actions || icon) &&
-      <Text.Icon
-        mt={-.1}
-        ml={.2}
-        size={1.0}
-        emotion='warning2'
-        name={icon || 'arrow_drop_down'}
-      />
-      }
-      { descriptor.actions && isDropped &&
-      <RightSideButtonMenu
-        actions={actions}
-      />
-      }
+      { href && (
+        <a href={href} target={newTab ? '_blank' : null}>
+          <RightSideButtonTextView descriptor={descriptor}/>
+        </a>
+      )}
+      { !descriptor.href && (
+        <RightSideButtonTextView
+          descriptor={descriptor}
+        />
+      )}
+      { (actions || icon) && (
+        <Text.Icon
+          mt={-.1}
+          ml={.2}
+          size={1.0}
+          emotion='warning2'
+          name={icon || 'arrow_drop_down'}
+        />
+      )}
+      { descriptor.actions && isMenuOpen && (
+        <RightSideButtonMenu
+          actions={actions}
+        />
+      )}
     </Layout.Div>
   )
 }
@@ -190,15 +176,15 @@ function RightSideButtonMenu({actions}){
       { actions.map((action, i) =>  (
         <Fragment key={i}>
           <MenuItem action={action}/>
-          { i !== actions.length - 1 &&
-          <Layout.Div
-            mt={1}
-            mb={1}
-            height={'.5px'}
-            bkgEmotion={'primaryColor'}
-            style={{opacity: '0.3'}}
-          />
-          }
+          { i !== actions.length - 1 && (
+            <Layout.Div
+              mt={1}
+              mb={1}
+              height={'.5px'}
+              bkgEmotion={'primaryColor'}
+              style={{opacity: '0.3'}}
+            />
+          )}
         </Fragment>
       )) }
     </Layout.Div>

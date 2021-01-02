@@ -1,6 +1,6 @@
 import React from 'react'
-import Text from '../../styles/text-styles'
-import Layout from '../../styles/layout-styles'
+import Text from '../styles/text-styles'
+import Layout from '../styles/layout-styles'
 
 export default function CategoriesBar({items}){
   return(

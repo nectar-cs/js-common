@@ -1,5 +1,5 @@
 import React from "react";
-import Text  from '../../styles/text-styles'
+import Text  from '../styles/text-styles'
 
 function labelsToDictStrs(labelDict: {[string]: string}){
   return Object.keys(labelDict).reduce((whole, key) => (

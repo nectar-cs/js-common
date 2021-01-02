@@ -1,6 +1,6 @@
 {
   "name": "nectar-gui",
-  "version": "1.0.72",
+  "version": "1.0.73",
   "description": "React styles for Nectar",
   "author": "nectar-cs",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "react-animations": "^1.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
     "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-use-dimensions": "^1.2.1",
     "humanize-string": "^2.1.0",

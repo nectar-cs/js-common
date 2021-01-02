@@ -8,21 +8,18 @@ export default function useHover() {
   const handleMouseOver = () => setIsHovering(true);
   const handleMouseOut = () => setIsHovering(false);
 
-  useEffect(
-    () => {
-      const node = ref.current;
-      if (node) {
-        node.addEventListener('mouseover', handleMouseOver);
-        node.addEventListener('mouseout', handleMouseOut);
+  useEffect(_ => {
+    const node = ref.current;
+    if (node) {
+      node.addEventListener('mouseover', handleMouseOver);
+      node.addEventListener('mouseout', handleMouseOut);
 
-        return () => {
-          node.removeEventListener('mouseover', handleMouseOver);
-          node.removeEventListener('mouseout', handleMouseOut);
-        };
-      }
-    },
-    [ref.current] // Recall only if ref changes
-  );
+      return _ => {
+        node.removeEventListener('mouseover', handleMouseOver);
+        node.removeEventListener('mouseout', handleMouseOut);
+      };
+    }
+  }, [ref.current] );
 
   return [ref, isHovering];
 }

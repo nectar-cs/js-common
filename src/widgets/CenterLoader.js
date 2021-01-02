@@ -1,7 +1,7 @@
 //@flow
 import React from 'react'
-import {Loader} from '../../styles/loader-styles'
-import Layout from '../../styles/layout-styles'
+import {Loader} from '../styles/loader-styles'
+import Layout from '../styles/layout-styles'
 
 export default function CenterLoader({children, ...props}){
   return(

@@ -1,6 +1,6 @@
 //@flow
 import React from 'react'
-import Text from '../../styles/text-styles';
+import Text from '../styles/text-styles';
 
 export function ColoredLabelList(props: Props) {
   const { labelType, labels } = props;

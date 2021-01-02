@@ -1,5 +1,5 @@
 import React from 'react'
-import ModestLink from "./ModestLink/ModestLink";
+import ModestLink from "./ModestLink";
 import Layout from "../styles/layout-styles";
 import Img from "../styles/img-styles";
 import Text from "../styles/text-styles";
