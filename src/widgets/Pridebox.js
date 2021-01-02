@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from "../styles/layout-styles";
 import styled from 'styled-components'
-import Utils from "../utils/Utils";
+import NectarGuiUtils from "../utils/NectarGuiUtils";
 import Img from "../styles/img-styles";
 import Text from "../styles/text-styles";
 
@@ -28,7 +28,7 @@ export default function PrideBox({title, children, top}){
       width='100%'
       height='100%'
       bkgEmotion='black'
-      src={Utils.image('blurred-tile.png')}
+      src={NectarGuiUtils.image('blurred-tile.png')}
       absolute
       trbl="0 0 0 0">
       <OpaqueCover
@@ -45,7 +45,7 @@ export default function PrideBox({title, children, top}){
             <Img.Img
               width={nectarImgSize}
               height={nectarImgSize}
-              src={Utils.image('nectar-tomato.png')}
+              src={NectarGuiUtils.image('nectar-tomato.png')}
             />
             <Text.P
               ml={1.4}

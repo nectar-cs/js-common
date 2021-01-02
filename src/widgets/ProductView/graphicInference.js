@@ -1,4 +1,4 @@
-import Utils from "../../utils/Utils";
+import NectarGuiUtils from "../../utils/NectarGuiUtils";
 
 export default function inferGraphic(type, value){
   if(type === 'clusterTypes'){
@@ -11,7 +11,7 @@ export default function inferGraphic(type, value){
       core = 'aks';
     return {
       graphicType: 'image',
-      graphicName: Utils.image(`k8s-flavors/${core}.png`)
+      graphicName: NectarGuiUtils.image(`k8s-flavors/${core}.png`)
     }
   }
 
@@ -19,7 +19,7 @@ export default function inferGraphic(type, value){
     if (value.toLowerCase().includes("kubernetes")) {
       return {
         graphicType: "image",
-        graphicName: Utils.image("k8s_style_light.png")
+        graphicName: NectarGuiUtils.image("k8s_style_light.png")
       };
     } else return { graphicType: "icon", graphicName: 'api' };
   }

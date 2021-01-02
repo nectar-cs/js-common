@@ -1,6 +1,8 @@
 import Button from './styles/button-styles'
 import {theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
+import RoutedTabsView from "./widgets/RoutedTabsView";
+import MenuView from "./widgets/MenuView";
 import AppListingUtils from "./utils/appCatUtils";
 import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
@@ -88,5 +90,7 @@ export {
   SlickBar,
   TopBarViews,
   CenterContentView,
-  FormViews
+  FormViews,
+  RoutedTabsView,
+  MenuView
 }

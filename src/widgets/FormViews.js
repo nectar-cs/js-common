@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import Utils from "../utils/Utils";
+import NectarGuiUtils from "../utils/NectarGuiUtils";
 import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Input from "../styles/input-styles";
@@ -335,7 +335,7 @@ function LogoInputView({value, callback, title}){
           centerCrop
           mb={.2}
           borderRadius={'4px'}
-          src={value || Utils.image('image-placeholder.jpg')}
+          src={value || NectarGuiUtils.image('image-placeholder.jpg')}
         />
         <Layout.Div width='100%' ml={2}>
           <Input.FlatInput
