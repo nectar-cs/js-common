@@ -87,7 +87,7 @@ export const theme = {
   dims: {
     topBarHeight: "55px",
     sideBarWidth: "220px",
-    slickBarWidth: '56px',
+    slickBarWidth: '58px',
     borderRadius: "6px",
     borderWidth: "1px",
     inputBorderWidth: 1.3

@@ -42,6 +42,7 @@ import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
 import PermsView from "./widgets/PermsView";
+import NectarGuiUtils from "./utils/NectarGuiUtils";
 
 export {
   Loader,
@@ -81,6 +82,7 @@ export {
   Stepper,
   Battery,
   sexyShadow,
+  NectarGuiUtils,
   RoundStoreCard,
   ErrorToast,
   easyColor,

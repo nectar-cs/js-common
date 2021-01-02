@@ -11,14 +11,17 @@ function ImgAndLink({src, title, text, path}) {
   const imgSize = '38px';
   return(
     <Layout.Div flex plr={itemPlr}>
-      <Img.Img
-        src={src}
-        width={imgSize}
-        height={imgSize}
-        centerCrop
-        borderRadius={'50%'}
-      />
-      <Layout.Div ml={.7}>
+      { src && (
+        <Img.Img
+          mr={.7}
+          src={src}
+          width={imgSize}
+          height={imgSize}
+          centerCrop
+          borderRadius={'50%'}
+        />
+      ) }
+      <Layout.Div>
         <Text.P humane bold>{title}</Text.P>
         <Layout.Div flex align='center'>
           <Text.Icon
