@@ -1,4 +1,4 @@
-import {Text, Button, PrideBox, Layout} from 'nectar-gui'
+import {Text, Button, PrideBox, Layout, ModestLink} from 'nectar-gui'
 import React from "react";
 
 export default function PridePage() {
@@ -13,15 +13,17 @@ export default function PridePage() {
           Nectar UI elements expo for internal use only.
           If you're reading this, we raised a round.
         </Text.P>
-        <Button.Button
-          borderRadius={'2px'}
-          // centered
-          mt={2}
-          emotion='white'
-          bkgEmotion='hipBlue'
+        <ModestLink to={'page'}>
+          <Button.Button
+            borderRadius={'2px'}
+            // centered
+            mt={2}
+            emotion='white'
+            bkgEmotion='hipBlue'
           >
-          Begin
-        </Button.Button>
+            Begin
+          </Button.Button>
+        </ModestLink>
       </PrideBox>
   )
 }

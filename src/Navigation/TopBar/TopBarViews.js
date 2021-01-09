@@ -65,6 +65,7 @@ function ClickableRow({icon, text, path, callback}){
   return(
     <Wrapper>
       <Layout.Div
+        onClick={callback}
         ref={ref}
         mt={.8}
         plr={itemPlr}

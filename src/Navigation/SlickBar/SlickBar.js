@@ -113,6 +113,7 @@ function ItemWrapper(props: ItemWrapperProps) {
             bkgEmotion='white'
             rounded
             style={{
+              // zIndex: '1000',
               position: 'fixed',
               transform: low ? 'translateY(-100%)' :  null
               // transform: `translateY(-100%)`

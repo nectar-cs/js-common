@@ -55,7 +55,7 @@ const Separator = styled(Div)`
 `;
 
 const PanelTop = styled(Div)`
-  ${p => marginsAndPadding(p, { padded: true })};
+  ${p => marginsAndPadding('padding', p, { padded: true })};
   ${p => colorStyles(p, { bkgEmotion: 'panelGrey2' }) };
   ${p => borderStyles(p, {
     borderRadius: '8px',
@@ -153,6 +153,7 @@ const PageWithoutHeader = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
+  z-index: 1;
   right: 0;
   left: 0;
   box-sizing: content-box;

@@ -250,12 +250,12 @@ function CustomSubMenuTwo(){
       <TopBarViews.ImgAndLink
         src='https://assets.stickpng.com/images/58480a44cef1014c0b5e4917.png'
         title={"Kubernetes Context"}
-        text={"If you dare"}
+        text="If you dare"
       />
       <TopBarViews.ClickableRow
         icon='open_in_new'
-        text='Go to settings'
-        path={'/'}
+        text='Open a dialog'
+        callback={_ => console.log("Talk to me!")}
       />
     </Layout.Div>
   )

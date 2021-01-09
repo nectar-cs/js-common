@@ -28,4 +28,5 @@ const AppContent = styled.div`
   left: ${p => p.theme.dims.sideBarWidth};
   bottom: 0;
   right: 0;
+  z-index: -1;
 `;
