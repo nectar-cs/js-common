@@ -23,6 +23,9 @@ export default function GlanceView(props){
       { type === 'icon' && (
         <IconType {...props}/>
       ) }
+      { type === 'status' && (
+        <StatusType {...props}/>
+      ) }
       { type === 'battery' && (
         <BatteryType {...props}/>
       ) }
@@ -31,12 +34,44 @@ export default function GlanceView(props){
   )
 }
 
+function StatusType({value, icon, emotion}){
+  return(
+    <Layout.Div mt={2}>
+      <Layout.CenteringDiv>
+          <Layout.Div
+            padded
+            ptb={.5}
+            rounded
+            bkgEmotion={'milGreen'}
+            align={'center'}
+            iFlex>
+            { icon && (
+              <Text.Icon
+                name={icon}
+                size={1.0}
+                emotion={'white'}
+                mr={.5}
+              />
+            ) }
+            <Text.P
+              ml={.5}
+              emotion={'white'}
+              fontSize='21px'>
+              { value }
+            </Text.P>
+          </Layout.Div>
+      </Layout.CenteringDiv>
+    </Layout.Div>
+  )
+}
+
+
 function BatteryType({pct}){
   return(
     <Layout.CenteringDiv mt={1.8}>
       <Layout.Div flex align='center'>
         <Battery
-          size={2.84}
+          size={3}
           pct={pct}
         />
         <Text.P fontSize='28px' ml={1}>
@@ -47,8 +82,8 @@ function BatteryType({pct}){
   )
 }
 
-function IconType({value, icon, image}){
-  const imageSize = '60px';
+function IconType({value, icon, iconEmotion, image}){
+  const imageSize = '40px';
   return(
     <Layout.Div mt={1}>
       <Layout.CenteringDiv>
@@ -57,7 +92,7 @@ function IconType({value, icon, image}){
             <Text.Icon
               name={icon}
               size={2}
-              emotion={'lightGrey'}
+              emotion={iconEmotion || 'lightGrey'}
             />
           ) }
           { image && (
@@ -71,7 +106,7 @@ function IconType({value, icon, image}){
             <Text.P
               mt={.6}
               calm
-              fontSize='23px'>
+              fontSize='21px'>
               { value }
             </Text.P>
           ) }
@@ -83,17 +118,26 @@ function IconType({value, icon, image}){
 
 function PieType({data}){
   return(
-    <ResponsivePie
-      data={data}
-      innerRadius={0}
-      padAngle={0.0}
-      cornerRadius={0}
-      colors={{ scheme: 'nivo' }}
-      borderWidth={1}
-      borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-      sliceLabelsSkipAngle={10}
-      enableRadialLabels={false}
-    />
+    <Layout.Div height='100%' relative>
+      <Layout.Div
+        absolute
+        left={0}
+        right={0}
+        top={.7}
+        bottom={.7}>
+        <ResponsivePie
+          data={data}
+          innerRadius={0}
+          padAngle={0.0}
+          cornerRadius={0}
+          colors={{ scheme: 'nivo' }}
+          borderWidth={1}
+          borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+          sliceLabelsSkipAngle={10}
+          enableRadialLabels={false}
+        />
+      </Layout.Div>
+    </Layout.Div>
   )
 }
 

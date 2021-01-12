@@ -11,7 +11,7 @@ export default function GlanceView(props){
 
   return(
     <Layout.Div
-      mr={1.2}
+      mr={0}
       mb={1.2}
       width={viewSize}
       height={viewSize}

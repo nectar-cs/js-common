@@ -17,7 +17,7 @@ const OpaqueCover = styled(Layout.Div)`
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.92);
+  background: rgba(0,0,0,0.90);
 `;
 
 const nectarImgSize = '40px';

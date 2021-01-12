@@ -34,7 +34,13 @@ export default function GlancesPage(){
               lineProps={{bkgEmotion: 'warning2'}}
             />
 
-            <Layout.Div flex style={{flexWrap: 'wrap'}}>
+            <Layout.Div
+              flex
+              style={{
+                flexWrap: 'wrap',
+                justifyContent: 'space-between'
+              }}
+            >
               <GlanceView
                 title="What's the Weather?"
                 type='chart'
@@ -50,17 +56,26 @@ export default function GlancesPage(){
                 data={binaryPieData}
               />
               <GlanceView
+                type='pie'
+                title='Telem DB Disk'
+                legend='As a moth'
+                data={binaryPieData}
+              />
+
+              <GlanceView
                 title="Endpoint Address"
                 type='icon'
                 value='Admin Site'
-                icon='language'
+                icon='vpn_lock'
                 legend="10.30.383.12/admin"
                 legendIcon='open_in_new'
+                iconEmotion='warning2'
               />
               <GlanceView
                 title="Prometheus Connected?"
                 type='icon'
-                value=''
+                value='Connected'
+                iconEmotion={'milGreen'}
                 icon='done_all'
                 legend="10.30.383.12/admin"
               />
@@ -76,6 +91,13 @@ export default function GlancesPage(){
                 value='Grafana'
                 image='https://exchange.icinga.com/cark/Grafana%20Module/logo'
                 legend="10.30.383.12"
+              />
+              <GlanceView
+                title="Predicate Passed"
+                type='status'
+                value='Connected'
+                icon='done_all'
+                legend="10.30.383.12/admin"
               />
             </Layout.Div>
 
