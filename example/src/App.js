@@ -10,6 +10,7 @@ import ListTablePage from "./ListTablePage";
 import TopBarPage from "./TopBarPage";
 import TopBarPageTwo from "./TopBarPageTwo";
 import PridePage from "./PridePage";
+import GlancesPage from "./GlancesPage";
 
 export default class App extends Component {
 
@@ -20,6 +21,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path='/page' component={AppPage}/>
+            <Route path='/glances' component={GlancesPage}/>
             <Route path='/top-bar' component={TopBarPage}/>
             <Route path='/top-bar-two' component={TopBarPageTwo}/>
             <Route path='/list-table' component={ListTablePage}/>

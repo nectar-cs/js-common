@@ -15,12 +15,8 @@ function borderRad(p){
     return "3px";
   if(computedHeight <= 35)
     return "3.5px";
-  if(computedHeight <= 50)
-    return "4.8px";
-  if(computedHeight <= 90)
-    return "5.2px";
   else
-    return "6.5px";
+    return "4.0px";
 }
 
 function width(p){
@@ -42,7 +38,7 @@ const BatteryPart = styled.div`
 `;
 
 const OuterBattery = styled(BatteryPart)`
-  background: ${p => easyColor(p, p.bkgEmotion, 'primaryColor')};
+  background: ${p => easyColor(p, p.bkgEmotion, 'primaryBkg')};
 `;
 
 const InnerBattery = styled(BatteryPart)`

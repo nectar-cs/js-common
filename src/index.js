@@ -38,6 +38,7 @@ import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
 import CategoriesBar from "./widgets/CategoriesBar";
+import GlanceView from "./widgets/GlanceView/GlanceView";
 import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
@@ -49,6 +50,7 @@ export {
   ProductView,
   Button,
   AppLayout,
+  GlanceView,
   PermsView,
   TopBar,
   Input,
