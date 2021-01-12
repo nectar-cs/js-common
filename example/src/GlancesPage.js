@@ -49,17 +49,20 @@ export default function GlancesPage(){
                 direction={'up'}
                 data={timeSeriesData}
               />
+
               <GlanceView
                 type='pie'
                 title='Telem DB Disk'
                 legend='As a moth'
                 data={binaryPieData}
               />
+
               <GlanceView
                 type='pie'
                 title='Telem DB Disk'
                 legend='As a moth'
                 data={binaryPieData}
+                isLoading
               />
 
               <GlanceView
@@ -93,6 +96,7 @@ export default function GlancesPage(){
                 legend="10.30.383.12"
               />
               <GlanceView
+                error='Yolo'
                 title="Predicate Passed"
                 type='status'
                 value='Connected'

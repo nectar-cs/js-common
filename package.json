@@ -1,6 +1,6 @@
 {
   "name": "nectar-gui",
-  "version": "1.0.77",
+  "version": "1.0.78",
   "description": "React styles for Nectar",
   "author": "nectar-cs",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "react-router-dom": "^5.1.2",
     "react-use-dimensions": "^1.2.1",
     "humanize-string": "^2.1.0",
+    "react-loading-skeleton": "^2.1.1",
     "styled-components": "^4.4.1",
     "use-async-effect": "^2.2.2",
     "@nivo/core": "^0.67.0",

@@ -9,7 +9,6 @@ import {
   marginsAndPadding, colorStyles
 } from './constants'
 
-import {easyColor} from "./utils";
 
 const halfPanelOffset = "14px";
 const totalHeaderHeight = 80;

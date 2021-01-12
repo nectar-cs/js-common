@@ -11,12 +11,15 @@ import TopBarPage from "./TopBarPage";
 import TopBarPageTwo from "./TopBarPageTwo";
 import PridePage from "./PridePage";
 import GlancesPage from "./GlancesPage";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 
 export default class App extends Component {
 
   render () {
     return (
       <ThemeProvider theme={theme}>
+        <SkeletonTheme >
         <MosaicBaseStyle/>
         <BrowserRouter>
           <Switch>
@@ -31,6 +34,7 @@ export default class App extends Component {
             <Route exact path='/' component={PridePage}/>
           </Switch>
         </BrowserRouter>
+        </SkeletonTheme>
       </ThemeProvider>
     )
   }

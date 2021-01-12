@@ -1,6 +1,6 @@
 // noinspection NpmUsedModulesInstalled
 import {css} from 'styled-components'
-import {lilDim, easyColor, coerceDim, hexToRgb} from "./utils";
+import {lilDim, easyColor, hexToRgb} from "./utils";
 
 export const colorKeys = {
   primaryFont: 'primaryFont',
@@ -489,15 +489,15 @@ function absolutePositioning(p, defaults){
   if(props.absolute)
     total.push(`position: absolute;`);
 
-  else if(props.relative)
+  if(props.relative)
     total.push(`position: relative;`);
 
-  else if (props.trbl){
-    const parts = props.trbl.split(" ");
+  if (props.trbl){
     corners.forEach((corner, i) => {
-      total.push(`${corner}: ${coerceDim(parts[i])};`);
+      total.push(`${corner}: ${lilDim(props.trbl[i])};`);
     });
   }
+
   corners.forEach(corner => {
     if(Object.keys(props).includes(corner)) {
       total.push(`${corner}: ${lilDim(props[corner])};`);

@@ -91,7 +91,7 @@ function IconType({value, icon, iconEmotion, image}){
           { icon && (
             <Text.Icon
               name={icon}
-              size={2}
+              size={1.85}
               emotion={iconEmotion || 'lightGrey'}
             />
           ) }
