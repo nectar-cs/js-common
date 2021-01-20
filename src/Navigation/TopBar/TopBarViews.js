@@ -1,9 +1,8 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import Layout from "../../styles/layout-styles";
 import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
 import ModestLink from "../../widgets/ModestLink";
-import useHover from "../../utils/useHover";
 
 const itemPlr = 1.3;
 
@@ -18,7 +17,7 @@ function ImgAndLink({src, title, text, path}) {
           width={imgSize}
           height={imgSize}
           centerCrop
-          borderRadius={'50%'}
+          borderRadius='50%'
         />
       ) }
       <Layout.Div>
@@ -56,9 +55,8 @@ function Separator({...props}){
 }
 
 function ClickableRow({icon, text, path, callback}){
-  const [ref, isHovering] = useHover();
   const Wrapper = callback ?
-    ({children}) => <Fragment>{children}</Fragment> :
+    ({children}) => children :
     ({children}) => <ModestLink to={path}>{children}</ModestLink>
   ;
 
@@ -66,13 +64,11 @@ function ClickableRow({icon, text, path, callback}){
     <Wrapper>
       <Layout.Div
         onClick={callback}
-        ref={ref}
         mt={.8}
         plr={itemPlr}
         flex
         align='center'>
         <Text.Icon
-          bold={isHovering}
           emotion='warning2'
           name={icon}
           size={.66}
@@ -80,8 +76,8 @@ function ClickableRow({icon, text, path, callback}){
         <Text.P
           mt='1px'
           calm
-          point={isHovering}
-          bold={isHovering}
+          hov_point
+          hov_bold
           ml={.4}>
           {text}
         </Text.P>

@@ -19,6 +19,7 @@ export default function RoutedTabsView({routes, prefix, seekIndex}) {
         crtIndex={NectarGuiUtils.findCrtIndex(routes, location, seekIndex)}
         descriptors={routes}
         onTabSelected={navToTab}
+
       />
     </Layout.Div>
   )

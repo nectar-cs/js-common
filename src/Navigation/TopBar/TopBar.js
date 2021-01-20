@@ -75,20 +75,24 @@ function JumboCrumb({name, icon, path}){
 }
 
 function ProfileView({user, ProfileSubview}){
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
+  useOutsideAlerter(menuRef, _ => {
+    setMenuOpen(false);
+  });
 
-  const size = '90%';
+  const size = '34px';
   return(
-    <Fragment>
+    <Layout.Div
+      width={'auto'}
+      height={'auto'}
+      ref={menuRef}
+      mt='2px'>
       <Img.Img
-        onClick={_ => setIsMenuOpen(!isMenuOpen)}
+        onClick={_ => setMenuOpen(!isMenuOpen)}
         hov_point
-        ref={menuRef}
-        mt='-2px'
         centerCrop
-        width='auto'
+        width={size}
         height={size}
         src={user['picture']}
       />
@@ -101,11 +105,12 @@ function ProfileView({user, ProfileSubview}){
           bkgEmotion='white'
           rounded
           style={{position: 'fixed'}}
+          right={'18px'}
           top='60px'>
           <ProfileSubview/>
         </Layout.Div>
       )}
-    </Fragment>
+    </Layout.Div>
   )
 }
 
@@ -119,9 +124,9 @@ function RightSideButtons({rightSideButtons}) {
 }
 
 function RightSideButton({descriptor}){
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
+  useOutsideAlerter(menuRef, _ => setMenuOpen(false));
 
   const {  href, actions,  icon, newTab } = descriptor;
 
@@ -130,7 +135,7 @@ function RightSideButton({descriptor}){
       ref={menuRef}
       flex
       hov_point
-      onClick={_ => setIsMenuOpen(!isMenuOpen)}
+      onClick={_ => setMenuOpen(!isMenuOpen)}
       align='center'
       mr={3}>
       { href && (

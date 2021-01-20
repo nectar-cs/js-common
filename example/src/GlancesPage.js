@@ -14,6 +14,7 @@ import {ThemeProvider} from "styled-components";
 import CustomSlickBar from "./CustomSlickbar";
 import timeSeriesData from "./timeSeriesData";
 import binaryPieData from "./binaryPieData";
+import styled from 'styled-components'
 
 export default function GlancesPage(){
   return(
@@ -34,13 +35,7 @@ export default function GlancesPage(){
               lineProps={{bkgEmotion: 'warning2'}}
             />
 
-            <Layout.Div
-              flex
-              style={{
-                flexWrap: 'wrap',
-                justifyContent: 'space-between'
-              }}
-            >
+            <Container>
               <GlanceView
                 title="What's the Weather?"
                 type='chart'
@@ -103,7 +98,7 @@ export default function GlancesPage(){
                 icon='done_all'
                 legend="10.30.383.12/admin"
               />
-            </Layout.Div>
+            </Container>
 
           </Layout.Div>
         </Layout.PageWithoutHeader>
@@ -111,6 +106,11 @@ export default function GlancesPage(){
     </ThemeProvider>
   )
 }
+
+const Container = styled(Layout.Div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+`;
 
 function HeaderSubtitle(){
   return(

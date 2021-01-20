@@ -44,9 +44,11 @@ import ErrorToast from "./widgets/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
 import PermsView from "./widgets/PermsView";
 import NectarGuiUtils from "./utils/NectarGuiUtils";
+import useReloadSalt from "./utils/useReloadSalt";
 
 export {
   Loader,
+  useReloadSalt,
   ProductView,
   Button,
   AppLayout,

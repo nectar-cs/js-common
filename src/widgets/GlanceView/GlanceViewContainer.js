@@ -58,10 +58,6 @@ function ErrorView(){
     <Layout.Div
       width='100%'
       height='100%'>
-      {/*<Layout.Div*/}
-      {/*  absolute*/}
-      {/*  trbl={['20%', 0, 0, 0]}*/}
-      {/*  style={{transform: 'translateY(-50%)'}}>*/}
         <Layout.CenteringDiv mt={2}>
           <Layout.Div flex>
             <Text.Icon name='bug_report' emotion={'warning2'}/>
@@ -72,7 +68,6 @@ function ErrorView(){
             </Text.BorderedStatusTag>
           </Layout.Div>
         </Layout.CenteringDiv>
-      {/*</Layout.Div>*/}
     </Layout.Div>
   )
 }
