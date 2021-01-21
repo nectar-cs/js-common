@@ -47,6 +47,7 @@ import NectarGuiUtils from "./utils/NectarGuiUtils";
 import useReloadSalt from "./utils/useReloadSalt";
 import Clickable from "./widgets/Clickable";
 import NiceEmptyView from "./widgets/NiceEmptyView";
+import NiceFloatingPlusButton from "./widgets/NiceFloatingPlusButton";
 
 export {
   Loader,
@@ -68,6 +69,7 @@ export {
   Text,
   Layout,
   noTopBarTheme,
+  NiceFloatingPlusButton,
   BigStoreCard,
   Table,
   LeftHeader,

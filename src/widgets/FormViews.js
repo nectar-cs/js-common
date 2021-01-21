@@ -385,24 +385,6 @@ function InfoTipView({title, text, children, emotion, tabbed}){
   )
 }
 
-const FormViews = {
-  InputDuo,
-  SelectDuo,
-  TextAreaDuo,
-  RadioGroup,
-  CheckboxDuo,
-  InfoTipView,
-  Breaker,
-  LogoInputView,
-  HeadsUp,
-  Warner,
-  ListInputGroup,
-  FlatListInputGroup
-}
-
-export default FormViews;
-
-
 HeadsUp.defaultProps = {
   title: "Heads Up"
 }
@@ -422,3 +404,19 @@ function typeMassageError(error){
     return { title: error }
   else return error;
 }
+
+// noinspection JSUnusedGlobalSymbols
+export default {
+  InputDuo,
+  SelectDuo,
+  TextAreaDuo,
+  RadioGroup,
+  CheckboxDuo,
+  InfoTipView,
+  Breaker,
+  LogoInputView,
+  HeadsUp,
+  Warner,
+  ListInputGroup,
+  FlatListInputGroup
+};

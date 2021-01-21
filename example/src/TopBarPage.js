@@ -56,19 +56,22 @@ const data = [
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
-        special: { text: "Featured" }
+        activePromo: true,
+        isPublic: true
       },
       {
         name: 'MongoDb Enterprise',
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
+        isPublic: true
       },
       {
         name: 'MongoDb Enterprise',
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
+        isPublic: true
       }
 ,
       {
@@ -76,10 +79,8 @@ const data = [
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
-        special: { text: "Private Access", icon: 'vpn_key' }
+        isPublic: false
       }
-
-
     ]
   }
 ]

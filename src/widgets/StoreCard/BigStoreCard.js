@@ -6,10 +6,18 @@ import Text from "../../styles/text-styles";
 import Img from "../../styles/img-styles";
 import {heavyShadow} from "../../styles/constants";
 import ModestLink from "../ModestLink";
+import Clickable from "../Clickable";
 
 export function BigStoreCard(props){
   const { app, mkPath, forceDark } = props;
-  const { logoUrl, special } = app;
+  const { logoUrl, activePromo, isPublic } = app;
+
+  let special = null;
+  if(activePromo)
+    special = { text: "Featured" }
+  if(!isPublic)
+    special = { text: "Private Access", icon: 'vpn_key' }
+
   const dark = !!special || forceDark;
 
   return(
@@ -23,13 +31,14 @@ export function BigStoreCard(props){
       relative
       sexyShadow={!!dark}>
       <BkgContainer dark={dark} logoUrl={logoUrl}>
-        <ModestLink to={mkPath(app)}>
+        <Clickable action={mkPath(app)}>
           <Layout.Div
             mt={1.5}
             ml={.7}>
             <TitleView
               app={app}
               dark={dark}
+              special={special}
             />
             <LogoAndSummaryView
               app={app}
@@ -42,7 +51,7 @@ export function BigStoreCard(props){
               $1,000 - $10,000
             </Text.BorderedStatusTag>
           </Layout.Div>
-        </ModestLink>
+        </Clickable>
       </BkgContainer>
     </Layout.Div>
   )
@@ -67,8 +76,8 @@ function BkgContainer({logoUrl, dark, children}){
   )
 }
 
-function TitleView({app, dark}){
-  const { name, special } = app;
+function TitleView({app, dark, special}){
+  const { name } = app;
 
   return(
     <Layout.Div flex style={{justifyContent: 'space-between'}}>
@@ -95,7 +104,7 @@ function TitleView({app, dark}){
           </Text.P>
           <Text.Icon
             name={special.icon || 'military_tech'}
-            emotion={'warning2'}
+            emotion='warning2'
             size={.9}
             ml={.7}
           />

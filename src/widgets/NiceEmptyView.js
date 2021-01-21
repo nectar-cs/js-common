@@ -6,10 +6,10 @@ import Clickable from "./Clickable";
 
 export default function NiceEmptyView(props){
   const { icon, title, subtitle, text, buttonProps, action } = props;
-  const { containerHeight, width, buttonTitle } = props;
+  const { containerHeight, width, buttonTitle, leaveSite } = props;
   return(
     <Layout.Div height={containerHeight}>
-      <Layout.CenteringDiv height={'100%'}>
+      <Layout.CenteringDiv height='100%'>
         <Layout.CenteringDivY>
           <Layout.Div width={width}>
             <Layout.Div
@@ -19,22 +19,36 @@ export default function NiceEmptyView(props){
               borderWidth='8px'
               borderEmotion='lightGrey'
               align='center'>
-              <Text.Icon emotion='lightGrey' size={3} name={icon}/>
+              <Text.Icon ml='-8.5px' emotion='lightGrey' size={3} name={icon}/>
               <Layout.Div ml={.5}>
                 <Text.H3 calm>{subtitle.toUpperCase()}</Text.H3>
                 <Text.H1 calm fontSize={'28px'} mt={.5}>{ title }</Text.H1>
               </Layout.Div>
             </Layout.Div>
             <Text.P humane mt={.9} calm>{ text }</Text.P>
-            <Clickable action={action}>
-              <Button.Button
-                mt={.8}
-                bkgEmotion='hipBlue'
-                emotion='white'
-                {...buttonProps}>
-                { buttonTitle }
-              </Button.Button>
-            </Clickable>
+            { buttonTitle && (
+              <Clickable action={action}>
+                <Button.Button
+                  mt={.8}
+                  bold
+                  pt={leaveSite ? '5px' :  '8px'}
+                  pb={'5px'}
+                  bkgEmotion='hipBlue'
+                  emotion='white'
+                  {...buttonProps}>
+                  { buttonTitle }
+                  { leaveSite && (
+                    <Text.Icon
+                      style={{transform: "translateY(2px)"}}
+                      ml={.3}
+                      emotion={'white'}
+                      size={.7}
+                      name='open_in_new'
+                    />
+                  ) }
+                </Button.Button>
+              </Clickable>
+            ) }
           </Layout.Div>
         </Layout.CenteringDivY>
       </Layout.CenteringDiv>

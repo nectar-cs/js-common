@@ -19,7 +19,7 @@ export default function ProductView({callback}){
 
   return(
     <Layout.Div flex mt={2}>
-      <Layout.Div width='210px' style={{position: 'absolute'}}>
+      <Layout.Div width='210px' absolute>
         <LeftGutter/>
       </Layout.Div>
       <Layout.Div
