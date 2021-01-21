@@ -5,7 +5,7 @@ import {BigStoreCard} from "./BigStoreCard";
 import humanizeString from 'humanize-string'
 
 
-export default function StoreCategoriesListing({categories, onItemSelected, View}){
+export default function StoreCategoriesListing({categories, View, ...rest}){
   return categories.map((category, i) => (
       <Layout.Div mb={5} key={i}>
         <Text.H1
@@ -20,7 +20,7 @@ export default function StoreCategoriesListing({categories, onItemSelected, View
             <View
               key={j}
               app={app}
-              callback={onItemSelected}
+              {...rest}
             />
           )) }
         </Layout.Div>

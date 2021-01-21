@@ -10,6 +10,7 @@ import {Layout,
   from "nectar-gui";
 
 export default function TopBarPage() {
+
   return(
     <ThemeProvider theme={noSideBarTheme}>
       <AppLayout
@@ -22,6 +23,7 @@ export default function TopBarPage() {
           <Layout.Div absolute left={'250px'} top={2} right={0} bottom={0}>
             <Layout.Div hipster maxWidth={'1200px'}>
               <StoreCategoriesListing
+                mkPath={_ => `/top-bar-two`}
                 categories={data}
               />
             </Layout.Div>
@@ -54,15 +56,29 @@ const data = [
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
-        activePromo: true
+        special: { text: "Featured" }
       },
       {
         name: 'MongoDb Enterprise',
         logoUrl: 'https://img.icons8.com/color/452/nginx.png',
         oneLiner: dummyInfoShort,
         info: dummyInfo,
-        activePromo: false
+      },
+      {
+        name: 'MongoDb Enterprise',
+        logoUrl: 'https://img.icons8.com/color/452/nginx.png',
+        oneLiner: dummyInfoShort,
+        info: dummyInfo,
       }
+,
+      {
+        name: 'MongoDb Enterprise',
+        logoUrl: 'https://img.icons8.com/color/452/nginx.png',
+        oneLiner: dummyInfoShort,
+        info: dummyInfo,
+        special: { text: "Private Access", icon: 'vpn_key' }
+      }
+
 
     ]
   }

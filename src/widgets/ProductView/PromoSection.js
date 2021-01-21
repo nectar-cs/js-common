@@ -11,7 +11,7 @@ export default function PromoSection(){
   const app = useContext(AppListingContext).app;
   return(
     <Fragment>
-      <IntroView name={app.name} info={app.info}/>
+      <IntroView {...app}/>
       <ScreenshotsGrid screenshots={app.screenshots}/>
       <Layout.Div height={2}/>
       <FeaturesTable features={app.features}/>
@@ -19,18 +19,19 @@ export default function PromoSection(){
   )
 }
 
-function IntroView({name, info}){
+function IntroView({name, info, isPublic}){
   return(
     <Fragment>
-      <Layout.Div flex align={'center'}>
-        <Text.H1 fontSize='29px'>
+      <Layout.Div flex align='center'>
+        <Text.H1 fontSize='26px' bold>
           { name }
         </Text.H1>
         <Text.BorderedStatusTag
           ml={1}
           bold
-          emotion={'milGreen'}>
-          Public Application
+          borderWidth={'1.5px'}
+          emotion={isPublic ? 'milGreen' : 'warning2'}>
+          {isPublic ? 'Public' : 'Private'} Application
         </Text.BorderedStatusTag>
       </Layout.Div>
       <Text.P
@@ -70,8 +71,8 @@ function ScreenshotsGrid({screenshots}){
           // key={i}
           height={picSize}
           width={picSize}
+          borderRadius='6px'
           style={{
-            borderRadius: '12px',
             objectFit: 'cover'
           }}
           src={screenshot.url}

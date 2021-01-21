@@ -32,7 +32,7 @@ export default function PlansSection({callback}){
 }
 
 function PlanSummaryView({plan, callback}){
-  let { id, name, features, price } = plan;
+  let { name, features, price } = plan;
   features = features || [];
   price = parseInt(price);
 
@@ -55,7 +55,7 @@ function PlanSummaryView({plan, callback}){
       </Layout.Div>
       <Button.ClearButton
         width='120px'
-        onClick={_ => callback(id)}
+        onClick={_ => callback(plan)}
         borderRadius='4px'
         emotion='primaryFont'
         borderEmotion='warning2'
@@ -82,7 +82,7 @@ function PlanOptionView({plan, isSelected, callback}){
       mt={1.5}
       onClick={callback}
       hov_point
-      borderRadius='6px'
+      dented
       ptb={1.4}
       plr={1.2}
       bkgEmotion={isSelected ? 'primaryColor' : 'transparent'}>

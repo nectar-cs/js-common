@@ -45,9 +45,13 @@ import TagPool from "./widgets/TagPool/TagPool";
 import PermsView from "./widgets/PermsView";
 import NectarGuiUtils from "./utils/NectarGuiUtils";
 import useReloadSalt from "./utils/useReloadSalt";
+import Clickable from "./widgets/Clickable";
+import NiceEmptyView from "./widgets/NiceEmptyView";
 
 export {
   Loader,
+  Clickable,
+  NiceEmptyView,
   useReloadSalt,
   ProductView,
   Button,

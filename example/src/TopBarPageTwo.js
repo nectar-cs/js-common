@@ -11,7 +11,9 @@ export default function TopBarPageTwo() {
         TopBar={TopBar}>
         <Layout.PageWithoutHeader>
           <AppListingContext.Provider value={{app: dummyApp}}>
-            <ProductView/>
+            <ProductView
+              callback={p => alert("Get " + p.name)}
+            />
           </AppListingContext.Provider>
           <Layout.Div height={5}/>
         </Layout.PageWithoutHeader>
@@ -42,8 +44,14 @@ const links = [
 ]
 
 const screenshotUrls = [
-  "https://metro.co.uk/wp-content/uploads/2020/06/EZmvSUTXkAE1ljO-39e4.jpg?quality=90&strip=all",
-  "https://cdn.mos.cms.futurecdn.net/oPgkUec8rT66PwZzxZ7fZj-1200-80.png"
+  {
+    name: "Metro",
+    url: "https://metro.co.uk/wp-content/uploads/2020/06/EZmvSUTXkAE1ljO-39e4.jpg?quality=90&strip=all"
+  },
+  {
+    name: "Desert",
+    url: "https://cdn.mos.cms.futurecdn.net/oPgkUec8rT66PwZzxZ7fZj-1200-80.png"
+  }
 ];
 
 const plansData = [
@@ -143,12 +151,22 @@ const benchmarks = [
   }
 ];
 
+const dummyPublisher = {
+  name: "Big Software",
+  logoUrl: "https://www.pngfind.com/pngs/m/665-6659827_enterprise-comments-default-company-logo-png-transparent-png.png",
+  verified: false,
+  identifier: "big-software",
+  websiteUrl: "https://www.codenectar.com"
+}
+
 const dummyApp = {
   name: faker.commerce.productName(),
   info: faker.lorem.paragraphs(),
+  isPublic: true,
   logoUrl: 'https://img.icons8.com/color/452/nginx.png',
   oneLiner: faker.company.catchPhrase(),
-  screenshotUrls: screenshotUrls,
+  publisher: dummyPublisher,
+  screenshots: screenshotUrls,
   features: dummyFeatures(),
   usefulLinks: links,
   clusterFootprint: clusterFootprint,

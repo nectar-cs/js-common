@@ -430,6 +430,7 @@ export function borderStyles(p, defaults={}){
       'border-style: solid;',
       `border-width: ${get('borderWidth') || '.5px'}`
     ]);
+    push('dented', `border-radius: ${roundingApplier('2.5px')}`);
     push('rounded', `border-radius: ${roundingApplier('4px')}`);
     push('sofa', `border-radius: ${roundingApplier('8px')}`);
     push('funky', `border-radius: ${roundingApplier('25px')}`);
