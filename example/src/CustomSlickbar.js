@@ -63,11 +63,12 @@ function CustomSubMenuTwo(){
         src='https://assets.stickpng.com/images/58480a44cef1014c0b5e4917.png'
         title={"Kubernetes Context"}
         text="If you dare"
+        action={_ => alert("Callback action")}
       />
       <TopBarViews.ClickableRow
         icon='open_in_new'
         text='Open a dialog'
-        callback={_ => console.log("Talk to me!")}
+        action={'https://www.codenectar.com'}
       />
     </Layout.Div>
   )

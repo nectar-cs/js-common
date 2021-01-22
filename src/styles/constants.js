@@ -451,7 +451,7 @@ function pulse(p, defaults={}){
   const merged = {...defaults, ...p};
   return multiMode(merged, push => {
     push('pulse', (_, get) => {
-      const baseColor = easyColor(p, get('pulseColor'), colorKeys.primaryColor);
+      const baseColor = "#f7f6f6";
       const color = hexToRgb(baseColor);
       const op = val => `rgba(${color.toString()}, ${val.toString()})`;
 

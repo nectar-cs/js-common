@@ -2,11 +2,11 @@ import React from 'react'
 import Layout from "../../styles/layout-styles";
 import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
-import ModestLink from "../../widgets/ModestLink";
+import Clickable from "../../widgets/Clickable";
 
 const itemPlr = 1.3;
 
-function ImgAndLink({src, title, text, path}) {
+function ImgAndLink({src, title, text, ...rest}) {
   const imgSize = '38px';
   return(
     <Layout.Div flex plr={itemPlr}>
@@ -28,14 +28,14 @@ function ImgAndLink({src, title, text, path}) {
             size={.7}
             emotion='hipBlue'
           />
-          <ModestLink to={path}>
+          <Clickable {...rest}>
             <Text.P
               ml={.2}
               emotion='hipBlue'
               mt={.1}>
               {text}
             </Text.P>
-          </ModestLink>
+          </Clickable>
         </Layout.Div>
       </Layout.Div>
     </Layout.Div>
@@ -54,16 +54,10 @@ function Separator({...props}){
   )
 }
 
-function ClickableRow({icon, text, path, callback}){
-  const Wrapper = callback ?
-    ({children}) => children :
-    ({children}) => <ModestLink to={path}>{children}</ModestLink>
-  ;
-
+function ClickableRow({icon, text, ...rest}){
   return(
-    <Wrapper>
+    <Clickable {...rest}>
       <Layout.Div
-        onClick={callback}
         mt={.8}
         plr={itemPlr}
         flex
@@ -79,10 +73,10 @@ function ClickableRow({icon, text, path, callback}){
           hov_point
           hov_bold
           ml={.4}>
-          {text}
+          { text }
         </Text.P>
       </Layout.Div>
-    </Wrapper>
+    </Clickable>
   )
 }
 
