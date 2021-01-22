@@ -5,7 +5,7 @@ export default function Clickable({action, children}){
   if(typeof action === 'string'){
     if(action.startsWith("http://") || action.startsWith("https://")){
       return(
-        <a href={action} target='_blank'>
+        <a href={action} target='_blank' style={{textDecoration: 'none'}}>
           { children }
         </a>
       )

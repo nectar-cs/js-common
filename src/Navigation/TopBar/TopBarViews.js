@@ -30,6 +30,7 @@ function ImgAndLink({src, title, text, ...rest}) {
           />
           <Clickable {...rest}>
             <Text.P
+
               ml={.2}
               emotion='hipBlue'
               mt={.1}>
