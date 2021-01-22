@@ -67,7 +67,7 @@ function PlanSummaryView({plan, callback}){
         hov_point
         bold
         >
-        { price === 0 ? 'Install' : 'Purchase' }
+        { buttonText(plan) }
       </Button.ClearButton>
     </Layout.Div>
   )
@@ -116,6 +116,16 @@ function PlanOptionView({plan, isSelected, callback}){
       </Layout.Div>
     </Layout.Div>
   )
+}
+
+function buttonText(plan){
+  if(plan['adminAccess'] || plan['isPurchased']){
+    return "Install";
+  } else {
+    if(parseInt(plan.price) === 0)
+      return "Install";
+    else return "Purchase";
+  }
 }
 
 function OptionSubtitles({text, isSelected, ...rest}){

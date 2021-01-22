@@ -66,7 +66,7 @@ function BkgContainer({logoUrl, dark, children}){
       <OpaqueCover
         bkgEmotion={bkgEmotion}
         padded
-        opacity={!dark && .95}
+        opacity={!dark && .96}
         sexyShadow
         borderRadius='5px'
         shadowOpacity={dark ? null : '.1'}>
@@ -153,7 +153,7 @@ const OpaqueCover = styled(Layout.Div)`
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: ${p => (p.opacity || '.97').toString()};
+  opacity: ${p => (p.opacity || '.98').toString()};
   &:hover {
   opacity: 1;
     ${p => heavyShadow(p,  {heavyShadow: true})}
