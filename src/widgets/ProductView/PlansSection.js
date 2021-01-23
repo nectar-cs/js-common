@@ -32,9 +32,7 @@ export default function PlansSection({callback}){
 }
 
 function PlanSummaryView({plan, callback}){
-  let { name, features, price } = plan;
-  features = features || [];
-  price = parseInt(price);
+  const { name, features } = plan;
 
   return(
     <Layout.Div
@@ -46,7 +44,7 @@ function PlanSummaryView({plan, callback}){
       <Text.H1>{name}</Text.H1>
       <Text.P mt={1} calm>{plan.info}</Text.P>
       <Layout.Div mt={1.9}>
-        { features.map((feature, i) => (
+        { (features || []).map((feature, i) => (
           <Layout.Div key={i} flex align={'center'} mt={.78}>
             <Text.Icon name='add' emotion='warning2' size={.88}/>
             <Text.P ml={.75}>{feature}</Text.P>
@@ -119,13 +117,7 @@ function PlanOptionView({plan, isSelected, callback}){
 }
 
 function buttonText(plan){
-  if(plan['adminAccess'] || plan['isPurchased']){
-    return "Install";
-  } else {
-    if(parseInt(plan.price) === 0)
-      return "Install";
-    else return "Purchase";
-  }
+  return plan['installable'] ? "Install" : "Purchase";
 }
 
 function OptionSubtitles({text, isSelected, ...rest}){
