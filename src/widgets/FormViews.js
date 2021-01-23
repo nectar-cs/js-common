@@ -203,7 +203,7 @@ function InputDuoError({tone, title, text}){
   )
 }
 
-function TextAreaDuo({title, info, calm, locked, value, setLocked,
+function TextAreaDuo({title, info, calm, locked, error, value, setLocked,
                               lockable, callback, ...rest}){
   return(
     <Layout.Div width='100%'>
@@ -234,11 +234,15 @@ function TextAreaDuo({title, info, calm, locked, value, setLocked,
           />
         </Fragment>
       }
+      { error && (
+        <InputDuoError {...typeMassageError(error)} />
+      ) }
+
     </Layout.Div>
   )
 }
 
-export function SelectDuo({title, calm, options, width, value, callback}){
+export function SelectDuo({title, calm, error, options, width, value, callback}){
   return(
     <Layout.Div width={width || '100%'}>
       <FieldTitle calm={calm}>{title}</FieldTitle>
@@ -247,6 +251,9 @@ export function SelectDuo({title, calm, options, width, value, callback}){
         onChange={e => callback(e.target.value)}>
         { options }
       </Input.FlatSelect>
+      { error && (
+        <InputDuoError {...typeMassageError(error)} />
+      ) }
     </Layout.Div>
   )
 }
