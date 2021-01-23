@@ -3,8 +3,7 @@ import Layout from "../styles/layout-styles";
 import Img from "../styles/img-styles";
 import Text from "../styles/text-styles";
 
-export default function BigHeader({title, Title, Subtitle, graphicName}){
-  const height = '80px';
+export default function BigHeader({height, title, Title, Subtitle, graphicName}){
   return(
     <Layout.Div flex>
       <Img.Img
@@ -38,4 +37,8 @@ export default function BigHeader({title, Title, Subtitle, graphicName}){
       </Layout.Div>
     </Layout.Div>
   )
+}
+
+BigHeader.defaultProps = {
+  height: '80px'
 }
