@@ -43,6 +43,7 @@ export function BigStoreCard(props){
             <LogoAndSummaryView
               app={app}
               dark={dark}
+              special={special}
             />
             <Text.BorderedStatusTag
               mt={1}
@@ -115,8 +116,8 @@ function TitleView({app, dark, special}){
   )
 }
 
-function LogoAndSummaryView({app, dark}){
-  const { logoUrl, special, info, oneLiner } = app;
+function LogoAndSummaryView({app, dark, special}){
+  const { logoUrl, info, oneLiner } = app;
   return(
     <Layout.Div flex mt={1.4}>
       <Img.Img
