@@ -3,18 +3,15 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {BigStoreCard} from "./BigStoreCard";
 import humanizeString from 'humanize-string'
+import {TextOverLineSubtitle} from "../..";
 
 
-export default function StoreCategoriesListing({categories, View, ...rest}){
+export default function StoreCategoriesListing({categories, View, HeaderView, ...rest}){
   return categories.map((category, i) => (
       <Layout.Div mb={5} key={i}>
-        <Text.H1
-          fontSize='26px'
-          mt={1.1}
-          mb={2}
-          emotion='primaryBkg'>
+        <HeaderView>
           { categoryName(category.category) }
-        </Text.H1>
+        </HeaderView>
         <Layout.Div>
           { category.apps.map((app, j) => (
             <View
@@ -26,6 +23,17 @@ export default function StoreCategoriesListing({categories, View, ...rest}){
         </Layout.Div>
       </Layout.Div>
     )
+  )
+}
+
+function DefaultHeaderView({children}) {
+  return(
+    <TextOverLineSubtitle
+      fontSize='22px'
+      bold
+      text={children}
+      lineProps={{bkgEmotion: 'primaryColor', height: '1.5px'}}
+    />
   )
 }
 
@@ -45,5 +53,6 @@ const categoryMapping = {
 }
 
 StoreCategoriesListing.defaultProps = {
-  View: BigStoreCard
+  View: BigStoreCard,
+  HeaderView: DefaultHeaderView
 }

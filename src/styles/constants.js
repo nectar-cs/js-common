@@ -79,7 +79,9 @@ export const theme = {
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",
     inputGrey: "#fafbfc",
+    // inputGrey: "#f5f8fa",
     inputBorderGrey: "#f0f1f3",
+    // inputBorderGrey: "#cbd6e2",
     cool2: "#038074",
     milGreen: "#698F3F"
   },
