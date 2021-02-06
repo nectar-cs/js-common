@@ -1,9 +1,11 @@
 import React from 'react'
+// noinspection NpmUsedModulesInstalled
 import styled from "styled-components";
 import Text from "./../../styles/text-styles";
 
 const tagHeight = 24;
 
+// noinspection JSUnresolvedFunction
 export const Container = styled.div`
   width: 100%;
   border-width: 0 0 0 0;
@@ -12,13 +14,16 @@ export const Container = styled.div`
   outline: none;
 `;
 
+// noinspection JSUnresolvedFunction
 export const InputWrapper = styled.div`
-  background: #f7f6f6;
-  border: none;
+  background: ${p => p.theme.colors.inputGrey};
   width: ${p => p.width || '100%'};
   box-sizing: border-box;
   min-height: ${tagHeight + 10}px;
-  border-radius: ${p => p.theme.dims.borderRadius};
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1.5px;
+  border-color: ${p => p.theme.colors.inputBorderGrey};
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
@@ -37,6 +42,7 @@ export const InputWrapper = styled.div`
   }
 `;
 
+// noinspection JSUnresolvedFunction
 export const ListBox = styled.ul`
   margin: 2px 0 0;
   padding: 0;
@@ -46,8 +52,11 @@ export const ListBox = styled.ul`
   max-height: 250px;
   z-index: 1;
   outline: none;
+  background: white;
+  box-shadow: 0 0 14px 0 rgba(42,43,42,.2);
 
   & li {
+    background-color: white;
     padding: 5px 12px;
     display: flex;
 
@@ -61,7 +70,6 @@ export const ListBox = styled.ul`
   }
 
   & li[aria-selected='true'] {
-    background-color: #fafafa;
     font-weight: 600;
 
     & svg {
@@ -70,7 +78,7 @@ export const ListBox = styled.ul`
   }
 
   & li[data-focus='true'] {
-    background-color: #e6f7ff;
+    background-color: #F5F1ED;
     cursor: pointer;
 
     & svg {
