@@ -4,6 +4,7 @@ import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Input from "../styles/input-styles";
 import Img from "../styles/img-styles";
+import {TextOverLineSubtitle} from "./TextOverLineSubtitle/TextOverLineSubtitle";
 
 function FieldTitle({children, lockable, locked, setLocked, ...rest}){
   return(
@@ -37,6 +38,20 @@ function FieldTitle({children, lockable, locked, setLocked, ...rest}){
         </Layout.Div>
       )}
     </Layout.Div>
+  )
+}
+
+function SectionHeader({lineEmotion, lineProps, ...props}) {
+  lineProps = {...lineProps, bkgEmotion: lineEmotion};
+  return(
+    <TextOverLineSubtitle
+      bold
+      humane
+      lineProps={lineProps}
+      mt={.15}
+      outerProps={{mb: '0px', mt: '0px'}}
+      {...props}
+    />
   )
 }
 
@@ -161,7 +176,7 @@ function CheckboxDuo({title, value, callback, info}){
 }
 
 function InputDuo({title, value, error, callback,locked, setLocked,
-                           lockable, calm, width, ...rest}){
+                    lockable, calm, width, ...rest}){
   return(
     <Layout.Div width={width || '100%'}>
       <FieldTitle
@@ -204,7 +219,7 @@ function InputDuoError({tone, title, text}){
 }
 
 function TextAreaDuo({title, info, calm, locked, error, value, setLocked,
-                              lockable, callback, ...rest}){
+                       lockable, callback, ...rest}){
   return(
     <Layout.Div width='100%'>
       <Layout.Div flex align='center'>
@@ -218,21 +233,21 @@ function TextAreaDuo({title, info, calm, locked, error, value, setLocked,
         </FieldTitle>
       </Layout.Div>
       { !locked &&
-        <Fragment>
-          { info &&
-          <Layout.Div flex align='center' mb={1}>
-            <Text.Icon name='help_outline' size={.7} emotion='hipBlue'/>
-            <Text.P calm mt={.1} ml={.4}>{info}</Text.P>
-          </Layout.Div>
-          }
-          <Input.FlatTextArea
-            disabled={locked}
-            minHeight='100px'
-            value={locked ? "WRITE-ONLY VALUE" : value}
-            onChange={e => callback(e.target.value)}
-            {...rest}
-          />
-        </Fragment>
+      <Fragment>
+        { info &&
+        <Layout.Div flex align='center' mb={1}>
+          <Text.Icon name='help_outline' size={.7} emotion='hipBlue'/>
+          <Text.P calm mt={.1} ml={.4}>{info}</Text.P>
+        </Layout.Div>
+        }
+        <Input.FlatTextArea
+          disabled={locked}
+          minHeight='100px'
+          value={locked ? "WRITE-ONLY VALUE" : value}
+          onChange={e => callback(e.target.value)}
+          {...rest}
+        />
+      </Fragment>
       }
       { error && (
         <InputDuoError {...typeMassageError(error)} />
@@ -321,11 +336,11 @@ function RadioGroup({options, value, callback, calm}){
           </Text.P>
         </Layout.Div>
         { option[1].info &&
-          <Text.P mt={.6} ml={0} calm>{option[1].info}</Text.P>
+        <Text.P mt={.6} ml={0} calm>{option[1].info}</Text.P>
         }
       </Fragment>
       { i !== entries.length - 1 &&
-        <Breaker/>
+      <Breaker/>
       }
     </Layout.Div>
   ));
@@ -371,23 +386,51 @@ function LogoInputView({value, callback, title}){
   )
 }
 
-function InfoTipView({title, text, children, emotion, tabbed}){
+function InfoTipView({title, text, children, emotion, tabbed, link, cta}){
   return(
     <Layout.Div
+      mb={2}
       pl={tabbed ? 1.5 : 0}
       borderStyle={tabbed ? "none none none solid" : 'none'}
       borderWidth={tabbed ? '4px' : 0}
       borderEmotion={emotion}>
-      <Layout.Div flex align='center'>
-        <Text.Icon name='help_outline' emotion={emotion} size={.8}/>
-        <Text.P mt={.1} ml={.7} fontSize='14px' bold calm>{title}</Text.P>
-      </Layout.Div>
+      { title && (
+        <Layout.Div flex align='center' mb={.5}>
+          <Text.Icon name='help_outline' emotion={emotion} size={.8}/>
+          <Text.P mt={.1} ml={.7} fontSize='14px' bold calm>{title}</Text.P>
+        </Layout.Div>
+      ) }
       { text &&
-        <Text.P calm={false} mt={.5} mb={2} fontSize='14px'>
-          { text }
-        </Text.P>
+      <Text.P
+        calm={false}
+        humane
+      >
+        { text }
+      </Text.P>
       }
       { children }
+      { link && (
+        <a href={link} style={{textDecoration: 'none'}} target='_blank'>
+          <Layout.Div
+            mt={.7}
+            plr={.5}
+            pt='3px'
+            pb='2px'
+            iFlex
+            bkgEmotion={emotion}
+            rounded
+            width={'auto'}>
+            <Text.P hov_underline emotion={'white'}>{cta}</Text.P>
+            <Text.Icon
+              mt='1px'
+              ml='3px'
+              name='open_in_new'
+              emotion='white'
+              size={.76}
+            />
+          </Layout.Div>
+        </a>
+      ) }
     </Layout.Div>
   )
 }
@@ -397,13 +440,19 @@ HeadsUp.defaultProps = {
 }
 
 InfoTipView.defaultProps = {
-  title: "Information",
+  title: null,
   emotion: 'warning2',
-  tabbed: false
+  tabbed: false,
+  cta: "Open Docs"
 }
 
 InputDuoError.defaultProps = {
   tone: 'warning'
+}
+
+SectionHeader.defaultProps = {
+  lineProps: { height: '1.5px' },
+  lineEmotion: 'hipBlue'
 }
 
 function typeMassageError(error){
@@ -425,5 +474,8 @@ export default {
   HeadsUp,
   Warner,
   ListInputGroup,
-  FlatListInputGroup
+  FlatListInputGroup,
+  SectionHeader
 };
+
+

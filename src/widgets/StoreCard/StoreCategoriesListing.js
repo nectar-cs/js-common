@@ -3,7 +3,7 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import {BigStoreCard} from "./BigStoreCard";
 import humanizeString from 'humanize-string'
-import {TextOverLineSubtitle} from "../..";
+import {TextOverLineSubtitle} from "./../TextOverLineSubtitle/TextOverLineSubtitle";
 
 
 export default function StoreCategoriesListing({categories, View, HeaderView, ...rest}){

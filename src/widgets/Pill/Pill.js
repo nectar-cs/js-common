@@ -30,7 +30,7 @@ export default function Pill(props: Props){
           >
           {props.text}
         </S.Text>
-        <Letters letters={props.letters}/>
+        <Letters {...props}/>
       </S.Container>
     </div>
   )
