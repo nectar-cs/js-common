@@ -7,6 +7,8 @@ import Clickable from "./Clickable";
 export default function NiceEmptyView(props){
   const { icon, title, subtitle, text, buttonProps, action } = props;
   const { containerHeight, width, buttonTitle, leaveSite } = props;
+  const { iconEmotion } = props;
+
   return(
     <Layout.Div height={containerHeight}>
       <Layout.CenteringDiv height='100%'>
@@ -14,12 +16,17 @@ export default function NiceEmptyView(props){
           <Layout.Div width={width}>
             <Layout.Div
               flex
-              pb={.7}
+              pb={.85}
               borderStyle='none none solid none'
               borderWidth='8px'
               borderEmotion='lightGrey'
               align='center'>
-              <Text.Icon ml='-8.5px' emotion='lightGrey' size={3} name={icon}/>
+              <Text.Icon
+                ml='-8.5px'
+                emotion={iconEmotion}
+                size={3}
+                name={icon}
+              />
               <Layout.Div ml={.5}>
                 <Text.H3 calm>{subtitle.toUpperCase()}</Text.H3>
                 <Text.H1 calm fontSize={'28px'} mt={.5}>{ title }</Text.H1>
@@ -41,7 +48,7 @@ export default function NiceEmptyView(props){
                     <Text.Icon
                       style={{transform: "translateY(2px)"}}
                       ml={.3}
-                      emotion={'white'}
+                      emotion='white'
                       size={.7}
                       name='open_in_new'
                     />
@@ -60,6 +67,7 @@ NiceEmptyView.defaultProps = {
   width: '300px',
   title: 'None Found',
   subtitle: "This Collection",
-  containerHeight: '200px',
-  buttonTitle: "Create One"
+  containerHeight: '300px',
+  buttonTitle: "Create One",
+  iconEmotion: "lightGrey"
 }

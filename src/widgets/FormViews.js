@@ -200,7 +200,7 @@ function InputDuo({title, value, error, callback,locked, setLocked,
 }
 
 function InputDuoError({tone, title, text}){
-  const emotion = tone === 'error' ? 'warning2' : 'nectar';
+  const emotion = tone === 'error' ? 'nectar' : 'warning2';
   return(
     <Layout.Div flex mt={.5}>
       <Text.Icon
@@ -208,10 +208,10 @@ function InputDuoError({tone, title, text}){
         emotion={emotion}
         size={.8}
       />
-      <Text.P ml={.4} bold emotion={emotion}>
+      <Text.P ml={.3} bold emotion={emotion}>
         { title }
       </Text.P>
-      <Text.P ml={.4} emotion={emotion}>
+      <Text.P ml={.3} emotion={emotion}>
         { text }
       </Text.P>
     </Layout.Div>
@@ -441,7 +441,7 @@ HeadsUp.defaultProps = {
 
 InfoTipView.defaultProps = {
   title: null,
-  emotion: 'warning2',
+  emotion: 'hipBlue',
   tabbed: false,
   cta: "Open Docs"
 }
