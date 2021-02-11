@@ -452,7 +452,7 @@ InputDuoError.defaultProps = {
 
 SectionHeader.defaultProps = {
   lineProps: { height: '1.5px' },
-  lineEmotion: 'hipBlue'
+  lineEmotion: 'warning2'
 }
 
 function typeMassageError(error){

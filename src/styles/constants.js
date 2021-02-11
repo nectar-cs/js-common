@@ -65,6 +65,7 @@ export const theme = {
     ruby: "#D81E5B",
     tart: "#F0544F",
     coffee: "#3A3335",
+    innocent: "#D67AB1",
     comfy: "#6153cc",
     formBorderBlue: "#b2d1f3",
     calmBeige: "#F5F1ED",
