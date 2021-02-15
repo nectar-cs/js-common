@@ -339,8 +339,7 @@ function RadioGroup({options, value, callback, calm}){
         <Text.P mt={.6} ml={0} calm>{option[1].info}</Text.P>
         }
       </Fragment>
-      { i !== entries.length - 1 &&
-      <Breaker/>
+      { i !== entries.length - 1 && <Breaker/>
       }
     </Layout.Div>
   ));

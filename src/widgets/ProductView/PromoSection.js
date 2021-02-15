@@ -3,7 +3,7 @@ import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
 import {AppListingContext} from "./AppListingContext";
 import Img from "../../styles/img-styles";
-import Table from "../../styles/table-styles";
+// noinspection NpmUsedModulesInstalled
 import { Lightbox } from "react-modal-image";
 
 
@@ -14,7 +14,6 @@ export default function PromoSection(){
       <IntroView {...app}/>
       <ScreenshotsGrid screenshots={app.screenshots}/>
       <Layout.Div height={2}/>
-      <FeaturesTable features={app.features}/>
     </Fragment>
   )
 }
@@ -80,49 +79,5 @@ function ScreenshotsGrid({screenshots}){
         />
       )) }
     </Layout.Div>
-  )
-}
-
-function FeaturesTable({features}){
-  const rowCount = Math.ceil(features.length / 2);
-
-  return(
-    <Table.Table
-      borderWidth='12px'
-      innerBorderWidth='60px'
-      innerborder={true}
-      borderEmotion='transparent'>
-      { [...Array(rowCount).keys()].map((i) => (
-        <tr key={i}>
-          <FeatureCell feature={features[i * 2]}/>
-          <FeatureCell feature={features[i * 2 + 1]}/>
-        </tr>
-      )) }
-    </Table.Table>
-  )
-}
-
-function FeatureCell({feature}){
-  if(!feature) return null;
-  return(
-    <td
-      style={{verticalAlign: 'top', width: '50%'}}>
-      <Layout.Div>
-        <Text.P
-          fontSize='14.5px'
-          bold>
-          { feature.name }
-        </Text.P>
-        <Text.P
-          calm
-          mt={1}
-          clamped={3}
-          style={{lineHeight: '24px'}}
-          fontSize='14.5px'>
-          {feature.info}
-        </Text.P>
-      </Layout.Div>
-
-    </td>
   )
 }
