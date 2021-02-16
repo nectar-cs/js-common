@@ -4,7 +4,8 @@ import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
 // noinspection NpmUsedModulesInstalled
 
-const imgSize = '52px';
+const imgSize = '44px';
+const iconSize = '44px';
 
 export function ResourceGlanceContentView(props: Props){
   const spec = { ...defaultSpec, ...props.spec };
@@ -13,7 +14,7 @@ export function ResourceGlanceContentView(props: Props){
   const { lineOne, lineTwo, lineThree } = spec;
 
   return(
-    <Layout.Div absolute centered top='19%'>
+    <Layout.Div absolute centered top='22%'>
       <Layout.Div flex align='center'>
         { graphicType === 'image' && (
           <Img.Img
@@ -27,8 +28,8 @@ export function ResourceGlanceContentView(props: Props){
           <Text.Icon
             size={2.78}
             emotion={graphicEmotion}
-            width={imgSize}
-            height={imgSize}
+            width={iconSize}
+            height={iconSize}
             name={graphic}
             pb={.7}
             pr={.8}

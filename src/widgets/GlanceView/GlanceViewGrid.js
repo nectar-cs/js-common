@@ -7,11 +7,11 @@ import Layout from "../../styles/layout-styles";
 
 const { size } = constants.dims;
 
-export function GlanceViewGrid({allGlanceProps, ...outerProps}){
+function View({allGlanceProps, ...outerProps}){
   return(
     <Container {...outerProps}>
       { allGlanceProps.map((singleGlanceProps, i) => (
-        <GlanceView
+        <GlanceView.View
           key={i}
           {...singleGlanceProps}
         />
@@ -25,3 +25,8 @@ const Container = styled(Layout.Div)`
   grid-template-columns: repeat(auto-fill, calc(${size} + 40px));
   grid-template-rows: repeat(auto-fill, calc(${size} + 40px));
 `;
+
+export default {
+  View,
+  Container
+}

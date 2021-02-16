@@ -3,7 +3,6 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 // noinspection NpmUsedModulesInstalled
 import Skeleton from 'react-loading-skeleton';
-import ModestLink from './../ModestLink'
 import constants from "./constants";
 import {LineChartGlanceContentView} from "./LineChartGlanceContentView";
 import {PieGlanceContentView} from "./PieGlanceContentView";
@@ -12,10 +11,11 @@ import NectarGuiUtils from "../../utils/NectarGuiUtils";
 // noinspection NpmUsedModulesInstalled
 import humanizeString from "humanize-string";
 import {ThreeStatusesGlanceView} from "./ThreeStatusesGlanceView";
+import Clickable from "../Clickable";
 
 const { topHeight, bottomHeight, size } = constants.dims;
 
-export function GlanceView(props){
+export function View(props){
   const { viewType, spec, ...rest } = props;
   const ContentView = name2comp(viewType);
   return(
@@ -26,8 +26,7 @@ export function GlanceView(props){
 }
 
 function OuterContainer(props){
-  const { state, children, url } = props;
-  const { path, pathPrefix, legend } = props;
+  const { legend, state, children, action, ...rest } = props;
   const isLoading = state === 'loading';
   const error = state === 'error';
 
@@ -41,12 +40,14 @@ function OuterContainer(props){
       height={size}
       maxHeight={size}
       borderEmotion='grey3'
-      hov_borderEmotion={!isLoading && 'primaryBkg'}
+      // hov_borderEmotion={!isLoading && 'primaryBkg'}
       hov_point={!isLoading}
       borderWidth='1px'
       relative
-      borderRadius='4px'>
-      <InnerContainer url={url} path={path} pathPrefix={pathPrefix}>
+      borderRadius='4px'
+      {...rest}
+    >
+      <Clickable action={action}>
         <Layout.Div absolute height={topHeight} width='100%' top={0}>
           <TitleView {...props}/>
         </Layout.Div>
@@ -72,28 +73,9 @@ function OuterContainer(props){
             <LegendView {...props.legend}/>
           ) }
         </Layout.Div>
-      </InnerContainer>
+      </Clickable>
     </Layout.Div>
   )
-}
-
-function InnerContainer({url, path, pathPrefix, children}){
-  if(url){
-    if(!url.startsWith("http"))
-      url = `http://${url}`;
-    return(
-      <a href={url} target={'_blank'}>
-        { children }
-      </a>
-    )
-  } else if(path){
-    if(!path.startsWith("/")) path = `/${path}`;
-    return(
-      <ModestLink to={`${pathPrefix}${path}`}>
-        { children }
-      </ModestLink>
-    )
-  } else return children;
 }
 
 function ErrorView(){
@@ -155,11 +137,12 @@ function TitleView(props){
   const { title } = props;
   return(
     <Text.P
+      humane
       fontSize='13px'
       bold
       // calm
-      mt={1}
-      ml={1}
+      mt={1.1}
+      ml={1.2}
       noSpill
       >
       { title }
@@ -220,7 +203,7 @@ function SimpleLegendView(props){
             emotion={isDirectionGood ? 'milGreen' : 'warning2'}
             ml={.45}
             mt={.1}
-            size={.89}
+            size={.70}
             bold
             style={{transform: `rotate(${direction === 'up' ? 270 : 90}deg)`}}
             name='play_arrow'
@@ -257,3 +240,9 @@ const defaultStatusLegend = {
   label: 'Status',
   humanize: true
 }
+
+// noinspection JSUnusedGlobalSymbols
+export const GlanceView = {
+  View,
+  OuterContainer
+};

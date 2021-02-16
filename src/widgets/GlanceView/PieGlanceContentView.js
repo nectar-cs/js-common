@@ -2,7 +2,7 @@ import React from 'react'
 // noinspection NpmUsedModulesInstalled
 import { ResponsivePie } from '@nivo/pie'
 import Layout from "../../styles/layout-styles";
-import {theme} from "../..";
+import {theme} from "./../../styles/constants";
 
 const pieSize = '75px';
 

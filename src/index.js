@@ -1,7 +1,7 @@
 import Button from './styles/button-styles'
 import {theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
-import {GlanceViewGrid} from "./widgets/GlanceView/GlanceViewGrid";
+import GlanceViewGrid from "./widgets/GlanceView/GlanceViewGrid";
 import RoutedTabsView from "./widgets/RoutedTabsView";
 import MenuView from "./widgets/MenuView";
 import AppListingUtils from "./utils/appCatUtils";

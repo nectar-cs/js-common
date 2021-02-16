@@ -1,9 +1,9 @@
 import React from "react";
-import { GlanceViewGrid } from 'nectar-gui';
+import {GlanceViewGrid} from 'nectar-gui';
 
 export function GlancesSubpage(){
   return(
-    <GlanceViewGrid
+    <GlanceViewGrid.View
       mt={3}
       allGlanceProps={glanceProps}
     />

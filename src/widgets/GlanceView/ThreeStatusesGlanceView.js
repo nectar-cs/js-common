@@ -23,6 +23,7 @@ function StatusView(status: Status){
       <Text.BorderedStatusTag
         width='32px'
         bold
+        borderEmotion='lightGrey'
         emotion={emotion}
       >
         { title }
