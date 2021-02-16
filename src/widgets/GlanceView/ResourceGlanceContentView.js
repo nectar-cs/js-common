@@ -4,8 +4,8 @@ import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
 // noinspection NpmUsedModulesInstalled
 
-const imgSize = '44px';
-const iconSize = '44px';
+const imgSize = '47px';
+const iconSize = '47px';
 
 export function ResourceGlanceContentView(props: Props){
   const spec = { ...defaultSpec, ...props.spec };

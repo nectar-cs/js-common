@@ -52,7 +52,7 @@ export default function TabsView(props){
               {...iconProps}
             />
             <Text.P
-              humane
+              // humane
               calm={i !== crtIndex}
               bold={i === crtIndex}
               ml={.6}
