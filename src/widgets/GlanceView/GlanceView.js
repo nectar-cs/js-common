@@ -5,15 +5,13 @@ import Text from "../../styles/text-styles";
 import Skeleton from 'react-loading-skeleton';
 import ModestLink from './../ModestLink'
 import constants from "./constants";
-import {GenericGlanceContentView} from "./GenericGlanceContentView";
-import {StatusGlanceContentView} from "./StatusGlanceContentView";
-import {BatteryGlanceContentView} from "./BatteryGlanceContentView";
 import {LineChartGlanceContentView} from "./LineChartGlanceContentView";
-import {BinaryPieGlanceContentView} from "./BinaryPieGlanceContentView";
+import {PieGlanceContentView} from "./PieGlanceContentView";
 import {ResourceGlanceContentView} from "./ResourceGlanceContentView";
 import NectarGuiUtils from "../../utils/NectarGuiUtils";
 // noinspection NpmUsedModulesInstalled
 import humanizeString from "humanize-string";
+import {ThreeStatusesGlanceView} from "./ThreeStatusesGlanceView";
 
 const { topHeight, bottomHeight, size } = constants.dims;
 
@@ -33,7 +31,7 @@ function OuterContainer(props){
   const isLoading = state === 'loading';
   const error = state === 'error';
 
-  const LegendView = type2legendComp(legend.type);
+  const LegendView = type2legendComp((legend || {}).type);
 
   return(
     <Layout.Div
@@ -159,7 +157,7 @@ function TitleView(props){
     <Text.P
       fontSize='13px'
       bold
-      calm
+      // calm
       mt={1}
       ml={1}
       noSpill
@@ -244,11 +242,9 @@ function SimpleLegendView(props){
 
 function name2comp(name: string) {
   switch (name) {
-    case 'graphic_and_text': return GenericGlanceContentView;
-    case 'status': return StatusGlanceContentView;
-    case 'battery': return BatteryGlanceContentView;
+    case 'three_statuses': return ThreeStatusesGlanceView;
     case 'line_chart': return LineChartGlanceContentView;
-    case 'binary_pie': return BinaryPieGlanceContentView;
+    case 'pie': return PieGlanceContentView;
     case 'resource': return ResourceGlanceContentView;
   }
 }

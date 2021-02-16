@@ -17,7 +17,7 @@ export function PseudoShowPage() {
   return(
     <ThemeProvider theme={slickBarTheme}>
       <AppLayout SideBar={CustomSlickBar}>
-        <Layout.Div hipster mt={3} maxWidth='1000px'>
+        <Layout.Div hipster mt={3} maxWidth='1080px'>
           <BigHeader
             graphicName='https://img.icons8.com/color/452/mongodb.png'
             Subtitle={HeaderSubtitle}

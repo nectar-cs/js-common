@@ -9,7 +9,7 @@ const imgSize = '52px';
 export function ResourceGlanceContentView(props: Props){
   const spec = { ...defaultSpec, ...props.spec };
 
-  const { graphicType, graphic } = spec;
+  const { graphicType, graphic, graphicEmotion } = spec;
   const { lineOne, lineTwo, lineThree } = spec;
 
   return(
@@ -21,6 +21,17 @@ export function ResourceGlanceContentView(props: Props){
             height={imgSize}
             src={graphic}
             centerCrop
+          />
+        ) }
+        { graphicType === 'icon' && (
+          <Text.Icon
+            size={2.78}
+            emotion={graphicEmotion}
+            width={imgSize}
+            height={imgSize}
+            name={graphic}
+            pb={.7}
+            pr={.8}
           />
         ) }
         <Layout.Div ml={.8}>
@@ -41,7 +52,8 @@ export function ResourceGlanceContentView(props: Props){
 
 type Spec =  {
   graphicType: string,
-  graphicName: string,
+  graphic: string,
+  graphicEmotion: string,
   lineOne: string,
   lineTwo: string,
   lineThree: string,
@@ -58,6 +70,7 @@ type Props = {
 const defaultSpec = {
   graphicType: 'image',
   statusLabel: 'Status',
+  graphicEmotion: 'primaryColor',
   statusEmotion: null,
   humanizeStatus: true
 }

@@ -23,4 +23,5 @@ export function GlanceViewGrid({allGlanceProps, ...outerProps}){
 const Container = styled(Layout.Div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, calc(${size} + 40px));
+  grid-template-rows: repeat(auto-fill, calc(${size} + 40px));
 `;
