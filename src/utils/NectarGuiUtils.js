@@ -6,6 +6,15 @@ export default class NectarGuiUtils{
     return name && `${IMG_BASE}/${name}`;
   }
 
+  static name2emotion(status){
+    switch ((status || '').toLowerCase()) {
+      case('running'): return 'cool';
+      case('broken'): return 'warning2';
+      case('installing'): return 'innocent';
+      default: return 'primaryColor';
+    }
+  }
+
   static findCrtIndex(routes, location, seekIndex){
     const parts = location.pathname.split('/');
 

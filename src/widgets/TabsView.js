@@ -8,9 +8,10 @@ export default function TabsView(props){
 
   return(
     <Layout.Div
+      mt={.5}
       relative
-      height={'40px'}
-      width={'100%'}>
+      height='40px'
+      width='100%'>
       <Layout.Div
         absolute
         right={0}
@@ -51,6 +52,7 @@ export default function TabsView(props){
               {...iconProps}
             />
             <Text.P
+              humane
               calm={i !== crtIndex}
               bold={i === crtIndex}
               ml={.6}

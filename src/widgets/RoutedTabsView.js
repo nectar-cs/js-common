@@ -1,5 +1,6 @@
-import {useHistory, useLocation} from "react-router";
 import React from "react";
+// noinspection NpmUsedModulesInstalled
+import {useHistory, useLocation} from "react-router";
 import NectarGuiUtils from "../utils/NectarGuiUtils";
 import Layout from "../styles/layout-styles";
 import TabsView from "./TabsView";
@@ -19,7 +20,6 @@ export default function RoutedTabsView({routes, prefix, seekIndex}) {
         crtIndex={NectarGuiUtils.findCrtIndex(routes, location, seekIndex)}
         descriptors={routes}
         onTabSelected={navToTab}
-
       />
     </Layout.Div>
   )

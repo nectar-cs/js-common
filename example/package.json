@@ -11,6 +11,7 @@
     "@nivo/line": "^0.67.0",
     "@nivo/pie": "^0.67.0",
     "clsx": "^1.1.0",
+    "dayjs": "^1.10.4",
     "faker": "^5.1.0",
     "humanize-string": "^2.1.0",
     "nectar-gui": "link:..",

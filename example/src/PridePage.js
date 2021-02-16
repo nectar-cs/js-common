@@ -13,10 +13,9 @@ export default function PridePage() {
           Nectar UI elements expo for internal use only.
           If you're reading this, we raised a round.
         </Text.P>
-        <ModestLink to={'page'}>
+        <ModestLink to='pseudo-show'>
           <Button.Button
-            borderRadius={'2px'}
-            // centered
+            borderRadius='2px'
             mt={2}
             emotion='white'
             bkgEmotion='hipBlue'

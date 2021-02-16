@@ -1,170 +1,263 @@
-import React, {Fragment} from "react";
-import { ResponsiveLine } from '@nivo/line'
-import { ResponsivePie } from '@nivo/pie'
+import React from "react";
 import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
-import GlanceViewContainer from "./GlanceViewContainer";
-import Battery from "../Battery/Battery";
-import Img from "../../styles/img-styles";
+// noinspection NpmUsedModulesInstalled
+import Skeleton from 'react-loading-skeleton';
+import ModestLink from './../ModestLink'
+import constants from "./constants";
+import {GenericGlanceContentView} from "./GenericGlanceContentView";
+import {StatusGlanceContentView} from "./StatusGlanceContentView";
+import {BatteryGlanceContentView} from "./BatteryGlanceContentView";
+import {LineChartGlanceContentView} from "./LineChartGlanceContentView";
+import {BinaryPieGlanceContentView} from "./BinaryPieGlanceContentView";
+import {ResourceGlanceContentView} from "./ResourceGlanceContentView";
+import NectarGuiUtils from "../../utils/NectarGuiUtils";
+// noinspection NpmUsedModulesInstalled
+import humanizeString from "humanize-string";
 
-const chartHeight = 35;
+const { topHeight, bottomHeight, size } = constants.dims;
 
-export default function GlanceView(props){
-  const {  type } = props;
-
+export function GlanceView(props){
+  const { viewType, spec, ...rest } = props;
+  const ContentView = name2comp(viewType);
   return(
-    <GlanceViewContainer {...props}>
-      { type === 'chart' && (
-        <ChartType {...props}/>
-      ) }
-      { type === 'pie' && (
-        <PieType {...props}/>
-      ) }
-      { type === 'icon' && (
-        <IconType {...props}/>
-      ) }
-      { type === 'status' && (
-        <StatusType {...props}/>
-      ) }
-      { type === 'battery' && (
-        <BatteryType {...props}/>
-      ) }
-
-    </GlanceViewContainer>
+    <OuterContainer {...rest}>
+      <ContentView spec={spec}/>
+    </OuterContainer>
   )
 }
 
-function StatusType({value, icon, emotion}){
+function OuterContainer(props){
+  const { state, children, url } = props;
+  const { path, pathPrefix, legend } = props;
+  const isLoading = state === 'loading';
+  const error = state === 'error';
+
+  const LegendView = type2legendComp(legend.type);
+
   return(
-    <Layout.Div mt={2}>
-      <Layout.CenteringDiv>
-          <Layout.Div
-            padded
-            ptb={.5}
-            rounded
-            bkgEmotion={'milGreen'}
-            align={'center'}
-            iFlex>
-            { icon && (
-              <Text.Icon
-                name={icon}
-                size={1.0}
-                emotion={'white'}
-                mr={.5}
-              />
-            ) }
-            <Text.P
-              ml={.5}
-              emotion={'white'}
-              fontSize='21px'>
-              { value }
-            </Text.P>
+    <Layout.Div
+      style={{padding: '0px'}}
+      absolute
+      width={size}
+      height={size}
+      maxHeight={size}
+      borderEmotion='grey3'
+      hov_borderEmotion={!isLoading && 'primaryBkg'}
+      hov_point={!isLoading}
+      borderWidth='1px'
+      relative
+      borderRadius='4px'>
+      <InnerContainer url={url} path={path} pathPrefix={pathPrefix}>
+        <Layout.Div absolute height={topHeight} width='100%' top={0}>
+          <TitleView {...props}/>
+        </Layout.Div>
+        <Layout.Div
+          pt={0}
+          absolute
+          left='12px'
+          right='12px'
+          top={topHeight}
+          bottom={bottomHeight}>
+          { error && <ErrorView error={error}/> }
+          { !error && isLoading && <LoadingView/> }
+          <Layout.Div height='100%' width='100%'>
+            { !error && !isLoading && children }
           </Layout.Div>
+        </Layout.Div>
+        <Layout.Div
+          width='100%'
+          absolute
+          height={bottomHeight}
+          bottom={0}>
+          { !!LegendView && !error && !isLoading && (
+            <LegendView {...props.legend}/>
+          ) }
+        </Layout.Div>
+      </InnerContainer>
+    </Layout.Div>
+  )
+}
+
+function InnerContainer({url, path, pathPrefix, children}){
+  if(url){
+    if(!url.startsWith("http"))
+      url = `http://${url}`;
+    return(
+      <a href={url} target={'_blank'}>
+        { children }
+      </a>
+    )
+  } else if(path){
+    if(!path.startsWith("/")) path = `/${path}`;
+    return(
+      <ModestLink to={`${pathPrefix}${path}`}>
+        { children }
+      </ModestLink>
+    )
+  } else return children;
+}
+
+function ErrorView(){
+  return(
+    <Layout.Div
+      width='100%'
+      height='100%'>
+      <Layout.CenteringDiv mt={2.5}>
+        <Layout.Div flex align='center'>
+          <Text.Icon
+            size={.8}
+            name='error'
+            emotion='lightGrey'
+          />
+          <Text.P
+            mt={.2}
+            hacker
+            ml={.3}
+            calm>
+            Could not compute
+          </Text.P>
+        </Layout.Div>
       </Layout.CenteringDiv>
     </Layout.Div>
   )
 }
 
-
-function BatteryType({pct}){
+function LoadingView(){
   return(
-    <Layout.CenteringDiv mt={1.8}>
-      <Layout.Div flex align='center'>
-        <Battery
-          size={3}
-          pct={pct}
-        />
-        <Text.P fontSize='28px' ml={1}>
-          { pct }%
+    <Layout.Div
+      width='100%'
+      height='100%'>
+      <Layout.Div
+        absolute
+        trbl={['50%', 0, 0, 0]}
+        style={{transform: 'translateY(-50%)'}}>
+        <Layout.Div
+          flex
+          height='50px'>
+          <Layout.Div style={{ fontSize: '55px'}} width={'100%'}>
+            <Skeleton />
+          </Layout.Div>
+          <Layout.Div width={2}/>
+          <Layout.Div width={'100%'} mt={'4px'}>
+            <Skeleton height={18} />
+            <Layout.Div height={.3}/>
+            <Skeleton height={12} />
+          </Layout.Div>
+        </Layout.Div>
+        <Layout.Div width={'100%'} mt={1.4}>
+          <Skeleton count={1} />
+        </Layout.Div>
+      </Layout.Div>
+    </Layout.Div>
+  )
+}
+
+function TitleView(props){
+  const { title } = props;
+  return(
+    <Text.P
+      fontSize='13px'
+      bold
+      calm
+      mt={1}
+      ml={1}
+      noSpill
+      >
+      { title }
+    </Text.P>
+  )
+}
+
+function type2legendComp(name){
+  switch(name) {
+    case 'default': return SimpleLegendView;
+    case 'status': return StatusLegendView;
+  }
+}
+
+function StatusLegendView(props){
+  props = { ...defaultStatusLegend, ...props };
+  const { label, text, emotion, humanize } = props;
+
+  const common = {
+    width: '57px',
+    style: { paddingTop: '2px', paddingBottom: '2px' }
+  }
+
+  return(
+    <Layout.Div absolute centered bottom={'8px'}>
+      <Layout.Div iFlex align='center'>
+        <Text.BorderedStatusTag {...common}>
+          { label }
+        </Text.BorderedStatusTag>
+        <Text.BorderedStatusTag
+          {...common}
+          ml={'-1px'}
+          emotion='white'
+          bkgEmotion={emotion || NectarGuiUtils.name2emotion(text)}>
+          { statusCopy(humanize, text) }
+        </Text.BorderedStatusTag>
+      </Layout.Div>
+    </Layout.Div>
+  )
+}
+
+function SimpleLegendView(props){
+  const { text, direction, goodDirection } = props;
+  const { legendIcon, legendIconEmotion } = props;
+  const isDirectionGood = direction === goodDirection;
+
+  return(
+    <Layout.CenteringDiv mt={0}>
+      <Layout.Div iFlex>
+        <Text.P
+          noSpill
+          calm
+          bold>
+          { text }
         </Text.P>
+        { direction && (
+          <Text.Icon
+            emotion={isDirectionGood ? 'milGreen' : 'warning2'}
+            ml={.45}
+            mt={.1}
+            size={.89}
+            bold
+            style={{transform: `rotate(${direction === 'up' ? 270 : 90}deg)`}}
+            name='play_arrow'
+          />
+        )}
+        { legendIcon && (
+          <Text.Icon
+            emotion={legendIconEmotion || 'secondaryFont'}
+            ml={.45}
+            mt={.1}
+            size={.70}
+            name={legendIcon}
+          />
+        )}
       </Layout.Div>
     </Layout.CenteringDiv>
   )
 }
 
-function IconType({value, icon, iconEmotion, image}){
-  const imageSize = '40px';
-  return(
-    <Layout.Div mt={1}>
-      <Layout.CenteringDiv>
-        <Layout.CenteringDivY>
-          { icon && (
-            <Text.Icon
-              name={icon}
-              size={1.85}
-              emotion={iconEmotion || 'lightGrey'}
-            />
-          ) }
-          { image && (
-            <Img.Img
-              src={image}
-              width={imageSize}
-              height={imageSize}
-            />
-          )}
-          { value && (
-            <Text.P
-              mt={.6}
-              calm
-              fontSize='21px'>
-              { value }
-            </Text.P>
-          ) }
-        </Layout.CenteringDivY>
-      </Layout.CenteringDiv>
-    </Layout.Div>
-  )
+function name2comp(name: string) {
+  switch (name) {
+    case 'graphic_and_text': return GenericGlanceContentView;
+    case 'status': return StatusGlanceContentView;
+    case 'battery': return BatteryGlanceContentView;
+    case 'line_chart': return LineChartGlanceContentView;
+    case 'binary_pie': return BinaryPieGlanceContentView;
+    case 'resource': return ResourceGlanceContentView;
+  }
 }
 
-function PieType({data}){
-  return(
-    <Layout.Div height='100%' relative>
-      <Layout.Div
-        absolute
-        left={0}
-        right={0}
-        top={.7}
-        bottom={.7}>
-        <ResponsivePie
-          data={data}
-          innerRadius={0}
-          padAngle={0.0}
-          cornerRadius={0}
-          colors={{ scheme: 'nivo' }}
-          borderWidth={1}
-          borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-          sliceLabelsSkipAngle={10}
-          enableRadialLabels={false}
-        />
-      </Layout.Div>
-    </Layout.Div>
-  )
+function statusCopy(humanize, status){
+  return humanize ? humanizeString(status) : status;
 }
 
-function ChartType({value, data}){
-  return(
-    <Fragment>
-      <Text.P
-        mt={1}
-        fontSize='34px'
-        textAlign='center'>
-        { value }
-      </Text.P>
-      <Layout.Div
-        height={`${chartHeight}px`}
-        mt={'20px'}>
-        <ResponsiveLine
-          data={data}
-          height={chartHeight}
-          axisTop={null}
-          enableArea={true}
-          axisRight={null}
-          pointSize={0}
-          enableGridX={false}
-          enableGridY={false}
-        />
-      </Layout.Div>
-
-    </Fragment>
-  )
+const defaultStatusLegend = {
+  label: 'Status',
+  humanize: true
 }

@@ -1,6 +1,7 @@
 import Button from './styles/button-styles'
 import {theme, colorKeys, inverseTheme, noTopBarTheme, noSideBarTheme, sexyShadow} from './styles/constants'
 import {MosaicBaseStyle} from './styles/global-styles'
+import {GlanceViewGrid} from "./widgets/GlanceView/GlanceViewGrid";
 import RoutedTabsView from "./widgets/RoutedTabsView";
 import MenuView from "./widgets/MenuView";
 import AppListingUtils from "./utils/appCatUtils";
@@ -38,7 +39,7 @@ import AppLayout from "./Navigation/AppLayout/AppLayout";
 import TopBar from "./Navigation/TopBar/TopBar";
 import Stepper from "./widgets/Stepper/Stepper";
 import CategoriesBar from "./widgets/CategoriesBar";
-import GlanceView from "./widgets/GlanceView/GlanceView";
+import {GlanceView} from "./widgets/GlanceView/GlanceView";
 import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
@@ -85,6 +86,7 @@ export {
   Img,
   LittleLabel,
   CenterLoader,
+
   TabsView,
   LabelTags,
   PrideBox,
@@ -95,6 +97,7 @@ export {
   NectarGuiUtils,
   RoundStoreCard,
   ErrorToast,
+  GlanceViewGrid,
   easyColor,
   slickBarTheme,
   StoreCategoriesListing,
