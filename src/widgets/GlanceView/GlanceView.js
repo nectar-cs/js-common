@@ -186,7 +186,7 @@ function StatusLegendView(props){
 
 function SimpleLegendView(props){
   const { text, direction, goodDirection } = props;
-  const { legendIcon, legendIconEmotion } = props;
+  const { icon, emotion } = props;
   const isDirectionGood = direction === goodDirection;
 
   return(
@@ -209,13 +209,13 @@ function SimpleLegendView(props){
             name='play_arrow'
           />
         )}
-        { legendIcon && (
+        { icon && (
           <Text.Icon
-            emotion={legendIconEmotion || 'secondaryFont'}
+            emotion={emotion || 'secondaryFont'}
             ml={.45}
             mt={.1}
             size={.70}
-            name={legendIcon}
+            name={icon}
           />
         )}
       </Layout.Div>
