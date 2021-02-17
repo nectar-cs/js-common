@@ -80,11 +80,7 @@ function PieView({pct, startColor, endColor}){
       borderColor={themeContext.colors.lightGrey}
       borderWidth={1}
       enableRadialLabels={false}
-      radialLabelsSkipAngle={10}
-      radialLabelsTextColor="#333333"
       enableSliceLabels={false}
-      sliceLabelsSkipAngle={10}
-      sliceLabelsTextColor="#333333"
       isInteractive={false}
       legends={[]}
     />
