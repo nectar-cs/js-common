@@ -97,6 +97,19 @@ const glanceProps = [
         }
       ]
     }
+  },
+  {
+    viewType: 'gauge',
+    title: "Gauge",
+    spec: {
+      pct: 29,
+      lineOne: '29%',
+      lineTwo: '420'
+    },
+    legend: {
+      type: 'default',
+      text: "Safe volume"
+    }
   }
 ]
 

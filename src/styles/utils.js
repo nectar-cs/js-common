@@ -6,8 +6,8 @@ export function lilDim(value){
   }
 }
 
-export function coerceColorExprToHex(p, keyOrLiteral){
-  const valueInTheme = p.theme.colors[keyOrLiteral];
+export function coerceColorExprToHex(theme, keyOrLiteral){
+  const valueInTheme = theme.colors[keyOrLiteral];
   if(valueInTheme)
     return valueInTheme;
   const literalIsHex = (keyOrLiteral || '').includes('#');
@@ -15,8 +15,13 @@ export function coerceColorExprToHex(p, keyOrLiteral){
 }
 
 export function easyColor(p, keyOrLiteral, backupKeyOrLiteral){
-  if(keyOrLiteral) return coerceColorExprToHex(p, keyOrLiteral);
-  return coerceColorExprToHex(p, backupKeyOrLiteral);
+  if(keyOrLiteral) return coerceColorExprToHex(p.theme, keyOrLiteral);
+  return coerceColorExprToHex(p.theme, backupKeyOrLiteral);
+}
+
+export function easyColor2(theme, keyOrLiteral, backupKeyOrLiteral){
+  if(keyOrLiteral) return coerceColorExprToHex(theme, keyOrLiteral);
+  return coerceColorExprToHex(theme, backupKeyOrLiteral);
 }
 
 export function hexToRgb(hex) {

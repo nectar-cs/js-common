@@ -12,6 +12,7 @@ import NectarGuiUtils from "../../utils/NectarGuiUtils";
 import humanizeString from "humanize-string";
 import {ThreeStatusesGlanceView} from "./ThreeStatusesGlanceView";
 import Clickable from "../Clickable";
+import {GaugeGlanceContentView} from "./GaugeGlanceContentView";
 
 const { topHeight, bottomHeight, size } = constants.dims;
 
@@ -229,6 +230,7 @@ function name2comp(name: string) {
     case 'line_chart': return LineChartGlanceContentView;
     case 'pie': return PieGlanceContentView;
     case 'resource': return ResourceGlanceContentView;
+    case 'gauge': return GaugeGlanceContentView;
   }
 }
 

@@ -44,7 +44,7 @@ import {easyColor} from "./styles/utils";
 import ErrorToast from "./widgets/ErrorToast";
 import TagPool from "./widgets/TagPool/TagPool";
 import PermsView from "./widgets/PermsView";
-import NectarGuiUtils from "./utils/NectarGuiUtils";
+import NectarGuiUtils, { nuiUtils } from "./utils/NectarGuiUtils";
 import useReloadSalt from "./utils/useReloadSalt";
 import Clickable from "./widgets/Clickable";
 import NiceEmptyView from "./widgets/NiceEmptyView";
@@ -107,5 +107,6 @@ export {
   CenterContentView,
   FormViews,
   RoutedTabsView,
+  nuiUtils,
   MenuView
 }

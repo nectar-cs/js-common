@@ -26,5 +26,41 @@ export default class NectarGuiUtils{
     // console.log(`pargs[${seekIndex}] = ${interest}`);
     return routes.findIndex(r => `/${interest}` === r.path);
   }
+}
 
+function hex2PureRgb(hex){
+  return hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+    ,(m, r, g, b) => '#' + r + r + g + g + b + b)
+  .substring(1).match(/.{2}/g)
+  .map(x => parseInt(x, 16));
+}
+
+function pureRgb2Hex(rgbArray){
+  return '#' + rgbArray.map(x => {
+    const hex = x.toString(16)
+    return hex.length === 1 ? '0' + hex : hex
+  }).join('');
+}
+
+function findInHexGradient(startHex, endHex, fraction) {
+  return findInRgbGradient(
+    hex2PureRgb(startHex),
+    hex2PureRgb(endHex),
+    fraction
+  )
+}
+
+function findInRgbGradient(startRgb, endRgb, frac) {
+  console.log("PARAMS");
+  console.log({startRgb, endRgb, frac});
+  const w2 = 1 - frac;
+  const rounder = i => Math.round(startRgb[i] * frac + endRgb[i] * w2);
+  return [ rounder(0), rounder(1), rounder(2) ];
+}
+
+export const nuiUtils = {
+  hex2PureRgb,
+  pureRgb2Hex,
+  findInHexGradient,
+  findInRgbGradient
 }
