@@ -17,8 +17,8 @@ export function GaugeGlanceContentView({spec}){
   return(
     <Layout.Div height='100%' mt={1}>
       <Layout.Div
-        top='6%'
-        bottom='12%'
+        top='8%'
+        bottom='11%'
         width='100%'
         absolute
         centered>
@@ -75,7 +75,7 @@ function PieView({pct, startColor, endColor}){
       margin={{ top: 2 }}
       startAngle={-140}
       endAngle={140}
-      innerRadius={0.70}
+      innerRadius={0.75}
       colors={colors}
       borderColor={themeContext.colors.lightGrey}
       borderWidth={1}
