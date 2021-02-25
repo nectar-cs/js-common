@@ -9,6 +9,8 @@ import Layout from './styles/layout-styles'
 import Text from './styles/text-styles'
 import Table from './styles/table-styles'
 import CenterContentView from "./widgets/CenterContentView";
+import CheckPill from "./widgets/CheckPill/CheckPill";
+import CheckPillGrid from "./widgets/CheckPill/CheckPillGrid";
 import {LeftHeader} from './widgets/LeftHeader/LeftHeader'
 import FlexHeader from './widgets/LeftHeader/FlexHeader'
 import {TextOverLineSubtitle} from './widgets/TextOverLineSubtitle/TextOverLineSubtitle'
@@ -49,6 +51,7 @@ import useReloadSalt from "./utils/useReloadSalt";
 import Clickable from "./widgets/Clickable";
 import NiceEmptyView from "./widgets/NiceEmptyView";
 import NiceFloatingPlusButton from "./widgets/NiceFloatingPlusButton";
+import {GraphicButton} from "./widgets/CheckPill/GraphicButton";
 
 export {
   Loader,
@@ -71,6 +74,9 @@ export {
   Layout,
   noTopBarTheme,
   NiceFloatingPlusButton,
+  CheckPillGrid,
+  CheckPill,
+  GraphicButton,
   BigStoreCard,
   Table,
   LeftHeader,
@@ -86,7 +92,6 @@ export {
   Img,
   LittleLabel,
   CenterLoader,
-
   TabsView,
   LabelTags,
   PrideBox,

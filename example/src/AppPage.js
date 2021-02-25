@@ -10,6 +10,7 @@ import {Layout,
   Text,
   TagPool,
   colorKeys,
+  GraphicButton
 }
   from "nectar-gui";
 import {ThemeProvider} from "styled-components";
@@ -156,6 +157,17 @@ function IntroPanel(){
           <Button.ClearButton ml={1} disabled>
             Clear Disabled
           </Button.ClearButton>
+          <GraphicButton
+            ml={1}
+            text='Icon'
+          />
+          <GraphicButton
+            ml={1}
+            text='Image'
+            bkgEmotion='calmBeige'
+            graphicType='image'
+          />
+
         </Layout.Div>
       </Layout.PanelBot>
     </Layout.Div>
