@@ -52,10 +52,12 @@ import Clickable from "./widgets/Clickable";
 import NiceEmptyView from "./widgets/NiceEmptyView";
 import NiceFloatingPlusButton from "./widgets/NiceFloatingPlusButton";
 import {GraphicButton} from "./widgets/CheckPill/GraphicButton";
+import useHover from "./utils/useHover";
 
 export {
   Loader,
   Clickable,
+  useHover,
   NiceEmptyView,
   useReloadSalt,
   ProductView,
