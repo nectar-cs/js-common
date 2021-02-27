@@ -15,7 +15,7 @@ export default function CenterContentView(props: Props){
           component={route.component}
         />
       )) }
-      { defaultRoute.path !== '/' &&
+      { defaultRoute && defaultRoute.path !== '/' &&
         <Route
           exact
           path={prefix}
