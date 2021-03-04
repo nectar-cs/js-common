@@ -101,7 +101,11 @@ const FlatCss = css`
   outline: none;
   ${p => marginsAndPadding('padding', p, { ptb: '9px', plr: '10px'})};
   ${p => heightAndWidth(p, { width: '100%' })};
-  ${p => colorStyles(p, { emotion: 'primaryFont', bkgEmotion: 'inputGrey' })};
+  ${p => colorStyles(p, { 
+    emotion: 'primaryFont', 
+    bkgEmotion: 'inputGrey',
+    dis_bkgEmotion: 'inputGreyDisabled',
+  })};
   ${p => borderStyles(p, {
     borderRadius: '5px',
     borderWidth: '1.5px',

@@ -80,6 +80,7 @@ export const theme = {
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",
     inputGrey: "#fafbfc",
+    inputGreyDisabled: "#f4f4f4",
     // inputGrey: "#f5f8fa",
     inputBorderGrey: "#f0f1f3",
     // inputBorderGrey: "#cbd6e2",

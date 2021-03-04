@@ -316,7 +316,7 @@ function RadioGroup({options, value, callback, calm}){
     <Layout.Div key={i}>
       <Fragment>
         <Layout.Div
-          align={'center'}
+          align='center'
           hov_point
           onClick={_ => callback(option[0])}
           flex>
@@ -327,7 +327,7 @@ function RadioGroup({options, value, callback, calm}){
             type='radio'
           />
           <Text.P
-            mt={'2px'}
+            mt='2px'
             ml={.75}
             bold
             calm={calm}
