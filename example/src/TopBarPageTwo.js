@@ -92,7 +92,7 @@ const requirements = {
   ]
 };
 
-const wizFeatures = {
+const kamaFeatures = {
   operations: [
     '5-Stage Installation',
     'Database Lifecycle Management',
@@ -170,7 +170,7 @@ const dummyApp = {
   features: dummyFeatures(),
   usefulLinks: links,
   clusterFootprint: clusterFootprint,
-  wizCapabilities: wizFeatures,
+  kamaCapabilities: kamaFeatures,
   requirements: requirements,
   benchmarks: benchmarks,
   plans: plansData,

@@ -37,7 +37,7 @@ export default function ProductView({callback}){
         />
 
         <Text.H1 mt={6.5} mb={2}>Control Panel Functionality</Text.H1>
-        <RequirementsTable requirements={app.wizCapabilities}/>
+        <RequirementsTable requirements={app.kamaCapabilities}/>
 
         <Text.H1 mt={5} mb={2.5}>Standard RBAC Requests</Text.H1>
         <PermsView
