@@ -5,7 +5,7 @@ import Text from "../../styles/text-styles";
 import Layout from "../../styles/layout-styles";
 import constants from "./constants";
 
-const { chartHeight, biggestTextSize } = constants.dims;
+const { chartHeight } = constants.dims;
 export function LineChartGlanceContentView({spec}){
   spec = { ...defaultSpec, ...spec };
   const { value, timeseries, xKey, yKey } = spec;
@@ -14,8 +14,10 @@ export function LineChartGlanceContentView({spec}){
     <Fragment>
       <Text.P
         fontSize='32px'
-        style={{textAlign: 'center'}}
-        mt={2.3}>
+        calm
+        style={{textAlign: 'center', fontWeight: 'light'}}
+        mt={2.3}
+      >
         { value }
       </Text.P>
       <Layout.Div height={`${chartHeight}px`} mt='20px'>

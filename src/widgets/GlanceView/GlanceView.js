@@ -140,7 +140,7 @@ function TitleView(props){
     <Text.P
       humane
       fontSize='13px'
-      bold
+      // bold
       // calm
       mt={1.1}
       ml={1.2}
@@ -196,7 +196,8 @@ function SimpleLegendView(props){
         <Text.P
           noSpill
           calm
-          bold>
+          bold
+        >
           { text }
         </Text.P>
         { direction && (

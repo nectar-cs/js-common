@@ -32,8 +32,8 @@ export function GaugeGlanceContentView({spec}){
           absolute>
           { lineOne && (
             <Text.H1
-              mt={lineTwo ? '0px' : '9px'}
-              bold
+              mt={lineTwo ? '4px' : '9px'}
+              // bold
               textAlign='center'>
               { lineOne }
             </Text.H1>
@@ -51,17 +51,23 @@ export function GaugeGlanceContentView({spec}){
   )
 }
 
-function PieView({pct, startColor, endColor}){
+function PieView({pct, startColor, endColor, spectrum}){
   const themeContext = useContext(ThemeContext);
 
   function colors(slice){
     const { findInHexGradient, pureRgb2Hex } = nuiUtils;
     if(slice.id === FILLED_PORTION_ID){
       const fraction = pct / 100;
-      startColor = easyColor2(themeContext, startColor, 'lightGrey');
-      endColor = easyColor2(themeContext, endColor, 'primaryColor');
-      const rgbResult = findInHexGradient(endColor, startColor, fraction);
-      return pureRgb2Hex(rgbResult);
+      if(spectrum){
+        const safeFraction = Math.min(0.99999, fraction);
+        const index = Math.floor(safeFraction * spectrum.length);
+        return spectrum[index];
+      } else {
+        startColor = easyColor2(themeContext, startColor, 'lightGrey');
+        endColor = easyColor2(themeContext, endColor, 'primaryColor');
+        const rgbResult = findInHexGradient(endColor, startColor, fraction);
+        return pureRgb2Hex(rgbResult);
+      }
     }
     else if(slice.id === UNFILLED_PORTION_ID)
       return 'white';
@@ -75,7 +81,7 @@ function PieView({pct, startColor, endColor}){
       margin={{ top: 2 }}
       startAngle={-140}
       endAngle={140}
-      innerRadius={0.75}
+      innerRadius={0.79}
       colors={colors}
       borderColor={themeContext.colors.lightGrey}
       borderWidth={1}
