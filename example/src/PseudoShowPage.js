@@ -65,6 +65,10 @@ function HeaderSubtitle(){
 function CustomBottomBar(){
   return(
     <BottomBar.View>
+      <BottomBar.PortForwardStatusView
+        title="camus / port-forwards"
+        status='0 connections'
+      />
       <BottomBar.PortForwardInstancesListView
         portForwards={portForwards}
       />
@@ -98,13 +102,12 @@ function HeaderTitle(){
 const portForwards = [
   {
     localAddress: 'localhost:9090',
-    resourceSignature: 'monitoring/prom-svc-operator:9090',
+    resourceSignature: 'namespace/running:9090',
     status: 'running'
   },
   {
-    localAddress: 'localhost:9090',
-    resourceSignature: 'monitoring/prom-svc-operator:9090',
-    status: 'running'
+    localAddress: 'localhost:9091',
+    resourceSignature: 'namespace/init:9090',
+    status: 'error'
   }
-
 ]
