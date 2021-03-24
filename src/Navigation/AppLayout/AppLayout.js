@@ -3,7 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-export default function AppLayout({SideBar, TopBar, children}) {
+export default function AppLayout(props: Props) {
+  const { SideBar, TopBar, BottomBar, children } = props;
   const bodyRef = React.createRef(null);
 
   return (
@@ -13,6 +14,7 @@ export default function AppLayout({SideBar, TopBar, children}) {
         { children }
       </AppContent>
       { TopBar && <TopBar bodyRef={bodyRef}/> }
+      { BottomBar && <BottomBar bodyRef={bodyRef}/> }
     </FullPage>
   );
 }
@@ -32,3 +34,7 @@ const AppContent = styled.div`
   right: 0;
   z-index: -1;
 `;
+
+type Props = {
+
+}

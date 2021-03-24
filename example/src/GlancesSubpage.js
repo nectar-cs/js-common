@@ -15,6 +15,7 @@ export function GlancesSubpage(){
       <Button.ClearButton mt={2} onClick={randomizeData}>
         Randomize Data
       </Button.ClearButton>
+      {/*<Layout.Div height={'500px'} bkgEmotion={'black'}/>*/}
     </Layout.Div>
   )
 }

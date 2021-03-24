@@ -12,7 +12,8 @@ export function GraphicButton(props) {
     action,
     textProps,
     graphicProps,
-    ...rest} = props;
+    ...rest
+  } = props;
 
   return(
     <Clickable action={action}>

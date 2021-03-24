@@ -166,6 +166,7 @@ function IntroPanel(){
             text='Image'
             bkgEmotion='calmBeige'
             graphicType='image'
+            graphic={'https://img.icons8.com/color/452/mongodb.png'}
           />
 
         </Layout.Div>

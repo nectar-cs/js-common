@@ -53,6 +53,7 @@ import NiceEmptyView from "./widgets/NiceEmptyView";
 import NiceFloatingPlusButton from "./widgets/NiceFloatingPlusButton";
 import {GraphicButton} from "./widgets/CheckPill/GraphicButton";
 import useHover from "./utils/useHover";
+import BottomBar from "./Navigation/BottomBar/BottomBar";
 
 export {
   Loader,
@@ -63,6 +64,7 @@ export {
   ProductView,
   Button,
   AppLayout,
+  BottomBar,
   GlanceView,
   PermsView,
   TopBar,

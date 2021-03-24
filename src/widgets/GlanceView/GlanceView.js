@@ -41,7 +41,6 @@ function OuterContainer(props){
       height={size}
       maxHeight={size}
       borderEmotion='grey3'
-      // hov_borderEmotion={!isLoading && 'primaryBkg'}
       hov_point={!isLoading}
       borderWidth='1px'
       relative

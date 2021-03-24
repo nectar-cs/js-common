@@ -9,6 +9,7 @@ import {
   AppLayout,
   slickBarTheme,
   RoutedTabsView,
+  BottomBar,
   Clickable
 } from 'nectar-gui'
 import {GlancesSubpage} from "./GlancesSubpage";
@@ -16,7 +17,10 @@ import {GlancesSubpage} from "./GlancesSubpage";
 export function PseudoShowPage() {
   return(
     <ThemeProvider theme={slickBarTheme}>
-      <AppLayout SideBar={CustomSlickBar}>
+      <AppLayout
+        SideBar={CustomSlickBar}
+        BottomBar={CustomBottomBar}
+      >
         <Layout.Div hipster mt={3} maxWidth='1080px'>
           <BigHeader
             graphicName='https://img.icons8.com/color/452/mongodb.png'
@@ -58,6 +62,16 @@ function HeaderSubtitle(){
   )
 }
 
+function CustomBottomBar(){
+  return(
+    <BottomBar.View>
+      <BottomBar.PortForwardInstancesListView
+        portForwards={portForwards}
+      />
+    </BottomBar.View>
+  )
+}
+
 function HeaderTitle(){
   return(
     <Layout.Div flex mt={1.4} align='center'>
@@ -81,3 +95,16 @@ function HeaderTitle(){
   )
 }
 
+const portForwards = [
+  {
+    localAddress: 'localhost:9090',
+    resourceSignature: 'monitoring/prom-svc-operator:9090',
+    status: 'running'
+  },
+  {
+    localAddress: 'localhost:9090',
+    resourceSignature: 'monitoring/prom-svc-operator:9090',
+    status: 'running'
+  }
+
+]
