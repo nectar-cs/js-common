@@ -1,6 +1,6 @@
 import {ThemeProvider} from "styled-components";
 import CustomSlickBar from "./CustomSlickbar";
-import React, {Fragment} from "react";
+import React, {useState} from "react";
 import {
   Text,
   BigHeader,
@@ -20,23 +20,18 @@ import {GlancesSubpage} from "./GlancesSubpage";
 export function PseudoShowPage() {
   return(
     <ThemeProvider theme={slickBarTheme}>
-      <AppLayout
-        SideBar={CustomSlickBar}
-        BottomBar={CustomBottomBar}
-      >
+      <AppLayout SideBar={CustomSlickBar} BottomBar={CustomBottomBar}>
         <Layout.Div hipster mt={3} maxWidth='1080px'>
           <BigHeader
             graphicName='https://img.icons8.com/color/452/mongodb.png'
             Subtitle={HeaderSubtitle}
             Title={HeaderTitle}
           />
-
           <RoutedTabsView
             routes={routes}
             prefix='/pseudo-show'
             seekIndex={0}
           />
-
           <CenterContentView
             routes={routes}
             prefix='/pseudo-show'
@@ -66,14 +61,18 @@ function HeaderSubtitle(){
 }
 
 function CustomBottomBar(){
+  const [isHot, setIsHot] = useState(false);
+
   return(
     <BottomBar.View>
-      <BottomBar.PortForwardStatusView
-        title="camus / port-forwards"
-        status='0 connections'
-      />
+      <Clickable action={_ => setIsHot(true)}>
+        <BottomBar.PortForwardStatusView
+          title="camus / port-forwards"
+          status='0 connections'
+        />
+      </Clickable>
       <BottomBar.PortForwardInstancesListView
-        portForwards={portForwards}
+        portForwards={portForwards(isHot)}
       />
     </BottomBar.View>
   )
@@ -102,7 +101,7 @@ function HeaderTitle(){
   )
 }
 
-const portForwards = [
+const portForwards = hot => [
   // {
   //   localAddress: 'localhost:9090',
   //   resourceSignature: 'namespace/running:9090',
@@ -125,6 +124,7 @@ const portForwards = [
     localAddress: 'localhost:9091',
     resourceSignature: 'rather-long-namespace/obnoxious-service:9090',
     status: 'error',
+    isHot: hot,
     SubmenuView: CustomSubMenu
   }
 ]

@@ -58,14 +58,10 @@ function ChartPart({data}){
 }
 
 function timeseries2nivo(timeseries, xKey, yKey){
-  console.log("TS IS");
-  console.log(timeseries);
   const newXySequence = timeseries.map(dataPoint => ({
     x: dataPoint[xKey],
     y: dataPoint[yKey]
   }));
-  console.log("WITH");
-  console.log(newXySequence);
   return [ {id: 'sequence', data: newXySequence} ];
 }
 

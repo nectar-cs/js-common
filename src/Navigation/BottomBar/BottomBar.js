@@ -1,4 +1,4 @@
-import React, {useContext, Fragment, useState, useRef} from 'react'
+import React, {useContext, useEffect, useState, useRef} from 'react'
 import Layout from "../../styles/layout-styles";
 import { ThemeContext } from 'styled-components';
 import Text from "../../styles/text-styles";
@@ -71,13 +71,20 @@ function PortForwardInstancesListView(props: ManyPortForwardProps) {
 }
 
 function PortForwardInstanceView(props: PortForwardProps){
-  const { localAddress, resourceSignature, status } = props;
+  const { localAddress, resourceSignature, status, isHot } = props;
   const { actionCallback, gotoCallback, SubmenuView } = props;
   const [emotion, icon] = serverStatusColorAndIcon(status);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
+
+  useEffect(_ => {
+    console.log("HOT CHANGED " + isHot.toString());
+    if(isHot){
+      setIsMenuOpen(true);
+    }
+  }, [isHot])
 
   const hasMenu = !!SubmenuView;
 
@@ -171,5 +178,6 @@ type PortForwardProps = {
   resourceSignature: string,
   status: string,
   actionCallback: void => void,
-  gotoCallback: void => void
+  gotoCallback: void => void,
+  isHot: boolean
 }

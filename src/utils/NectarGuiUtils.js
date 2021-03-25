@@ -22,8 +22,6 @@ export default class NectarGuiUtils{
       seekIndex = parts.length - 1;
 
     const interest = parts[seekIndex] || '';
-    // console.log("For path " + parts);
-    // console.log(`pargs[${seekIndex}] = ${interest}`);
     return routes.findIndex(r => `/${interest}` === r.path);
   }
 }
@@ -51,8 +49,6 @@ function findInHexGradient(startHex, endHex, fraction) {
 }
 
 function findInRgbGradient(startRgb, endRgb, frac) {
-  console.log("PARAMS");
-  console.log({startRgb, endRgb, frac});
   const w2 = 1 - frac;
   const rounder = i => Math.round(startRgb[i] * frac + endRgb[i] * w2);
   return [ rounder(0), rounder(1), rounder(2) ];
