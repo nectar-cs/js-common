@@ -1,8 +1,8 @@
-import React, {useContext, Fragment} from 'react'
+import React, {useContext, Fragment, useState, useRef} from 'react'
 import Layout from "../../styles/layout-styles";
 import { ThemeContext } from 'styled-components';
 import Text from "../../styles/text-styles";
-import NectarGuiUtils from "../../utils/NectarGuiUtils";
+import useOutsideAlerter from "../../utils/useOutsideAlerter";
 
 
 function View({children}){
@@ -54,18 +54,16 @@ function PortForwardStatusView({title, status, emotion}){
 function PortForwardInstancesListView(props: ManyPortForwardProps) {
   const { portForwards } = props;
   return(
-    <Layout.Div width={'100%'}>
-      <Layout.Div pr={2} flex style={{flexDirection: 'row-reverse'}}>
+    <Layout.Div width={'70%'}>
+      <Layout.Div
+        pr={2}
+        flex
+        style={{flexDirection: 'row-reverse', overflowX: 'scroll'}}>
         { portForwards.map((portForward, i) => (
-          <Fragment>
-            <PortForwardInstanceView
-              key={i}
-              {...portForward}
-            />
-            { i !== portForwards.length - 1 && (
-              <Layout.Div width={'80px'}/>
-            ) }
-          </Fragment>
+          <PortForwardInstanceView
+            key={i}
+            {...portForward}
+          />
         )) }
       </Layout.Div>
     </Layout.Div>
@@ -74,44 +72,76 @@ function PortForwardInstancesListView(props: ManyPortForwardProps) {
 
 function PortForwardInstanceView(props: PortForwardProps){
   const { localAddress, resourceSignature, status } = props;
-  const { actionCallback, gotoCallback } = props;
+  const { actionCallback, gotoCallback, SubmenuView } = props;
   const [emotion, icon] = serverStatusColorAndIcon(status);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const menuRef = useRef(null);
+  useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
+
+  const hasMenu = !!SubmenuView;
+
   return(
-    <Layout.Div flex align='center' mt='7px'>
-      <Text.P
-        onClick={gotoCallback}
-        hov_underline
-        hov_point
-        emotion='white'
-        hacker
-      >
-        { localAddress }
-      </Text.P>
-      <Text.Icon
-        emotion={emotion}
-        name='arrow_right_alt'
-        ml='4px'
-        mr='4px'
-      />
-      <Text.P
-        onClick={gotoCallback}
-        hov_underline
-        hov_point
-        emotion='white'
-        hacker
-      >
-        { resourceSignature }
-      </Text.P>
-      <Text.Icon
-        onClick={actionCallback}
-        hov_point
-        size={.76}
-        emotion={emotion}
-        name={icon}
-        ml='5px'
-        mt={'-1.5px'}
-      />
+    <Layout.Div ref={hasMenu ? menuRef : null}>
+      { hasMenu && isMenuOpen && (
+        <Layout.Div
+          minWidth='242px'
+          sexyShadow
+          shadowOpacity={.5}
+          ptb={1.6}
+          bkgEmotion='white'
+          rounded
+          style={{
+            // zIndex: '1000',
+            position: 'fixed',
+            transform: 'translateY(calc(-100% - 12px))'
+          }}
+          right='64px'
+        >
+          <SubmenuView/>
+        </Layout.Div>
+      )}
+
+
+      <Layout.Div flex align='center' mt='7px' mr={4}>
+        <Text.P
+          onClick={gotoCallback}
+          hov_underline
+          hov_point
+          emotion='white'
+          hacker
+          noSpill
+        >
+          { localAddress }
+        </Text.P>
+        <Text.Icon
+          emotion={emotion}
+          name='arrow_right_alt'
+          ml='4px'
+          mr='4px'
+        />
+        <Text.P
+          onClick={gotoCallback}
+          hov_underline
+          hov_point
+          emotion='white'
+          hacker
+          noSpill
+        >
+          { resourceSignature }
+        </Text.P>
+        <Text.Icon
+          onClick={hasMenu ? _ => setIsMenuOpen(true) : actionCallback}
+          hov_point
+          size={.76}
+          emotion={emotion}
+          name={icon}
+          ml='5px'
+          mt={'-1.5px'}
+        />
+
+      </Layout.Div>
+
 
     </Layout.Div>
   )

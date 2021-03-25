@@ -1,6 +1,6 @@
 import {ThemeProvider} from "styled-components";
 import CustomSlickBar from "./CustomSlickbar";
-import React from "react";
+import React, {Fragment} from "react";
 import {
   Text,
   BigHeader,
@@ -9,6 +9,9 @@ import {
   AppLayout,
   slickBarTheme,
   RoutedTabsView,
+  TopBarViews,
+  Input,
+  Button,
   BottomBar,
   Clickable
 } from 'nectar-gui'
@@ -100,14 +103,89 @@ function HeaderTitle(){
 }
 
 const portForwards = [
-  {
-    localAddress: 'localhost:9090',
-    resourceSignature: 'namespace/running:9090',
-    status: 'running'
-  },
+  // {
+  //   localAddress: 'localhost:9090',
+  //   resourceSignature: 'namespace/running:9090',
+  //   status: 'running',
+  //   SubmenuView: CustomSubMenu
+  // },
+  // {
+  //   localAddress: 'localhost:9091',
+  //   resourceSignature: 'rather-long-namespace/obnoxious-service:9090',
+  //   status: 'error',
+  //   SubmenuView: CustomSubMenu
+  // },
+  // {
+  //   localAddress: 'localhost:9091',
+  //   resourceSignature: 'rather-long-namespace/obnoxious-service:9090',
+  //   status: 'error',
+  //   SubmenuView: CustomSubMenu
+  // },
   {
     localAddress: 'localhost:9091',
-    resourceSignature: 'namespace/init:9090',
-    status: 'error'
+    resourceSignature: 'rather-long-namespace/obnoxious-service:9090',
+    status: 'error',
+    SubmenuView: CustomSubMenu
   }
 ]
+
+function CustomSubMenu(){
+  const bHeight = '33px';
+  return(
+    <Layout.Div>
+      <TopBarViews.ImgAndLink
+        src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/1920px-Prometheus_software_logo.svg.png'
+        title="Port-forward "
+        text="rather-long-namespace/obnoxious-service:9090"
+        configIcon={'arrow_right_alt'}
+        status='INITIALIZING'
+        statusEmotion='innocent'
+        textEmotion='primaryColor'
+      />
+
+      <Layout.Div mlr='auto' width='90%' maxWidth='90%' mt={2}>
+        <Layout.Div flex>
+          <Input.FlatInput value='8080' height={bHeight} width={'auto'}/>
+          <Button.ClearButton
+            ml={2}
+            width={'171px'}
+            emotion={'primaryColor'}
+            height={bHeight}>
+            Change local port
+          </Button.ClearButton>
+        </Layout.Div>
+
+
+        <Layout.Div flex maxWidth={'200px'} mt={2} align={'center'}>
+          <Text.Icon
+            bold
+            size={.7}
+            name='error_outline'
+            emotion='warning2'
+          />
+          <Text.P emotion='warning2' ml={.3}>
+            <b>Error</b> Address already in use
+          </Text.P>
+        </Layout.Div>
+
+        <Text.P mt={2}>
+          Closing Nectar will also stop all port-forwards
+        </Text.P>
+
+        <Button.Button
+          mt={2}
+          width={'auto'}
+          bold
+          emotion={'white'}
+          bkgEmotion={'warning2'}
+          borderRadius={'2.5px'}
+          height={bHeight}>
+          Stop port-forward
+        </Button.Button>
+
+      </Layout.Div>
+
+
+    </Layout.Div>
+  )
+}

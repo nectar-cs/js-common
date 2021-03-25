@@ -6,7 +6,7 @@ import Clickable from "../../widgets/Clickable";
 
 const itemPlr = 1.3;
 
-function ImgAndLink({src, title, text, ...rest}) {
+function ImgAndLink({src, title, text, textEmotion, status, statusEmotion, configIcon, ...rest}) {
   const imgSize = '38px';
   return(
     <Layout.Div flex plr={itemPlr}>
@@ -21,18 +21,38 @@ function ImgAndLink({src, title, text, ...rest}) {
         />
       ) }
       <Layout.Div>
-        <Text.P humane bold>{title}</Text.P>
+        <Layout.Div flex>
+          <Text.P humane bold>
+            {title}
+          </Text.P>
+          { status && (
+            <Text.StatusTag
+              bold
+              ml={'6px'}
+              pt={'1px'}
+              pb={'0px'}
+              mt={'-.5px'}
+              borderRadius='2.5px'
+              plr={'7px'}
+              emotion='white'
+              bkgEmotion={statusEmotion}>
+              { status }
+            </Text.StatusTag>
+          ) }
+        </Layout.Div>
+
         <Layout.Div flex align='center'>
-          <Text.Icon
-            name='tune'
-            size={.7}
-            emotion='hipBlue'
-          />
+          { configIcon && (
+            <Text.Icon
+              name={configIcon}
+              size={.7}
+              mr={.2}
+              emotion='hipBlue'
+            />
+          ) }
           <Clickable {...rest}>
             <Text.P
-
-              ml={.2}
-              emotion='hipBlue'
+              emotion={textEmotion}
               mt={.1}>
               {text}
             </Text.P>
@@ -79,6 +99,11 @@ function ClickableRow({icon, text, ...rest}){
       </Layout.Div>
     </Clickable>
   )
+}
+
+ImgAndLink.defaultProps = {
+  configIcon: 'tune',
+  textEmotion: 'hipBlue'
 }
 
 const TopBarViews = {
