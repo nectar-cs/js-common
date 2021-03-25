@@ -24,7 +24,7 @@ function View({children}){
   )
 }
 
-function PortForwardStatusView({title, status}){
+function PortForwardStatusView({title, status, emotion}){
   const common = {
     emotion: 'white',
     borderRadius: '1.0px',
@@ -44,7 +44,7 @@ function PortForwardStatusView({title, status}){
       <Text.BorderedStatusTag
         {...common}
         ml='-2px'
-        bkgEmotion='innocent'>
+        bkgEmotion={emotion}>
         { status }
       </Text.BorderedStatusTag>
     </Layout.Div>
