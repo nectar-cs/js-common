@@ -74,11 +74,13 @@ function PortForwardInstancesListView(props: ManyPortForwardProps) {
 
 function PortForwardInstanceView(props: PortForwardProps){
   const { localAddress, resourceSignature, status } = props;
+  const { actionCallback, gotoCallback } = props;
   const [emotion, icon] = serverStatusColorAndIcon(status);
 
   return(
     <Layout.Div flex align='center' mt='7px'>
       <Text.P
+        onClick={gotoCallback}
         hov_underline
         hov_point
         emotion='white'
@@ -93,6 +95,7 @@ function PortForwardInstanceView(props: PortForwardProps){
         mr='4px'
       />
       <Text.P
+        onClick={gotoCallback}
         hov_underline
         hov_point
         emotion='white'
@@ -101,8 +104,9 @@ function PortForwardInstanceView(props: PortForwardProps){
         { resourceSignature }
       </Text.P>
       <Text.Icon
+        onClick={actionCallback}
         hov_point
-        size={.74}
+        size={.76}
         emotion={emotion}
         name={icon}
         ml='5px'
@@ -117,7 +121,7 @@ function serverStatusColorAndIcon(status: string){
   if(status === 'init')
     return ['innocent', 'pending'];
   else if(status === 'running')
-    return ['cool', 'open_in_new'];
+    return ['cool', 'cancel'];
   else
     return ['warning2', 'error_outline'];
 }
@@ -135,5 +139,7 @@ type ManyPortForwardProps = {
 type PortForwardProps = {
   localAddress: string,
   resourceSignature: string,
-  status: string
+  status: string,
+  actionCallback: void => void,
+  gotoCallback: void => void
 }
