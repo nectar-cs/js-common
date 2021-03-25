@@ -48,30 +48,32 @@ function OuterContainer(props){
       {...rest}
     >
       <Clickable action={action}>
-        <Layout.Div absolute height={topHeight} width='100%' top={0}>
-          <TitleView {...props}/>
-        </Layout.Div>
-        <Layout.Div
-          pt={0}
-          absolute
-          left='12px'
-          right='12px'
-          top={topHeight}
-          bottom={bottomHeight}>
-          { error && <ErrorView error={error}/> }
-          { !error && isLoading && <LoadingView/> }
-          <Layout.Div height='100%' width='100%'>
-            { !error && !isLoading && children }
+        <Layout.Div>
+          <Layout.Div absolute height={topHeight} width='100%' top={0}>
+            <TitleView {...props}/>
           </Layout.Div>
-        </Layout.Div>
-        <Layout.Div
-          width='100%'
-          absolute
-          height={bottomHeight}
-          bottom={0}>
-          { !!LegendView && !error && !isLoading && (
-            <LegendView {...props.legend}/>
-          ) }
+          <Layout.Div
+            pt={0}
+            absolute
+            left='12px'
+            right='12px'
+            top={topHeight}
+            bottom={bottomHeight}>
+            { error && <ErrorView error={error}/> }
+            { !error && isLoading && <LoadingView/> }
+            <Layout.Div height='100%' width='100%'>
+              { !error && !isLoading && children }
+            </Layout.Div>
+          </Layout.Div>
+          <Layout.Div
+            width='100%'
+            absolute
+            height={bottomHeight}
+            bottom={0}>
+            { !!LegendView && !error && !isLoading && (
+              <LegendView {...props.legend}/>
+            ) }
+          </Layout.Div>
         </Layout.Div>
       </Clickable>
     </Layout.Div>

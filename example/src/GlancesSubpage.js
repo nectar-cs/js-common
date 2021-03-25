@@ -30,6 +30,7 @@ function glanceProps(){
       {
         viewType: 'resource',
         title: 'Resource View',
+        action: _ => window.alert("click!"),
         spec: {
           lineOne: "Website",
           lineTwo: "Internal",
