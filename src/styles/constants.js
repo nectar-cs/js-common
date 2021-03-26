@@ -65,6 +65,7 @@ export const theme = {
     ruby: "#D81E5B",
     tart: "#F0544F",
     coffee: "#3A3335",
+    bottomBarBkgEmotion: "#3A3335",
     innocent: "#D67AB1",
     comfy: "#6153cc",
     formBorderBlue: "#b2d1f3",
@@ -91,6 +92,7 @@ export const theme = {
   dims: {
     topBarHeight: "55px",
     sideBarWidth: "220px",
+    bottomBarHeight: '32px',
     slickBarWidth: '58px',
     borderRadius: "6px",
     borderWidth: "1px",
@@ -131,6 +133,7 @@ export const noTopBarTheme = {
 export const slickBarTheme = {
   ...theme,
   dims: {
+    ...theme.dims,
     topBarHeight: 0,
     sideBarWidth: theme.dims.slickBarWidth
   }

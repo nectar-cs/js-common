@@ -7,13 +7,15 @@ import useOutsideAlerter from "../../utils/useOutsideAlerter";
 
 function View({children}){
   const themeContext = useContext(ThemeContext);
+  console.log({themeContext});
   return(
     <Layout.Div
       left={themeContext.dims.sideBarWidth}
       bottom='0px'
       right='0px'
-      height='32px'
-      bkgEmotion='coffee'
+      height={themeContext.dims.bottomBarHeight}
+      // height={'32px'}
+      bkgEmotion={themeContext.colors.bottomBarBkgEmotion}
       style={{position: 'fixed'}}
       pl='0px'
     >
