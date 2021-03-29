@@ -15,7 +15,7 @@ import {
   BottomBar,
   Clickable
 } from 'nectar-gui'
-import {GlancesSubpage} from "./GlancesSubpage";
+import {GlancesShowcasePage} from "./GlancesShowcasePage";
 
 export function PseudoShowPage() {
   return(
@@ -49,7 +49,7 @@ const routes = [
     name: 'Glances',
     longName: 'Glances Demo',
     icon: "apps",
-    component: GlancesSubpage,
+    component: GlancesShowcasePage,
     isDefault: true
   }
 ]

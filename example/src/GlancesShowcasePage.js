@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {GlanceViewGrid, Layout, Button} from 'nectar-gui';
 
-export function GlancesSubpage(){
+export function GlancesShowcasePage(){
   const [glances, setGlances] = useState(glanceProps());
 
  const randomizeData = _ => setGlances(glanceProps());
@@ -49,6 +49,42 @@ function glanceProps(){
         spec: {
           lineOne: "Test Suite",
           lineTwo: "100 Tests",
+          lineThree: "40ms Run",
+          graphic: 'policy',
+          graphicType: 'icon'
+        },
+        legend: {
+          type: 'default',
+          text: "Up is Good",
+          direction: 'up',
+          goodDirection: 'up'
+        }
+      },
+      {
+        viewType: 'resource',
+        title: 'Small Resource View',
+        action: _ => window.alert("click!"),
+        spec: {
+          small: true,
+          lineOne: "Small Website",
+          lineTwo: "Internal",
+          lineThree: "some.dns.domain",
+          graphic: 'https://img.icons8.com/clouds/2x/server.png'
+        },
+        legend: {
+          type: 'status',
+          label: 'Status',
+          text: 'running',
+        }
+      },
+
+      {
+        viewType: 'resource',
+        title: 'Small Resource',
+        spec: {
+          small: true,
+          lineOne: "Longer Suite",
+          lineTwo: "100 Tests but mroe",
           lineThree: "40ms Run",
           graphic: 'policy',
           graphicType: 'icon'

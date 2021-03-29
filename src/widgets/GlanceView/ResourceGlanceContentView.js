@@ -4,18 +4,19 @@ import Img from "../../styles/img-styles";
 import Text from "../../styles/text-styles";
 // noinspection NpmUsedModulesInstalled
 
-const imgSize = '47px';
-const iconSize = '47px';
 
 export function ResourceGlanceContentView(props: Props){
   const spec = { ...defaultSpec, ...props.spec };
 
-  const { graphicType, graphic, graphicEmotion } = spec;
+  const { graphicType, graphic, graphicEmotion, small } = spec;
   const { lineOne, lineTwo, lineThree } = spec;
+
+  const imgSize = small ? '29px' : '47px';
+  const iconSize = small ? '20px' : '47px';
 
   return(
     <Layout.Div absolute centered top='22%'>
-      <Layout.Div flex align='center'>
+      <Layout.Div flex align={small ? 'default' : 'center'}>
         { graphicType === 'image' && (
           <Img.Img
             width={imgSize}
@@ -26,7 +27,7 @@ export function ResourceGlanceContentView(props: Props){
         ) }
         { graphicType === 'icon' && (
           <Text.Icon
-            size={2.78}
+            size={small ? 1.50 : 2.78}
             emotion={graphicEmotion}
             width={iconSize}
             height={iconSize}
@@ -61,7 +62,8 @@ type Spec =  {
   statusLabel: string,
   status: string,
   statusEmotion: string,
-  humanizeStatus: boolean
+  humanizeStatus: boolean,
+  small: boolean
 }
 
 type Props = {

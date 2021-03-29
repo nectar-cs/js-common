@@ -160,7 +160,7 @@ function serverStatusColorAndIcon(status: string){
   if(status === 'init')
     return ['innocent', 'pending'];
   else if(status === 'running')
-    return ['cool', 'cancel'];
+    return ['cool', 'tune'];
   else
     return ['warning2', 'error_outline'];
 }
