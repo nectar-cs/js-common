@@ -419,6 +419,7 @@ export function fontStyles(p, defaults={}){
     push('fontFam', val => `font-family: ${val}`);
     push('hacker', "font-family: \"Courier 10 Pitch\", monospace");
     push('humane', "font-size: 13.5px");
+    push('fair', "font-size: 13.0px");
     push('textAlign', val => `text-align: ${val}`)
   });
 }
