@@ -28,9 +28,11 @@ const FullPage = styled.div`
 
 const AppContent = styled.div`
   position: absolute;
+  //background: red;
   top: ${p => p.theme.dims.topBarHeight};
   left: ${p => p.theme.dims.sideBarWidth};
   bottom: ${p => p.theme.dims.bottomBarHeight};
+  //height: calc(70%);
   //overflow-y: scroll;
   right: 0;
   z-index: -1;

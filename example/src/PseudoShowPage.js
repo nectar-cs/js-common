@@ -21,23 +21,24 @@ export function PseudoShowPage() {
   return(
     <ThemeProvider theme={slickBarTheme}>
       <AppLayout SideBar={CustomSlickBar} BottomBar={CustomBottomBar}>
-        <Layout.Div hipster mt={3} maxWidth='1080px'>
-          <BigHeader
-            graphicName='https://img.icons8.com/color/452/mongodb.png'
-            Subtitle={HeaderSubtitle}
-            Title={HeaderTitle}
-          />
-          <RoutedTabsView
-            routes={routes}
-            prefix='/pseudo-show'
-            seekIndex={0}
-          />
-          <CenterContentView
-            routes={routes}
-            prefix='/pseudo-show'
-          />
-
-        </Layout.Div>
+        <Layout.Page>
+          <Layout.Div hipster mt={3} maxWidth='1080px'>
+            <BigHeader
+              graphicName='https://img.icons8.com/color/452/mongodb.png'
+              Subtitle={HeaderSubtitle}
+              Title={HeaderTitle}
+            />
+            <RoutedTabsView
+              routes={routes}
+              prefix='/pseudo-show'
+              seekIndex={0}
+            />
+            <CenterContentView
+              routes={routes}
+              prefix='/pseudo-show'
+            />
+          </Layout.Div>
+        </Layout.Page>
       </AppLayout>
     </ThemeProvider>
   )

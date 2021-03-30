@@ -77,6 +77,7 @@ export const theme = {
     lightestGrey: "#ebebeb",
     lightGrey: "#d6d6d6",
     hipBlue: "#0c63e7",
+    barelyGrey: "#f6f8fa",
     grey2: "#fafafa",
     grey3: "#DCDCDC",
     grey4: "#e7e1e1",

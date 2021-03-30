@@ -175,7 +175,7 @@ function CheckboxDuo({title, value, callback, info}){
   )
 }
 
-function InputDuo({title, value, error, callback,locked, setLocked,
+function InputDuo({title, value, error, callback, locked, setLocked,
                     lockable, calm, width, ...rest}){
   return(
     <Layout.Div width={width || '100%'}>

@@ -141,6 +141,15 @@ const SlimCodeViewer = styled(BigCodeViewer)`
 /******************************PAGE*****************************/
 
 
+const Page = styled(props => (
+  <Div {...props}>
+    { props.children }
+    <Div height={3} />
+  </Div>
+))`
+  height: 100%;
+  overflow-y: scroll;
+`;
 
 
 
@@ -249,6 +258,7 @@ const Layout = {
   Panel,
   Separator,
   TableFilterBox,
-  PanelBot
+  PanelBot,
+  Page
 };
 export default Layout;
