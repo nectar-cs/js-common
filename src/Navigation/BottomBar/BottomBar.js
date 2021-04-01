@@ -7,7 +7,6 @@ import useOutsideAlerter from "../../utils/useOutsideAlerter";
 
 function View({children}){
   const themeContext = useContext(ThemeContext);
-  console.log({themeContext});
   return(
     <Layout.Div
       left={themeContext.dims.sideBarWidth}
@@ -82,7 +81,7 @@ function PortForwardInstanceView(props: PortForwardProps){
   useOutsideAlerter(menuRef, _ => setIsMenuOpen(false));
 
   useEffect(_ => {
-    console.log("HOT CHANGED " + isHot.toString());
+    // console.log("HOT CHANGED " + isHot.toString());
     if(isHot){
       setIsMenuOpen(true);
     }

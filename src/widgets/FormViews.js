@@ -116,7 +116,6 @@ function FlatListInputGroup(props){
   )
 }
 
-
 function ListInputGroup(props){
   const {addCallback, removeCallback, changeCallback, items, child} = props;
   return(
@@ -396,13 +395,13 @@ function InfoTipView({title, text, children, emotion, tabbed, link, cta}){
       { title && (
         <Layout.Div flex align='center' mb={.5}>
           <Text.Icon name='help_outline' emotion={emotion} size={.8}/>
-          <Text.P mt={.1} ml={.7} fontSize='14px' bold calm>{title}</Text.P>
+          <Text.P mt={.1} ml={.7} fair bold calm>{title}</Text.P>
         </Layout.Div>
       ) }
       { text &&
       <Text.P
         calm={false}
-        humane
+        fair
       >
         { text }
       </Text.P>
