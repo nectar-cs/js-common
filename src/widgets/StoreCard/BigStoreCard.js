@@ -8,9 +8,12 @@ import {heavyShadow} from "../../styles/constants";
 import ModestLink from "../ModestLink";
 import Clickable from "../Clickable";
 
+const height = '210px';
+const longWidth = `calc((${height} * 2) + (12px * 2) + (0.5px * 2))`;
+
 export function BigStoreCard(props){
   const { app, mkPath, forceDark } = props;
-  const { logoUrl, activePromo, isPublic } = app;
+  const { logoUrl, activePromo, isPublic, price } = app;
 
   let special = null;
   if(activePromo)
@@ -25,33 +28,36 @@ export function BigStoreCard(props){
       mt={2}
       mr={2}
       style={{display: 'inline-block'}}
-      width={!!special ? '484px' : '230px'}
-      height='230px'
+      width={special ? longWidth : height}
+      height={height}
       hov_point
       relative
-      sexyShadow={!!dark}>
+      // sexyShadow={!!dark}
+    >
       <BkgContainer dark={dark} logoUrl={logoUrl}>
         <Clickable action={mkPath(app)}>
-          <Layout.Div
-            mt={1.5}
-            ml={.7}>
-            <TitleView
-              app={app}
-              dark={dark}
-              special={special}
-            />
-            <LogoAndSummaryView
-              app={app}
-              dark={dark}
-              special={special}
-            />
-            <Text.BorderedStatusTag
-              mt={1}
-              borderEmotion={dark ? 'lightGrey' : 'lightGrey'}
-              emotion={dark ? 'white' : 'primaryBkg'}>
-              $1,000 - $10,000
-            </Text.BorderedStatusTag>
-          </Layout.Div>
+          <TitleView
+            app={app}
+            dark={dark}
+            special={special}
+          />
+          <LogoAndSummaryView
+            app={app}
+            dark={dark}
+            special={special}
+          />
+          <Text.StatusTag
+            mt='15px'
+            borderEmotion={dark ? 'transparent' : 'lightGrey'}
+            borderWidth={'.5px'}
+            emotion={dark ? 'white' : null}
+            bkgEmotion={dark ? 'black' : 'calmBeige'}
+            ptb='4px'
+            pb='3px'
+
+          >
+            { price }
+          </Text.StatusTag>
         </Clickable>
       </BkgContainer>
     </Layout.Div>
@@ -59,21 +65,19 @@ export function BigStoreCard(props){
 }
 
 function BkgContainer({logoUrl, dark, children}){
-  const bkgEmotion = dark ? "#252a34" : 'white';
   return(
-    <RepeatingImages
-      src={logoUrl}
-      sofa>
-      <OpaqueCover
-        bkgEmotion={bkgEmotion}
-        padded
-        opacity={!dark && .96}
-        sexyShadow
-        borderRadius='5px'
-        shadowOpacity={dark ? null : '.1'}>
-        { children }
-      </OpaqueCover>
-    </RepeatingImages>
+    <Layout.Div
+      pt='15px'
+      pb='15px'
+      plr='16px'
+      hov_bkgEmotion={dark ? 'black' : 'calmBeige'}
+      bkgEmotion={dark ? 'primaryBkg' : 'white'}
+      borderRadius='4.5px'
+      borderWidth={'.5px'}
+      borderEmotion='lightGrey'
+      >
+      { children }
+    </Layout.Div>
   )
 }
 
@@ -84,6 +88,7 @@ function TitleView({app, dark, special}){
     <Layout.Div flex style={{justifyContent: 'space-between'}}>
       <Layout.Div>
         <Text.H2
+          fontSize={'15px'}
           bold
           emotion={dark ? 'contrastFont' : 'primaryBkg'}>
           { name }
@@ -97,7 +102,7 @@ function TitleView({app, dark, special}){
       </Layout.Div>
       <Layout.Div>
         { !!special &&
-        <Layout.Div flex align={'center'}>
+        <Layout.Div flex align='center'>
           <Text.P
             bold
             emotion='lightGrey'>
@@ -119,17 +124,18 @@ function TitleView({app, dark, special}){
 function LogoAndSummaryView({app, dark, special}){
   const { logoUrl, info, oneLiner } = app;
   return(
-    <Layout.Div flex mt={1.4}>
+    <Layout.Div flex mt='16px'>
       <Img.Img
-        height='80px'
+        height='63px'
         src={logoUrl}
       />
       <Text.P
         clamp={3}
         calm={!dark}
         emotion={dark && 'lightGrey'}
-        maxHeight={'80px'}
-        mt={.7}
+        maxHeight='80px'
+        fontSize='12px'
+        mt='3px'
         ml={1}>
         { special ? info :  oneLiner }
       </Text.P>

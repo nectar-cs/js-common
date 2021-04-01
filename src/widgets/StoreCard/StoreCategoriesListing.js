@@ -28,12 +28,7 @@ export default function StoreCategoriesListing({categories, View, HeaderView, ..
 
 function DefaultHeaderView({children}) {
   return(
-    <TextOverLineSubtitle
-      fontSize='22px'
-      bold
-      text={children}
-      lineProps={{bkgEmotion: 'primaryColor', height: '1.5px'}}
-    />
+    <Text.H1 mb='6px' fontSize='22px'>{children}</Text.H1>
   )
 }
 

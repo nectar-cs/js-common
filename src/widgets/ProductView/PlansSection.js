@@ -37,10 +37,12 @@ function PlanSummaryView({plan, callback}){
   return(
     <Layout.Div
       width='100%'
-      sexyShadow
+      // sexyShadow
       ptb={2}
+      lightBorder
       plr={2}
-      shadowOpacity={.1}>
+      // shadowOpacity={.1}
+    >
       <Text.H1>{name}</Text.H1>
       <Text.P mt={1} calm>{plan.info}</Text.P>
       <Layout.Div mt={1.9}>
@@ -80,10 +82,11 @@ function PlanOptionView({plan, isSelected, callback}){
       mt={1.5}
       onClick={callback}
       hov_point
-      dented
+      borderRadius='3.5px'
       ptb={1.4}
       plr={1.2}
-      bkgEmotion={isSelected ? 'primaryColor' : 'transparent'}>
+      bkgEmotion={isSelected ? 'primaryColor' : 'transparent'}
+    >
       <Layout.Div flex style={{justifyContent: 'space-between'}}>
         <Text.H1
           bold

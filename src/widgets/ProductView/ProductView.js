@@ -27,7 +27,8 @@ export default function ProductView({callback}){
         left='330px'
         pb='60px'
         mt={2}
-        maxWidth='840px'>
+        maxWidth='840px'
+      >
         <PromoSection/>
 
         <Text.H1 mt={3.5} mb={2}>Kubernetes Requirements</Text.H1>
@@ -36,10 +37,10 @@ export default function ProductView({callback}){
           warning={requirementsWarning}
         />
 
-        <Text.H1 mt={6.5} mb={2}>Control Panel Functionality</Text.H1>
+        <Text.H1 mt={6.5} mb={2}>Application Manager Features</Text.H1>
         <RequirementsTable requirements={app.kamaCapabilities}/>
 
-        <Text.H1 mt={5} mb={2.5}>Standard RBAC Requests</Text.H1>
+        <Text.H1 mt={5} mb={2.5}>Application Manager RBAC Requests</Text.H1>
         <PermsView
           simplifiedPerms={AppListingUtils.rbac2simplified(app.rbacPolicies)}
         />
@@ -48,7 +49,7 @@ export default function ProductView({callback}){
         <ResourceBlocksView clusterFootprint={app.clusterFootprint}/>
 
         <Layout.Div height={3}/>
-        <BenchmarksView/>
+        {/*<BenchmarksView/>*/}
 
         <Text.H1 fontSize='28px' mt={6} mb={4}>Plans</Text.H1>
         <PlansSection callback={callback}/>

@@ -14,11 +14,6 @@ export default function CategoriesBar({items}){
             onClick={item.callback}
             hov_point
             hov_bkgEmotion='soothing'>
-            <Text.Icon
-              size={.9}
-              name={item.icon}
-              emotion={i === 0 ? 'warning2' : null}
-            />
             <Text.H4
               fontSize='13.5px'
               bold={i === 0}
