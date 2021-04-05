@@ -5,7 +5,6 @@ import Layout from "../../styles/layout-styles";
 import Text from "../../styles/text-styles";
 import Img from "../../styles/img-styles";
 import {heavyShadow} from "../../styles/constants";
-import ModestLink from "../ModestLink";
 import Clickable from "../Clickable";
 
 const height = '210px';

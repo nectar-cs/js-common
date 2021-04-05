@@ -109,6 +109,23 @@ const StatusTag = styled(P)`
   display: inline-block;
 `;
 
+function ModestTag({children, ...props}){
+  return(
+    <StatusTag
+      bold
+      pt='2px'
+      pb='0px'
+      borderRadius='2.5px'
+      plr='7px'
+      fontSize='10.5px'
+      emotion='white'
+      {...props}
+    >
+      { children }
+    </StatusTag>
+  )
+}
+
 const BorderedStatusTag = styled(StatusTag)`
   ${p => marginsAndPadding('padding', p, {
     pt: '2.4px', plr: '8px', pb: '0.4px'
@@ -190,6 +207,7 @@ const Text = {
   CleanStatus,
   StatusTag,
   BoldRef,
+  ModestTag,
   BorderedStatusTag
 };
 

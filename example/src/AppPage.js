@@ -141,6 +141,7 @@ function IntroPanel(){
           <Text.StatusTag>Status Tag</Text.StatusTag>
           <Text.StatusTag blink ml={1} emotion='cool'>Blinker</Text.StatusTag>
           <Text.BorderedStatusTag ml={1}>Bordered</Text.BorderedStatusTag>
+          <Text.ModestTag ml={1}>Modesty</Text.ModestTag>
         </Layout.Div>
         <Layout.Div mt={1.2} flex align='center'>
           <Button.Button>Normal Btn</Button.Button>
