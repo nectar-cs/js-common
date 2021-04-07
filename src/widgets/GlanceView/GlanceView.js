@@ -237,7 +237,9 @@ function name2comp(name: string) {
 }
 
 function statusCopy(humanize, status){
-  return humanize ? humanizeString(status) : status;
+  if(typeof status === 'string')
+    return humanize ? humanizeString(status) : status;
+  else return '';
 }
 
 const defaultStatusLegend = {
