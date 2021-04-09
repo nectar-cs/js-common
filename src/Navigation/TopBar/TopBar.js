@@ -8,6 +8,9 @@ import ModestLink from "../../widgets/ModestLink";
 import useOutsideAlerter from "../../utils/useOutsideAlerter";
 import LogoBox from "../../widgets/LogoBox";
 import useHover from "../../utils/useHover";
+// noinspection NpmUsedModulesInstalled
+import styled from 'styled-components'
+
 
 export default function TopBar(props) {
   const { rightSideButtons, loginCallback } = props;
@@ -128,7 +131,10 @@ function RightSideButton({descriptor}){
   const menuRef = useRef(null);
   useOutsideAlerter(menuRef, _ => setMenuOpen(false));
 
-  const {  href, actions,  icon, newTab } = descriptor;
+  const { href, actions, icon, newTab, layout, cols } = descriptor;
+
+  const MenuView = layout === 'big' ? BigRightSideButtonMenu :
+                                    RightSideButtonMenu;
 
   return(
     <Layout.Div
@@ -158,13 +164,128 @@ function RightSideButton({descriptor}){
         />
       )}
       { descriptor.actions && isMenuOpen && (
-        <RightSideButtonMenu
+        <MenuView
+          cols={cols}
           actions={actions}
         />
       )}
     </Layout.Div>
   )
 }
+
+const size = '330px';
+
+function BigRightSideButtonMenu({actions, cols}){
+  return(
+    <Layout.Div
+      heavyShadow
+      lightBorder
+      bkgEmotion='white'
+      top='58px'
+      right='20px'
+      width={`calc(${size} * ${cols || 2} + 50px)`}
+      // minHeight='300px'
+      pb='30px'
+      pl='29px'
+      plr='19px'
+      dented
+      flex
+      style={{position: 'fixed', flexWrap: 'wrap', justifyContent: 'space-between'}}
+    >
+      { actions.map((action, i) =>  (
+        <Fragment key={i}>
+          <BigMenuItem action={action}/>
+        </Fragment>
+      )) }
+    </Layout.Div>
+  )
+}
+
+function BigMenuItem({action, _ref}){
+  const [hoverRef, isHovered] = useHover();
+
+  const { path, icon, name, subtitle } = action;
+  return(
+    <ModestLink to={path}>
+      <Layout.Div
+        mt='36px'
+        mb='8px'
+        width={size}
+        ref={hoverRef}
+        flex
+        align='center'
+      >
+        <Text.Icon
+          emotion={isHovered ? 'warning2' : 'coffee'}
+          name={icon}
+          size={1.2}
+        />
+        <Layout.Div ml='10px' mt='5px'>
+          <Text.H3
+            bold
+            hoverBold
+            calm={!isHovered}
+            >
+            {name}
+          </Text.H3>
+          <Text.P
+            hoverBold
+            mt='5px'
+            calm
+            >
+            {subtitle}
+          </Text.P>
+
+        </Layout.Div>
+      </Layout.Div>
+    </ModestLink>
+  )
+}
+
+// function BigMenuItem({action, _ref}){
+//   const [hoverRef, isHovered] = useHover();
+//
+//   const { path, icon, name, subtitle } = action;
+//   return(
+//     <ModestLink to={path}>
+//       <Layout.Div
+//         mt='39px'
+//         // mb='15px'
+//         width={size}
+//         ref={hoverRef}
+//         flex
+//         align='center'
+//       >
+//         <Text.Icon
+//           emotion={isHovered ? 'warning2' : 'primaryColor'}
+//           // emotion='warning2'
+//           name={icon}
+//           size={0.78}
+//           // bold={isHovered}
+//         />
+//         <Text.H3
+//           // bold={isHovered}
+//           bold
+//           ml='10px'
+//           hoverBold
+//         >
+//           {name}
+//         </Text.H3>
+//
+//       </Layout.Div>
+//       <Layout.Div mt='5px'>
+//         <Text.P
+//           hoverBold
+//           mt='5px'
+//           calm
+//         >
+//           {subtitle}
+//         </Text.P>
+//
+//       </Layout.Div>
+//     </ModestLink>
+//   )
+// }
 
 function RightSideButtonMenu({actions}){
   return(
@@ -175,7 +296,7 @@ function RightSideButtonMenu({actions}){
       minWidth='132px'
       ptb='20px'
       plr='15px'
-      rounded
+      dented
       style={{position: 'fixed'}}
       >
       { actions.map((action, i) =>  (
@@ -185,15 +306,14 @@ function RightSideButtonMenu({actions}){
             <Layout.Div
               mt={1}
               mb={1}
-              height={'.5px'}
-              bkgEmotion={'primaryColor'}
+              height={'1px'}
+              bkgEmotion='primaryColor'
               style={{opacity: '0.3'}}
             />
           )}
         </Fragment>
       )) }
     </Layout.Div>
-
   )
 }
 
@@ -208,10 +328,12 @@ function MenuItem({action, _ref}){
         flex
         align='center'>
         <Text.Icon
+          // emotion='primaryColor'
           emotion='warning2'
           name={icon}
           size={.73}
-          style={{opacity: isHovered ? '1.0' : '0.7'}}
+          bold={isHovered}
+          // style={{opacity: isHovered ? '1.0' : '1.0'}}
         />
         <Text.P
           bold={isHovered}

@@ -37,9 +37,43 @@ export default function TopBarPage() {
 
 function MyTopBar(){
   return(
-    <TopBar title={'Demo Page'} subtitle={'Nectar GUI'}/>
+    <TopBar
+      title='Demo Page'
+      subtitle='Nectar GUI'
+      rightSideButtons={rightSideButtons}
+    />
   )
 }
+
+const rightSideButtons = [
+  {
+    name: "Kadabra",
+    layout: 'big',
+    cols: 3,
+    actions: [
+      {
+        name: "Applications",
+        icon: 'apps',
+        subtitle: "Your KAMA-backed published applications"
+      },
+      {
+        name: "Installs",
+        icon: 'insights',
+        subtitle: "Telemetry for all installed applications"
+      },
+      {
+        name: "Events",
+        icon: 'event_note',
+        subtitle: "Telemetry for all installed applications"
+      },
+      {
+        name: "Errors",
+        icon: 'bug_report',
+        subtitle: "Telemetry for all installed applications"
+      }
+    ]
+  }
+]
 
 const dummyInfo = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
