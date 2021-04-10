@@ -54,6 +54,9 @@ const CuckIcon = styled.i`
     fontFam: "'Material Icons', serif"
   })};
   color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
+  &:hover {
+    color: ${p => easyColor(p, p.hov_emotion, colorKeys.primaryColor)} !important;
+  }
 `;
 
 function Icon({name, ...props}){

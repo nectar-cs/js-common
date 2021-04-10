@@ -216,11 +216,11 @@ function BigMenuItem({action, _ref}){
         align='center'
       >
         <Text.Icon
-          emotion={isHovered ? 'warning2' : 'coffee'}
+          emotion={isHovered ? 'warning2' : 'secondaryColor'}
           name={icon}
           size={1.2}
         />
-        <Layout.Div ml='10px' mt='5px'>
+        <Layout.Div ml='10px' mt='3px'>
           <Text.H3
             bold
             hoverBold
