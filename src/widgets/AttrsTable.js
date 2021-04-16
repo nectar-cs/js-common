@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Table from "../styles/table-styles";
@@ -43,20 +43,25 @@ function LocalTable({children, ...rest}){
   )
 }
 
-function NameCell({title, subtitle, width}){
+function NameCell({title, subtitle, width, children}){
   return(
     <td style={{width}}>
       <Layout.Div style={{width, padding: "10px 10px 10px 0"}}>
-        <Text.P fair bold style={{whiteSpace: 'nowrap'}}>
-          { title }
-        </Text.P>
+        { (children || []).length === 0 && (
+          <Fragment>
+            <Text.P fair bold style={{whiteSpace: 'nowrap'}}>
+              { title }
+            </Text.P>
 
-        <Text.P
-          calm
-          mt={.4}
-        >
-          { subtitle }
-        </Text.P>
+            <Text.P
+              calm
+              mt={.4}
+            >
+              { subtitle }
+            </Text.P>
+          </Fragment>
+        ) }
+        { children }
       </Layout.Div>
     </td>
   )
