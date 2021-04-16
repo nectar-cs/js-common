@@ -70,6 +70,7 @@ export const theme = {
     comfy: "#6153cc",
     formBorderBlue: "#b2d1f3",
     calmBeige: "#F5F1ED",
+    calmBeige2: "#efe9e3",
     soothing: "#f7f6f6",
     primaryBkg: "#2a2b2a",
     panelGrey: "#f7f6f6",

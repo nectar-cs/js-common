@@ -38,8 +38,8 @@ export default function Stepper(props: Props){
                 { i < onStepIndex &&
                   <Text.Icon
                     mt={.19}
-                    name={'done'}
-                    emotion={'contrastFont'}
+                    name='done'
+                    emotion='contrastFont'
                     size={.4}
                     bold
                   />

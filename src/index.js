@@ -54,6 +54,7 @@ import NiceFloatingPlusButton from "./widgets/NiceFloatingPlusButton";
 import {GraphicButton} from "./widgets/CheckPill/GraphicButton";
 import useHover from "./utils/useHover";
 import BottomBar from "./Navigation/BottomBar/BottomBar";
+import AttrsTable from "./widgets/AttrsTable";
 
 export {
   Loader,
@@ -71,6 +72,7 @@ export {
   Input,
   colorKeys,
   CategoriesBar,
+  AttrsTable,
   theme,
   inverseTheme,
   MosaicBaseStyle,

@@ -55,7 +55,7 @@ const CuckIcon = styled.i`
   })};
   color: ${p => easyColor(p, p.emotion, colorKeys.primaryColor)} !important;
   &:hover {
-    color: ${p => easyColor(p, p.hov_emotion, colorKeys.primaryColor)} !important;
+    color: ${p => easyColor(p, p.hov_emotion, p.emotion)} !important;
   }
 `;
 
