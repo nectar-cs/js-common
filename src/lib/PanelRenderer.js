@@ -202,7 +202,7 @@ function logical2GridCoords(x, y, w){
     gridColumnStart: x + 1,
     gridColumnEnd: x + 1 + w,
     gridRowStart: y + 1,
-    gridRowEnd: y + 1 + w,
+    gridRowEnd: y + 1 + 1,
   });
 }
 
@@ -241,9 +241,9 @@ function genBlockGridCoordinates(descs){
 const BlockGridCss = styled.div`
    width: 100%;
    display: grid;
-   grid-template-columns: repeat(1fr 1fr 1fr 1fr);
-   grid-column-gap: 30px;
-   grid-row-gap: 30px;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-column-gap: 26px;
+   grid-row-gap: 24px;
 `;
 
 function BlockGrid({descs}){

@@ -29,8 +29,9 @@ export default function ConcernsShowcasePage(){
         <BlockGrid
           descs={[
             spec.websiteBlock,
-            spec.websiteBlock2
-            // spec.wideBlock
+            spec.websiteBlock2,
+            // spec.websiteBlock2
+            spec.wideBlock
           ]}
         />
       </Layout.Div>
