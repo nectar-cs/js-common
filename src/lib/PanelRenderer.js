@@ -29,6 +29,7 @@ function extractBlockSize(sectionDescs){
 
 function BlockRenderer({desc, pos}){
   const { title, sections, style } = desc;
+  const ownWidth = extractBlockSize(sections);
 
   return(
     <Layout.Div
@@ -51,9 +52,10 @@ function BlockRenderer({desc, pos}){
         {...style}
       >
         { sections.map((section, i) => (
-          <BaseRenderer
+          <SectionRenderer
             key={i}
             desc={section}
+            parentSize={ownWidth}
           />
         ))}
       </Layout.Div>
@@ -104,13 +106,16 @@ function LineRenderer({desc, recs}){
   )
 }
 
-function SectionRenderer({desc, recs}){
-  const { elements, style } = desc;
+function SectionRenderer({desc, parentSize, recs}){
+  const { elements, style, width } = desc;
+
+  const weight = parseInt(width || '1');
+
   return(
     <Layout.Div
       flex
       height='100%'
-      width={'100%'}
+      width={`calc(100% * ${weight / parentSize})`}
       style={{flexDirection: 'column'}}
       jc='center'
       // bkgEmotion={'red'}
@@ -212,10 +217,7 @@ function genBlockGridCoordinates(descs){
   for(let desc of descs){
     const width = extractBlockSize(desc.sections);
     const widthAvail = maxBlocksPerRow - x;
-    if(width <= widthAvail){
-      console.log("Good coord ")
-      console.log({x, y, width, widthAvail});
-    } else {
+    if(!(width <= widthAvail)){
       console.log(`Danger bad grid alignment!`);
       console.log({x, y, width, widthAvail});
       x = 0;
@@ -225,7 +227,6 @@ function genBlockGridCoordinates(descs){
     coordinateSet.push(logical2GridCoords(x, y, width));
 
     const remainingOnLine = widthAvail - (x + width);
-    console.log({remainingOnLine});
 
     if(remainingOnLine > 0){
       x += width;

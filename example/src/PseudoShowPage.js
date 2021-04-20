@@ -25,6 +25,7 @@ export function PseudoShowPage() {
         <Layout.Page>
           <Layout.Div hipster mt={3} maxWidth='1250px'>
             <BigHeader
+              height='60px'
               graphicName='https://img.icons8.com/color/452/mongodb.png'
               Subtitle={HeaderSubtitle}
               Title={HeaderTitle}
@@ -91,7 +92,7 @@ function CustomBottomBar(){
 
 function HeaderTitle(){
   return(
-    <Layout.Div flex mt={1.4} align='center'>
+    <Layout.Div flex mt='3px' align='center'>
       <Clickable to='/'>
         <Text.H1
           hov_point
