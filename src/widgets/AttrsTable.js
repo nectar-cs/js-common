@@ -82,7 +82,8 @@ export default {
   View,
   Table: LocalTable,
   NameCell,
-  ValueCell
+  ValueCell,
+  PanelTop
 }
 
 NameCell.defaultProps = {

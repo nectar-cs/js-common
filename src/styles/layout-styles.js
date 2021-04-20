@@ -6,7 +6,7 @@ import {
   heightAndWidth,
   overflowScroll,
   borderStyles,
-  marginsAndPadding, colorStyles
+  marginsAndPadding, colorStyles, multiMode
 } from './constants'
 
 
@@ -24,6 +24,7 @@ const Div = styled.div`
   display: ${p => displayType(p)};
   align-items: ${p => p.align || 'flex-start'};
   ${p => central(p)};
+  ${p => flexing(p)};
   ${p => center(p)};
   ${p => hipster(p)};
   ${p => absHipster(p)};
@@ -219,7 +220,11 @@ function absHipster(p, defaults={}){
   }
 }
 
-
+function flexing(p, defaults={}){
+  return multiMode({...defaults, ...p}, push => {
+    push('jc', val => `justify-content: ${val}`);
+  })
+}
 
 function center(p){
   if(p.center){

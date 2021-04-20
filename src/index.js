@@ -55,12 +55,18 @@ import {GraphicButton} from "./widgets/CheckPill/GraphicButton";
 import useHover from "./utils/useHover";
 import BottomBar from "./Navigation/BottomBar/BottomBar";
 import AttrsTable from "./widgets/AttrsTable";
+import ConcernRow from "./widgets/ConcernRow";
+import PanelRenderer from "./lib/PanelRenderer";
+
+
 
 export {
   Loader,
   Clickable,
+  PanelRenderer,
   useHover,
   NiceEmptyView,
+  ConcernRow,
   useReloadSalt,
   ProductView,
   Button,

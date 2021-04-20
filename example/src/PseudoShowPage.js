@@ -16,6 +16,7 @@ import {
   Clickable
 } from 'nectar-gui'
 import {GlancesShowcasePage} from "./GlancesShowcasePage";
+import ConcernsShowcasePage from "./ConcernsShowcasePage";
 
 export function PseudoShowPage() {
   return(
@@ -46,13 +47,22 @@ export function PseudoShowPage() {
 
 const routes = [
   {
-    path: '/',
+    path: '/glances',
     name: 'Glances',
     longName: 'Glances Demo',
     icon: "apps",
     component: GlancesShowcasePage,
     isDefault: true
+  },
+  {
+    path: '/concerns',
+    name: 'Concerns',
+    longName: 'Glances Demo',
+    icon: "insights",
+    component: ConcernsShowcasePage,
+    isDefault: false
   }
+
 ]
 
 function HeaderSubtitle(){
