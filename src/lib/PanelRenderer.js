@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Img from "../styles/img-styles";
@@ -26,21 +27,17 @@ function extractBlockSize(sectionDescs){
   ), 0);
 }
 
-const blockWidth = '240px';
-const sepWidth = '30px';
-
-function BlockRenderer({desc, recs}){
+function BlockRenderer({desc, pos}){
   const { title, sections, style } = desc;
-  const size = extractBlockSize(sections);
 
   return(
     <Layout.Div
-      width={`calc(${size} * 240px)`}
       pt='15px'
       plr='16px'
       borderRadius='2.5px'
       borderWidth='.5px'
       borderEmotion='lightGrey'
+      style={pos}
     >
       <Text.H3>
         { title }
@@ -52,7 +49,6 @@ function BlockRenderer({desc, recs}){
         pt='7px'
         pb='22px'
         {...style}
-        {...recs}
       >
         { sections.map((section, i) => (
           <BaseRenderer
@@ -199,6 +195,74 @@ function desc2Renderer(desc){
     return descToRendererMapping[desc.type];
 }
 
+const maxBlocksPerRow = 4;
+
+function logical2GridCoords(x, y, w){
+  return({
+    gridColumnStart: x + 1,
+    gridColumnEnd: x + 1 + w,
+    gridRowStart: y + 1,
+    gridRowEnd: y + 1 + w,
+  });
+}
+
+function genBlockGridCoordinates(descs){
+  let [x, y] = [0, 0];
+  const coordinateSet = [];
+  for(let desc of descs){
+    const width = extractBlockSize(desc.sections);
+    const widthAvail = maxBlocksPerRow - x;
+    if(width <= widthAvail){
+      console.log("Good coord ")
+      console.log({x, y, width, widthAvail});
+    } else {
+      console.log(`Danger bad grid alignment!`);
+      console.log({x, y, width, widthAvail});
+      x = 0;
+      y += 1;
+    }
+
+    coordinateSet.push(logical2GridCoords(x, y, width));
+
+    const remainingOnLine = widthAvail - (x + width);
+    console.log({remainingOnLine});
+
+    if(remainingOnLine > 0){
+      x += width;
+    } else {
+      x = 0;
+      y += 1;
+    }
+  }
+  console.table(coordinateSet);
+  return coordinateSet;
+}
+
+const BlockGridCss = styled.div`
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(1fr 1fr 1fr 1fr);
+   grid-column-gap: 30px;
+   grid-row-gap: 30px;
+`;
+
+function BlockGrid({descs}){
+  const coordinateSet = genBlockGridCoordinates(descs);
+  return(
+    <BlockGridCss>
+      { descs.map((desc, i) => {
+        return(
+          <BlockRenderer
+            key={i}
+            desc={desc}
+            pos={coordinateSet[i]}
+          />
+        )
+      }) }
+    </BlockGridCss>
+  )
+}
+
 const descToRendererMapping = {
   Block: BlockRenderer,
   Section: SectionRenderer,
@@ -212,5 +276,5 @@ const descToRendererMapping = {
 };
 
 export default {
-  BlockRenderer
+  BlockGrid
 }

@@ -3,7 +3,7 @@ import { MenuView, Layout, PanelRenderer } from "nectar-gui"
 
 import spec  from  './spec'
 
-const BlockRenderer = PanelRenderer.BlockRenderer;
+const BlockGrid = PanelRenderer.BlockGrid;
 
 
 export default function ConcernsShowcasePage(){
@@ -26,13 +26,13 @@ export default function ConcernsShowcasePage(){
         bottom={0}
         left='230px'
       >
-        <Layout.Div flex>
-          <BlockRenderer desc={spec.websiteBlock}/>
-          <Layout.Div width='30px'/>
-          <BlockRenderer desc={spec.websiteBlock2}/>
-        </Layout.Div>
-        <Layout.Div height='30px'/>
-        <BlockRenderer desc={spec.wideBlock}/>
+        <BlockGrid
+          descs={[
+            spec.websiteBlock,
+            spec.websiteBlock2
+            // spec.wideBlock
+          ]}
+        />
       </Layout.Div>
     </Layout.Div>
   )
