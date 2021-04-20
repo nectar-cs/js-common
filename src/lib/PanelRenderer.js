@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Img from "../styles/img-styles";
+import {TimeseriesGraphView} from './TimeseriesGraphView'
 
 function BaseRenderer({desc, recs}){
   const Renderer = desc2Renderer(desc);
@@ -25,9 +26,13 @@ function extractBlockSize(sectionDescs){
   ), 0);
 }
 
+const blockWidth = '240px';
+const sepWidth = '30px';
+
 function BlockRenderer({desc, recs}){
   const { title, sections, style } = desc;
   const size = extractBlockSize(sections);
+
   return(
     <Layout.Div
       width={`calc(${size} * 240px)`}
@@ -57,6 +62,17 @@ function BlockRenderer({desc, recs}){
         ))}
       </Layout.Div>
     </Layout.Div>
+  )
+}
+
+function TimeseriesGraphRenderer({desc, recs}){
+  const { style, data } = desc;
+  return(
+    <TimeseriesGraphView
+      data={data}
+      period={null}
+      colors={null}
+    />
   )
 }
 
@@ -98,8 +114,10 @@ function SectionRenderer({desc, recs}){
     <Layout.Div
       flex
       height='100%'
+      width={'100%'}
       style={{flexDirection: 'column'}}
       jc='center'
+      // bkgEmotion={'red'}
       {...style}
       {...recs}
     >
@@ -115,7 +133,7 @@ function SectionRenderer({desc, recs}){
 
 function TextRenderer({desc, recs}){
   const { text, style } = desc;
-  return <Text.P {...style} {...recs}>{text}</Text.P>;
+  return <Text.P {...recs} {...style}>{text}</Text.P>;
 }
 
 function TagRenderer({desc, recs}){
@@ -165,11 +183,11 @@ function ThreePartHeaderRenderer({desc, recs}) {
       <Layout.Div ml='9px'>
         <BaseRenderer
           desc={title}
-          recs={{...downRecs, fontSize: "14px"}}
+          recs={{...downRecs, fair: true}}
         />
         <BaseRenderer
           desc={subtitle}
-          recs={downRecs}
+          recs={{...downRecs, mt: '2px'}}
         />
       </Layout.Div>
     </Layout.Div>
@@ -189,7 +207,8 @@ const descToRendererMapping = {
   Tag: TagRenderer,
   Image: ImageRenderer,
   Line: LineRenderer,
-  Icon: IconRenderer
+  Icon: IconRenderer,
+  TimeseriesGraph: TimeseriesGraphRenderer
 };
 
 export default {
