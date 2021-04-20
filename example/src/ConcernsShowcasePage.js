@@ -16,7 +16,7 @@ export default function ConcernsShowcasePage(){
         seekIndex={4}
         prefix='/pseudo-show'
         routes={fakeRoutes}
-        width='134px'
+        width='124px'
       />
 
       <Layout.Div
@@ -24,14 +24,15 @@ export default function ConcernsShowcasePage(){
         right='0px'
         top='30px'
         bottom={0}
-        left='230px'
+        left='208px'
       >
         <BlockGrid
           descs={[
             spec.websiteBlock,
             spec.websiteBlock2,
             // spec.websiteBlock2
-            spec.wideBlock
+            spec.wideBlock,
+            spec.websiteBlock2,
           ]}
         />
       </Layout.Div>

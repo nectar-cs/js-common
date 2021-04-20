@@ -4,6 +4,7 @@ import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Img from "../styles/img-styles";
 import {TimeseriesGraphView} from './TimeseriesGraphView'
+import DonutView from "./DonutView";
 
 function BaseRenderer({desc, recs}){
   const Renderer = desc2Renderer(desc);
@@ -264,6 +265,13 @@ function BlockGrid({descs}){
   )
 }
 
+function DonutRenderer(){
+  return(
+    <DonutView
+    />
+  )
+}
+
 const descToRendererMapping = {
   Block: BlockRenderer,
   Section: SectionRenderer,
@@ -273,6 +281,7 @@ const descToRendererMapping = {
   Image: ImageRenderer,
   Line: LineRenderer,
   Icon: IconRenderer,
+  Donut: DonutRenderer,
   TimeseriesGraph: TimeseriesGraphRenderer
 };
 

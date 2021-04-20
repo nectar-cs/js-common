@@ -124,22 +124,33 @@ const wideBlock = {
         {
           type: "Text",
           text: "2.3 Cores",
-          style: { fontSize: '20px', centered: true }
+          style: { fontSize: '20px', centered: true, bold: true }
+        },
+        {
+          type: "Text",
+          text: "73% of 3.3 Cores Avail",
+          style: { centered: true, mt: '4px' }
+        }
+      ]
+    },
+    {
+      type: "Section",
+      width: 2,
+      style: { pr: '40px' },
+      elements: [
+        {
+          type: 'TimeseriesGraph',
+          data: timeSeriesData
         }
       ]
     },
     {
       type: "Section",
       width: 1,
-      elements: []
-    },
-    {
-      type: "Section",
-      width: 2,
       elements: [
         {
-          type: 'TimeseriesGraph',
-          data: timeSeriesData
+          type: "Donut",
+
         }
       ]
     }
