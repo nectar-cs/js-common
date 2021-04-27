@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled from 'styled-components'
 import Layout from "../styles/layout-styles";
 import Text from "../styles/text-styles";
 import Img from "../styles/img-styles";
 import {TimeseriesGraphView} from './TimeseriesGraphView'
 import DonutView from "./DonutView";
+import ModestLink from "../widgets/ModestLink";
 
 function BaseRenderer({desc, recs}){
   const Renderer = desc2Renderer(desc);
@@ -41,9 +42,11 @@ function BlockRenderer({desc, pos}){
       borderEmotion='lightGrey'
       style={pos}
     >
-      <Text.H3>
-        { title }
-      </Text.H3>
+      <ModestLink to={`/pseudo-show/concerns/detail/foo`}>
+        <Text.H3>
+          { title }
+        </Text.H3>
+      </ModestLink>
       <Layout.Div
         flex
         height='120px'
@@ -64,14 +67,23 @@ function BlockRenderer({desc, pos}){
   )
 }
 
+function CondWrapper({desc, recs, children}){
+  const style = { ...(recs || {}), ...(desc.style || {})};
+  const hasStyle = Object.entries(style).length > 0;
+  if(hasStyle) return <Layout.Div {...style}>{ children }</Layout.Div>;
+  else return <Fragment>{children}</Fragment>;
+}
+
 function TimeseriesGraphRenderer({desc, recs}){
-  const { style, data } = desc;
+  const { data } = desc;
   return(
-    <TimeseriesGraphView
-      data={data}
-      period={null}
-      colors={null}
-    />
+    <CondWrapper desc={desc} recs={recs}>
+      <TimeseriesGraphView
+        data={data}
+        period={null}
+        colors={null}
+      />
+    </CondWrapper>
   )
 }
 
@@ -265,10 +277,11 @@ function BlockGrid({descs}){
   )
 }
 
-function DonutRenderer(){
+function DonutRenderer({desc, recs}){
   return(
-    <DonutView
-    />
+    <CondWrapper desc={desc} recs={recs}>
+      <DonutView/>
+    </CondWrapper>
   )
 }
 
@@ -286,5 +299,6 @@ const descToRendererMapping = {
 };
 
 export default {
-  BlockGrid
+  BlockGrid,
+  BaseRenderer
 }

@@ -57,7 +57,7 @@ import BottomBar from "./Navigation/BottomBar/BottomBar";
 import AttrsTable from "./widgets/AttrsTable";
 import ConcernRow from "./widgets/ConcernRow";
 import PanelRenderer from "./lib/PanelRenderer";
-
+import ConcernDetailView from "./lib/ConcernDetailView";
 
 
 export {
@@ -67,6 +67,7 @@ export {
   useHover,
   NiceEmptyView,
   ConcernRow,
+  ConcernDetailView,
   useReloadSalt,
   ProductView,
   Button,

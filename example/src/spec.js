@@ -52,6 +52,9 @@ function header({uri}) {
 const websiteBlock = {
   type: "Block",
   title: "Website",
+  style: {
+    hov_point: true
+  },
   sections: [
     {
       type: "Section",
@@ -157,8 +160,58 @@ const wideBlock = {
   ]
 }
 
+const pagePanel1 = {
+  title: "Basics",
+  attributes: [
+    {
+      title: "Header",
+      value: header({
+        uri: "https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png"
+      })
+    },
+    {
+      title: "Resource Name",
+      value: {
+        type: "Text",
+        text: "Pick dick"
+      }
+    },
+    {
+      title: "Namespace",
+      value: statusLine
+    },
+    {
+      title: "Big Graph",
+      value: {
+        type: 'TimeseriesGraph',
+        data: timeSeriesData,
+        style: { height: '140px' }
+      }
+    },
+    {
+      title: "Big Donut",
+      value: {
+        type: "Line",
+        elements: [
+          {
+            type: 'Donut',
+            style: { height: '140px', width: '100%' }
+          },
+          {
+            type: 'Donut',
+            style: { height: '140px', width: '100%' }
+          }
+
+        ]
+      }
+    }
+  ]
+}
+
+
 export default {
   websiteBlock,
   websiteBlock2,
-  wideBlock
+  wideBlock,
+  pagePanel1
 }

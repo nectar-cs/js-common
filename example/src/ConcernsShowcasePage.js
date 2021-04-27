@@ -1,15 +1,17 @@
 import React from "react";
-import { MenuView, Layout, PanelRenderer } from "nectar-gui"
+import { MenuView, ConcernDetailView, Layout, PanelRenderer } from "nectar-gui"
 
 import spec  from  './spec'
+import {BrowserRouter, Route} from 'react-router-dom'
+import {Switch} from "react-router";
 
 const BlockGrid = PanelRenderer.BlockGrid;
 
 
 export default function ConcernsShowcasePage(){
+  const prefix = `/pseudo-show/concerns`;
   return(
     <Layout.Div
-      // mt={3}
       relative
     >
       <MenuView
@@ -26,20 +28,45 @@ export default function ConcernsShowcasePage(){
         bottom={0}
         left='208px'
       >
-        <BlockGrid
-          descs={[
-            spec.websiteBlock,
-            spec.websiteBlock2,
-            // spec.websiteBlock2
-            spec.wideBlock,
-            spec.websiteBlock2,
-          ]}
-        />
+        <Switch>
+          <Route path={`${prefix}/detail/:id`} component={DetailView}/>
+          <Route path={`${prefix}/`} component={IndexView}/>
+        </Switch>
       </Layout.Div>
     </Layout.Div>
   )
 }
 
+function DetailView(){
+  return(
+    <ConcernDetailView
+      panels={[
+        spec.pagePanel1
+      ]}
+    />
+  )
+}
+
+function IndexView(){
+  return(
+    <BlockGrid
+      descs={[
+        spec.websiteBlock,
+        spec.websiteBlock2,
+        // spec.websiteBlock2
+        spec.wideBlock,
+        spec.websiteBlock2,
+      ]}
+    />
+  )
+}
+
+const actualRoutes = [
+  {
+    path: '/',
+    isDefault: true
+  }
+];
 
 const fakeRoutes = [
   {

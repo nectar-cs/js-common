@@ -6,7 +6,7 @@ import Table from "../styles/table-styles";
 function View({panelTopProps, tableProps, children, ...rest}){
   return(
     <Layout.Div {...rest}>
-      <PanelTop{...panelTopProps}/>
+      <PanelTop {...panelTopProps}/>
       <Layout.PanelBot>
         <LocalTable {...tableProps}>
           { children }
@@ -43,19 +43,25 @@ function LocalTable({children, ...rest}){
   )
 }
 
-function NameCell({title, subtitle, width, children}){
+function NameCell({title, subtitle, width, children, titleProps, subtitleProps}){
   return(
     <td style={{width}}>
       <Layout.Div style={{width, padding: "10px 10px 10px 0"}}>
         { (children || []).length === 0 && (
           <Fragment>
-            <Text.P fair bold style={{whiteSpace: 'nowrap'}}>
+            <Text.P
+              fair
+              bold
+              style={{whiteSpace: 'nowrap'}}
+              {...titleProps}
+            >
               { title }
             </Text.P>
 
             <Text.P
               calm
               mt={.4}
+              {...subtitleProps}
             >
               { subtitle }
             </Text.P>
