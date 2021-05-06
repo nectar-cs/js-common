@@ -62,7 +62,7 @@ const CuckIcon = styled.i`
 function Icon({name, ...props}){
   return(
     <CuckIcon className='material-icons' {...props}>
-      {name}
+      { name }
     </CuckIcon>
   )
 }
@@ -136,7 +136,7 @@ const BorderedStatusTag = styled(StatusTag)`
   ${p => borderStyles(p, {
     borderWidth: '1px',
     borderRadius: '3px',
-    borderEmotion: p.emotion || '#DCDCDC'
+    borderEmotion: '#DCDCDC'
   })};
   ${p => colorStyles(p, {
     emotion: 'secondaryFont',

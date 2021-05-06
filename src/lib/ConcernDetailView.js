@@ -20,7 +20,6 @@ export default function ConcernDetailView(props){
 }
 
 function AttrPanel({desc}){
-
   return(
     <AttrsTable.View
       mt={3}
