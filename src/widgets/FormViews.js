@@ -5,6 +5,7 @@ import Text from "../styles/text-styles";
 import Input from "../styles/input-styles";
 import Img from "../styles/img-styles";
 import {TextOverLineSubtitle} from "./TextOverLineSubtitle/TextOverLineSubtitle";
+import Clickable from "./Clickable";
 
 function FieldTitle({children, lockable, locked, setLocked, ...rest}){
   return(
@@ -408,7 +409,7 @@ function InfoTipView({title, text, children, emotion, tabbed, link, cta}){
       }
       { children }
       { link && (
-        <a href={link} style={{textDecoration: 'none'}} target='_blank'>
+        <Clickable action={link}>
           <Layout.Div
             mt={.7}
             plr={.5}
@@ -427,7 +428,7 @@ function InfoTipView({title, text, children, emotion, tabbed, link, cta}){
               size={.76}
             />
           </Layout.Div>
-        </a>
+        </Clickable>
       ) }
     </Layout.Div>
   )

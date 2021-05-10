@@ -24,9 +24,8 @@ export default function MenuView({prefix, routes, width, seekIndex}){
       pb={1}>
       <Layout.Div>
         { routes.filter(r => !!r.name).map((route, i) => (
-          <Layout.Div>
+          <Layout.Div key={i}>
             <ItemView
-              key={i}
               index={i}
               isSelected={selectedInd === i}
               prefix={prefix}

@@ -43,10 +43,10 @@ function LocalTable({children, ...rest}){
   )
 }
 
-function NameCell({title, subtitle, width, children, titleProps, subtitleProps}){
+function NameCell({title, padding, subtitle, width, children, titleProps, subtitleProps}){
   return(
     <td style={{width}}>
-      <Layout.Div style={{width, padding: "10px 10px 10px 0"}}>
+      <Layout.Div style={{width, padding: `${padding} ${padding} ${padding} 0`}}>
         { (children || []).length === 0 && (
           <Fragment>
             <Text.P
@@ -73,10 +73,10 @@ function NameCell({title, subtitle, width, children, titleProps, subtitleProps})
   )
 }
 
-function ValueCell({children}){
+function ValueCell({children, ...rest}){
   return(
     <td>
-      <Layout.Div padded>
+      <Layout.Div padded {...rest}>
         { children }
       </Layout.Div>
     </td>
@@ -93,5 +93,6 @@ export default {
 }
 
 NameCell.defaultProps = {
-  width: '220px'
+  width: '220px',
+  padding: '10px'
 }
