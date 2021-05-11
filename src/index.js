@@ -58,10 +58,11 @@ import AttrsTable from "./widgets/AttrsTable";
 import ConcernRow from "./widgets/ConcernRow";
 import PanelRenderer from "./lib/PanelRenderer";
 import ConcernDetailView from "./lib/ConcernDetailView";
-
+import {usePrefix2} from "./utils/usePrefix2";
 
 export {
   Loader,
+  usePrefix2,
   Clickable,
   PanelRenderer,
   useHover,
