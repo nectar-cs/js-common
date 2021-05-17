@@ -59,10 +59,13 @@ import ConcernRow from "./widgets/ConcernRow";
 import PanelRenderer from "./lib/PanelRenderer";
 import ConcernDetailView from "./lib/ConcernDetailView";
 import {usePrefix2} from "./utils/usePrefix2";
+import GutterHelpView from "./widgets/GutterHelpView";
+
 
 export {
   Loader,
   usePrefix2,
+  GutterHelpView,
   Clickable,
   PanelRenderer,
   useHover,
@@ -81,6 +84,7 @@ export {
   colorKeys,
   CategoriesBar,
   AttrsTable,
+
   theme,
   inverseTheme,
   MosaicBaseStyle,

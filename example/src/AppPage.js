@@ -6,6 +6,7 @@ import {Layout,
   Button,
   Input,
   slickBarTheme,
+  GutterHelpView,
   TextOverLineSubtitle,
   Text,
   TagPool,
@@ -22,13 +23,26 @@ export default function AppPage(){
     <ThemeProvider theme={slickBarTheme}>
       <AppLayout
         SideBar={CustomSlickBar}>
-        <Layout.PageWithoutHeader>
+        <Layout.Div>
+          <HelpView/>
           <IntroPanel/>
           <TwoPanels/>
           <FormsPanel/>
-        </Layout.PageWithoutHeader>
+        </Layout.Div>
       </AppLayout>
     </ThemeProvider>
+  )
+}
+
+function HelpView(){
+  return(
+    <GutterHelpView
+      top='70px'
+      helpItems={[
+        { title: "Help Item", info: "If you're afraid of ghosts, hang out" +
+            "in the sun." }
+      ]}
+    />
   )
 }
 
