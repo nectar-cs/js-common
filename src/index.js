@@ -60,11 +60,13 @@ import PanelRenderer from "./lib/PanelRenderer";
 import ConcernDetailView from "./lib/ConcernDetailView";
 import {usePrefix2} from "./utils/usePrefix2";
 import GutterHelpView from "./widgets/GutterHelpView";
+import useOutsideAlerter from "./utils/useOutsideAlerter";
 
 
 export {
   Loader,
   usePrefix2,
+  useOutsideAlerter,
   GutterHelpView,
   Clickable,
   PanelRenderer,
