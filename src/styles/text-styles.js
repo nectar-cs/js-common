@@ -144,6 +144,20 @@ const BorderedStatusTag = styled(StatusTag)`
   })};
 `;
 
+function ClearTag({children, ...props}){
+  return(
+    <BorderedStatusTag
+      pb='4px'
+      pt='0px'
+      height='14px'
+      plr='6px'
+      {...props}
+    >
+      { children }
+    </BorderedStatusTag>
+  )
+}
+
 const CleanStatus = styled(P)`
   letter-spacing: 0.2px;
   text-transform: uppercase;
@@ -211,7 +225,8 @@ const Text = {
   StatusTag,
   BoldRef,
   ModestTag,
-  BorderedStatusTag
+  BorderedStatusTag,
+  ClearTag
 };
 
 export default Text;
