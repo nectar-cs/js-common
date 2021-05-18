@@ -146,6 +146,14 @@ function IntroPanel(){
         <Layout.Div flex>
           <Layout.Div>
             <Text.P mt={1}>Standard text</Text.P>
+            <Layout.Div flex>
+              <Text.P bkgEmotion='cool'>Standard</Text.P>
+              <Text.P height={'35px'} bkgEmotion='disabled'>FLex</Text.P>
+            </Layout.Div>
+            <Layout.Div cflex>
+              <Text.P bkgEmotion='cool'>with-c</Text.P>
+              <Text.P height={'35px'} bkgEmotion='disabled'>C FLex</Text.P>
+            </Layout.Div>
             <Text.P calm mt={1}>{someLorem}</Text.P>
           </Layout.Div>
           <PulsarView/>

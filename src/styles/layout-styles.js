@@ -223,6 +223,10 @@ function absHipster(p, defaults={}){
 function flexing(p, defaults={}){
   return multiMode({...defaults, ...p}, push => {
     push('jc', val => `justify-content: ${val}`);
+    push('cflex', _ => [
+      `display: flex`,
+      'align-items: center'
+    ]);
   })
 }
 
